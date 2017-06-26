@@ -1,5 +1,5 @@
 {
-  "name": "react-starter-kit",
+  "name": "react-e-wallet",
   "version": "1.0.0",
   "description": "simple React starter kit",
   "main": "''",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kovalchukevgeny/react-starter-kit"
+    "url": "https://github.com/kovalchukevgeny/wallet"
   },
   "keywords": [
     "react",
@@ -31,8 +31,13 @@
   ],
   "author": "Evgeny Kovalchuk (https://github.com/kovalchukevgeny)",
   "license": "MIT",
-  "homepage": "https://github.com/kovalchukevgeny/react-starter-kit",
+  "homepage": "https://github.com/kovalchukevgeny/wallet",
   "dependencies": {
+    "body-parser": "^1.12.3",
+    "classnames": "^2.2.3",
+    "cors": "^2.8.3",
+    "express": "4.13.4",
+    "mongoose": "^4.11.0",
     "prop-types": "^15.5.10",
     "react": "^15.3.1",
     "react-dom": "^15.0.1",
@@ -41,8 +46,7 @@
     "react-router": "^2.7.0",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
-    "serve-favicon": "^2.3.0",
-    "express": "4.13.4"
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "babel-cli": "6.8.0",
