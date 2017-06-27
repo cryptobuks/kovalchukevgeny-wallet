@@ -4,14 +4,22 @@ import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
 import favicon from 'serve-favicon';
-
-/* eslint-disable no-console */
-
-
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import * as db from './../server/utils/DataBaseUtils';
 
 const port = 3000;
 const app = express();
 const compiler = webpack(config);
+
+// Set up connection of database
+db.setUpConnection();
+
+// Using bodyParser middleware
+app.use( bodyParser.json() );
+
+// Allow requests from any origin
+app.use(cors({ origin: '*' }));
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -31,4 +39,17 @@ app.listen(port, function(err) {
   } else {
     open(`http://localhost:${port}`);
   }
+});
+
+// RESTful api handlers
+app.get('/transactions', (req, res) => {
+  db.listTransactions().then(data => res.send(data));
+});
+
+app.post('/transactions', (req, res) => {
+  db.createTransaction(req.body).then(data => res.send(data));
+});
+
+app.delete('/transactions/:id', (req, res) => {
+  db.deleteTransaction(req.params.id).then(data => res.send(data));
 });

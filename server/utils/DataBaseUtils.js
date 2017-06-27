@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import mongojs from "mongojs";
+
 import config from './../../etc/config.json';
 
 import './../models/Transactions';
@@ -7,7 +9,13 @@ import './../models/Transactions';
 const Transaction = mongoose.model('Transaction');
 
 export function setUpConnection() {
-  mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
+  mongoose.connect('mongodb://YauhenKavalchuk:12177rq@ds139362.mlab.com:39362/ewallet');
+
+  // Remove after cheking
+  const db = mongoose.connection;
+
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function() { console.log('ok-good'); });
 }
 
 export function listTransactions(id) {
@@ -15,7 +23,7 @@ export function listTransactions(id) {
 }
 
 export function createTransaction(data) {
-  const Transaction = new Note({
+  const transaction = new Transaction({
       title: data.title,
       text: data.text,
       money: data.money,
