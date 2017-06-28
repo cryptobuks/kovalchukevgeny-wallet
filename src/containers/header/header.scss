@@ -1,0 +1,12 @@
+.header {
+
+  .mdl-layout__header-row {
+    background-color: $mainTheme;
+  }
+
+  .mdl-list__item {
+    cursor: pointer;
+    min-height: 0;
+    padding: 0;
+  }
+}

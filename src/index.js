@@ -6,6 +6,8 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
 import App from './containers/app/App.js';
+import './styles/vendor/mdl/material.js';
+import './styles/main.scss';
 
 ReactDOM.render(
   <Provider store={store}>

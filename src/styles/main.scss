@@ -1,0 +1,19 @@
+// Variables
+@import "variables";
+// Vendors
+@import "vendor/mdl/material";
+// Components
+@import "../containers/header/header";
+@import "../containers/footer/footer";
+
+// Sticky Footer
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+// ---------------
