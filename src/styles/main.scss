@@ -2,8 +2,9 @@
 @import "variables";
 // Vendors
 @import "vendor/mdl/material";
+@import "vendor/bootstrap/theme";
 // Components
-
+@import "../components/adding-panel/adding-panel";
 // Containers
 @import "../containers/header/header";
 @import "../containers/footer/footer";

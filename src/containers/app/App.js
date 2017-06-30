@@ -12,7 +12,13 @@ const App = props => {
         <Header />
       </div>
       <div className="main">
-        {children}
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              {children}
+            </div>
+          </div>
+        </div>      
       </div>
       <div className="footer">
         <Footer />

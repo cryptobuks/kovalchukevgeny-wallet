@@ -1,0 +1,16 @@
+.adding-panel {
+  padding: 10px;
+
+  .panel-body {
+    padding: 0;
+
+    input, select {
+      font-size: 14px;
+    }
+  }
+
+  legend {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+}

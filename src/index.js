@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
 import App from './containers/app/App.js';
 import Categories from './containers/categories/categories';
+import AddingPanel from './components/adding-panel/adding-panel.jsx';
 import './styles/vendor/mdl/material.js';
 import './styles/main.scss';
 
@@ -15,6 +16,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <Route path="categories" component={Categories} />
+        <Route path="transactions" component={AddingPanel} />
       </Route>
     </Router>
   </Provider>,
