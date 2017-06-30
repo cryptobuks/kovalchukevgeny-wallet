@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class Button extends Component {
   constructor(props) {
@@ -10,15 +11,25 @@ class Button extends Component {
     let {
       onClickFunction,
       specialClass,
-      children } = this.props;
-
-    const classString = specialClass ? specialClass : '';
+      children,
+      href } = this.props;
 
     return(
+      href ?
+      <a
+        href={href}
+        onClick={(e) => onClickFunction(e)}
+        type="link"
+        className={classNames(specialClass)}
+      >
+        {React.Children.map(children, (child) => {
+          return child;
+        })}
+      </a> :
       <button
         onClick={(e) => onClickFunction(e)}
         type="button"
-        className={`${classString}`}
+        className={classNames(specialClass)}
       >
         {React.Children.map(children, (child) => {
           return child;
@@ -28,13 +39,19 @@ class Button extends Component {
   }
 }
 
+Button.defaultProps = {
+  children: 'button',
+  onClickFunction: () => console.log('click') // eslint-disable-line no-console
+};
+
 Button.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
     PropTypes.string
-  ]),
-  onClickFunction: PropTypes.func,
+  ]).isRequired,
+  href: PropTypes.string,
+  onClickFunction: PropTypes.func.isRequired,
   specialClass: PropTypes.string
 };
 
