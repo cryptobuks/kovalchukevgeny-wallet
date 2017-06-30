@@ -33,7 +33,7 @@ class AddingPanel extends Component {
       money: '',
       startDate: moment(),
       transactionTitle: ''
-    })
+    });
   }
 
   handleChangeCategory(event) {
@@ -56,6 +56,12 @@ class AddingPanel extends Component {
     const { category, money, startDate, transactionTitle } = this.state;
     const { addTransaction } = this.props;
     addTransaction(startDate, money, transactionTitle, category);
+    this.setState({
+      category: '',
+      money: '',
+      startDate: moment(),
+      transactionTitle: ''
+    });
   }
 
   render() {
@@ -80,7 +86,7 @@ class AddingPanel extends Component {
                 </div>
                 <div className="col-lg-1">
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     placeholder="0.00"
                     value={money}
@@ -91,7 +97,7 @@ class AddingPanel extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Title"
+                    placeholder="Description"
                     value={transactionTitle}
                     onChange={this.handleChangeTitle}
                   />
