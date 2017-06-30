@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Button from './../../components/button/button.jsx';
+import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
 
@@ -18,10 +20,12 @@ class AddingPanel extends Component {
     };
 
     this.clearTransactionData = this.clearTransactionData.bind(this);
+    this.formatDate = this.formatDate.bind(this);
     this.handleChangeData = this.handleChangeData.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeMoney = this.handleChangeMoney.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.sendTransaction = this.sendTransaction.bind(this);
   }
 
   clearTransactionData() {
@@ -31,6 +35,15 @@ class AddingPanel extends Component {
       startDate: moment(),
       transactionTitle: ''
     })
+  }
+
+  formatDate(date) {
+    let newDate = new Date(date)
+    let dd = newDate.getDate();
+    if (dd < 10) dd = '0' + dd;
+    let mm = newDate.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+    return `${dd}/${mm}/${newDate.getFullYear()}`;
   }
 
   handleChangeCategory(event) {
@@ -47,6 +60,14 @@ class AddingPanel extends Component {
 
   handleChangeTitle(event) {
     this.setState({transactionTitle: event.target.value});
+  }
+
+  sendTransaction() {
+    const { category, money, startDate, transactionTitle } = this.state;
+    const { addTransaction } = this.props;
+    const date = this.formatDate(startDate)
+    console.log(date);
+    addTransaction(date, money, transactionTitle, category);
   }
 
   render() {
@@ -106,6 +127,7 @@ class AddingPanel extends Component {
                   >Cancel</Button>
                   <Button
                     specialClass="btn btn-success"
+                    onClickFunction={this.sendTransaction}
                   >Submit</Button>
                 </div>
               </div>
@@ -121,4 +143,6 @@ AddingPanel.propTypes = {
 
 };
 
-export default AddingPanel;
+export default connect(state => ({
+  transactions: state.transactions,
+}), { addTransaction })(AddingPanel);
