@@ -20,7 +20,6 @@ class AddingPanel extends Component {
     };
 
     this.clearTransactionData = this.clearTransactionData.bind(this);
-    this.formatDate = this.formatDate.bind(this);
     this.handleChangeData = this.handleChangeData.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeMoney = this.handleChangeMoney.bind(this);
@@ -37,15 +36,6 @@ class AddingPanel extends Component {
     })
   }
 
-  formatDate(date) {
-    let newDate = new Date(date)
-    let dd = newDate.getDate();
-    if (dd < 10) dd = '0' + dd;
-    let mm = newDate.getMonth() + 1;
-    if (mm < 10) mm = '0' + mm;
-    return `${dd}/${mm}/${newDate.getFullYear()}`;
-  }
-
   handleChangeCategory(event) {
     this.setState({category: event.target.value});
   }
@@ -55,7 +45,7 @@ class AddingPanel extends Component {
   }
 
   handleChangeMoney(event) {
-    this.setState({money: parseInt(event.target.value, 10)});
+    this.setState({money: event.target.value});
   }
 
   handleChangeTitle(event) {
@@ -65,9 +55,7 @@ class AddingPanel extends Component {
   sendTransaction() {
     const { category, money, startDate, transactionTitle } = this.state;
     const { addTransaction } = this.props;
-    const date = this.formatDate(startDate)
-    console.log(date);
-    addTransaction(date, money, transactionTitle, category);
+    addTransaction(startDate, money, transactionTitle, category);
   }
 
   render() {

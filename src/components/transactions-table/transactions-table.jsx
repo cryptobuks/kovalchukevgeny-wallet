@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Helpers from './../../helpers/Helpers.js';
 
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
+
+    this.Helpers = new Helpers();
   }
 
   render() {
     const { transactions } = this.props;
-
-    let transaction = transactions.map((transaction, i) => {
+    const transaction = transactions.map((transaction, i) => {
+      const date = this.Helpers.formatDate(transaction.startDate)
       return(
         <tr key={i} >
-          <td>{i}</td>
-          <td>{transaction.startDate}</td>
+          <td>{date}</td>
           <td>{transaction.money}</td>
           <td>{transaction.transactionTitle}</td>
           <td>{transaction.category}</td>
@@ -26,7 +28,6 @@ class TransactionsTable extends Component {
       <table className="table table-striped table-hover ">
         <thead>
           <tr>
-            <th>#</th>
             <th>Date</th>
             <th>Money</th>
             <th>Description</th>
