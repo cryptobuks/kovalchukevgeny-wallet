@@ -33,7 +33,7 @@ export default {
 
   module: {
     loaders: [
-      { test: /\.js?$/,
+      { test: /(\.jsx|\.js)$/,
         loader: 'babel',
         exclude: /node_modules/ },
       { test: /\.scss?$/,
