@@ -41,7 +41,7 @@ class Button extends Component {
 
 Button.defaultProps = {
   children: 'button',
-  onClickFunction: () => console.log('click') // eslint-disable-line no-console
+  onClickFunction: () => {}
 };
 
 Button.propTypes = {

@@ -1,58 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Helpers from './../../helpers/Helpers.js';
+import Icon from './../icon/icon.jsx';
 
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
 
     this.Helpers = new Helpers();
-
-    this.state = {
-      sortby: null,
-      descending: false,
-      transactions: this.props.transactions
-    }
-
-    this.sortData = this.sortData.bind(this);
-  }
-
-  sortData(e) {
-    let { transactions } = this.props;
-
-    let column = e.target.dataset;
-    console.log(column);
-    switch (column.cell) {
-      case 'date' :
-      transactions.sort((a, b) => {
-        return a.date > b.date ? 1 : -1;
-      });
-      break;
-      case 'money' :
-      transactions.sort((a, b) => {
-        return a.money > b.money ? 1 : -1;
-      });
-      break;
-      case 'description' :
-      transactions.sort((a, b) => {
-        return a.transactionsTitle > b.transactionsTitle ? 1 : -1;
-      });
-      break;
-      case 'category' :
-      transactions.sort((a, b) => {
-        return a.category > b.category ? 1 : -1;
-      });
-      break;
-    }
-
-    this.setState({ transactions: transactions });
   }
 
   render() {
-    let { transactions } = this.state;
+    let { transactions, descending, sortby } = this.props;
 
-    const transaction = transactions.map((transaction, i) => {
+    const tableData = transactions.map((transaction, i) => {
       const date = this.Helpers.formatDate(transaction.startDate)
       return(
         <tr key={i} data-row={i}>
@@ -64,18 +25,29 @@ class TransactionsTable extends Component {
       );
     });
 
+    const titles = ['Date', 'Money', 'Description', 'Category'];
+
+    const tableHead = transactions && transactions.length > 0 ?
+    Object.keys(transactions[0]).map((key, i) => {
+      return(
+        <th key={i} data-cell={key}>
+          <span data-cell={key}>{titles[i]}</span>
+          {sortby === key &&
+          <span className="filter-arrow">
+            {descending ? <Icon icon={'arrow_downward'} /> : <Icon icon={'arrow_upward'} />}
+          </span>
+          }
+        </th>
+      );
+    }) : [];
+
     return (
-      <table className="table table-striped table-hover ">
-        <thead onClick={(e) => this.sortData(e)}>
-          <tr>
-            <th data-cell='date'>Date</th>
-            <th data-cell='money'>Money</th>
-            <th data-cell='description'>Description</th>
-            <th data-cell='category'>Category</th>
-          </tr>
-        </thead>
+      <table className="table table-striped table-hover transactions">
         <tbody>
-          {transaction}
+          <tr onClick={(e) => this.props.sortFunction(e)}>
+            {tableHead}
+          </tr>
+          {tableData}
         </tbody>
       </table>
     );
@@ -83,9 +55,10 @@ class TransactionsTable extends Component {
 }
 
 TransactionsTable.propTypes = {
-
+  transactions: PropTypes.array,
+  descending: PropTypes.bool,
+  sortby: PropTypes.string,
+  sortFunction: PropTypes.func
 };
 
-export default connect(state => ({
-  transactions: state.transactions,
-}))(TransactionsTable);
+export default TransactionsTable;

@@ -1,0 +1,21 @@
+.transactions {
+
+  tr {
+
+    &:first-child {
+      text-transform: uppercase;
+    }
+
+    th {
+      cursor: pointer;
+
+      .filter-arrow {
+        position: absolute;
+      }
+
+      i {
+        vertical-align: bottom;
+      }
+    }
+  }
+}

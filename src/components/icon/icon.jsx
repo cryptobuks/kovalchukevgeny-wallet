@@ -12,6 +12,10 @@ const MaterialIcon = (props) => {
   );
 };
 
+MaterialIcon.defaultProps = {
+  type: 'material'
+};
+
 MaterialIcon.propTypes = {
   icon: PropTypes.string.isRequired,
   type: PropTypes.string
