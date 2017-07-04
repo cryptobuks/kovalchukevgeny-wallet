@@ -72,25 +72,25 @@ class AddingPanel extends Component {
     return (
       <div className="panel panel-default adding-panel">
         <div className="panel-body">
-          <form className="form-horizontal">
-            <fieldset>
-              <div className="row">
-                <div className="col-lg-10">
-                  <legend>Add new transaction</legend>
-                </div>
-                <div className="col-lg-2">
-                  <Button
-                    specialClass="btn btn-danger"
-                    onClickFunction={this.clearTransactionData}
-                  >Cancel</Button>
-                  <Button
-                    specialClass="btn btn-success"
-                    onClickFunction={this.sendTransaction}
-                  >Submit</Button>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-2">
+          <div className="row">
+            <div className="col-lg-6">
+              <legend>Add new transaction</legend>
+            </div>
+            <div className="col-lg-6 text-right">
+              <Button
+                specialClass="btn btn-default"
+                onClickFunction={this.clearTransactionData}
+              >Cancel</Button>
+              <Button
+                specialClass="btn btn-primary"
+                onClickFunction={this.sendTransaction}
+              >Submit</Button>
+            </div>
+          </div>
+          <table className="table table-striped table-hover">
+            <tbody>
+              <tr>
+                <td>
                   <DatePicker
                     placeholderText="Click to select a date"
                     locale="en-gb"
@@ -98,37 +98,36 @@ class AddingPanel extends Component {
                     selected={this.state.startDate}
                     onChange={this.handleChangeData}
                   />
-                </div>
-                <div className="col-lg-2">
+                </td>
+                <td>
                   <Input
                     type="number"
                     placeholder="0.00"
                     value={money}
                     handleChange={this.handleChangeMoney}
                   />
-                </div>
-                <div className="col-lg-6">
+                </td>
+                <td>
                   <Input
                     placeholder="Description"
                     value={transactionTitle}
                     handleChange={this.handleChangeTitle}
                   />
-                </div>
-                <div className="col-lg-2">
+                </td>
+                <td>
                   <select
                     className="form-control"
                     value={this.state.category}
                     onChange={this.handleChangeCategory}
-                  >
-                    <option value="Home">Home</option>
+                  ><option value="Home">Home</option>
                     <option value="Shop">Shop</option>
                     <option value="Subscribes">Subscribes</option>
                     <option value="Internet">Internet</option>
                   </select>
-                </div>
-              </div>
-            </fieldset>
-          </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );

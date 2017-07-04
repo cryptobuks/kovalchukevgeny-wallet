@@ -10,7 +10,30 @@
   }
 
   legend {
+    border-bottom: transparent;
     margin-bottom: 10px;
     text-transform: uppercase;
+  }
+
+  .btn {
+    margin-left: 10px;
+  }
+
+  table {
+    margin-bottom: 0;
+
+    tr {
+
+      &:first-child {
+        background-color: transparent;
+      }
+
+      td {
+        border-top: transparent;
+        padding-bottom: 0;
+        padding-top: 0;
+        width: 25%;
+      }
+    }
   }
 }
