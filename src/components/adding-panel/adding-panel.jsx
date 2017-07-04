@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Button from './../../components/button/button.jsx';
+import Input from './../../components/input/input.jsx'
 import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
@@ -73,7 +74,21 @@ class AddingPanel extends Component {
         <div className="panel-body">
           <form className="form-horizontal">
             <fieldset>
-              <legend>Add new transaction</legend>
+              <div className="row">
+                <div className="col-lg-10">
+                  <legend>Add new transaction</legend>
+                </div>
+                <div className="col-lg-2">
+                  <Button
+                    specialClass="btn btn-danger"
+                    onClickFunction={this.clearTransactionData}
+                  >Cancel</Button>
+                  <Button
+                    specialClass="btn btn-success"
+                    onClickFunction={this.sendTransaction}
+                  >Submit</Button>
+                </div>
+              </div>
               <div className="row">
                 <div className="col-lg-2">
                   <DatePicker
@@ -84,22 +99,19 @@ class AddingPanel extends Component {
                     onChange={this.handleChangeData}
                   />
                 </div>
-                <div className="col-lg-1">
-                  <input
+                <div className="col-lg-2">
+                  <Input
                     type="number"
-                    className="form-control"
                     placeholder="0.00"
                     value={money}
-                    onChange={this.handleChangeMoney}
+                    handleChange={this.handleChangeMoney}
                   />
                 </div>
-                <div className="col-lg-5">
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="col-lg-6">
+                  <Input
                     placeholder="Description"
                     value={transactionTitle}
-                    onChange={this.handleChangeTitle}
+                    handleChange={this.handleChangeTitle}
                   />
                 </div>
                 <div className="col-lg-2">
@@ -113,16 +125,6 @@ class AddingPanel extends Component {
                     <option value="Subscribes">Subscribes</option>
                     <option value="Internet">Internet</option>
                   </select>
-                </div>
-                <div className="col-lg-2">
-                  <Button
-                    specialClass="btn btn-danger"
-                    onClickFunction={this.clearTransactionData}
-                  >Cancel</Button>
-                  <Button
-                    specialClass="btn btn-success"
-                    onClickFunction={this.sendTransaction}
-                  >Submit</Button>
                 </div>
               </div>
             </fieldset>

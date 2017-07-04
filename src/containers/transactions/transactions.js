@@ -21,9 +21,17 @@ class Transactions extends Component {
 
   sortSheme(dataArray, column, descending) {
     dataArray.sort((a, b) => {
-      return descending ?
-      (a[column] > b[column] ? 1 : -1) :
-      (a[column] < b[column] ? 1 : -1);
+      // Sort numbers
+      if(parseInt(column !== 'startDate' && a[column]) && parseInt(b[column])) {
+        return descending ?
+        (+a[column] > +b[column] ? 1 : -1) :
+        (+a[column] < +b[column] ? 1 : -1);
+      // Sort strings 
+      } else {
+        return descending ?
+        (a[column] > b[column] ? 1 : -1) :
+        (a[column] < b[column] ? 1 : -1);
+      }
     });
   }
 
