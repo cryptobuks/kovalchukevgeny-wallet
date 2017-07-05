@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
 import App from './containers/app/App.js';
 import Categories from './containers/categories/categories';
+import Home from './containers/home/home';
 import Transactions from './containers/transactions/transactions';
 import './styles/vendor/mdl/material.js';
 import './styles/main.scss';
@@ -15,6 +16,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+        <Redirect from="home" to="/" />
         <Route path="categories" component={Categories} />
         <Route path="transactions" component={Transactions} />
       </Route>
