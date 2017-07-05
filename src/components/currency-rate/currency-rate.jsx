@@ -71,11 +71,29 @@ class CurrencyRate extends Component {
     let { currencies } = this.state;
 
     currencies = currencies.map((currency, i) => {
+      // Add icon for currency
+      let iconCurr = '';
+      switch(currency.Cur_ID) {
+        case 145 : iconCurr = 'fa-usd'; break;
+        case 292 : iconCurr = 'fa-eur'; break;
+        default: iconCurr = 'fa-rub'; break;
+      }
+      // Add icon for currency arrow
+      let iconArrow = '';
+      iconArrow = currency.Cur_OfficialRate > currency.Cur_OfficialRateYest ?
+      'fa-long-arrow-up' : 'fa-long-arrow-down';
+
       return(
         <tr key={i}>
-          <td>{currency.Cur_Abbreviation}</td>
+          <td className="curr">
+            <span>{currency.Cur_Abbreviation}</span>
+            ({currency.Cur_Scale}<Icon type={'fa'} icon={iconCurr}/>)
+          </td>
           <td>{currency.Cur_OfficialRateYest}</td>
-          <td>{currency.Cur_OfficialRate}</td>
+          <td className="today">
+            {currency.Cur_OfficialRate}
+            <Icon type={'fa'} icon={iconArrow} />
+          </td>
         </tr>
       );
     });

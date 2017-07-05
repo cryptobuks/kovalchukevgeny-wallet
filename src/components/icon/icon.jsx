@@ -8,7 +8,7 @@ const MaterialIcon = (props) => {
   return (
     type === 'material' ?
     <i className="material-icons">{icon}</i> :
-    <i className={classNames('fa', {icon})} aria-hidden="true"></i>
+    <i className={classNames('fa', `${icon}`)} aria-hidden="true"></i>
   );
 };
 
