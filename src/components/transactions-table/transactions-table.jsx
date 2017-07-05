@@ -51,13 +51,14 @@ class TransactionsTable extends Component {
             {tableData}
           </tbody>
         </table>
-      </div>      
+      </div>
     );
   }
 }
 
 TransactionsTable.propTypes = {
   transactions: PropTypes.array,
+  categories: PropTypes.array,
   descending: PropTypes.bool,
   sortby: PropTypes.string,
   sortFunction: PropTypes.func

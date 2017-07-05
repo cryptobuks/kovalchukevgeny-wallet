@@ -26,7 +26,7 @@ class Transactions extends Component {
         return descending ?
         (+a[column] > +b[column] ? 1 : -1) :
         (+a[column] < +b[column] ? 1 : -1);
-      // Sort strings 
+      // Sort strings
       } else {
         return descending ?
         (a[column] > b[column] ? 1 : -1) :
@@ -51,13 +51,15 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby } = this.state;
-    const { transactions } = this.props;
+    const { transactions, categories } = this.props;
 
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <AddingPanel />
+            <AddingPanel
+              categories={categories}
+            />
             <TransactionsTable
               transactions={transactions}
               descending={descending}
@@ -72,9 +74,11 @@ class Transactions extends Component {
 }
 
 Transactions.propTypes = {
+  categories: PropTypes.array,
   transactions: PropTypes.array
 };
 
 export default connect(state => ({
-  transactions: state.transactions
+  transactions: state.transactions,
+  categories: state.categories
 }))(Transactions);

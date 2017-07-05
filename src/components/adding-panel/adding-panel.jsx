@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Button from './../../components/button/button.jsx';
-import Input from './../../components/input/input.jsx'
+import Input from './../../components/input/input.jsx';
 import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
@@ -25,7 +25,7 @@ class AddingPanel extends Component {
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeMoney = this.handleChangeMoney.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.sendTransaction = this.sendTransaction.bind(this);
+    this.saveTransaction = this.saveTransaction.bind(this);
   }
 
   clearTransactionData() {
@@ -35,6 +35,11 @@ class AddingPanel extends Component {
       startDate: moment(),
       transactionTitle: ''
     });
+  }
+
+  componentWillMount() {
+    const category = this.props.categories[0];
+    this.setState({category: category.categoryTitle || ''});
   }
 
   handleChangeCategory(event) {
@@ -53,7 +58,7 @@ class AddingPanel extends Component {
     this.setState({transactionTitle: event.target.value});
   }
 
-  sendTransaction() {
+  saveTransaction() {
     const { category, money, startDate, transactionTitle } = this.state;
     const { addTransaction } = this.props;
     addTransaction(startDate, money, transactionTitle, category);
@@ -66,8 +71,14 @@ class AddingPanel extends Component {
   }
 
   render() {
+    const { category, money, startDate, transactionTitle } = this.state;
+    let { categories } = this.props;
 
-    let { category, money, startDate, transactionTitle } = this.state;
+    categories = categories.map((category, i) => {
+      return(
+        <option key={i} value={category.categoryTitle}>{category.categoryTitle}</option>
+      );
+    });
 
     return (
       <div className="panel panel-default adding-panel">
@@ -83,7 +94,7 @@ class AddingPanel extends Component {
               >Cancel</Button>
               <Button
                 specialClass="btn btn-primary"
-                onClickFunction={this.sendTransaction}
+                onClickFunction={this.saveTransaction}
               >Submit</Button>
             </div>
           </div>
@@ -119,10 +130,8 @@ class AddingPanel extends Component {
                     className="form-control"
                     value={this.state.category}
                     onChange={this.handleChangeCategory}
-                  ><option value="Home">Home</option>
-                    <option value="Shop">Shop</option>
-                    <option value="Subscribes">Subscribes</option>
-                    <option value="Internet">Internet</option>
+                  >
+                    {categories}
                   </select>
                 </td>
               </tr>
@@ -139,5 +148,5 @@ AddingPanel.propTypes = {
 };
 
 export default connect(state => ({
-  transactions: state.transactions,
+  transactions: state.transactions
 }), { addTransaction })(AddingPanel);

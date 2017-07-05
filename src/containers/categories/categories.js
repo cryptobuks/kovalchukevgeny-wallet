@@ -1,105 +1,132 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from './../../components/button/button.jsx';
-
-// XMLHttpRequest wrapper using callbacks
-const request = obj => {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open(obj.method || "GET", obj.url);
-        if (obj.headers) {
-            Object.keys(obj.headers).forEach(key => {
-                xhr.setRequestHeader(key, obj.headers[key]);
-            });
-        }
-        xhr.onload = () => {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                resolve(xhr.response);
-            } else {
-                reject(xhr.statusText);
-            }
-        };
-        xhr.onerror = () => reject(xhr.statusText);
-        xhr.send(obj.body);
-    });
-};
+import Input from './../../components/input/input.jsx';
+import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
 class Categories extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currency: []
+      categoryDescription: '',
+      categoryTitle: ''
     }
+
+    this.clearCategory = this.clearCategory.bind(this);
+    this.deleteCategory = this.deleteCategory.bind(this);
+    this.handleChangeDescription = this.handleChangeDescription.bind(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.saveCategory = this.saveCategory.bind(this);
   }
 
-  componentWillMount() {
-    request({url: "http://www.nbrb.by/API/ExRates/Rates/Dynamics/145?startDate=2017-6-1&endDate=2017-6-29"})
-    .then(data => {
-        let currency = JSON.parse(data);
-        this.setState({currency})
-    })
-    .catch(error => {
-        console.log(error);
+  clearCategory() {
+    this.setState({
+      categoryDescription: '',
+      categoryTitle: ''
+    });
+  }
+
+  deleteCategory(event) {
+    const { deleteCategory } = this.props;
+    const id = +event.target.parentNode.getAttribute('data-id');
+    deleteCategory(id);
+  }
+
+  handleChangeDescription(event) {
+    this.setState({categoryDescription: event.target.value});
+  }
+
+  handleChangeTitle(event) {
+    this.setState({categoryTitle: event.target.value});
+  }
+
+  saveCategory() {
+    const { categoryDescription, categoryTitle } = this.state;
+    const { addCategory } = this.props;
+    const categoryId = (new Date()).getTime()
+    addCategory(categoryId, categoryDescription, categoryTitle);
+    this.setState({
+      categoryDescription: '',
+      categoryTitle: ''
     });
   }
 
   render() {
+    const { categoryDescription, categoryTitle } = this.state;
+    let { categories } = this.props;
 
-    let curr = this.state.currency.map((item, i) => {
+    categories = categories.map((category, i) => {
       return(
-        <tr key={i}>
-          <td className="mdl-data-table__cell--non-numeric">{item.Cur_OfficialRate}</td>
-          <td className="">{item.Date}</td>
-        </tr>
+        <div key={i} className="col-lg-3">
+          <div className="panel panel-default category">
+            <div className="panel-body" data-id={category.categoryId}>
+              <h5>{category.categoryTitle}</h5>
+              <p>{category.categoryDescription}</p>
+              <Button
+                specialClass="close"
+                onClickFunction={this.deleteCategory}
+              >&times;</Button>
+            </div>
+          </div>
+        </div>
       );
     });
 
     return (
       <div className="categories">
-        <div className="mdl-grid">
-          <div className="mdl-cell mdl-cell--12-col">
-            <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-              <thead>
-                <tr>
-                  <th className="mdl-data-table__cell--non-numeric">Material</th>
-                  <th>Quantity</th>
-                  <th>Unit price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                  <td>25</td>
-                  <td>$2.90</td>
-                </tr>
-                <tr>
-                  <td className="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                  <td>50</td>
-                  <td>$1.25</td>
-                </tr>
-                <tr>
-                  <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                  <td>10</td>
-                  <td>$2.35</td>
-                </tr>
-              </tbody>
-            </table>
-            <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-              <thead>
-                <tr>
-                  <th className="mdl-data-table__cell--non-numeric">USD</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                {curr}
-              </tbody>
-            </table>
-            <Button
-              specialClass={'mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'}
-            ><i className="material-icons">add</i>
-            </Button>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="panel panel-default">
+                <div className="panel-body">
+                  <div className="row">
+                    <div className="col-lg-3">
+                      <legend>Add new Category</legend>
+                    </div>
+                    <div className="col-lg-3">
+                      <Input
+                        placeholder="Category"
+                        value={categoryTitle}
+                        handleChange={this.handleChangeTitle}
+                      />
+                    </div>
+                    <div className="col-lg-3">
+                      <Input
+                        placeholder="Small description"
+                        value={categoryDescription}
+                        handleChange={this.handleChangeDescription}
+                      />
+                    </div>
+                    <div className="col-lg-3 text-right">
+                      <Button
+                        specialClass="btn btn-default"
+                        onClickFunction={this.clearCategory}
+                      >Cancel</Button>
+                      <Button
+                        specialClass="btn btn-primary"
+                        onClickFunction={this.saveCategory}
+                      >Submit</Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="panel panel-primary categories-panel">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Categories</h3>
+                </div>
+                <div className="panel-body">
+                  <div className="row">
+                    {categories}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -108,7 +135,9 @@ class Categories extends Component {
 }
 
 Categories.propTypes = {
-
+  categories: PropTypes.array
 };
 
-export default Categories;
+export default connect(state => ({
+  categories: state.categories
+}), { addCategory, deleteCategory })(Categories);

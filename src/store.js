@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware} from 'redux';
-import rootReducer from './../reducers/index';
+import rootReducer from './reducers/index';
 import { save } from 'redux-localstorage-simple';
 
 /* eslint-disable no-underscore-dangle */

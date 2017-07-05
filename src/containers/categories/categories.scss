@@ -1,11 +1,38 @@
 .categories {
 
-  .mdl-data-table {
-    margin-bottom: 20px;
-    width: 100%;
+  .btn-primary {
+    margin-left: 10px;
   }
 
-  .mdl-button {
-    float: right;
+  &-panel {
+
+    &>.panel-body {
+      padding-bottom: 0;
+    }
+  }
+
+  legend {
+    margin-bottom: 0;
+  }
+}
+
+.category {
+
+  .panel-body {
+    padding: 10px;
+
+    h5 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 0
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 5px;
+    }
   }
 }
