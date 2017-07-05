@@ -1,18 +1,33 @@
 .header {
 
-  .mdl-layout__header-row {
-    background-color: $mainTheme;
-  }
-
-  .mdl-list__item {
-    cursor: pointer;
-    min-height: 0;
-    padding: 0;
+  .navbar {
+    border-radius: 0;
   }
 
   .navigation__item {
-    font-size: 16px;
-    font-weight: 600;
     margin-left: 10px;
+    vertical-align: super;
+  }
+
+  .navbar-nav {
+
+    li {
+
+      a {
+
+        &.active {
+          background-color: rgba(255,255,255,.2);
+          color: #fff;
+
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+
+  .form-control {
+    font-size: 14px;
   }
 }

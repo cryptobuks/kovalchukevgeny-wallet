@@ -4,6 +4,10 @@
     margin-left: 10px;
   }
 
+  .form-control {
+    font-size: 14px;
+  }
+
   &-panel {
 
     &>.panel-body {
@@ -12,7 +16,9 @@
   }
 
   legend {
+    border-bottom: 0;
     margin-bottom: 0;
+    text-transform: uppercase;
   }
 }
 

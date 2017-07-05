@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import Divider from './../../components/divider/divider.jsx';
 import Icon from './../../components/icon/icon.jsx';
 
 class Header extends Component {
@@ -11,73 +10,58 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="demo-layout-transparent mdl-layout mdl-js-layout">
-        <header className="mdl-layout__header mdl-shadow--2dp">
-          <div className="mdl-layout__header-row">
-            {/* Title */}
-            <span className="mdl-layout-title">e-Wallet</span>
-            {/* Add spacer, to align navigation to the right */}
-            <div className="mdl-layout-spacer"></div>
-            {/* search */}
-            <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-              <label
-                className="mdl-button mdl-js-button mdl-button--icon"
-                htmlFor="fixed-header-drawer-exp"
-              ><Icon type={'material'} icon={'search'} />
-              </label>
-              <div className="mdl-textfield__expandable-holder">
-                <input
-                  className="mdl-textfield__input"
-                  type="text"
-                  name="sample"
-                  id="fixed-header-drawer-exp"
-                />
-              </div>
-            </div>
+      <nav className="navbar navbar-inverse">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
+            <span className="navbar-brand">e-Wallet</span>
           </div>
-        </header>
-        <div className="mdl-layout__drawer">
-          <span className="mdl-layout-title">e-Wallet</span>
-          {/* Navigation */}
-          <nav className="mdl-navigation">
-            <Link
-              className="mdl-navigation__link mdl-navigation__link--icon"
-              to="/"
-            >
-              <Icon type={'material'} icon={'home'} />
-              <span className="navigation__item">Home</span>
-            </Link>
-            <Link
-              className="mdl-navigation__link mdl-navigation__link--icon"
-              to="/categories"
-            >
-              <Icon type={'material'} icon={'assignment_turned_in'} />
-              <span className="navigation__item">Categories</span>
-            </Link>
-            <Link
-              className="mdl-navigation__link mdl-navigation__link--icon"
-              to="/transactions"
-            >
-              <Icon type={'material'} icon={'account_balance_wallet'} />
-              <span className="navigation__item">Transactions</span>
-            </Link>
-            <Link
-              className="mdl-navigation__link mdl-navigation__link--icon"
-              to="/results"
-            >
-              <Icon type={'material'} icon={'timeline'} />
-              <span className="navigation__item">Results</span>
-            </Link>
-            <Divider color={'rgba(0, 0, 0, 0.12)'} />
-          </nav>
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul className="nav navbar-nav">
+              <li>
+                <Link activeClassName="active" to="/home">
+                  <Icon type={'material'} icon={'home'} />
+                  <span className="navigation__item">Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link activeClassName="active" to="/transactions">
+                  <Icon type={'material'} icon={'account_balance_wallet'} />
+                  <span className="navigation__item">Transactions</span>
+                </Link>
+              </li>
+              <li>
+                <Link activeClassName="active" to="/categories">
+                  <Icon type={'material'} icon={'assignment_turned_in'} />
+                  <span className="navigation__item">Categories</span>
+                </Link>
+              </li>
+              <li>
+                <Link activeClassName="active" to="/results">
+                  <Icon type={'material'} icon={'timeline'} />
+                  <span className="navigation__item">Results</span>
+                </Link>
+              </li>
+            </ul>
+            <form className="navbar-form navbar-right" role="search">
+              <div className="form-group">
+                <input type="text" className="form-control" placeholder="Search" />
+              </div>
+              <button type="submit" className="btn btn-default">Submit</button>
+            </form>
+          </div>
         </div>
-        <main className="mdl-layout__content">
-        </main>
-      </div>
+      </nav>
     );
   }
 }
+
+
 
 Header.propTypes = {
 
