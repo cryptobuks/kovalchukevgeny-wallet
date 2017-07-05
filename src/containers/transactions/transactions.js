@@ -19,6 +19,15 @@ class Transactions extends Component {
     this.sortSheme = this.sortSheme.bind(this);
   }
 
+  componentWillMount() {
+    const transactions = this.props.transactions;
+    // Set default sort for data
+    if(transactions.length > 0) {
+      const column = Object.keys(transactions[0])[0];
+      this.sortData(event = null, column);
+    }
+  }
+
   sortSheme(dataArray, column, descending) {
     dataArray.sort((a, b) => {
       // Sort numbers
@@ -35,9 +44,9 @@ class Transactions extends Component {
     });
   }
 
-  sortData(e) {
+  sortData(event, col) {
     const { transactions } = this.props;
-    const column = e.target.dataset.cell;
+    const column = event ? event.target.dataset.cell : col;
     const descending = this.state.sortby === column && !this.state.descending;
 
     this.sortSheme(transactions, column, descending);

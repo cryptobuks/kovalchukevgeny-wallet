@@ -45,7 +45,7 @@ class TransactionsTable extends Component {
       <div className="panel panel-default">
         <table className="table table-striped table-hover transactions">
           <tbody>
-            <tr onClick={(e) => this.props.sortFunction(e)}>
+            <tr onClick={this.props.sortFunction}>
               {tableHead}
             </tr>
             {tableData}
