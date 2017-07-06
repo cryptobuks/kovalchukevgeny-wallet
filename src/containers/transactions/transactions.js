@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
+import Button from './../../components/button/button.jsx';
 
 class Transactions extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Transactions extends Component {
       transactions: this.props.transactions
     };
 
+    this.convertToCSV = this.convertToCSV.bind(this);
     this.sortData = this.sortData.bind(this);
     this.sortSheme = this.sortSheme.bind(this);
   }
@@ -26,6 +28,31 @@ class Transactions extends Component {
       const column = Object.keys(transactions[0])[0];
       this.sortData(event = null, column);
     }
+  }
+
+  convertToCSV(objArray) {
+    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+    // TODO: Rewrite to forEach or map
+    for (let i = 0; i < array.length; i++) {
+      let line = '';
+      for (let index in array[i]) {
+        if (line != '') line += ',';
+        line += array[i][index];
+      }
+      str += line + '\r\n';
+    }
+    return str;
+  }
+
+  download(format, event) {
+    let contents = format === 'json' ? JSON.stringify(this.state.transactions) :
+    this.convertToCSV(this.state.transactions);
+
+    const URL = window.URL || window.webkitURL;
+    const blob = new Blob([contents], {type: 'text/' + format});
+    event.target.href = URL.createObjectURL(blob);
+    event.target.download = 'data.' + format;
   }
 
   sortSheme(dataArray, column, descending) {
@@ -69,12 +96,31 @@ class Transactions extends Component {
             <AddingPanel
               categories={categories}
             />
-            <TransactionsTable
-              transactions={transactions}
-              descending={descending}
-              sortby={sortby}
-              sortFunction={this.sortData}
-            />
+            <div className="panel panel-primary tr-table">
+              <div className="panel-heading">
+                <h3 className="panel-title">Transactions</h3>
+              </div>
+              <div className="panel-body">
+                <TransactionsTable
+                  transactions={transactions}
+                  descending={descending}
+                  sortby={sortby}
+                  sortFunction={this.sortData}
+                />
+              </div>
+            </div>
+            <div className="toolbar">
+              <Button
+                onClickFunction={this.download.bind(this, 'json')}
+                specialClass="btn btn-primary"
+                href="data.json"
+              >Export JSON</Button>
+              <Button
+                onClickFunction={this.download.bind(this, 'json')}
+                specialClass="btn btn-primary"
+                href="data.csv"
+              >Export CSV</Button>
+            </div>
           </div>
         </div>
       </div>

@@ -32,7 +32,11 @@ class CurrencyRate extends Component {
     return currencies;
   }
 
-  componentWillMount() {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
+  }
+
+  componentDidMount() {
     const { request, formatDateCurr } = this.Helpers;
 
     const today = formatDateCurr(moment());

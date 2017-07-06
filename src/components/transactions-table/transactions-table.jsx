@@ -42,16 +42,14 @@ class TransactionsTable extends Component {
     }) : [];
 
     return (
-      <div className="panel panel-default">
-        <table className="table table-striped table-hover transactions">
-          <tbody>
-            <tr onClick={this.props.sortFunction}>
-              {tableHead}
-            </tr>
-            {tableData}
-          </tbody>
-        </table>
-      </div>
+      <table className="table table-striped table-hover transactions">
+        <tbody>
+          <tr onClick={this.props.sortFunction}>
+            {tableHead}
+          </tr>
+          {tableData}
+        </tbody>
+      </table>
     );
   }
 }
