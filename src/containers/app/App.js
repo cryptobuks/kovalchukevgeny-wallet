@@ -8,15 +8,11 @@ const App = props => {
   const { children } = props;
   return (
     <div className="App">
-      <div className="header">
-        <Header />
-      </div>
+      <Header />
       <div className="main">
-        {children}     
+        {children}
       </div>
-      <div className="footer">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

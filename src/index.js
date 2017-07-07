@@ -15,9 +15,9 @@ import './styles/main.scss';
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
+      <Redirect from="/" to="/home" />
       <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-        <Redirect from="home" to="/" />
+        <Route path="home" component={Home} />
         <Route path="categories" component={Categories} />
         <Route path="transactions" component={Transactions} />
       </Route>

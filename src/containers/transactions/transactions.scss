@@ -1,6 +1,6 @@
 .tr-table {
   .panel-body {
-    max-height: 55vh;
+    max-height: calc(100vh - 95px - 68px - 100px - 150px);
     overflow-y: auto;
 
     /*Scrollbar*/
