@@ -73,11 +73,16 @@ class Categories extends Component {
 
     categories = categories.map((category, i) => {
       return(
-        <div key={i} className="col-lg-3">
+        <div key={i} className="category-card">
           <div className="panel panel-default category">
             <div className="panel-body" data-id={category.categoryId}>
+              <div className="categ-icon">
+                <Icon type="fa" icon={category.categoryIcon} />
+              </div>
               <h5>{category.categoryTitle}</h5>
-              <p>{category.categoryDescription}</p>
+              <blockquote>
+                <small><cite>{category.categoryDescription}</cite></small>
+              </blockquote>
               <Button
                 specialClass="close"
                 onClickFunction={this.deleteCategory}
@@ -147,7 +152,7 @@ class Categories extends Component {
                   <h3 className="panel-title">Categories</h3>
                 </div>
                 <div className="panel-body">
-                  <div className="row">
+                  <div className="categories-wrapper">
                     {categories}
                   </div>
                 </div>

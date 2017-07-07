@@ -32,13 +32,13 @@
 
 // ---Logo---
 .logo {
-  color: #fff;
+  color: $accentTextColor;
   font-size: 26px;
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
 
   &:first-letter {
-    color: #b91919;
+    color: $accentColor;
   }
 }

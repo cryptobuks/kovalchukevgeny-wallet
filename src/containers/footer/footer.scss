@@ -1,5 +1,5 @@
 .footer {
-  background-color: #33373e;
+  background-color: $mainTheme;
   padding: 10px 40px;
 
   ul {
@@ -11,7 +11,7 @@
     li {
 
       a {
-        color: #fff;
+        color: $accentTextColor;
 
         i {
           margin-right: 5px;
