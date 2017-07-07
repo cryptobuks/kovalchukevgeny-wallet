@@ -16,7 +16,8 @@ function categories(state = initialState.categories, action) {
         ...state, {
           categoryId: action.categoryId,
           categoryDescription: action.categoryDescription,
-          categoryTitle: action.categoryTitle
+          categoryTitle: action.categoryTitle,
+          categoryIcon: action.categoryIcon
         }
       ];
     case 'DELETE_CATEGORY' :

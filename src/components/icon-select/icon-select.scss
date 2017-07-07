@@ -1,0 +1,47 @@
+.icon-select {
+  left: 50%;
+  margin-left: -135px;
+  position: absolute;
+  top: 60px;
+  width: 270px;
+  z-index: 2;
+
+  &:before {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    content: '';
+    display: block;
+    height: 20px;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    top: -10px;
+    transform: rotate(45deg);
+    width: 20px;
+    z-index: -1;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float: left;
+      height: 45px;
+      text-align: center;
+      transition: all .3s ease;
+      width: 45px;
+
+      &:hover {
+        background-color: #666;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      i {
+        font-size: 36px;
+        line-height: 46px;
+      }
+    }
+  }
+}

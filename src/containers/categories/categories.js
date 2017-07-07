@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
+import IconSelect from './../../components/icon-select/icon-select.jsx';
+import Icon from './../../components/icon/icon.jsx';
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
 class Categories extends Component {
@@ -11,14 +13,22 @@ class Categories extends Component {
 
     this.state = {
       categoryDescription: '',
-      categoryTitle: ''
+      categoryTitle: '',
+      categoryIcon: 'fa-car', //default icon
+      isSelectVisible: false
     }
 
+    this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
     this.deleteCategory = this.deleteCategory.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.saveCategory = this.saveCategory.bind(this);
+    this.toggleSelect = this.toggleSelect.bind(this);
+  }
+
+  changeCategoryIcon(icon) {
+    this.setState({categoryIcon: icon})
   }
 
   clearCategory() {
@@ -43,18 +53,22 @@ class Categories extends Component {
   }
 
   saveCategory() {
-    const { categoryDescription, categoryTitle } = this.state;
+    const { categoryDescription, categoryTitle, categoryIcon } = this.state;
     const { addCategory } = this.props;
     const categoryId = (new Date()).getTime()
-    addCategory(categoryId, categoryDescription, categoryTitle);
+    addCategory(categoryId, categoryDescription, categoryTitle, categoryIcon);
     this.setState({
       categoryDescription: '',
       categoryTitle: ''
     });
   }
 
+  toggleSelect() {
+    this.setState({isSelectVisible: !this.state.isSelectVisible});
+  }
+
   render() {
-    const { categoryDescription, categoryTitle } = this.state;
+    const { categoryDescription, categoryTitle, categoryIcon, isSelectVisible } = this.state;
     let { categories } = this.props;
 
     categories = categories.map((category, i) => {
@@ -82,8 +96,8 @@ class Categories extends Component {
               <div className="panel panel-default">
                 <div className="panel-body">
                   <div className="row">
-                    <div className="col-lg-3">
-                      <legend>Add new Category</legend>
+                    <div className="col-lg-2">
+                      <legend>New Category</legend>
                     </div>
                     <div className="col-lg-3">
                       <Input
@@ -98,6 +112,18 @@ class Categories extends Component {
                         value={categoryDescription}
                         handleChange={this.handleChangeDescription}
                       />
+                    </div>
+                    <div className="col-lg-1 text-right">
+                      <div
+                        className="category-icon"
+                        onClick={this.toggleSelect}
+                      >
+                        <Icon type='fa' icon={categoryIcon}/>
+                        <IconSelect
+                          isVisible={isSelectVisible}
+                          onClickFunction={this.changeCategoryIcon}
+                        />
+                      </div>
                     </div>
                     <div className="col-lg-3 text-right">
                       <Button

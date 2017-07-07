@@ -10,12 +10,13 @@ export function addTransaction(startDate, money, transactionTitle, category) {
 }
 
 // add category
-export function addCategory(categoryId, categoryDescription, categoryTitle) {
+export function addCategory(categoryId, categoryDescription, categoryTitle, categoryIcon) {
   return {
     type: 'ADD_CATEGORY',
     categoryId,
     categoryDescription,
-    categoryTitle
+    categoryTitle,
+    categoryIcon
   };
 }
 
