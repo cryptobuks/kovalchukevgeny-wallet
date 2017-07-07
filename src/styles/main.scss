@@ -1,31 +1,43 @@
 // Variables
 @import "variables";
 // Vendors
-@import "vendor/mdl/material";
 @import "vendor/bootstrap/theme";
 // Components
 @import "../components/adding-panel/adding-panel";
 @import "../components/transactions-table/transactions-table";
 @import "../components/currency-rate/currency-rate";
+@import '../components/navbar/navbar';
 // Containers
 @import "../containers/header/header";
 @import "../containers/footer/footer";
 @import "../containers/categories/categories";
 @import "../containers/transactions/transactions";
 
-// Sticky Footer
+// ---Sticky Footer---
 .App {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
-
 .main {
   flex: 1;
   z-index: 2;
 }
-// ---------------
+
+// ---Text align---
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }
-// ---------------
+
+// ---Logo---
+.logo {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  &:first-letter {
+    color: #b91919;
+  }
+}

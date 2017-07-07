@@ -9,7 +9,6 @@ import App from './containers/app/App.js';
 import Categories from './containers/categories/categories';
 import Home from './containers/home/home';
 import Transactions from './containers/transactions/transactions';
-import './styles/vendor/mdl/material.js';
 import './styles/main.scss';
 
 ReactDOM.render(

@@ -11,19 +11,25 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer className="mdl-mini-footer">
-        <div className="mdl-mini-footer__left-section">
-          <div className="mdl-logo">e-Wallet</div>
-          <ul className="mdl-mini-footer__link-list">
-            <li>
-              <Button
-                specialClass="mdl-navigation__link mdl-navigation__link--icon"
-                href="https://github.com/kovalchukevgeny/wallet">
-                <Icon type={'material'} icon={'link'} />
-                <span>GitHub</span>
-              </Button>
-            </li>
-          </ul>
+      <footer className="footer">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-2">
+              <div className="logo">e-wallet</div>
+            </div>
+            <div className="col-lg-10">
+              <ul>
+                <li>
+                  <Button
+                    specialClass="mdl-navigation__link mdl-navigation__link--icon"
+                    href="https://github.com/kovalchukevgeny/wallet">
+                    <Icon type={'material'} icon={'link'} />
+                    <span>GitHub</span>
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </footer>
     );
