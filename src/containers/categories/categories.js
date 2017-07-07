@@ -16,7 +16,7 @@ class Categories extends Component {
       categoryTitle: '',
       categoryIcon: 'fa-car', //default icon
       isSelectVisible: false
-    }
+    };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
@@ -28,7 +28,7 @@ class Categories extends Component {
   }
 
   changeCategoryIcon(icon) {
-    this.setState({categoryIcon: icon})
+    this.setState({categoryIcon: icon});
   }
 
   clearCategory() {
@@ -55,7 +55,7 @@ class Categories extends Component {
   saveCategory() {
     const { categoryDescription, categoryTitle, categoryIcon } = this.state;
     const { addCategory } = this.props;
-    const categoryId = (new Date()).getTime()
+    const categoryId = (new Date()).getTime();
     addCategory(categoryId, categoryDescription, categoryTitle, categoryIcon);
     this.setState({
       categoryDescription: '',
@@ -118,7 +118,7 @@ class Categories extends Component {
                         className="category-icon"
                         onClick={this.toggleSelect}
                       >
-                        <Icon type='fa' icon={categoryIcon}/>
+                        <Icon type="fa" icon={categoryIcon}/>
                         <IconSelect
                           isVisible={isSelectVisible}
                           onClickFunction={this.changeCategoryIcon}
@@ -161,7 +161,9 @@ class Categories extends Component {
 }
 
 Categories.propTypes = {
-  categories: PropTypes.array
+  categories: PropTypes.array,
+  addCategory: PropTypes.func,
+  deleteCategory: PropTypes.func
 };
 
 export default connect(state => ({
