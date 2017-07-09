@@ -39,7 +39,9 @@ class AddingPanel extends Component {
 
   componentWillMount() {
     const category = this.props.categories[0];
-    this.setState({category: category.categoryTitle || ''});
+    category ?
+    this.setState({category: category.categoryTitle}) :
+    this.setState({category: ''});
   }
 
   handleChangeCategory(event) {
