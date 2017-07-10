@@ -4,7 +4,7 @@
   "description": "simple React starter kit",
   "main": "''",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
