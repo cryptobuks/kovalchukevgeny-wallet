@@ -5,11 +5,6 @@ import ReactTestUtils from 'react-dom/test-utils';
 import Button from './../../src/components/button/button.jsx';
 
 describe('Button Component', () => {
-  let onClickFunc;
-
-  beforeEach(() => {
-    const onClickFunc = jest.genMockFunction();
-  });
 
   it('Render button with class name, type and text inside', () => {
     const button = renderer.create(
