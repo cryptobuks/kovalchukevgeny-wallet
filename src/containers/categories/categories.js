@@ -14,8 +14,7 @@ class Categories extends Component {
     this.state = {
       categoryDescription: '',
       categoryTitle: '',
-      categoryIcon: 'fa-car', //default icon
-      isSelectVisible: false
+      categoryIcon: 'fa-car' //default icon
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
@@ -24,7 +23,6 @@ class Categories extends Component {
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.saveCategory = this.saveCategory.bind(this);
-    this.toggleSelect = this.toggleSelect.bind(this);
   }
 
   changeCategoryIcon(icon) {
@@ -63,12 +61,8 @@ class Categories extends Component {
     });
   }
 
-  toggleSelect() {
-    this.setState({isSelectVisible: !this.state.isSelectVisible});
-  }
-
   render() {
-    const { categoryDescription, categoryTitle, categoryIcon, isSelectVisible } = this.state;
+    const { categoryDescription, categoryTitle, categoryIcon } = this.state;
     let { categories } = this.props;
 
     categories = categories.map((category, i) => {
@@ -104,7 +98,7 @@ class Categories extends Component {
                     <div className="col-lg-2">
                       <legend>New Category</legend>
                     </div>
-                    <div className="col-lg-3">
+                    <div className="col-lg-2">
                       <Input
                         placeholder="Category"
                         value={categoryTitle}
@@ -118,17 +112,11 @@ class Categories extends Component {
                         handleChange={this.handleChangeDescription}
                       />
                     </div>
-                    <div className="col-lg-1 text-right">
-                      <div
-                        className="category-icon"
-                        onClick={this.toggleSelect}
-                      >
-                        <Icon type="fa" icon={categoryIcon}/>
-                        <IconSelect
-                          isVisible={isSelectVisible}
-                          onClickFunction={this.changeCategoryIcon}
-                        />
-                      </div>
+                    <div className="col-lg-2 text-right">
+                      <IconSelect
+                        onClickFunction={this.changeCategoryIcon}
+                        defaultIcon={categoryIcon}
+                      />
                     </div>
                     <div className="col-lg-3 text-right">
                       <Button
