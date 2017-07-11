@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import sinon from 'sinon';
 import renderer from 'react-test-renderer';
-import ReactTestUtils from 'react-dom/test-utils';
+
 import Button from './../../src/components/button/button.jsx';
 
 describe('Button Component', () => {
@@ -52,4 +53,17 @@ describe('Button Component', () => {
     // Checking of inner text
     expect(button.children[1]).toEqual('Arrow');
   });
+
+  it('Simulate click events on button', () => {
+    const onClickFunction = sinon.spy();
+    const Btn = shallow(<Button onClickFunction={onClickFunction} />);
+    // Checking can be find the button
+    expect(Btn.find('button').length).toEqual(1);
+    Btn.find('button').simulate('click');
+    // Checking call of function
+    expect(onClickFunction.called).toEqual(true);
+    expect(onClickFunction.calledOnce).toEqual(true);
+    expect(onClickFunction.callCount).toEqual(1);
+  });
+
 });

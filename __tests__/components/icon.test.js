@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
-import ReactTestUtils from 'react-dom/test-utils';
+
 import Icon from './../../src/components/icon/icon.jsx';
 
 describe('Icon Component', () => {

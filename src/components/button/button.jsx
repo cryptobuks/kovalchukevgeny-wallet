@@ -18,7 +18,6 @@ class Button extends Component {
       href ?
       <a
         href={href}
-        onClick={(e) => onClickFunction(e)}
         type="link"
         className={classNames(specialClass)}
       >
