@@ -6,6 +6,7 @@ import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
+import iconsArray from './../../components/icon-select/icons.js';
 
 class Categories extends Component {
   constructor(props) {
@@ -116,6 +117,7 @@ class Categories extends Component {
                       <IconSelect
                         onClickFunction={this.changeCategoryIcon}
                         defaultIcon={categoryIcon}
+                        iconsArray={iconsArray}
                       />
                     </div>
                     <div className="col-lg-3 text-right">

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from './../../components/icon/icon.jsx';
-import iconsArray from './icons.js';
 
 class IconSelect extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class IconSelect extends Component {
   }
 
   render() {
-    const { onClickFunction, defaultIcon, position } = this.props;
+    const { onClickFunction, defaultIcon, position, iconsArray } = this.props;
     const { isSelectVisible } = this.state;
 
     let icons = iconsArray.map((icon, i) => {
@@ -28,7 +27,7 @@ class IconSelect extends Component {
         <li
           key={i}
           data-icon={icon}
-          className={icon === defaultIcon ? 'active' : ''}
+          className={icon === defaultIcon ? 'icon-wrapp active' : 'icon-wrapp'}
           onClick={() => onClickFunction(icon)}
         >
           <Icon type={'fa'} icon={icon} />
@@ -60,13 +59,15 @@ class IconSelect extends Component {
 IconSelect.defaultProps = {
   defaultIcon: 'fa-paw',
   onClickFunction: () => {},
-  position: 'bottom'
+  position: 'bottom',
+  iconsArray: ['fa-paw', 'fa-car']
 };
 
 IconSelect.propTypes = {
   isVisible: PropTypes.string,
   onClickFunction: PropTypes.func,
-  position: PropTypes.string
+  position: PropTypes.string,
+  iconsArray: PropTypes.array
 };
 
 export default IconSelect;
