@@ -8,7 +8,7 @@ import IconSelect from './../../src/components/icon-select/icon-select.jsx';
 
 describe('IconSelect Component', () => {
 
-  it('Render custom select', () => {
+  it('Render default select', () => {
     const iconSelect = renderer.create(
       <IconSelect />
     ).toJSON();
@@ -22,6 +22,22 @@ describe('IconSelect Component', () => {
     expect(iconSelect.children[1].type).toEqual('i');
     // Checking of third child type
     expect(iconSelect.children[2].type).toEqual('div');
+  });
+
+  it('Render custom select', () => {
+    const onClickFunction = sinon.spy();
+    const iconSelect = shallow(
+      <IconSelect
+        iconsArray={iconsArray}
+        position="top"
+      />
+    );
+    // Checking quantity of icons
+    expect(iconSelect.find('.icon-wrapp').length).toEqual(iconsArray.length);
+    // Checking custom icon
+    expect(iconSelect.find('.icon-wrapp').node.props['data-icon']).toEqual(iconsArray[0]);
+    // Checking position of dropdown
+    expect(iconSelect.find('.icon-select').node.props.className).toEqual('icon-select top hide');
   });
 
   it('Simulate click events on select', () => {
