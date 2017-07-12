@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './../header/header';
-import Footer from './../footer/footer';
+import Footer from './../../components/footer/footer';
 import api from './../../api/index';
 
 const App = props => {

@@ -8,14 +8,15 @@
 @import "../components/currency-rate/currency-rate";
 @import '../components/navbar/navbar';
 @import '../components/icon-select/icon-select';
+@import "../components/footer/footer";
 // Containers
 @import "../containers/header/header";
-@import "../containers/footer/footer";
 @import "../containers/categories/categories";
 @import "../containers/transactions/transactions";
 
 // ---Sticky Footer---
 .App {
+  background-color: #f5f5f5;
   display: flex;
   min-height: 100vh;
   flex-direction: column;

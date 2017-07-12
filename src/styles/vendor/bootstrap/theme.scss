@@ -4875,6 +4875,7 @@ button.list-group-item-danger.active:focus {
   color: #212121;
   background-color: #f5f5f5;
   border-color: #dddddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #dddddd;
@@ -4889,6 +4890,7 @@ button.list-group-item-danger.active:focus {
   color: $accentTextColor;
   background-color: #2196f3;
   border-color: #2196f3;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #2196f3;
@@ -4907,6 +4909,7 @@ button.list-group-item-danger.active:focus {
   color: $accentTextColor;
   background-color: #4caf50;
   border-color: #d6e9c6;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 .panel-success > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #d6e9c6;
@@ -4925,6 +4928,7 @@ button.list-group-item-danger.active:focus {
   color: $accentTextColor;
   background-color: #9c27b0;
   border-color: #cba4dd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #cba4dd;
