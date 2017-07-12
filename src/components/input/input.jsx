@@ -29,6 +29,7 @@ class Input extends Component {
 
 Input.defaultProps = {
   type: 'text',
+  value: 'default value',
   placeholder: 'placeholder',
   handleChange: () => {}
 };
