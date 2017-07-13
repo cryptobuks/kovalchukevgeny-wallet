@@ -25,7 +25,6 @@ describe('IconSelect Component', () => {
   });
 
   it('Render custom select', () => {
-    const onClickFunction = sinon.spy();
     const iconSelect = shallow(
       <IconSelect
         iconsArray={iconsArray}

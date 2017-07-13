@@ -29,7 +29,7 @@ class Navbar extends Component {
         <div className="container-fluid">
           <div className="navbar-header">
             <Button
-              specialClass="navbar-toggle collapsed"
+              specialClass="navbar-toggle"
               onClickFunction={this.showNav}
             ><span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
