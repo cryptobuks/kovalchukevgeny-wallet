@@ -9,6 +9,16 @@ class Helpers {
     return `${dd}/${mm}/${newDate.getFullYear()}`;
   }
 
+  // To formate date to 01/01/2017
+  formatDateGraph(date) {
+    let newDate = new Date(date);
+    let dd = newDate.getDate();
+    if (dd < 10) dd = '0' + dd;
+    let mm = newDate.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+    return `${newDate.getFullYear()}-${mm}-${dd}`;
+  }
+
   // To formate date for currencies rate
   formatDateCurr(date, day) {
     let newDate = new Date(date);
