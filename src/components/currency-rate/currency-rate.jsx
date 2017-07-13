@@ -17,8 +17,8 @@ class CurrencyRate extends Component {
     this.dataNormalize = this.dataNormalize.bind(this);
   }
 
-  dataNormalize(data) {
-    let currencies = this.state.currencies;
+  dataNormalize(data, prevRes) {
+    let currencies = prevRes;
 
     currencies = currencies.map(currency => {
       for(let i = 0; i < data.length; i++) {
@@ -42,14 +42,13 @@ class CurrencyRate extends Component {
     const today = formatDateCurr(moment());
     const yesterday = formatDateCurr(moment(), 'yest');
 
+    let res = [];
+
     request({url: `http://www.nbrb.by/API/ExRates/Rates?onDate=${today}&Periodicity=0`})
     .then(data => {
         let currencies = JSON.parse(data);
-        currencies = currencies.filter(currency => {
+        res = currencies.filter(currency => {
           return currency.Cur_ID === 145 || currency.Cur_ID === 292 || currency.Cur_ID === 298;
-        });
-        this.setState({
-          currencies: currencies
         });
     })
     .catch(error => {
@@ -63,7 +62,7 @@ class CurrencyRate extends Component {
           return currency.Cur_ID === 145 || currency.Cur_ID === 292 || currency.Cur_ID === 298;
         });
         this.setState({
-          currencies: this.dataNormalize(currencies)
+          currencies: this.dataNormalize(currencies, res)
         });
     })
     .catch(error => {
