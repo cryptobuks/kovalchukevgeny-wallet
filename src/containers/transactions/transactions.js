@@ -6,10 +6,13 @@ import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
+import Helpers from './../../helpers/Helpers';
 
 class Transactions extends Component {
   constructor(props) {
     super(props);
+
+    this.Helpers = new Helpers();
 
     this.state = {
       sortby: null,
@@ -32,6 +35,12 @@ class Transactions extends Component {
   }
 
   convertToCSV(objArray) {
+    const { formatDate } = this.Helpers;
+    // To format date to 20/7/2017
+    objArray = objArray.map(item => {
+      item.startDate = formatDate(item.startDate);
+      return item;
+    });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
     let str = '';
     // TODO: Rewrite to forEach or map
@@ -115,7 +124,7 @@ class Transactions extends Component {
                 href="data.json"
               >Export JSON</Button>
               <Button
-                onClickFunction={this.download.bind(this, 'json')}
+                onClickFunction={this.download.bind(this, 'csv')}
                 specialClass="btn btn-primary"
                 href="data.csv"
               >Export CSV</Button>

@@ -64,7 +64,7 @@ class AddingPanel extends Component {
   saveTransaction() {
     const { category, money, startDate, transactionTitle } = this.state;
     const { addTransaction } = this.props;
-    addTransaction(startDate, money, transactionTitle, category);
+    addTransaction(startDate, +money, transactionTitle, category);
     this.setState({
       category: '',
       money: '',
