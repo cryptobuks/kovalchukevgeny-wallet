@@ -20,11 +20,11 @@
     flex-wrap: wrap;
 
     .category-card {
-      width: 32%;
+      width: calc(33.3333% - 7px);
 
       &:not(:nth-child(3)) {
 
-        margin-right: 20px;
+        margin-right: 10px;
       }
     }
   }
@@ -37,7 +37,7 @@
 }
 
 .category {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   .panel-body {
     padding: 10px;

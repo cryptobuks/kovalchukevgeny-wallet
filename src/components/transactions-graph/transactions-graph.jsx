@@ -57,7 +57,7 @@ class TransactionsGraph extends Component {
           description="This graphic shows a time-series of transactions."
           data={this.sumOneDateTransactions(transactions)}
           height={250}
-          width={525}
+          width={535}
           x_accessor="date"
           y_accessor="money"
           yax_units="BYR "
