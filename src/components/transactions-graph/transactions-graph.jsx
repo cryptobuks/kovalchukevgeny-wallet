@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MetricsGraphics from 'react-metrics-graphics';
 import Helpers from './../../helpers/Helpers';
 
-class Graph extends Component {
+class TransactionsGraph extends Component {
   constructor(props) {
     super(props);
 
@@ -68,11 +68,11 @@ class Graph extends Component {
   }
 }
 
-Graph.defaultProps = {
+TransactionsGraph.defaultProps = {
   transactions: []
 };
 
-Graph.propTypes = {
+TransactionsGraph.propTypes = {
   transactions: PropTypes.array
 };
 
