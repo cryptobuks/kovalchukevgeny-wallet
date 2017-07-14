@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CurrencyRate from './../../components/currency-rate/currency-rate.jsx';
-import Graph from './../../components/graph/graph.jsx';
+import TransactionsGraph from './../../components/transactions-graph/transactions-graph.jsx';
 
 const Home = (props) => {
   const { transactions } = props;
@@ -14,7 +14,7 @@ const Home = (props) => {
             <CurrencyRate />
           </div>
           <div className="col-lg-6">
-            <Graph
+            <TransactionsGraph
               transactions={transactions}
             />
           </div>
@@ -25,7 +25,7 @@ const Home = (props) => {
 };
 
 Home.propTypes = {
-
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({

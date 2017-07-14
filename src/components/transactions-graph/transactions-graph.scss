@@ -1,0 +1,21 @@
+.metricsGraphicsCon {
+
+  .mg-header {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .mg-line1-color {
+    stroke: $accentColor;
+  }
+
+  .mg-area1-color {
+    fill: $mainTheme;
+  }
+
+  .mg-histogram .axis text,
+  .mg-x-axis text,
+  .mg-y-axis text {
+    opacity: .8;
+  }
+}
