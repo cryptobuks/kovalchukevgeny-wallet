@@ -5,6 +5,7 @@ import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
+import Panel from './../../components/panel/panel.jsx';
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 import iconsArray from './../../components/icon-select/icons.js';
 
@@ -69,8 +70,8 @@ class Categories extends Component {
     categories = categories.map((category, i) => {
       return(
         <div key={i} className="category-card">
-          <div className="panel panel-default category">
-            <div className="panel-body" data-id={category.categoryId}>
+          <Panel specialClass="panel-default category">
+            <div data-id={category.categoryId}>
               <div className="categ-icon">
                 <Icon type="fa" icon={category.categoryIcon} />
               </div>
@@ -83,7 +84,7 @@ class Categories extends Component {
                 onClickFunction={this.deleteCategory}
               >&times;</Button>
             </div>
-          </div>
+          </Panel>
         </div>
       );
     });
@@ -93,60 +94,56 @@ class Categories extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="panel panel-default">
-                <div className="panel-body">
-                  <div className="row">
-                    <div className="col-lg-2">
-                      <legend>New Category</legend>
-                    </div>
-                    <div className="col-lg-2">
-                      <Input
-                        placeholder="Category"
-                        value={categoryTitle}
-                        handleChange={this.handleChangeTitle}
-                      />
-                    </div>
-                    <div className="col-lg-3">
-                      <Input
-                        placeholder="Small description"
-                        value={categoryDescription}
-                        handleChange={this.handleChangeDescription}
-                      />
-                    </div>
-                    <div className="col-lg-2 text-right">
-                      <IconSelect
-                        onClickFunction={this.changeCategoryIcon}
-                        defaultIcon={categoryIcon}
-                        iconsArray={iconsArray}
-                      />
-                    </div>
-                    <div className="col-lg-3 text-right">
-                      <Button
-                        specialClass="btn btn-default"
-                        onClickFunction={this.clearCategory}
-                      >Cancel</Button>
-                      <Button
-                        specialClass="btn btn-primary"
-                        onClickFunction={this.saveCategory}
-                      >Submit</Button>
-                    </div>
+              <Panel specialClass="panel-default">
+                <div className="row">
+                  <div className="col-lg-2">
+                    <legend>New Category</legend>
+                  </div>
+                  <div className="col-lg-2">
+                    <Input
+                      placeholder="Category"
+                      value={categoryTitle}
+                      handleChange={this.handleChangeTitle}
+                    />
+                  </div>
+                  <div className="col-lg-3">
+                    <Input
+                      placeholder="Small description"
+                      value={categoryDescription}
+                      handleChange={this.handleChangeDescription}
+                    />
+                  </div>
+                  <div className="col-lg-2 text-right">
+                    <IconSelect
+                      onClickFunction={this.changeCategoryIcon}
+                      defaultIcon={categoryIcon}
+                      iconsArray={iconsArray}
+                    />
+                  </div>
+                  <div className="col-lg-3 text-right">
+                    <Button
+                      specialClass="btn btn-default"
+                      onClickFunction={this.clearCategory}
+                    >Cancel</Button>
+                    <Button
+                      specialClass="btn btn-primary"
+                      onClickFunction={this.saveCategory}
+                    >Submit</Button>
                   </div>
                 </div>
-              </div>
+              </Panel>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-12">
-              <div className="panel panel-primary categories-panel">
-                <div className="panel-heading">
-                  <h3 className="panel-title">Categories</h3>
+              <Panel
+                specialClass="panel-primary categories-panel"
+                heading="Categories"
+              >
+                <div className="categories-wrapper">
+                  {categories}
                 </div>
-                <div className="panel-body">
-                  <div className="categories-wrapper">
-                    {categories}
-                  </div>
-                </div>
-              </div>
+              </Panel>
             </div>
           </div>
         </div>

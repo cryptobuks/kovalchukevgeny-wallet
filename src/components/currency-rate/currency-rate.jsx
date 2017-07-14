@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Icon from './../icon/icon.jsx';
+import Panel from './../panel/panel.jsx';
 import Helpers from './../../helpers/Helpers';
-import Icon from './../../components/icon/icon.jsx';
 
 class CurrencyRate extends Component {
   constructor(props) {
@@ -102,25 +103,23 @@ class CurrencyRate extends Component {
     });
 
     return (
-      <div className="panel panel-success currency">
-        <div className="panel-heading">
-          <h3 className="panel-title">Currency courses</h3>
-        </div>
-        <div className="panel-body">
-          <table className="table table-striped table-hover ">
-            <thead>
-              <tr>
-                <th>Currency</th>
-                <th>Yesterday</th>
-                <th>Today</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currencies}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <Panel
+        specialClass="panel-success currency"
+        heading="Currency courses"
+      >
+        <table className="table table-striped table-hover ">
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Yesterday</th>
+              <th>Today</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currencies}
+          </tbody>
+        </table>
+      </Panel>
     );
   }
 }

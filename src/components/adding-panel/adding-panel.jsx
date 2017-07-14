@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import Button from './../../components/button/button.jsx';
-import Input from './../../components/input/input.jsx';
+import Button from './../button/button.jsx';
+import Input from './../input/input.jsx';
+import Panel from './../panel/panel.jsx';
 import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
@@ -83,64 +84,64 @@ class AddingPanel extends Component {
     });
 
     return (
-      <div className="panel panel-default adding-panel">
-        <div className="panel-body">
-          <div className="row">
-            <div className="col-lg-6">
-              <legend>Add new transaction</legend>
-            </div>
-            <div className="col-lg-6 text-right">
-              <Button
-                specialClass="btn btn-default"
-                onClickFunction={this.clearTransactionData}
-              >Cancel</Button>
-              <Button
-                specialClass="btn btn-primary"
-                onClickFunction={this.saveTransaction}
-              >Submit</Button>
-            </div>
+      <Panel
+        specialClass="panel-default adding-panel"
+      >
+        <div className="row">
+          <div className="col-lg-6">
+            <legend>Add new transaction</legend>
           </div>
-          <table className="table table-striped table-hover">
-            <tbody>
-              <tr>
-                <td>
-                  <DatePicker
-                    placeholderText="Click to select a date"
-                    locale="en-gb"
-                    className="form-control"
-                    selected={this.state.startDate}
-                    onChange={this.handleChangeData}
-                  />
-                </td>
-                <td>
-                  <Input
-                    type="number"
-                    placeholder="0.00"
-                    value={money}
-                    handleChange={this.handleChangeMoney}
-                  />
-                </td>
-                <td>
-                  <Input
-                    placeholder="Description"
-                    value={transactionTitle}
-                    handleChange={this.handleChangeTitle}
-                  />
-                </td>
-                <td>
-                  <select
-                    className="form-control"
-                    value={this.state.category}
-                    onChange={this.handleChangeCategory}
-                  >
-                    {categories}
-                  </select>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="col-lg-6 text-right">
+            <Button
+              specialClass="btn btn-default"
+              onClickFunction={this.clearTransactionData}
+            >Cancel</Button>
+            <Button
+              specialClass="btn btn-primary"
+              onClickFunction={this.saveTransaction}
+            >Submit</Button>
+          </div>
         </div>
-      </div>
+        <table className="table table-striped table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <DatePicker
+                  placeholderText="Click to select a date"
+                  locale="en-gb"
+                  className="form-control"
+                  selected={this.state.startDate}
+                  onChange={this.handleChangeData}
+                />
+              </td>
+              <td>
+                <Input
+                  type="number"
+                  placeholder="0.00"
+                  value={money}
+                  handleChange={this.handleChangeMoney}
+                />
+              </td>
+              <td>
+                <Input
+                  placeholder="Description"
+                  value={transactionTitle}
+                  handleChange={this.handleChangeTitle}
+                />
+              </td>
+              <td>
+                <select
+                  className="form-control"
+                  value={this.state.category}
+                  onChange={this.handleChangeCategory}
+                >
+                  {categories}
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Panel>
     );
   }
 }

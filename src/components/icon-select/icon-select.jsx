@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Icon from './../../components/icon/icon.jsx';
+import Icon from './../icon/icon.jsx';
+import Panel from './../panel/panel.jsx';
 
 class IconSelect extends Component {
   constructor(props) {
@@ -42,14 +43,12 @@ class IconSelect extends Component {
       >
         <strong>Choose icon:</strong>
         <Icon type="fa" icon={defaultIcon}/>
-        <div
-          className={
-            classNames('icon-select', position, {hide: !isSelectVisible})}>
-          <div className="panel panel-default">
+        <div className={classNames('icon-select', position, {hide: !isSelectVisible})}>
+          <Panel specialClass="panel-default">
             <ul className="clearfix">
               {icons}
             </ul>
-          </div>
+          </Panel>
         </div>
       </div>
     );

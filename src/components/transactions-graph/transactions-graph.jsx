@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MetricsGraphics from 'react-metrics-graphics';
 import Helpers from './../../helpers/Helpers';
+import Panel from './../panel/panel.jsx';
 
 class TransactionsGraph extends Component {
   constructor(props) {
@@ -47,23 +48,21 @@ class TransactionsGraph extends Component {
     const { transactions } = this.props;
 
     return (
-      <div className="panel panel-success currency">
-        <div className="panel-heading">
-          <h3 className="panel-title">Graph</h3>
-        </div>
-        <div className="panel-body">
-          <MetricsGraphics
-          	title="transactions"
-          	description="This graphic shows a time-series of transactions."
-          	data={this.sumOneDateTransactions(transactions)}
-          	height={250}
-            width={525}
-          	x_accessor="date"
-          	y_accessor="money"
-            yax_units="BYR "
-          />
-        </div>
-      </div>
+      <Panel
+        specialClass="panel-success"
+        heading="Graph"
+      >
+        <MetricsGraphics
+          title="transactions"
+          description="This graphic shows a time-series of transactions."
+          data={this.sumOneDateTransactions(transactions)}
+          height={250}
+          width={525}
+          x_accessor="date"
+          y_accessor="money"
+          yax_units="BYR "
+        />
+      </Panel>
     );
   }
 }
@@ -76,4 +75,4 @@ TransactionsGraph.propTypes = {
   transactions: PropTypes.array
 };
 
-export default Graph;
+export default TransactionsGraph;

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
+import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 
 class Transactions extends Component {
@@ -96,19 +97,17 @@ class Transactions extends Component {
             <AddingPanel
               categories={categories}
             />
-            <div className="panel panel-primary tr-table">
-              <div className="panel-heading">
-                <h3 className="panel-title">Transactions</h3>
-              </div>
-              <div className="panel-body">
-                <TransactionsTable
-                  transactions={transactions}
-                  descending={descending}
-                  sortby={sortby}
-                  sortFunction={this.sortData}
-                />
-              </div>
-            </div>
+            <Panel
+              specialClass="panel-primary tr-table"
+              heading="Transactions"
+            >
+              <TransactionsTable
+                transactions={transactions}
+                descending={descending}
+                sortby={sortby}
+                sortFunction={this.sortData}
+              />
+            </Panel>
             <div className="toolbar">
               <Button
                 onClickFunction={this.download.bind(this, 'json')}
