@@ -10,7 +10,11 @@
   }
 
   .mg-area1-color {
-    fill: $mainTheme;
+    fill: $accentColor;
+  }
+
+  path.mg-main-area {
+    opacity: .4;
   }
 
   .mg-histogram .axis text,

@@ -1,1 +1,18 @@
+.btn-primary {
+  background-color: $accentColor;
 
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: darken($accentColor, 10%);
+  }
+
+  &:focus,
+  &:active {
+
+    &:focus,
+    &:hover {
+      background-color: darken($accentColor, 15%);
+    }
+  }
+}
