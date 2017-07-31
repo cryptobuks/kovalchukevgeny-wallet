@@ -98,6 +98,13 @@ class Transactions extends Component {
   render() {
     const { descending, sortby } = this.state;
     const { transactions, categories } = this.props;
+    const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
+
+    const amount = unicTransactions.reduce((sum, transaction) => {
+      return sum += transaction.money;
+    }, 0) / unicTransactions.length;
+
+    console.log(amount);
 
     return (
       <div className="container">
@@ -117,17 +124,28 @@ class Transactions extends Component {
                 sortFunction={this.sortData}
               />
             </Panel>
-            <div className="toolbar">
-              <Button
-                onClickFunction={this.download.bind(this, 'json')}
-                specialClass="btn btn-primary"
-                href="data.json"
-              >Export JSON</Button>
-              <Button
-                onClickFunction={this.download.bind(this, 'csv')}
-                specialClass="btn btn-primary"
-                href="data.csv"
-              >Export CSV</Button>
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="toolbar">
+                  <Button
+                    onClickFunction={this.download.bind(this, 'json')}
+                    specialClass="btn btn-primary"
+                    href="data.json"
+                  >Export JSON</Button>
+                  <Button
+                    onClickFunction={this.download.bind(this, 'csv')}
+                    specialClass="btn btn-primary"
+                    href="data.csv"
+                  >Export CSV</Button>
+                </div>
+              </div>
+              <div className="col-lg-6 text-right amount-wrapper">
+                <h5 className="amount">
+                  Amount rubles spent during
+                  <span>{unicTransactions.length}</span> days:
+                  <span>{amount}</span> RUB
+                </h5>
+              </div>
             </div>
           </div>
         </div>

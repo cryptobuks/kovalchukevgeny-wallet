@@ -12,19 +12,6 @@ class TransactionsTable extends Component {
 
   render() {
     let { transactions, descending, sortby } = this.props;
-
-    const tableData = transactions.map((transaction, i) => {
-      const date = this.Helpers.formatDate(transaction.startDate)
-      return(
-        <tr key={i} data-row={i}>
-          <td data-cell='1'>{date}</td>
-          <td data-cell='2'>{transaction.money}</td>
-          <td data-cell='3'>{transaction.transactionTitle}</td>
-          <td data-cell='4'>{transaction.category}</td>
-        </tr>
-      );
-    });
-
     const titles = ['Date', 'Money', 'Description', 'Category'];
 
     const tableHead = transactions && transactions.length > 0 ?
@@ -40,6 +27,18 @@ class TransactionsTable extends Component {
         </th>
       );
     }) : [];
+
+    const tableData = transactions.map((transaction, i) => {
+      const date = this.Helpers.formatDate(transaction.startDate)
+      return(
+        <tr key={i} data-row={i}>
+          <td data-cell='1'>{date}</td>
+          <td data-cell='2'>{transaction.money}</td>
+          <td data-cell='3'>{transaction.transactionTitle}</td>
+          <td data-cell='4'>{transaction.category}</td>
+        </tr>
+      );
+    });
 
     return (
       <table className="table table-striped table-hover transactions">

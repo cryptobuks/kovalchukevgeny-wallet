@@ -33,3 +33,15 @@
     }
   }
 }
+
+.amount-wrapper {
+
+  .amount {
+    margin: 0;
+
+    span {
+      color: $accentColor;
+      margin-left: 5px;
+    }
+  }
+}
