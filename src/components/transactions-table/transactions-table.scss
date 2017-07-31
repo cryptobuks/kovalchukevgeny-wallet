@@ -22,6 +22,11 @@
 
     td {
       width: 25%;
+
+      .fa {
+        color: $accentColor;
+        margin-right: 5px;
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, descending, sortby } = this.props;
+    let { transactions, descending, sortby, categories } = this.props;
     const titles = ['Date', 'Money', 'Description', 'Category'];
 
     const tableHead = transactions && transactions.length > 0 ?
@@ -30,12 +30,24 @@ class TransactionsTable extends Component {
 
     const tableData = transactions.map((transaction, i) => {
       const date = this.Helpers.formatDate(transaction.startDate)
+
+      const categoryIconObj = categories.filter(category => {
+        if(category.categoryTitle === transaction.category) {
+          return category.categoryIcon;
+        };
+      })[0] || null;
+
+      const categoryIcon = categoryIconObj ? categoryIconObj.categoryIcon : '';
+
       return(
         <tr key={i} data-row={i}>
           <td data-cell='1'>{date}</td>
           <td data-cell='2'>{transaction.money}</td>
           <td data-cell='3'>{transaction.transactionTitle}</td>
-          <td data-cell='4'>{transaction.category}</td>
+          <td data-cell='4'>
+            <Icon icon={categoryIcon} type="fa" />
+            {transaction.category}
+          </td>
         </tr>
       );
     });

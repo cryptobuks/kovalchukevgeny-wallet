@@ -104,8 +104,6 @@ class Transactions extends Component {
       return sum += transaction.money;
     }, 0) / unicTransactions.length;
 
-    console.log(amount);
-
     return (
       <div className="container">
         <div className="row">
@@ -122,6 +120,7 @@ class Transactions extends Component {
                 descending={descending}
                 sortby={sortby}
                 sortFunction={this.sortData}
+                categories={categories}
               />
             </Panel>
             <div className="row">
