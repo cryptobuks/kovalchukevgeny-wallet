@@ -1,0 +1,29 @@
+.results {
+
+  .result-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    h6 {
+      margin: 0;
+    }
+
+    .result-item {
+      text-transform: uppercase;
+    }
+
+    .dots {
+      border-bottom: 1px dotted #000;
+      flex: 1 0 0;
+      margin: 0 5px
+    }
+
+    .result {
+      color: $accentColor;
+    }
+  }
+}
