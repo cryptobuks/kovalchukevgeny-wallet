@@ -93,9 +93,9 @@ class CurrencyRate extends Component {
             <span>{currency.Cur_Abbreviation}</span>
             ({currency.Cur_Scale}<Icon type={'fa'} icon={iconCurr}/>)
           </td>
-          <td>{currency.Cur_OfficialRateYest}</td>
+          <td>{currency.Cur_OfficialRateYest.toFixed(4)}</td>
           <td className="today">
-            {currency.Cur_OfficialRate}
+            {currency.Cur_OfficialRate.toFixed(4)}
             <Icon type={'fa'} icon={iconArrow} />
           </td>
         </tr>

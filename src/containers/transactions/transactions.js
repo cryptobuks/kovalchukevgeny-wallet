@@ -142,7 +142,7 @@ class Transactions extends Component {
                 <h5 className="amount">
                   Amount rubles spent during
                   <span>{unicTransactions.length}</span> days:
-                  <span>{amount}</span> RUB
+                  <span>{amount.toFixed(2)}</span> RUB
                 </h5>
               </div>
             </div>
