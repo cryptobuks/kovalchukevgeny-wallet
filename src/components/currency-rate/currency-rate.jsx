@@ -5,6 +5,8 @@ import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 import Helpers from './../../helpers/Helpers';
 
+import staticContent from './../../static-content/languages.json';
+
 class CurrencyRate extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +75,7 @@ class CurrencyRate extends Component {
 
   render() {
     let { currencies } = this.state;
+    const { lang } = this.props;
 
     currencies = currencies.map((currency, i) => {
       // Add icon for currency
@@ -105,14 +108,14 @@ class CurrencyRate extends Component {
     return (
       <Panel
         specialClass="panel-success currency"
-        heading="Currency courses"
+        heading={staticContent[lang]['currency-rate'].head}
       >
         <table className="table table-striped table-hover ">
           <thead>
             <tr>
-              <th>Currency</th>
-              <th>Yesterday</th>
-              <th>Today</th>
+              <th>{staticContent[lang]['currency-rate'].currency}</th>
+              <th>{staticContent[lang]['currency-rate'].dayOne}</th>
+              <th>{staticContent[lang]['currency-rate'].dayTwo}</th>
             </tr>
           </thead>
           <tbody>
@@ -125,7 +128,7 @@ class CurrencyRate extends Component {
 }
 
 CurrencyRate.propTypes = {
-
+  lang: PropTypes.string
 };
 
 export default CurrencyRate;

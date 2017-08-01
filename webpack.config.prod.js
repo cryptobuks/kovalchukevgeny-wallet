@@ -33,6 +33,9 @@ export default {
 
   module: {
     loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader' },
       { test: /(\.jsx|\.js)$/,
         loader: 'babel',
         exclude: /node_modules/ },

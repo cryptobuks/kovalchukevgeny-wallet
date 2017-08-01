@@ -9,6 +9,8 @@ import Panel from './../../components/panel/panel.jsx';
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 import iconsArray from './../../components/icon-select/icons.js';
 
+import staticContent from './../../static-content/languages.json';
+
 class Categories extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +67,7 @@ class Categories extends Component {
 
   render() {
     const { categoryDescription, categoryTitle, categoryIcon } = this.state;
-    let { categories } = this.props;
+    let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
       return(
@@ -97,18 +99,18 @@ class Categories extends Component {
               <Panel specialClass="panel-default">
                 <div className="row">
                   <div className="col-lg-2">
-                    <legend>New Category</legend>
+                    <legend>{staticContent[lang]['adding-category'].head}</legend>
                   </div>
                   <div className="col-lg-2">
                     <Input
-                      placeholder="Category"
+                      placeholder={staticContent[lang]['adding-category'].category}
                       value={categoryTitle}
                       handleChange={this.handleChangeTitle}
                     />
                   </div>
                   <div className="col-lg-3">
                     <Input
-                      placeholder="Small description"
+                      placeholder={staticContent[lang]['adding-category'].descr}
                       value={categoryDescription}
                       handleChange={this.handleChangeDescription}
                     />
@@ -118,17 +120,18 @@ class Categories extends Component {
                       onClickFunction={this.changeCategoryIcon}
                       defaultIcon={categoryIcon}
                       iconsArray={iconsArray}
+                      lang={lang}
                     />
                   </div>
                   <div className="col-lg-3 text-right">
                     <Button
                       specialClass="btn btn-default"
                       onClickFunction={this.clearCategory}
-                    >Cancel</Button>
+                    >{staticContent[lang]['adding-category'].btnCancel}</Button>
                     <Button
                       specialClass="btn btn-primary"
                       onClickFunction={this.saveCategory}
-                    >Submit</Button>
+                    >{staticContent[lang]['adding-category'].btnSubmit}</Button>
                   </div>
                 </div>
               </Panel>
@@ -138,7 +141,7 @@ class Categories extends Component {
             <div className="col-lg-12">
               <Panel
                 specialClass="panel-primary categories-panel"
-                heading="Categories"
+                heading={staticContent[lang]['categories'].head}
               >
                 <div className="categories-wrapper">
                   {categories}
@@ -155,9 +158,11 @@ class Categories extends Component {
 Categories.propTypes = {
   categories: PropTypes.array,
   addCategory: PropTypes.func,
-  deleteCategory: PropTypes.func
+  deleteCategory: PropTypes.func,
+  lang: PropTypes.string
 };
 
 export default connect(state => ({
-  categories: state.categories
+  categories: state.categories,
+  lang: state.lang
 }), { addCategory, deleteCategory })(Categories);

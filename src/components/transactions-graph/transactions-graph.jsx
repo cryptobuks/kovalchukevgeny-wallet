@@ -4,6 +4,8 @@ import MetricsGraphics from 'react-metrics-graphics';
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 
+import staticContent from './../../static-content/languages.json';
+
 class TransactionsGraph extends Component {
   constructor(props) {
     super(props);
@@ -12,16 +14,16 @@ class TransactionsGraph extends Component {
   }
 
   render() {
-    const { transactions } = this.props;
+    const { transactions, lang } = this.props;
 
     return (
       <Panel
         specialClass="panel-success"
-        heading="Graph"
+        heading={staticContent[lang]['transactions-graph'].head}
       >
         <MetricsGraphics
-          title="transactions"
-          description="This graphic shows a time-series of transactions."
+          title={staticContent[lang]['transactions-graph'].smDescr}
+          description={staticContent[lang]['transactions-graph'].bigDescr}
           data={this.Helpers.sumSameDateTransactions(transactions)}
           height={250}
           width={535}

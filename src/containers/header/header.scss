@@ -1,3 +1,21 @@
 .header {
 
+  .languages {
+    padding: 10px;
+
+    li {
+      color: $accentTextColor;
+      padding: 0 2px;
+
+      span {
+        cursor: pointer;
+        line-height: 23px;
+        text-transform: uppercase;
+
+        &.active {
+          color: $accentColor;
+        }
+      }
+    }
+  }
 }

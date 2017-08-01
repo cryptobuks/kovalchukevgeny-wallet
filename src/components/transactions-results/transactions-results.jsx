@@ -4,6 +4,8 @@ import moment from 'moment';
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 
+import staticContent from './../../static-content/languages.json';
+
 class TransactionsResults extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class TransactionsResults extends Component {
   }
 
   render() {
-    const { transactions } = this.props;
+    const { transactions, lang } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     const today = new Date();
 
@@ -36,27 +38,27 @@ class TransactionsResults extends Component {
     return (
       <Panel
         specialClass="panel-success results"
-        heading="Month results"
+        heading={staticContent[lang]['transactions-results'].head}
       >
         <div className="result-wrapper">
-          <h6 className="result-item">Month:</h6>
+          <h6 className="result-item">{staticContent[lang]['transactions-results'].month}</h6>
           <div className="dots"></div>
           <h6 className="result">{this.getCurrentMonth()}</h6>
         </div>
         <div className="result-wrapper">
-          <h6 className="result-item">Transactions:</h6>
+          <h6 className="result-item">{staticContent[lang]['transactions-results'].transactions}</h6>
           <div className="dots"></div>
           <h6 className="result">{transactions.length}</h6>
         </div>
         <div className="result-wrapper">
-          <h6 className="result-item">The biggest transaction:</h6>
+          <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTrans}</h6>
           <div className="dots"></div>
           <h6 className="result">{this.getMaxValue(transactions)}</h6>
         </div>
         <div className="result-wrapper">
-          <h6 className="result-item">Amount:</h6>
+          <h6 className="result-item">{staticContent[lang]['transactions-results'].amount}</h6>
           <div className="dots"></div>
-          <h6 className="result">{amount.toFixed(2)} RUB per day</h6>
+          <h6 className="result">{amount.toFixed(2)} RUB {staticContent[lang]['transactions-results'].perDay}</h6>
         </div>
       </Panel>
     );

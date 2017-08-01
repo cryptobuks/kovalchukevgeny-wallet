@@ -10,6 +10,8 @@ import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
 
+import staticContent from './../../static-content/languages.json';
+
 class AddingPanel extends Component {
   constructor(props) {
     super(props);
@@ -78,7 +80,7 @@ class AddingPanel extends Component {
 
   render() {
     const { category, money, startDate, transactionTitle } = this.state;
-    let { categories } = this.props;
+    let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
       return(
@@ -92,17 +94,17 @@ class AddingPanel extends Component {
       >
         <div className="row">
           <div className="col-lg-6">
-            <legend>Add new transaction</legend>
+            <legend>{staticContent[lang]['adding-panel'].head}</legend>
           </div>
           <div className="col-lg-6 text-right">
             <Button
               specialClass="btn btn-default"
               onClickFunction={this.clearTransactionData}
-            >Cancel</Button>
+            >{staticContent[lang]['adding-panel'].btnCancel}</Button>
             <Button
               specialClass="btn btn-primary"
               onClickFunction={this.saveTransaction}
-            >Submit</Button>
+            >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
           </div>
         </div>
         <table className="table table-striped table-hover">
@@ -127,7 +129,7 @@ class AddingPanel extends Component {
               </td>
               <td>
                 <Input
-                  placeholder="Description"
+                  placeholder={staticContent[lang]['adding-panel'].descr}
                   value={transactionTitle}
                   handleChange={this.handleChangeTitle}
                 />

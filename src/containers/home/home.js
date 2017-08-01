@@ -6,22 +6,26 @@ import TransactionsGraph from './../../components/transactions-graph/transaction
 import TransactionsResults from './../../components/transactions-results/transactions-results.jsx';
 
 const Home = (props) => {
-  const { transactions } = props;
+  const { transactions, lang } = props;
   return (
     <div className="widgets">
       <div className="container">
         <div className="row">
           <div className="col-lg-6">
-            <CurrencyRate />
+            <CurrencyRate
+              lang={lang}
+            />
           </div>
           <div className="col-lg-6">
             <TransactionsGraph
               transactions={transactions}
+              lang={lang}
             />
           </div>
           <div className="col-lg-6">
             <TransactionsResults
               transactions={transactions}
+              lang={lang}
             />
           </div>
         </div>
@@ -31,9 +35,11 @@ const Home = (props) => {
 };
 
 Home.propTypes = {
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  lang: PropTypes.string
 };
 
 export default connect(state => ({
-  transactions: state.transactions
+  transactions: state.transactions,
+  lang: state.lang
 }))(Home);

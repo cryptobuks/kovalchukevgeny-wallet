@@ -27,3 +27,11 @@ export function deleteCategory(categoryId) {
     categoryId
   };
 }
+
+// change language
+export function changeLang(lang) {
+  return {
+    type: 'CHANGE_LANGUAGE',
+    lang
+  };
+}

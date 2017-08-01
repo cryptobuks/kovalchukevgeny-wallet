@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 
+import staticContent from './../../static-content/languages.json';
+
 class IconSelect extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class IconSelect extends Component {
   }
 
   render() {
-    const { onClickFunction, defaultIcon, position, iconsArray } = this.props;
+    const { onClickFunction, defaultIcon, position, iconsArray, lang } = this.props;
     const { isSelectVisible } = this.state;
 
     let icons = iconsArray.map((icon, i) => {
@@ -41,7 +43,7 @@ class IconSelect extends Component {
         className="category-icon"
         onClick={this.toggleSelect}
       >
-        <strong>Choose icon:</strong>
+        <strong>{staticContent[lang]['adding-category'].chooseIcon}</strong>
         <Icon type="fa" icon={defaultIcon}/>
         <div className={classNames('icon-select', position, {hide: !isSelectVisible})}>
           <Panel specialClass="panel-default">
@@ -66,7 +68,8 @@ IconSelect.propTypes = {
   isVisible: PropTypes.string,
   onClickFunction: PropTypes.func,
   position: PropTypes.string,
-  iconsArray: PropTypes.array
+  iconsArray: PropTypes.array,
+  lang: PropTypes.string
 };
 
 export default IconSelect;

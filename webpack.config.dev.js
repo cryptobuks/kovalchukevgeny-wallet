@@ -25,6 +25,7 @@ export default {
   ],
   module: {
     loaders: [
+      {test: /\.json$/, loader: 'json-loader'},
       {test: /(\.jsx|\.js)$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
       {test: /(\.scss)$/, loaders: ['style', 'css', 'sass']},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},

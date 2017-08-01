@@ -8,6 +8,8 @@ import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import Helpers from './../../helpers/Helpers';
 
+import staticContent from './../../static-content/languages.json';
+
 class Transactions extends Component {
   constructor(props) {
     super(props);
@@ -97,7 +99,7 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby } = this.state;
-    const { transactions, categories } = this.props;
+    const { transactions, categories, lang } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
 
     const amount = unicTransactions.reduce((sum, transaction) => {
@@ -110,10 +112,11 @@ class Transactions extends Component {
           <div className="col-md-12">
             <AddingPanel
               categories={categories}
+              lang={lang}
             />
             <Panel
               specialClass="panel-primary tr-table"
-              heading="Transactions"
+              heading={staticContent[lang]['transactions-table'].head}
             >
               <TransactionsTable
                 transactions={transactions}
@@ -121,6 +124,7 @@ class Transactions extends Component {
                 sortby={sortby}
                 sortFunction={this.sortData}
                 categories={categories}
+                lang={lang}
               />
             </Panel>
             <div className="row">
@@ -130,17 +134,17 @@ class Transactions extends Component {
                     onClickFunction={this.download.bind(this, 'json')}
                     specialClass="btn btn-primary"
                     href="data.json"
-                  >Export JSON</Button>
+                  >{staticContent[lang]['transactions-table'].btnJson}</Button>
                   <Button
                     onClickFunction={this.download.bind(this, 'csv')}
                     specialClass="btn btn-primary"
                     href="data.csv"
-                  >Export CSV</Button>
+                  >{staticContent[lang]['transactions-table'].btnCsv}</Button>
                 </div>
               </div>
               <div className="col-lg-6 text-right amount-wrapper">
                 <h5 className="amount">
-                  Amount rubles spent during
+                  {staticContent[lang]['transactions-table'].bigDescr}
                   <span>{unicTransactions.length}</span> days:
                   <span>{amount.toFixed(2)}</span> RUB
                 </h5>
@@ -155,10 +159,12 @@ class Transactions extends Component {
 
 Transactions.propTypes = {
   categories: PropTypes.array,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  lang: PropTypes.string
 };
 
 export default connect(state => ({
   transactions: state.transactions,
-  categories: state.categories
+  categories: state.categories,
+  lang: state.lang
 }))(Transactions);

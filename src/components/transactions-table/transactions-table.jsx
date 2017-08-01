@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Helpers from './../../helpers/Helpers.js';
 import Icon from './../icon/icon.jsx';
 
+import staticContent from './../../static-content/languages.json';
+
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +13,8 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, descending, sortby, categories } = this.props;
-    const titles = ['Date', 'Money', 'Description', 'Category'];
+    let { transactions, descending, sortby, categories, lang } = this.props;
+    const titles = staticContent[lang]['transactions-table'].tableHead;
 
     const tableHead = transactions && transactions.length > 0 ?
     Object.keys(transactions[0]).map((key, i) => {
