@@ -26,12 +26,13 @@ class AddingPanel extends Component {
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeMoney = this.handleChangeMoney.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.setDefaultCategory = this.setDefaultCategory.bind(this);
     this.saveTransaction = this.saveTransaction.bind(this);
   }
 
   clearTransactionData() {
     this.setState({
-      category: '',
+      category: this.setDefaultCategory(),
       money: '',
       startDate: moment(),
       transactionTitle: ''
@@ -39,10 +40,7 @@ class AddingPanel extends Component {
   }
 
   componentWillMount() {
-    const category = this.props.categories[0];
-    category ?
-    this.setState({category: category.categoryTitle}) :
-    this.setState({category: ''});
+    this.setState({category: this.setDefaultCategory()});
   }
 
   handleChangeCategory(event) {
@@ -61,12 +59,17 @@ class AddingPanel extends Component {
     this.setState({transactionTitle: event.target.value});
   }
 
+  setDefaultCategory() {
+    const category = this.props.categories[0];
+    return category ? category.categoryTitle : '';
+  }
+
   saveTransaction() {
     const { category, money, startDate, transactionTitle } = this.state;
     const { addTransaction } = this.props;
     addTransaction(startDate, +money, transactionTitle, category);
     this.setState({
-      category: '',
+      category: this.setDefaultCategory(),
       money: '',
       startDate: moment(),
       transactionTitle: ''
