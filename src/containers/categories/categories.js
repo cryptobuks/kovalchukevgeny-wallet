@@ -98,24 +98,24 @@ class Categories extends Component {
             <div className="col-lg-12">
               <Panel specialClass="panel-default">
                 <div className="row">
-                  <div className="col-lg-2">
+                  <div className="col-lg-2 col-md-2">
                     <legend>{staticContent[lang]['adding-category'].head}</legend>
                   </div>
-                  <div className="col-lg-2">
+                  <div className="col-lg-2 col-md-2 col-sm-6">
                     <Input
                       placeholder={staticContent[lang]['adding-category'].category}
                       value={categoryTitle}
                       handleChange={this.handleChangeTitle}
                     />
                   </div>
-                  <div className="col-lg-3">
+                  <div className="col-lg-3 col-md-3 col-sm-6">
                     <Input
                       placeholder={staticContent[lang]['adding-category'].descr}
                       value={categoryDescription}
                       handleChange={this.handleChangeDescription}
                     />
                   </div>
-                  <div className="col-lg-2 text-right">
+                  <div className="col-lg-2 col-md-2 col-sm-6 text-right">
                     <IconSelect
                       onClickFunction={this.changeCategoryIcon}
                       defaultIcon={categoryIcon}
@@ -123,7 +123,7 @@ class Categories extends Component {
                       lang={lang}
                     />
                   </div>
-                  <div className="col-lg-3 text-right">
+                  <div className="col-lg-3 col-md-3 col-sm-6 text-right">
                     <Button
                       specialClass="btn btn-default"
                       onClickFunction={this.clearCategory}

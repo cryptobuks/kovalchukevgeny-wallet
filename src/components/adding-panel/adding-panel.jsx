@@ -93,10 +93,10 @@ class AddingPanel extends Component {
         specialClass="panel-default adding-panel"
       >
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col-lg-6 col-md-6 col-sm-6">
             <legend>{staticContent[lang]['adding-panel'].head}</legend>
           </div>
-          <div className="col-lg-6 text-right">
+          <div className="col-lg-6 col-md-6 col-sm-6 text-right">
             <Button
               specialClass="btn btn-default"
               onClickFunction={this.clearTransactionData}

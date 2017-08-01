@@ -128,7 +128,7 @@ class Transactions extends Component {
               />
             </Panel>
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-lg-6 col-md-6 col-sm-6">
                 <div className="toolbar">
                   <Button
                     onClickFunction={this.download.bind(this, 'json')}
@@ -142,7 +142,7 @@ class Transactions extends Component {
                   >{staticContent[lang]['transactions-table'].btnCsv}</Button>
                 </div>
               </div>
-              <div className="col-lg-6 text-right amount-wrapper">
+              <div className="col-lg-6 col-md-6 col-sm-6 text-right amount-wrapper">
                 <h5 className="amount">
                   {staticContent[lang]['transactions-table'].bigDescr}
                   <span>{unicTransactions.length}</span> days:
