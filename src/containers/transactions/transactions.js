@@ -101,10 +101,13 @@ class Transactions extends Component {
     const { descending, sortby } = this.state;
     const { transactions, categories, lang } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
+    let amount = 0;
 
-    const amount = unicTransactions.reduce((sum, transaction) => {
-      return sum += transaction.money;
-    }, 0) / unicTransactions.length;
+    if(transactions && transactions.length > 0) {
+      amount = unicTransactions.reduce((sum, transaction) => {
+        return sum += transaction.money;
+      }, 0) / unicTransactions.length;
+    }
 
     return (
       <div className="container">
@@ -114,21 +117,24 @@ class Transactions extends Component {
               categories={categories}
               lang={lang}
             />
-            <Panel
-              specialClass="panel-primary tr-table"
-              heading={staticContent[lang]['transactions-table'].head}
-            >
-              <TransactionsTable
-                transactions={transactions}
-                descending={descending}
-                sortby={sortby}
-                sortFunction={this.sortData}
-                categories={categories}
-                lang={lang}
-              />
-            </Panel>
+            {transactions.length > 0 &&
+              <Panel
+                specialClass="panel-primary tr-table"
+                heading={staticContent[lang]['transactions-table'].head}
+              >
+                <TransactionsTable
+                  transactions={transactions}
+                  descending={descending}
+                  sortby={sortby}
+                  sortFunction={this.sortData}
+                  categories={categories}
+                  lang={lang}
+                />
+              </Panel>
+            }
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-6">
+              {transactions.length > 0 &&
                 <div className="toolbar">
                   <Button
                     onClickFunction={this.download.bind(this, 'json')}
@@ -141,6 +147,7 @@ class Transactions extends Component {
                     href="data.csv"
                   >{staticContent[lang]['transactions-table'].btnCsv}</Button>
                 </div>
+              }
               </div>
               <div className="col-lg-6 col-md-6 col-sm-6 text-right amount-wrapper">
                 <h5 className="amount">

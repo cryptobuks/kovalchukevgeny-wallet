@@ -17,21 +17,25 @@ class TransactionsGraph extends Component {
     const { transactions, lang } = this.props;
 
     return (
-      <Panel
-        specialClass="panel-success"
-        heading={staticContent[lang]['transactions-graph'].head}
-      >
-        <MetricsGraphics
-          title={staticContent[lang]['transactions-graph'].smDescr}
-          description={staticContent[lang]['transactions-graph'].bigDescr}
-          data={this.Helpers.sumSameDateTransactions(transactions)}
-          height={250}
-          width={535}
-          x_accessor="date"
-          y_accessor="money"
-          yax_units="BYR "
-        />
-      </Panel>
+      <div>
+        {transactions.length > 0 &&
+          <Panel
+            specialClass="panel-success"
+            heading={staticContent[lang]['transactions-graph'].head}
+          >
+            <MetricsGraphics
+              title={staticContent[lang]['transactions-graph'].smDescr}
+              description={staticContent[lang]['transactions-graph'].bigDescr}
+              data={this.Helpers.sumSameDateTransactions(transactions)}
+              height={250}
+              width={535}
+              x_accessor="date"
+              y_accessor="money"
+              yax_units="BYR "
+            />
+          </Panel>
+        }
+      </div>
     );
   }
 }

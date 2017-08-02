@@ -20,7 +20,7 @@ class AddingPanel extends Component {
       category: '',
       money: '',
       startDate: moment(),
-      transactionTitle: ''
+      description: ''
     };
 
     this.clearTransactionData = this.clearTransactionData.bind(this);
@@ -37,7 +37,7 @@ class AddingPanel extends Component {
       category: this.setDefaultCategory(),
       money: '',
       startDate: moment(),
-      transactionTitle: ''
+      description: ''
     });
   }
 
@@ -58,7 +58,7 @@ class AddingPanel extends Component {
   }
 
   handleChangeTitle(event) {
-    this.setState({transactionTitle: event.target.value});
+    this.setState({description: event.target.value});
   }
 
   setDefaultCategory() {
@@ -67,19 +67,20 @@ class AddingPanel extends Component {
   }
 
   saveTransaction() {
-    const { category, money, startDate, transactionTitle } = this.state;
+    const { category, money, startDate, description } = this.state;
     const { addTransaction } = this.props;
-    addTransaction(startDate, +money, transactionTitle, category);
+    const id = Date.now();
+    addTransaction(id, startDate, +money, description, category);
     this.setState({
       category: this.setDefaultCategory(),
       money: '',
       startDate: moment(),
-      transactionTitle: ''
+      description: ''
     });
   }
 
   render() {
-    const { category, money, startDate, transactionTitle } = this.state;
+    const { category, money, startDate, description } = this.state;
     let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
@@ -130,7 +131,7 @@ class AddingPanel extends Component {
               <td>
                 <Input
                   placeholder={staticContent[lang]['adding-panel'].descr}
-                  value={transactionTitle}
+                  value={description}
                   handleChange={this.handleChangeTitle}
                 />
               </td>

@@ -40,12 +40,11 @@ class TransactionsTable extends Component {
       })[0] || null;
 
       const categoryIcon = categoryIconObj ? categoryIconObj.categoryIcon : '';
-
       return(
-        <tr key={i} data-row={i}>
+        <tr key={i} data-row={transaction.id}>
           <td data-cell='1'>{date}</td>
           <td data-cell='2'>{transaction.money}</td>
-          <td data-cell='3'>{transaction.transactionTitle}</td>
+          <td data-cell='3'>{transaction.description}</td>
           <td data-cell='4'>
             <Icon icon={categoryIcon} type="fa" />
             {transaction.category}

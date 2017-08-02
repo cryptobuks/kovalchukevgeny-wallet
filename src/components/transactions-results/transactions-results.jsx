@@ -23,17 +23,24 @@ class TransactionsResults extends Component {
   }
 
   getMaxValue(array) {
-    return Math.max.apply(Math,array.map(function(transaction){return transaction.money;}))
+    if(array && array.length > 0) {
+      return Math.max.apply(Math,array.map(function(transaction){return transaction.money;}));
+    } else {
+        return 0;
+    }
   }
 
   render() {
     const { transactions, lang } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     const today = new Date();
-
-    const amount = unicTransactions.reduce((sum, transaction) => {
-      return sum += transaction.money;
-    }, 0) / unicTransactions.length;
+    let amount = 0;
+    
+    if(unicTransactions && unicTransactions.length > 0) {
+      amount = unicTransactions.reduce((sum, transaction) => {
+        return sum += transaction.money;
+      }, 0) / unicTransactions.length;
+    }
 
     return (
       <Panel

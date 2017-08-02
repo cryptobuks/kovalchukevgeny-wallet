@@ -139,6 +139,7 @@ class Categories extends Component {
           </div>
           <div className="row">
             <div className="col-lg-12">
+            {categories.length > 0 &&
               <Panel
                 specialClass="panel-primary categories-panel"
                 heading={staticContent[lang]['categories'].head}
@@ -147,6 +148,7 @@ class Categories extends Component {
                   {categories}
                 </div>
               </Panel>
+            }
             </div>
           </div>
         </div>

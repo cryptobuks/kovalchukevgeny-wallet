@@ -14,9 +14,10 @@ function transactions(state = initialState.transactions, action) {
     case 'ADD_TRANSACTION' :
     return [
       ...state, {
+        id: action.id,
         startDate: action.startDate,
         money: action.money,
-        transactionTitle: action.transactionTitle,
+        description: action.description,
         category: action.category
       }
     ];
