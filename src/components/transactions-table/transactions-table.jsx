@@ -35,14 +35,14 @@ class TransactionsTable extends Component {
     Object.keys(transactions[0]).map((key, i) => {
       if (key === 'id' || key === 'active') { return }; // ignore id
       return(
-        <td key={i} data-cell={key}>
+        <div className="table-data" key={i} data-cell={key}>
           <span data-cell={key}>{titles[i-1]}</span> {/* ignore id */}
           {sortby === key &&
           <span className="filter-arrow">
             {descending ? <Icon icon={'arrow_downward'} /> : <Icon icon={'arrow_upward'} />}
           </span>
           }
-        </td>
+        </div>
       );
     }) : [];
 
@@ -57,17 +57,17 @@ class TransactionsTable extends Component {
 
       const categoryIcon = categoryIconObj ? categoryIconObj.categoryIcon : '';
       return(
-        <tr key={i} data-row={transaction.id}
+        <div className="table-row clearfix" key={i} data-row={transaction.id}
           onClick={() => this.openEditMenu(transaction)}
         >
-          <td data-cell='1'>{date}</td>
-          <td data-cell='2'>{transaction.money}</td>
-          <td data-cell='3'>{transaction.description}</td>
-          <td data-cell='4'>
+          <div className="table-data clearfix" data-cell='1'>{date}</div>
+          <div className="table-data clearfix" data-cell='2'>{transaction.money}</div>
+          <div className="table-data clearfix" data-cell='3'>{transaction.description}</div>
+          <div className="table-data clearfix" data-cell='4'>
             <Icon icon={categoryIcon} type="fa" />
             {transaction.category}
-          </td>
-          <td className={classNames('edit-menu', {active: transaction.active})}>
+          </div>
+          <div className={classNames('edit-menu', {active: transaction.active})}>
             <Icon
               icon={'fa-pencil'}
               type="fa"
@@ -77,22 +77,22 @@ class TransactionsTable extends Component {
               icon={'fa-close'}
               type="fa"
             />
-          </td>
-        </tr>
+          </div>
+        </div>
       );
     });
 
     return (
-      <table className="table table-striped table-hover transactions">
-        <thead>
-          <tr onClick={this.props.sortFunction}>
+      <div className="table transactions">
+        <div className="table-head clearfix">
+          <div className="table-row clearfix" onClick={this.props.sortFunction}>
             {tableHead}
-          </tr>
-        </thead>
-        <tbody>
+          </div>
+        </div>
+        <div className="table-body clearfix">
           {tableData}
-        </tbody>
-      </table>
+        </div>
+      </div>
     );
   }
 }
