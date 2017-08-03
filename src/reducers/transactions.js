@@ -21,6 +21,8 @@ function transactions(state = initialState.transactions, action) {
         category: action.category
       }
     ];
+    case 'DELETE_TRANSACTION' :
+      return store.filter(transaction => transaction.id !== action.transactionId);
     default:
       return state;
   }

@@ -10,6 +10,14 @@ export function addTransaction(id, startDate, money, description, category) {
   };
 }
 
+// delete transaction
+export function deleteTransaction(transactionId) {
+  return {
+    type: 'DELETE_TRANSACTION',
+    transactionId
+  };
+}
+
 // add category
 export function addCategory(categoryId, categoryDescription, categoryTitle, categoryIcon) {
   return {

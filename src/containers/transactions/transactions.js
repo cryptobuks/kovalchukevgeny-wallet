@@ -7,6 +7,7 @@ import TransactionsTable from './../../components/transactions-table/transaction
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import Helpers from './../../helpers/Helpers';
+import { deleteTransaction } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages.json';
 
@@ -31,7 +32,8 @@ class Transactions extends Component {
     const transactions = this.props.transactions;
     // Set default sort for data
     if(transactions.length > 0) {
-      const column = Object.keys(transactions[0])[0];
+      // ignore id key
+      const column = Object.keys(transactions[0])[1];
       this.sortData(event = null, column);
     }
   }
@@ -49,8 +51,10 @@ class Transactions extends Component {
     for (let i = 0; i < array.length; i++) {
       let line = '';
       for (let index in array[i]) {
-        if (line != '') line += ',';
-        line += array[i][index];
+        if(index !== 'id') { // ignore ids in final table
+          if (line != '') line += ',';
+          line += array[i][index];
+        }
       }
       str += line + '\r\n';
     }
@@ -60,9 +64,8 @@ class Transactions extends Component {
   download(format, event) {
     let contents = format === 'json' ? JSON.stringify(this.state.transactions) :
     this.convertToCSV(this.state.transactions);
-
     const URL = window.URL || window.webkitURL;
-    const blob = new Blob([contents], {type: 'text/' + format});
+    const blob = new Blob([contents], {type: `text/${format};charset=utf-8;`});
     event.target.href = URL.createObjectURL(blob);
     event.target.download = 'data.' + format;
   }
@@ -99,7 +102,7 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby } = this.state;
-    const { transactions, categories, lang } = this.props;
+    const { transactions, categories, lang, deleteTransaction } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     let amount = 0;
 
@@ -124,6 +127,7 @@ class Transactions extends Component {
               >
                 <TransactionsTable
                   transactions={transactions}
+                  deleteTransaction={deleteTransaction}
                   descending={descending}
                   sortby={sortby}
                   sortFunction={this.sortData}
@@ -174,4 +178,4 @@ export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}))(Transactions);
+}), { deleteTransaction })(Transactions);
