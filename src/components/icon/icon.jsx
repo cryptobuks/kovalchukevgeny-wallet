@@ -3,21 +3,30 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const MaterialIcon = (props) => {
-  const { icon, type } = props;
+  const { icon, type, onClickFunction } = props;
 
   return (
     type === 'material' ?
-    <i className="material-icons">{icon}</i> :
-    <i className={classNames('fa', `${icon}`)} aria-hidden="true"></i>
+    <i
+      onClick={() => onClickFunction()}
+      className="material-icons"
+    >{icon}</i> :
+    <i
+      onClick={() => onClickFunction()}
+      className={classNames('fa', `${icon}`)}
+      aria-hidden="true"
+    ></i>
   );
 };
 
 MaterialIcon.defaultProps = {
-  type: 'material'
+  type: 'material',
+  onClickFunction: () => {}
 };
 
 MaterialIcon.propTypes = {
   icon: PropTypes.string.isRequired,
+  onClickFunction: PropTypes.func,
   type: PropTypes.string
 };
 
