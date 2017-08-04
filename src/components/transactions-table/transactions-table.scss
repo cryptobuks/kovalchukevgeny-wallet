@@ -6,6 +6,8 @@
   &-head {
     border-bottom: 2px solid #dddddd;
     color: $accentColor;
+    height: 46px;
+    overflow-y: hidden;
     position: absolute;
     width: 100%;
     top: 0;
@@ -31,6 +33,20 @@
     max-height: 596px;
     overflow-y: auto;
     position: relative;
+
+    .table-data {
+
+      &:nth-last-child(2) {
+        padding-right: 75px;
+      }
+    }
+
+    .form-control {
+      color: $accentColor;
+      font-size: 13px;
+      height: 23px;
+      padding: 0;
+    }
 
     /*Scrollbar*/
     &::-webkit-scrollbar-button {
@@ -83,6 +99,7 @@
     }
   }
 
+  .change-menu,
   .edit-menu {
     background-color: #7F7B82 !important;
     opacity: 0;
@@ -113,6 +130,17 @@
         border-right: 1px solid $borderLight;
         margin-right: 10px;
         padding-right: 10px;
+      }
+    }
+  }
+
+  .change-menu {
+    background-color: $accentColor !important;
+
+    .fa {
+
+      &:hover {
+        color: #7F7B82;
       }
     }
   }

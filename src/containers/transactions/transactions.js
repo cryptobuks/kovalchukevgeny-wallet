@@ -7,7 +7,7 @@ import TransactionsTable from './../../components/transactions-table/transaction
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import Helpers from './../../helpers/Helpers';
-import { deleteTransaction } from './../../actions/actionCreators';
+import { deleteTransaction, changeTransaction } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages.json';
 
@@ -102,7 +102,7 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby } = this.state;
-    const { transactions, categories, lang, deleteTransaction } = this.props;
+    const { transactions, categories, lang, deleteTransaction, changeTransaction } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     let amount = 0;
 
@@ -128,6 +128,7 @@ class Transactions extends Component {
                 <TransactionsTable
                   transactions={transactions}
                   deleteTransaction={deleteTransaction}
+                  changeTransaction={changeTransaction}
                   descending={descending}
                   sortby={sortby}
                   sortFunction={this.sortData}
@@ -178,4 +179,4 @@ export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}), { deleteTransaction })(Transactions);
+}), { deleteTransaction, changeTransaction })(Transactions);

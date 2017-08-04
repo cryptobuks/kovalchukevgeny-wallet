@@ -10,6 +10,18 @@ export function addTransaction(id, startDate, money, description, category) {
   };
 }
 
+// change transaction
+export function changeTransaction(id, startDate, money, description, category) {
+  return {
+    type: 'CHANGE_TRANSACTION',
+    id,
+    startDate,
+    money,
+    description,
+    category
+  };
+}
+
 // delete transaction
 export function deleteTransaction(transactionId) {
   return {
