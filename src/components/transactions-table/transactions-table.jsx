@@ -75,17 +75,23 @@ class TransactionsTable extends Component {
         if(transaction.id === activeRow.id && activeRow.id !== oldActiveRow.id) {
           transaction.active = true;
           return transaction;
-        } else {
-          transaction.active = false;
         }
+        transaction.active = false;
       })[0];
       this.setState({activeRow: activeTransaction});
     }
   }
 
   editTransaction(isEditRow) {
-    isEditRow.isEdit = !isEditRow.isEdit
-    this.setState({isEditRow});
+    const oldEditRow = this.state.isEditRow || {};
+    const editableTransaction = this.props.transactions.filter(transaction => {
+      if(transaction.id === isEditRow.id && isEditRow.id !== oldEditRow.id) {
+        transaction.isEdit = true;
+        return transaction;
+      }
+      transaction.isEdit = false;
+    })[0];
+    this.setState({isEditRow: editableTransaction});
   }
 
   render() {
