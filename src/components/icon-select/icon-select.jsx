@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 class IconSelect extends Component {
   constructor(props) {

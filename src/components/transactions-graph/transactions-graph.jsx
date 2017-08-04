@@ -4,7 +4,7 @@ import MetricsGraphics from 'react-metrics-graphics';
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 class TransactionsGraph extends Component {
   constructor(props) {
@@ -45,7 +45,8 @@ TransactionsGraph.defaultProps = {
 };
 
 TransactionsGraph.propTypes = {
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  lang: PropTypes.string
 };
 
 export default TransactionsGraph;

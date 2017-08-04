@@ -4,7 +4,7 @@ import moment from 'moment';
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 class TransactionsResults extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class TransactionsResults extends Component {
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     const today = new Date();
     let amount = 0;
-    
+
     if(unicTransactions && unicTransactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => {
         return sum += transaction.money;
@@ -77,7 +77,8 @@ TransactionsResults.defaultProps = {
 };
 
 TransactionsResults.propTypes = {
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  lang: PropTypes.string
 };
 
 export default TransactionsResults;

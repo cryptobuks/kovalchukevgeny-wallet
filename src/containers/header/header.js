@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import classNames from 'classnames';
@@ -7,14 +8,15 @@ import Navbar from './../../components/navbar/navbar.jsx';
 import Button from './../../components/button/button.jsx';
 import { changeLang } from './../../actions/actionCreators';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 const Header = props => {
-  const { lang, changeLang } = props
+  const { lang, changeLang } = props;
+
   return (
     <div className="header">
       <Navbar>
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav navbar-left">
           <li>
             <Link activeClassName="active" to="home">
               <Icon type={'material'} icon={'home'} />
@@ -58,6 +60,11 @@ const Header = props => {
       </Navbar>
     </div>
   );
+};
+
+Header.propTypes = {
+  lang: PropTypes.string,
+  changeLang: PropTypes.func
 };
 
 export default connect(state => ({

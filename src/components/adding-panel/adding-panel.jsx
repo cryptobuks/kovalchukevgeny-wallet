@@ -10,7 +10,7 @@ import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 class AddingPanel extends Component {
   constructor(props) {
@@ -113,7 +113,6 @@ class AddingPanel extends Component {
             <tr>
               <td>
                 <DatePicker
-                  placeholderText="Click to select a date"
                   locale="en-gb"
                   className="form-control"
                   selected={this.state.startDate}
@@ -153,9 +152,8 @@ class AddingPanel extends Component {
 }
 
 AddingPanel.propTypes = {
-
+  categories: PropTypes.array,
+  lang: PropTypes.string
 };
 
-export default connect(state => ({
-  transactions: state.transactions
-}), { addTransaction })(AddingPanel);
+export default AddingPanel;

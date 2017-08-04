@@ -9,7 +9,7 @@ import Panel from './../../components/panel/panel.jsx';
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 import iconsArray from './../../components/icon-select/icons.js';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 class Categories extends Component {
   constructor(props) {
@@ -78,9 +78,11 @@ class Categories extends Component {
                 <Icon type="fa" icon={category.categoryIcon} />
               </div>
               <h5>{category.categoryTitle}</h5>
-              <blockquote>
-                <small><cite>{category.categoryDescription}</cite></small>
-              </blockquote>
+              {category.categoryDescription &&
+                <blockquote>
+                  <small><cite>{category.categoryDescription}</cite></small>
+                </blockquote>
+              }
               <Button
                 specialClass="close"
                 onClickFunction={this.deleteCategory}

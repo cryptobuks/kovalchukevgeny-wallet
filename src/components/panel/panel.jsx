@@ -7,7 +7,6 @@ class Panel extends Component {
     super(props);
   }
 
-
   render() {
     const { heading, footer, children, specialClass } = this.props;
 

@@ -7,7 +7,7 @@ import Helpers from './../../helpers/Helpers.js';
 import Icon from './../icon/icon.jsx';
 import Input from './../input/input.jsx';
 
-import staticContent from './../../static-content/languages.json';
+import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
 class TransactionsTable extends Component {
   constructor(props) {
@@ -95,7 +95,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, descending, sortby, categories, lang, deleteTransaction } = this.props;
+    let { transactions, descending, sortby, categories, lang, deleteTransaction, sortFunction } = this.props;
     const { activeRow, isEditRow } = this.state;
     const titles = staticContent[lang]['transactions-table'].tableHead;
 
@@ -139,7 +139,6 @@ class TransactionsTable extends Component {
             {!transaction.isEdit ?
               <span>{date}</span> :
               <DatePicker
-                placeholderText="Change date"
                 locale="en-gb"
                 className="form-control"
                 selected={moment(transaction.startDate)}
@@ -237,7 +236,9 @@ TransactionsTable.propTypes = {
   categories: PropTypes.array,
   descending: PropTypes.bool,
   sortby: PropTypes.string,
-  sortFunction: PropTypes.func
+  deleteTransaction: PropTypes.func,
+  sortFunction: PropTypes.func,
+  lang: PropTypes.string
 };
 
 export default TransactionsTable;
