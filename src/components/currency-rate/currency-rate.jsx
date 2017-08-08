@@ -36,7 +36,7 @@ class CurrencyRate extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state !== nextState;
+    return this.state !== nextState || this.props !== nextProps;
   }
 
   componentDidMount() {
