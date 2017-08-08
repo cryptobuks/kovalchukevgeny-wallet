@@ -104,7 +104,6 @@ class Transactions extends Component {
   render() {
     const { descending, sortby } = this.state;
     let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction } = this.props;
-    const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     let amount = 0;
 
     // Filter transactions on current month
@@ -112,7 +111,9 @@ class Transactions extends Component {
       return moment().month() === moment(transaction.date).month();
     });
 
-    if(transactions && transactions.length > 0) {
+    const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
+
+    if(monthTransactions && monthTransactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => {
         return sum += transaction.money;
       }, 0) / unicTransactions.length;
