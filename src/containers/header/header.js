@@ -77,4 +77,4 @@ Header.propTypes = {
 
 export default connect(state => ({
   lang: state.lang
-}), { changeLang })(Header);
+}), { changeLang }, null, { pure: false })(Header);
