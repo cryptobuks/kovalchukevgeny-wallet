@@ -17,9 +17,8 @@ class TransactionsResults extends Component {
   }
 
   getCurrentMonth() {
-    const mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const currentMounthNumber = parseInt(moment().format('MM')) - 1;
-    return mL[currentMounthNumber];
+    const { lang } = this.props;
+    return staticContent[lang]['months'][moment().month()];
   }
 
   getMaxValue(array) {
@@ -32,14 +31,24 @@ class TransactionsResults extends Component {
 
   render() {
     const { transactions, lang } = this.props;
-    const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     const today = new Date();
-    let amount = 0;
+    let amountDay = 0;
+    let amountMonth = 0;
+
+    // Filter transactions on current month
+    const monthTransactions = transactions.filter(transaction => {
+      return moment().month() === moment(transaction.startDate).month();
+    });
+
+    const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
     if(unicTransactions && unicTransactions.length > 0) {
-      amount = unicTransactions.reduce((sum, transaction) => {
+      amountDay = unicTransactions.reduce((sum, transaction) => {
         return sum += transaction.money;
       }, 0) / unicTransactions.length;
+      amountMonth = unicTransactions.reduce((sum, transaction) => {
+        return sum += transaction.money;
+      }, 0);
     }
 
     return (
@@ -55,17 +64,22 @@ class TransactionsResults extends Component {
         <div className="result-wrapper">
           <h6 className="result-item">{staticContent[lang]['transactions-results'].transactions}</h6>
           <div className="dots"></div>
-          <h6 className="result">{transactions.length}</h6>
+          <h6 className="result">{monthTransactions.length}</h6>
         </div>
         <div className="result-wrapper">
           <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTrans}</h6>
           <div className="dots"></div>
-          <h6 className="result">{this.getMaxValue(transactions)}</h6>
+          <h6 className="result">{this.getMaxValue(monthTransactions)}</h6>
         </div>
         <div className="result-wrapper">
-          <h6 className="result-item">{staticContent[lang]['transactions-results'].amount}</h6>
+          <h6 className="result-item">{staticContent[lang]['transactions-results'].amountMonth}</h6>
           <div className="dots"></div>
-          <h6 className="result">{amount.toFixed(2)} RUB {staticContent[lang]['transactions-results'].perDay}</h6>
+          <h6 className="result">{amountMonth.toFixed(2)} RUB</h6>
+        </div>
+        <div className="result-wrapper">
+          <h6 className="result-item">{staticContent[lang]['transactions-results'].amountDay}</h6>
+          <div className="dots"></div>
+          <h6 className="result">{amountDay.toFixed(2)} RUB</h6>
         </div>
       </Panel>
     );

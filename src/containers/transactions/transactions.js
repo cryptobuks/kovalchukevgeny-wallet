@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import Helpers from './../../helpers/Helpers';
-import { deleteTransaction, changeTransaction } from './../../actions/actionCreators';
+import { deleteTransaction, changeTransaction, addTransaction } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
@@ -102,9 +103,14 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby } = this.state;
-    const { transactions, categories, lang, deleteTransaction, changeTransaction } = this.props;
+    let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction } = this.props;
     const unicTransactions = this.Helpers.sumSameDateTransactions(transactions);
     let amount = 0;
+
+    // Filter transactions on current month
+    const monthTransactions = transactions.filter(transaction => {
+      return moment().month() === moment(transaction.startDate).month();
+    });
 
     if(transactions && transactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => {
@@ -119,6 +125,7 @@ class Transactions extends Component {
             <AddingPanel
               categories={categories}
               lang={lang}
+              addTransaction={addTransaction}
             />
             {transactions.length > 0 &&
               <Panel
@@ -126,7 +133,7 @@ class Transactions extends Component {
                 heading={staticContent[lang]['transactions-table'].head}
               >
                 <TransactionsTable
-                  transactions={transactions}
+                  transactions={monthTransactions}
                   deleteTransaction={deleteTransaction}
                   changeTransaction={changeTransaction}
                   descending={descending}
@@ -181,4 +188,4 @@ export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}), { deleteTransaction, changeTransaction })(Transactions);
+}), { deleteTransaction, changeTransaction, addTransaction })(Transactions);

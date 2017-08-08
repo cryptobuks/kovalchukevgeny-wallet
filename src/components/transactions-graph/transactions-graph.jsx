@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import MetricsGraphics from 'react-metrics-graphics';
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
@@ -16,6 +17,11 @@ class TransactionsGraph extends Component {
   render() {
     const { transactions, lang } = this.props;
 
+    // Filter transactions on current month
+    const monthTransactions = transactions.filter(transaction => {
+      return moment().month() === moment(transaction.startDate).month();
+    });
+
     return (
       <div>
         {transactions.length > 0 &&
@@ -26,7 +32,7 @@ class TransactionsGraph extends Component {
             <MetricsGraphics
               title={staticContent[lang]['transactions-graph'].smDescr}
               description={staticContent[lang]['transactions-graph'].bigDescr}
-              data={this.Helpers.sumSameDateTransactions(transactions)}
+              data={this.Helpers.sumSameDateTransactions(monthTransactions)}
               height={250}
               width={535}
               x_accessor="date"
