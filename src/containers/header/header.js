@@ -41,6 +41,14 @@ const Header = props => {
               </span>
             </Link>
           </li>
+          <li>
+            <Link activeClassName="active" to="reports">
+              <Icon type={'material'} icon={'work'} />
+              <span className="navigation__item">
+                {staticContent[lang]['menu'][3]}
+              </span>
+            </Link>
+          </li>
         </ul>
         <ul className="nav navbar-nav navbar-right languages">
           <li>

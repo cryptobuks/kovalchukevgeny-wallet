@@ -1,6 +1,6 @@
 {
   "eng" : {
-    "menu" : ["Home", "Transactions", "Categories"],
+    "menu" : ["Home", "Transactions", "Categories", "Report"],
     "currency-rate" : {
       "head" : "Currency courses",
       "currency" : "Currency",
@@ -47,7 +47,7 @@
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
   "rus" : {
-    "menu" : ["Домашняя", "Транзакции", "Категории"],
+    "menu" : ["Домашняя", "Транзакции", "Категории", "Отчёт"],
     "currency-rate" : {
       "head" : "Курсы валют",
       "currency" : "Валюта",

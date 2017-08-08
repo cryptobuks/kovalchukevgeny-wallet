@@ -9,6 +9,7 @@ import App from './containers/app/App.js';
 import Categories from './containers/categories/categories';
 import Home from './containers/home/home';
 import Transactions from './containers/transactions/transactions';
+import Reports from './containers/reports/reports';
 import './styles/main.scss';
 
 ReactDOM.render(
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Route path="home" component={Home} />
         <Route path="categories" component={Categories} />
         <Route path="transactions" component={Transactions} />
+        <Route path="reports" component={Reports} />
       </Route>
     </Router>
   </Provider>,

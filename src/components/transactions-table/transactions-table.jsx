@@ -121,7 +121,7 @@ class TransactionsTable extends Component {
     }) : [];
 
     const tableData = transactions.map((transaction, i) => {
-      const date = this.Helpers.formatDate(transaction.startDate)
+      const date = this.Helpers.formatDate(transaction.startDate);
 
       const categoryIconObj = categories.filter(category => {
         if(category.categoryTitle === transaction.category) {
