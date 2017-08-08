@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
@@ -12,7 +12,7 @@ import './../../styles/vendor/datepicker/react-datepicker.scss';
 
 import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
-class AddingPanel extends Component {
+class AddingPanel extends PureComponent {
   constructor(props) {
     super(props);
 

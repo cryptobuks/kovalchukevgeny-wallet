@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from './../icon/icon.jsx';
@@ -6,7 +6,7 @@ import Panel from './../panel/panel.jsx';
 
 import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
-class IconSelect extends Component {
+class IconSelect extends PureComponent {
   constructor(props) {
     super(props);
 

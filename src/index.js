@@ -17,10 +17,10 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Redirect from="/" to="/home" />
       <Route path="/" component={App}>
-        <Route path="home" component={Home} />
-        <Route path="categories" component={Categories} />
-        <Route path="transactions" component={Transactions} />
-        <Route path="reports" component={Reports} />
+        <Route path="/home" component={Home} />
+        <Route path="/categories" component={Categories} />
+        <Route path="/transactions" component={Transactions} />
+        <Route path="/reports" component={Reports} />
       </Route>
     </Router>
   </Provider>,

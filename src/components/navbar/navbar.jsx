@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import Icon from './../icon/icon.jsx';
 import Button from './../button/button.jsx';
 
-class Navbar extends Component {
+class Navbar extends PureComponent {
   constructor(props) {
     super(props);
 

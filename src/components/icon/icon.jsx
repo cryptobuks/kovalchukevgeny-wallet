@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const MaterialIcon = (props) => {
+const MaterialIcon = props => {
   const { icon, type, onClickFunction } = props;
 
   return (

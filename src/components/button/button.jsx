@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class Button extends Component {
+class Button extends PureComponent {
   constructor(props) {
     super(props);
   }
