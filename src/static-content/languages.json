@@ -17,8 +17,8 @@
       "month" : "Month",
       "transactions" : "Transactions",
       "bigTrans" : "The biggest transaction",
-      "amount" : "Amount",
-      "perDay" : "Per day"
+      "amountMonth" : "Amount Month",
+      "amountDay" : "Amount Day"
     },
     "transactions-table" : {
       "head" : "Transactions",
@@ -43,7 +43,8 @@
     },
     "categories" : {
       "head" : "categories"
-    }
+    },
+    "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
   "rus" : {
     "menu" : ["Домашняя", "Транзакции", "Категории"],
@@ -61,10 +62,10 @@
     "transactions-results" : {
       "head" : "Отчёт за месяц",
       "month" : "Месяц",
-      "transactions" : "Транзакции",
+      "transactions" : "Кол-во транзакций",
       "bigTrans" : "Самая большая транзакция",
-      "amount" : "Общая сумма",
-      "perDay" : "в день"
+      "amountMonth" : "Потрачено за месяц",
+      "amountDay" : "Средняя трата в день"
     },
     "transactions-table" : {
       "head" : "Таблица транзакций",
@@ -89,6 +90,7 @@
     },
     "categories" : {
       "head" : "Категории"
-    }
+    },
+    "months" : ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
   }
 }
