@@ -18,6 +18,11 @@ class Reports extends Component {
     this.reMapTransactions = this.reMapTransactions.bind(this);
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
+    this.openMonth = this.openMonth.bind(this);
+  }
+
+  openMonth(event) {
+    event.currentTarget.parentNode.parentNode.classList.toggle("expanded");
   }
 
   reMapTransactions(transactions) {
@@ -72,10 +77,11 @@ class Reports extends Component {
       });
 
       return (
-        <div key={i}>
+        <div key={i} data-month={staticContent[lang]['months'][i+1]}>
           {reMapedTransaction.length > 0 &&
             <Panel
               specialClass="panel-primary tr-table"
+              onClickFunction={this.openMonth}
               heading={`${staticContent[lang]['months'][i+1]} ${moment(reMapedTransaction.date).year()}`}
             >
               <div className="table transactions">

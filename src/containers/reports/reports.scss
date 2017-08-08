@@ -1,5 +1,21 @@
 .reports {
 
+  .expanded {
+
+    .panel-body {
+      height: auto;
+    }
+  }
+
+  .panel-heading {
+    cursor: pointer;
+  }
+
+  .panel-body {
+    height: 0;
+    overflow: hidden;
+  }
+
   .table-head {
 
     .table-data {

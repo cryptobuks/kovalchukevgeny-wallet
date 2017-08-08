@@ -8,12 +8,17 @@ class Panel extends Component {
   }
 
   render() {
-    const { heading, footer, children, specialClass } = this.props;
+    const { heading, footer, children, specialClass, onClickFunction } = this.props;
 
     return (
       <div className={classNames('panel', specialClass)}>
-        {heading && <div className="panel-heading">
-          <h3 className="panel-title">{heading}</h3>
+        {heading &&
+        <div
+          onClick={(e) => onClickFunction(e)}
+          className="panel-heading">
+          <h3
+            className="panel-title"
+          >{heading}</h3>
         </div>}
         <div className="panel-body">
           {React.Children.map(children, (child) => {
@@ -39,7 +44,8 @@ Panel.propTypes = {
     PropTypes.string
   ]).isRequired,
   heading: PropTypes.string,
-  footer: PropTypes.string
+  footer: PropTypes.string,
+  onClickFunction: PropTypes.func
 };
 
 export default Panel;
