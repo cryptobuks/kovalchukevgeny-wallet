@@ -40,7 +40,7 @@ class IconSelect extends PureComponent {
 
     return (
       <div
-        className="category-icon"
+        className={classNames('category-icon', {active: isSelectVisible})}
         onClick={this.toggleSelect}
       >
         <strong>{staticContent[lang]['adding-category'].chooseIcon}</strong>
