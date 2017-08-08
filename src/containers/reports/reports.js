@@ -24,7 +24,7 @@ class Reports extends Component {
     let arrTrans = []
     for(let i = 0; i < 12; i++) {
       let res = transactions.filter(transaction => {
-        return moment(transaction.startDate).month() === i+1;
+        return moment(transaction.date).month() === i+1;
       });
       if(res && res.length > 0) {
         arrTrans[i] = res;
@@ -37,7 +37,7 @@ class Reports extends Component {
 
   renderMonthTable(transactions) {
     return transactions.map((transaction, i) => {
-      const date = this.Helpers.formatDate(transaction.startDate);
+      const date = this.Helpers.formatDate(transaction.date);
 
       return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}>
@@ -76,7 +76,7 @@ class Reports extends Component {
           {reMapedTransaction.length > 0 &&
             <Panel
               specialClass="panel-primary tr-table"
-              heading={`${staticContent[lang]['months'][i+1]} ${moment(reMapedTransaction.startDate).year()}`}
+              heading={`${staticContent[lang]['months'][i+1]} ${moment(reMapedTransaction.date).year()}`}
             >
               <div className="table transactions">
                 <div className="table-head clearfix">

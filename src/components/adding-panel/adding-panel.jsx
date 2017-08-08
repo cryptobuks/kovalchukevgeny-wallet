@@ -19,7 +19,7 @@ class AddingPanel extends Component {
     this.state = {
       category: '',
       money: '',
-      startDate: moment(),
+      date: moment(),
       description: ''
     };
 
@@ -36,7 +36,7 @@ class AddingPanel extends Component {
     this.setState({
       category: this.setDefaultCategory(),
       money: '',
-      startDate: moment(),
+      date: moment(),
       description: ''
     });
   }
@@ -50,7 +50,7 @@ class AddingPanel extends Component {
   }
 
   handleChangeData(date) {
-    this.setState({startDate: date});
+    this.setState({date: date});
   }
 
   handleChangeMoney(event) {
@@ -67,20 +67,20 @@ class AddingPanel extends Component {
   }
 
   saveTransaction() {
-    const { category, money, startDate, description } = this.state;
+    const { category, money, date, description } = this.state;
     const { addTransaction } = this.props;
     const id = Date.now();
-    addTransaction(id, startDate, +money, description, category);
+    addTransaction(id, date, +money, description, category);
     this.setState({
       category: this.setDefaultCategory(),
       money: '',
-      startDate: moment(),
+      date: moment(),
       description: ''
     });
   }
 
   render() {
-    const { category, money, startDate, description } = this.state;
+    const { category, money, date, description } = this.state;
     let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
@@ -115,7 +115,7 @@ class AddingPanel extends Component {
                 <DatePicker
                   locale="en-gb"
                   className="form-control"
-                  selected={this.state.startDate}
+                  selected={this.state.date}
                   onChange={this.handleChangeData}
                 />
               </td>

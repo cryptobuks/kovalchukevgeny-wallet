@@ -37,7 +37,7 @@ class TransactionsResults extends Component {
 
     // Filter transactions on current month
     const monthTransactions = transactions.filter(transaction => {
-      return moment().month() === moment(transaction.startDate).month();
+      return moment().month() === moment(transaction.date).month();
     });
 
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);

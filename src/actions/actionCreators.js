@@ -1,9 +1,9 @@
 // add transaction
-export function addTransaction(id, startDate, money, description, category) {
+export function addTransaction(id, date, money, description, category) {
   return {
     type: 'ADD_TRANSACTION',
     id,
-    startDate,
+    date,
     money,
     description,
     category
@@ -11,11 +11,11 @@ export function addTransaction(id, startDate, money, description, category) {
 }
 
 // change transaction
-export function changeTransaction(id, startDate, money, description, category) {
+export function changeTransaction(id, date, money, description, category) {
   return {
     type: 'CHANGE_TRANSACTION',
     id,
-    startDate,
+    date,
     money,
     description,
     category

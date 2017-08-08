@@ -25,7 +25,7 @@ class Helpers {
     let obj = {}
     for(let i = 0; i < date.length; i++) {
       // Create key string for transaction data
-      let key = this.formatDate(date[i].startDate, 'dash');
+      let key = this.formatDate(date[i].date, 'dash');
       /*
        * if object hasn't key add new,
        * if key already exist summarize key value and transaction value

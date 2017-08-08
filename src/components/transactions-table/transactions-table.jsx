@@ -18,7 +18,7 @@ class TransactionsTable extends Component {
     this.state = {
       activeRow: {},
       isEditRow: {},
-      startDate: moment()
+      date: moment()
     }
 
     this.handleChangeData = this.handleChangeData.bind(this);
@@ -43,7 +43,7 @@ class TransactionsTable extends Component {
 
   handleChangeData(date) {
     let isEditRow = this.state.isEditRow;
-    isEditRow.startDate = date;
+    isEditRow.date = date;
     this.setState({isEditRow});
   }
 
@@ -60,8 +60,8 @@ class TransactionsTable extends Component {
   }
 
   updateTransaction(isEditRow) {
-    const { id, startDate, money, description, category } = this.state.isEditRow;
-    this.props.changeTransaction(id, startDate, money, description, category);
+    const { id, date, money, description, category } = this.state.isEditRow;
+    this.props.changeTransaction(id, date, money, description, category);
     this.setState({
       isEditRow: false,
       activeRow: false
@@ -105,23 +105,22 @@ class TransactionsTable extends Component {
       );
     });
 
-    const tableHead = transactions && transactions.length > 0 ?
-    Object.keys(transactions[0]).map((key, i) => {
-      if (key === 'id' || key === 'active' || key === 'isEdit') { return }; // ignore state keys
-      return(
-        <div className="table-data" key={i} data-cell={key}>
-          <span data-cell={key}>{titles[i-1]}</span> {/* ignore id */}
-          {sortby === key &&
+    const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
+      headItem = headItem.toLowerCase();
+      return (
+        <div className="table-data" key={i} data-cell={headItem}>
+          <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span> {/* ignore id */}
+          {sortby === headItem &&
           <span className="filter-arrow">
             {descending ? <Icon icon={'arrow_downward'} /> : <Icon icon={'arrow_upward'} />}
           </span>
           }
         </div>
       );
-    }) : [];
+    });
 
     const tableData = transactions.map((transaction, i) => {
-      const date = this.Helpers.formatDate(transaction.startDate);
+      const date = this.Helpers.formatDate(transaction.date);
 
       const categoryIconObj = categories.filter(category => {
         if(category.categoryTitle === transaction.category) {
@@ -141,7 +140,7 @@ class TransactionsTable extends Component {
               <DatePicker
                 locale="en-gb"
                 className="form-control"
-                selected={moment(transaction.startDate)}
+                selected={moment(transaction.date)}
                 onChange={this.handleChangeData}
               />
             }

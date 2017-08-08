@@ -43,7 +43,7 @@ class Transactions extends Component {
     const { formatDate } = this.Helpers;
     // To format date to 20/7/2017
     objArray = objArray.map(item => {
-      item.startDate = formatDate(item.startDate);
+      item.date = formatDate(item.date);
       return item;
     });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
@@ -74,7 +74,7 @@ class Transactions extends Component {
   sortSheme(dataArray, column, descending) {
     dataArray.sort((a, b) => {
       // Sort numbers
-      if(parseInt(column !== 'startDate' && a[column]) && parseInt(b[column])) {
+      if(parseInt(column !== 'date' && a[column]) && parseInt(b[column])) {
         return descending ?
         (+a[column] > +b[column] ? 1 : -1) :
         (+a[column] < +b[column] ? 1 : -1);
@@ -109,7 +109,7 @@ class Transactions extends Component {
 
     // Filter transactions on current month
     const monthTransactions = transactions.filter(transaction => {
-      return moment().month() === moment(transaction.startDate).month();
+      return moment().month() === moment(transaction.date).month();
     });
 
     if(transactions && transactions.length > 0) {
