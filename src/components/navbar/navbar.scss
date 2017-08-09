@@ -20,12 +20,12 @@
 
         &:hover,
         &:focus {
-          background-color: rgba(185,25,25,.6);
+          background-color: rgba(255,255,255,.2);
+          color: $accentTextColor;
         }
 
         &.active {
-          background-color: rgba(255,255,255,.2);
-          color: $accentTextColor;
+          background-color: rgba(185,25,25,.6);          
 
           &:hover {
             cursor: default;
