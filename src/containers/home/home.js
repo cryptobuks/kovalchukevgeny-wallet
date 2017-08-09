@@ -7,15 +7,15 @@ import TransactionsResults from './../../components/transactions-results/transac
 import MonthCourse from './../month-course/month-course';
 
 const Home = (props) => {
-  const { transactions, lang } = props;
+  const { transactions, lang, course } = props;
   return (
     <div className="widgets">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-md-6">
-            {/* <CurrencyRate
+            <CurrencyRate
               lang={lang}
-            /> */}
+            />
           </div>
           <div className="col-lg-6 col-md-7">
             <TransactionsGraph
@@ -27,10 +27,13 @@ const Home = (props) => {
             <TransactionsResults
               transactions={transactions}
               lang={lang}
+              course={course}
             />
           </div>
           <div className="col-lg-6 col-md-6">
-            <MonthCourse />
+            <MonthCourse
+              lang={lang}
+            />
           </div>
         </div>
       </div>
@@ -40,10 +43,12 @@ const Home = (props) => {
 
 Home.propTypes = {
   transactions: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  course: PropTypes.array
 };
 
 export default connect(state => ({
   transactions: state.transactions,
-  lang: state.lang
+  lang: state.lang,
+  course: state.course
 }))(Home);

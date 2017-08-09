@@ -62,7 +62,7 @@ class MonthCourse extends Component {
       <div>
         <Panel
           specialClass="panel-success month-course"
-          heading="course"
+          heading={staticContent[lang]['month-course'].head}
         >
           <div className="row">
             <div className="col-lg-6">
@@ -84,7 +84,7 @@ class MonthCourse extends Component {
               <Button
                 specialClass="btn btn-primary"
                 onClickFunction={() => this.saveCourse(date, currentCourse)}
-              >Save</Button>
+              >{staticContent[lang]['month-course'].btnSubmit}</Button>
             </div>
           </div>
         </Panel>
@@ -94,7 +94,8 @@ class MonthCourse extends Component {
 }
 
 MonthCourse.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  course: PropTypes.array
 };
 
 export default connect(state => ({

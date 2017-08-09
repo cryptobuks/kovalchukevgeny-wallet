@@ -43,7 +43,12 @@
     },
     "reports" : {
       "amountMonth" : "Amount Month",
-      "amountDay" : "Amount Day"
+      "amountDay" : "Amount Day",
+      "monthCourse" : "Month Course"
+    },
+    "month-course" : {
+      "head" : "Mount Course",
+      "btnSubmit" : "Submit"
     },
     "categories" : {
       "head" : "categories"
@@ -95,7 +100,12 @@
     },
     "reports" : {
       "amountMonth" : "Потрачено за месяц",
-      "amountDay" : "Средняя трата в день"
+      "amountDay" : "Средняя трата в день",
+      "monthCourse" : "Курс на месяц"
+    },
+    "month-course" : {
+      "head" : "Курс на месяц",
+      "btnSubmit" : "Установить"
     },
     "categories" : {
       "head" : "Категории"

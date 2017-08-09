@@ -30,15 +30,25 @@ class TransactionsResults extends Component {
   }
 
   render() {
-    const { transactions, lang } = this.props;
+    const { transactions, lang, course } = this.props;
     const today = new Date();
     let amountDay = 0;
     let amountMonth = 0;
+    let amountDayCurrency = 0;
+    let amountMonthCurrency = 0;
 
     // Filter transactions on current month
     const monthTransactions = transactions.filter(transaction => {
       return moment().month() === moment(transaction.date).month();
     });
+
+    let monthCourse = { course: 1 }
+
+    if(monthTransactions[0]) {
+      monthCourse = course.filter(currentCourse => {
+        return currentCourse.date === moment(monthTransactions[0].date).format('YYYY-MM');
+      })[0] || { course: 1 };
+    }
 
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
@@ -50,6 +60,9 @@ class TransactionsResults extends Component {
         return sum += transaction.money;
       }, 0);
     }
+
+    amountDayCurrency = amountDay / monthCourse.course;
+    amountMonthCurrency = amountMonth / monthCourse.course;
 
     return (
       <Panel
@@ -74,12 +87,20 @@ class TransactionsResults extends Component {
         <div className="result-wrapper">
           <h6 className="result-item">{staticContent[lang]['transactions-results'].amountMonth}</h6>
           <div className="dots"></div>
-          <h6 className="result">{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</h6>
+          <h6 className="result">
+            <span>{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</span>
+            <span className="divider">/</span>
+            <span>{amountMonthCurrency.toFixed(2)} $</span>
+          </h6>
         </div>
         <div className="result-wrapper">
           <h6 className="result-item">{staticContent[lang]['transactions-results'].amountDay}</h6>
           <div className="dots"></div>
-          <h6 className="result">{amountDay.toFixed(2)} {staticContent[lang]['currency']}</h6>
+          <h6 className="result">
+            <span>{amountDay.toFixed(2)} {staticContent[lang]['currency']}</span>
+            <span className="divider">/</span>
+            <span>{amountDayCurrency.toFixed(2)} $</span>
+          </h6>
         </div>
       </Panel>
     );
@@ -92,7 +113,8 @@ TransactionsResults.defaultProps = {
 
 TransactionsResults.propTypes = {
   transactions: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  course: PropTypes.array
 };
 
 export default TransactionsResults;

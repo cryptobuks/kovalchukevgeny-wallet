@@ -28,7 +28,7 @@ class Reports extends Component {
     let arrTrans = []
     for(let i = 0; i < 12; i++) {
       let res = transactions.filter(transaction => {
-        return moment(transaction.date).month() === i+1;
+        return moment(transaction.date).month() === i;
       });
       if(res && res.length > 0) {
         arrTrans[i] = res;
@@ -55,7 +55,7 @@ class Reports extends Component {
   }
 
   renderMonthPanels(reMapedTransactions) {
-    const { lang } = this.props;
+    let { lang, course } = this.props;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
@@ -69,6 +69,17 @@ class Reports extends Component {
         amountMonth = unicTransactions.reduce((sum, transaction) => {
           return sum += transaction.money;
         }, 0);
+      }
+
+      let monthCourse = {
+        course: 1
+      }
+
+      if(unicTransactions[0]) {
+        monthCourse = course.filter(courseItem => {
+          console.log(courseItem.date, moment(unicTransactions[0].date).format('YYYY-MM'));
+          return courseItem.date === moment(unicTransactions[0].date).format('YYYY-MM');
+        })[0] || { course: 1 };
       }
 
       const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
@@ -87,7 +98,7 @@ class Reports extends Component {
                 onClick={(e) => this.openMonth(e)}
                 className="panel-heading clearfix">
                 <h3 className="panel-title left">
-                  {`${staticContent[lang]['months'][i+1]} ${moment(reMapedTransaction.date).year()}`}
+                  {`${staticContent[lang]['months'][i]} ${moment(reMapedTransaction.date).year()}`}
                 </h3>
                 <h3 className="panel-title right">
                   <Icon type="fa" icon="fa-caret-square-o-down" />
@@ -116,6 +127,11 @@ class Reports extends Component {
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountDay']}
                       <span>{amountDay.toFixed(2)}</span>
+                      {staticContent[lang]['currency']}
+                    </h5>
+                    <h5 className="amount">
+                      {staticContent[lang]['reports']['monthCourse']}
+                      <span>{monthCourse.course.toFixed(2)}</span>
                       {staticContent[lang]['currency']}
                     </h5>
                   </div>
@@ -147,11 +163,13 @@ class Reports extends Component {
 Reports.propTypes = {
   categories: PropTypes.array,
   transactions: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  course: PropTypes.array
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
+  course: state.course
 }))(Reports);
