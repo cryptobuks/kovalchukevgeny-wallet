@@ -77,7 +77,6 @@ class Reports extends Component {
 
       if(unicTransactions[0]) {
         monthCourse = course.filter(courseItem => {
-          console.log(courseItem.date, moment(unicTransactions[0].date).format('YYYY-MM'));
           return courseItem.date === moment(unicTransactions[0].date).format('YYYY-MM');
         })[0] || { course: 1 };
       }
