@@ -41,9 +41,14 @@
       "btnCancel" : "Cancel",
       "btnSubmit" : "Submit"
     },
+    "reports" : {
+      "amountMonth" : "Amount Month",
+      "amountDay" : "Amount Day"
+    },
     "categories" : {
       "head" : "categories"
     },
+    "currency" :  "RUB",
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
   "rus" : {
@@ -88,9 +93,14 @@
       "btnCancel" : "Отменить",
       "btnSubmit" : "Добавить"
     },
+    "reports" : {
+      "amountMonth" : "Потрачено за месяц",
+      "amountDay" : "Средняя трата в день"
+    },
     "categories" : {
       "head" : "Категории"
     },
+    "currency" :  "руб.",
     "months" : ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
   }
 }

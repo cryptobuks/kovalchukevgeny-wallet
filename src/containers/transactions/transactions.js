@@ -166,7 +166,8 @@ class Transactions extends Component {
                 <h5 className="amount">
                   {staticContent[lang]['transactions-table'].bigDescr}
                   <span>{unicTransactions.length}</span> days:
-                  <span>{amount.toFixed(2)}</span> RUB
+                  <span>{amount.toFixed(2)}</span>
+                  {staticContent[lang]['currency']}
                 </h5>
               </div>
             </div>

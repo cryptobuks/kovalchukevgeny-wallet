@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import Panel from './../../components/panel/panel.jsx';
-import Button from './../../components/button/button.jsx';
 import Helpers from './../../helpers/Helpers';
+import Icon from './../../components/icon/icon.jsx';
 
 import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
 
@@ -60,12 +59,16 @@ class Reports extends Component {
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
-      let amount = 0;
+      let amountDay = 0;
+      let amountMonth = 0;
 
       if(reMapedTransaction && reMapedTransaction.length > 0) {
-        amount = unicTransactions.reduce((sum, transaction) => {
+        amountDay = unicTransactions.reduce((sum, transaction) => {
           return sum += transaction.money;
         }, 0) / unicTransactions.length;
+        amountMonth = unicTransactions.reduce((sum, transaction) => {
+          return sum += transaction.money;
+        }, 0);
       }
 
       const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
@@ -79,27 +82,46 @@ class Reports extends Component {
       return (
         <div key={i} data-month={staticContent[lang]['months'][i+1]}>
           {reMapedTransaction.length > 0 &&
-            <Panel
-              specialClass="panel-primary tr-table"
-              onClickFunction={this.openMonth}
-              heading={`${staticContent[lang]['months'][i+1]} ${moment(reMapedTransaction.date).year()}`}
-            >
-              <div className="table transactions">
-                <div className="table-head clearfix">
-                  <div className="table-row clearfix">
-                    {tableHead}
+            <div className='panel panel-primary tr-table'>
+              <div
+                onClick={(e) => this.openMonth(e)}
+                className="panel-heading clearfix">
+                <h3 className="panel-title left">
+                  {`${staticContent[lang]['months'][i+1]} ${moment(reMapedTransaction.date).year()}`}
+                </h3>
+                <h3 className="panel-title right">
+                  <Icon type="fa" icon="fa-caret-square-o-down" />
+                </h3>
+              </div>
+              <div className="panel-body">
+                <div className="table transactions">
+                  <div className="table-head clearfix">
+                    <div className="table-row clearfix">
+                      {tableHead}
+                    </div>
+                  </div>
+                  <div className="table-body clearfix">
+                    {this.renderMonthTable(reMapedTransaction)}
                   </div>
                 </div>
-                <div className="table-body clearfix">
-                  {this.renderMonthTable(reMapedTransaction)}
-                </div>
               </div>
-              <div className="text-right amount-wrapper">
-                <h5 className="amount">
-                  <span>{amount.toFixed(2)}</span> RUB
-                </h5>
+              <div className="panel-footer">
+                <h3 className="panel-title">
+                  <div className="text-right amount-wrapper">
+                    <h5 className="amount">
+                      {staticContent[lang]['reports']['amountMonth']}
+                      <span>{amountMonth.toFixed(2)}</span>
+                      {staticContent[lang]['currency']}
+                    </h5>
+                    <h5 className="amount">
+                      {staticContent[lang]['reports']['amountDay']}
+                      <span>{amountDay.toFixed(2)}</span>
+                      {staticContent[lang]['currency']}
+                    </h5>
+                  </div>
+                </h3>
               </div>
-            </Panel>
+            </div>
           }
         </div>
       );

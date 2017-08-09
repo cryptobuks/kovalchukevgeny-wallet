@@ -74,12 +74,12 @@ class TransactionsResults extends Component {
         <div className="result-wrapper">
           <h6 className="result-item">{staticContent[lang]['transactions-results'].amountMonth}</h6>
           <div className="dots"></div>
-          <h6 className="result">{amountMonth.toFixed(2)} RUB</h6>
+          <h6 className="result">{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</h6>
         </div>
         <div className="result-wrapper">
           <h6 className="result-item">{staticContent[lang]['transactions-results'].amountDay}</h6>
           <div className="dots"></div>
-          <h6 className="result">{amountDay.toFixed(2)} RUB</h6>
+          <h6 className="result">{amountDay.toFixed(2)} {staticContent[lang]['currency']}</h6>
         </div>
       </Panel>
     );
