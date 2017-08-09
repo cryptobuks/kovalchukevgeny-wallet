@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CurrencyRate from './../../components/currency-rate/currency-rate.jsx';
 import TransactionsGraph from './../../components/transactions-graph/transactions-graph.jsx';
 import TransactionsResults from './../../components/transactions-results/transactions-results.jsx';
+import MonthCourse from './../month-course/month-course';
 
 const Home = (props) => {
   const { transactions, lang } = props;
@@ -12,9 +13,9 @@ const Home = (props) => {
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-md-6">
-            <CurrencyRate
+            {/* <CurrencyRate
               lang={lang}
-            />
+            /> */}
           </div>
           <div className="col-lg-6 col-md-7">
             <TransactionsGraph
@@ -27,6 +28,9 @@ const Home = (props) => {
               transactions={transactions}
               lang={lang}
             />
+          </div>
+          <div className="col-lg-6 col-md-6">
+            <MonthCourse />
           </div>
         </div>
       </div>

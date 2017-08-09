@@ -56,3 +56,12 @@ export function changeLang(lang) {
     lang
   };
 }
+
+// add month course
+export function addMonthCourse(date, course) {
+  return {
+    type: 'ADD_MONTH-COURSE',
+    date,
+    course
+  };
+}
