@@ -26,4 +26,18 @@
   .table-row {
     cursor: default;
   }
+
+  .amount-wrapper {
+    display: flex;
+
+    .amount {
+      font-size: 14px;
+    }
+
+    h5:not(:last-child) {
+      border-right: 1px solid #dddddd;
+      margin-right: 5px;
+      padding-right: 10px;
+    }
+  }
 }
