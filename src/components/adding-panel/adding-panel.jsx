@@ -108,14 +108,14 @@ class AddingPanel extends PureComponent {
             >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
           </div>
         </div>
-        <table className="table table-striped table-hover">
+        <table className="table">
           <tbody>
             <tr>
               <td>
                 <DatePicker
                   locale="en-gb"
                   className="form-control"
-                  selected={this.state.date}
+                  selected={date}
                   onChange={this.handleChangeData}
                 />
               </td>
