@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import enhanceWithClickOutside from 'react-click-outside';
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 
@@ -19,6 +20,10 @@ class IconSelect extends PureComponent {
 
   toggleSelect() {
     this.setState({isSelectVisible: !this.state.isSelectVisible});
+  }
+
+  handleClickOutside() {
+    this.setState({isSelectVisible: false});
   }
 
   render() {
@@ -72,4 +77,4 @@ IconSelect.propTypes = {
   lang: PropTypes.string
 };
 
-export default IconSelect;
+export default enhanceWithClickOutside(IconSelect);
