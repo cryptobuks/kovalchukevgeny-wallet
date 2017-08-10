@@ -61,6 +61,8 @@ class Reports extends Component {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
       let amountDay = 0;
       let amountMonth = 0;
+      let amountMonthCurrency = 0;
+      let monthCourse = { course: 1 };
 
       if(reMapedTransaction && reMapedTransaction.length > 0) {
         amountDay = unicTransactions.reduce((sum, transaction) => {
@@ -71,15 +73,13 @@ class Reports extends Component {
         }, 0);
       }
 
-      let monthCourse = {
-        course: 1
-      };
-
       if(unicTransactions[0]) {
         monthCourse = course.filter(courseItem => {
           return courseItem.date === moment(unicTransactions[0].date).format('YYYY-MM');
         })[0] || { course: 1 };
       }
+
+      amountMonthCurrency = amountMonth / monthCourse.course;
 
       const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
         return (
@@ -121,7 +121,8 @@ class Reports extends Component {
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountMonth']}
                       <span>{amountMonth.toFixed(2)}</span>
-                      {staticContent[lang]['currency']}
+                      {staticContent[lang]['currency']} /
+                      <span>{amountMonthCurrency.toFixed(2)}</span>$
                     </h5>
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountDay']}
