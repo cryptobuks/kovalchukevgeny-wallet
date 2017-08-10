@@ -1,1 +1,1 @@
-web: babel-node tools/publicServer.js NODE_ENV=production
+web: node tools/publicServer.js NODE_ENV=production
