@@ -51,6 +51,7 @@
   "license": "MIT",
   "homepage": "https://github.com/kovalchukevgeny/wallet",
   "dependencies": {
+    "babel-cli": "6.8.0",
     "axios": "^0.16.2",
     "body-parser": "^1.12.3",
     "classnames": "^2.2.3",
