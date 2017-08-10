@@ -22,7 +22,7 @@ class Helpers {
   }
 
   sumSameDateTransactions(date) {
-    let obj = {}
+    let obj = {};
     for(let i = 0; i < date.length; i++) {
       // Create key string for transaction data
       let key = this.formatDate(date[i].date, 'dash');
@@ -44,7 +44,7 @@ class Helpers {
       transactions.push({
         money: obj[prop],
         date: new Date(this.formatDate(prop, 'dash'))
-      })
+      });
     }
 
     return transactions;

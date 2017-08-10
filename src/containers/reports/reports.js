@@ -6,7 +6,7 @@ import moment from 'moment';
 import Helpers from './../../helpers/Helpers';
 import Icon from './../../components/icon/icon.jsx';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class Reports extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Reports extends Component {
   }
 
   reMapTransactions(transactions) {
-    let arrTrans = []
+    let arrTrans = [];
     for(let i = 0; i < 12; i++) {
       let res = transactions.filter(transaction => {
         return moment(transaction.date).month() === i;
@@ -73,7 +73,7 @@ class Reports extends Component {
 
       let monthCourse = {
         course: 1
-      }
+      };
 
       if(unicTransactions[0]) {
         monthCourse = course.filter(courseItem => {
@@ -92,7 +92,7 @@ class Reports extends Component {
       return (
         <div key={i} data-month={staticContent[lang]['months'][i+1]}>
           {reMapedTransaction.length > 0 &&
-            <div className='panel panel-primary tr-table'>
+            <div className="panel panel-primary tr-table">
               <div
                 onClick={(e) => this.openMonth(e)}
                 className="panel-heading clearfix">

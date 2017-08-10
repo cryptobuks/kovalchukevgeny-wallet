@@ -10,7 +10,7 @@ import Button from './../../components/button/button.jsx';
 import Helpers from './../../helpers/Helpers';
 import { deleteTransaction, changeTransaction, addTransaction } from './../../actions/actionCreators';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class Transactions extends Component {
   constructor(props) {
@@ -183,7 +183,8 @@ Transactions.propTypes = {
   transactions: PropTypes.array,
   lang: PropTypes.string,
   deleteTransaction: PropTypes.func,
-  changeTransaction: PropTypes.func
+  changeTransaction: PropTypes.func,
+  addTransaction: PropTypes.func
 };
 
 export default connect(state => ({

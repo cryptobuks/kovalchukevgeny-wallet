@@ -7,7 +7,7 @@ import Helpers from './../../helpers/Helpers.js';
 import Icon from './../icon/icon.jsx';
 import Input from './../input/input.jsx';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class TransactionsTable extends Component {
   constructor(props) {

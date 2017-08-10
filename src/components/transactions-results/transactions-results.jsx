@@ -4,7 +4,7 @@ import moment from 'moment';
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class TransactionsResults extends Component {
   constructor(props) {

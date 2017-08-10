@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class IconSelect extends PureComponent {
   constructor(props) {

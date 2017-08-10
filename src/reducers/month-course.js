@@ -22,7 +22,7 @@ function course(state = initialState.course, action) {
     } else {
       return store.map(course => {
         if(course.date === action.date) {
-          course.course = action.course
+          course.course = action.course;
         }
         return course;
       });

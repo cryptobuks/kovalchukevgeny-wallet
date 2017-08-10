@@ -8,7 +8,7 @@ import Navbar from './../../components/navbar/navbar.jsx';
 import Button from './../../components/button/button.jsx';
 import { changeLang } from './../../actions/actionCreators';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 const Header = props => {
   const { lang, changeLang } = props;

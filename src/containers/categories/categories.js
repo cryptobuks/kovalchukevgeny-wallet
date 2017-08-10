@@ -9,7 +9,7 @@ import Panel from './../../components/panel/panel.jsx';
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 import iconsArray from './../../components/icon-select/icons.js';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class Categories extends Component {
   constructor(props) {

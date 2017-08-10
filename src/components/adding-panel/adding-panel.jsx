@@ -10,7 +10,7 @@ import { addTransaction } from './../../actions/actionCreators';
 
 import './../../styles/vendor/datepicker/react-datepicker.scss';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class AddingPanel extends PureComponent {
   constructor(props) {

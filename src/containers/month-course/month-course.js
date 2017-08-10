@@ -9,7 +9,7 @@ import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
 import { addMonthCourse } from './../../actions/actionCreators';
 
-import staticContent from './../../static-content/languages.json'; // eslint-disable-line import/namespace
+import staticContent from './../../static-content/languages';
 
 class MonthCourse extends Component {
   constructor(props) {
@@ -95,7 +95,8 @@ class MonthCourse extends Component {
 
 MonthCourse.propTypes = {
   lang: PropTypes.string,
-  course: PropTypes.array
+  course: PropTypes.array,
+  addMonthCourse: PropTypes.func
 };
 
 export default connect(state => ({
