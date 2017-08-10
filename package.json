@@ -60,6 +60,7 @@
     "classnames": "^2.2.3",
     "cors": "^2.8.3",
     "express": "4.13.4",
+    "open": "0.0.5",
     "json-loader": "^0.5.7",
     "moment": "^2.18.1",
     "mongojs": "^2.4.0",
