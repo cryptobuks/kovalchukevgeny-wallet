@@ -67,7 +67,7 @@ class Transactions extends Component {
     let contents = format === 'json' ? JSON.stringify(this.state.transactions) :
     this.convertToCSV(this.state.transactions);
     const URL = window.URL || window.webkitURL;
-    const blob = new Blob([contents], {type: `text/${format};charset=utf-8;`});
+    const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
     event.target.href = URL.createObjectURL(blob);
     event.target.download = 'data.' + format;
   }
