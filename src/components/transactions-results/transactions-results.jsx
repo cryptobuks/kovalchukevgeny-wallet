@@ -46,7 +46,7 @@ class TransactionsResults extends Component {
 
     if(monthTransactions[0]) {
       monthCourse = course.filter(currentCourse => {
-        return currentCourse.date === moment(monthTransactions[0].date).format('YYYY-MM');
+        return moment(currentCourse.date).format('YYYY-MM') === moment(monthTransactions[0].date).format('YYYY-MM');
       })[0] || { course: 1 };
     }
 

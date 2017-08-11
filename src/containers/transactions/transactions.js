@@ -116,7 +116,7 @@ class Transactions extends Component {
     if(monthTransactions && monthTransactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => {
         return sum += transaction.money;
-      }, 0) / unicTransactions.length;
+      }, 0);
     }
 
     return (

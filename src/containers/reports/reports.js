@@ -73,9 +73,11 @@ class Reports extends Component {
         }, 0);
       }
 
+
+
       if(unicTransactions[0]) {
         monthCourse = course.filter(courseItem => {
-          return courseItem.date === moment(unicTransactions[0].date).format('YYYY-MM');
+          return moment(courseItem.date).format('YYYY-MM') === moment(unicTransactions[0].date).format('YYYY-MM');
         })[0] || { course: 1 };
       }
 
