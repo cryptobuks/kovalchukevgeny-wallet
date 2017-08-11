@@ -65,7 +65,7 @@ class AddingPanel extends PureComponent {
 
   setDefaultCategory() {
     const category = this.props.categories[0];
-    return category ? category.categoryTitle : '';
+    return category ? category.title : '';
   }
 
   saveTransaction() {
@@ -87,7 +87,7 @@ class AddingPanel extends PureComponent {
 
     categories = categories.map((category, i) => {
       return(
-        <option key={i} value={category.categoryTitle}>{category.categoryTitle}</option>
+        <option key={i} value={category.title}>{category.title}</option>
       );
     });
 

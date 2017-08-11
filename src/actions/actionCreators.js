@@ -31,21 +31,21 @@ export function deleteTransaction(transactionId) {
 }
 
 // add category
-export function addCategory(categoryId, categoryDescription, categoryTitle, categoryIcon) {
+export function addCategory(id, description, title, icon) {
   return {
     type: 'ADD_CATEGORY',
-    categoryId,
-    categoryDescription,
-    categoryTitle,
-    categoryIcon
+    id,
+    description,
+    title,
+    icon
   };
 }
 
 // delete category
-export function deleteCategory(categoryId) {
+export function deleteCategory(id) {
   return {
     type: 'DELETE_CATEGORY',
-    categoryId
+    id
   };
 }
 

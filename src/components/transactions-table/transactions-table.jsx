@@ -99,7 +99,7 @@ class TransactionsTable extends Component {
 
     const selectCategories = categories.map((category, i) => {
       return(
-        <option key={i} value={category.categoryTitle}>{category.categoryTitle}</option>
+        <option key={i} value={category.title}>{category.title}</option>
       );
     });
 
@@ -120,12 +120,12 @@ class TransactionsTable extends Component {
     const tableData = transactions.map((transaction, i) => {
 
       const categoryIconObj = categories.filter(category => {
-        if(category.categoryTitle === transaction.category) {
-          return category.categoryIcon;
+        if(category.title === transaction.category) {
+          return category.icon;
         };
       })[0] || null;
 
-      const categoryIcon = categoryIconObj ? categoryIconObj.categoryIcon : '';
+      const categoryIcon = categoryIconObj ? categoryIconObj.icon : '';
       return(
         <div className="table-row clearfix" key={i} data-row={transaction.id}
           onClick={() => this.openEditMenu(transaction)}

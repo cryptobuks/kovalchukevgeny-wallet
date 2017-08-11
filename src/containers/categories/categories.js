@@ -19,9 +19,9 @@ class Categories extends Component {
     super(props);
 
     this.state = {
-      categoryDescription: '',
-      categoryTitle: '',
-      categoryIcon: 'fa-car' //default icon
+      description: '',
+      title: '',
+      icon: 'fa-car' //default icon
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
@@ -33,13 +33,13 @@ class Categories extends Component {
   }
 
   changeCategoryIcon(icon) {
-    this.setState({categoryIcon: icon});
+    this.setState({icon: icon});
   }
 
   clearCategory() {
     this.setState({
-      categoryDescription: '',
-      categoryTitle: ''
+      description: '',
+      title: ''
     });
   }
 
@@ -50,26 +50,26 @@ class Categories extends Component {
   }
 
   handleChangeDescription(event) {
-    this.setState({categoryDescription: event.target.value});
+    this.setState({description: event.target.value});
   }
 
   handleChangeTitle(event) {
-    this.setState({categoryTitle: event.target.value});
+    this.setState({title: event.target.value});
   }
 
   saveCategory() {
-    const { categoryDescription, categoryTitle, categoryIcon } = this.state;
+    const { description, title, icon } = this.state;
     const { addCategory } = this.props;
-    const categoryId = (new Date()).getTime();
-    addCategory(categoryId, categoryDescription, categoryTitle, categoryIcon);
+    const id = (new Date()).getTime();
+    addCategory(id, description, title, icon);
     this.setState({
-      categoryDescription: '',
-      categoryTitle: ''
+      description: '',
+      title: ''
     });
   }
 
   render() {
-    const { categoryDescription, categoryTitle, categoryIcon } = this.state;
+    const { description, title, icon } = this.state;
     let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
@@ -78,12 +78,12 @@ class Categories extends Component {
           <Panel specialClass="panel-default category">
             <div data-id={category.categoryId}>
               <div className="categ-icon">
-                <Icon type="fa" icon={category.categoryIcon} />
+                <Icon type="fa" icon={category.icon} />
               </div>
-              <h5>{category.categoryTitle}</h5>
-              {category.categoryDescription &&
+              <h5>{category.title}</h5>
+              {category.description &&
                 <blockquote>
-                  <small><cite>{category.categoryDescription}</cite></small>
+                  <small><cite>{category.description}</cite></small>
                 </blockquote>
               }
               <Button
@@ -109,21 +109,21 @@ class Categories extends Component {
                   <div className="col-lg-2 col-md-2 col-sm-6">
                     <Input
                       placeholder={staticContent[lang]['adding-category'].category}
-                      value={categoryTitle}
+                      value={title}
                       handleChange={this.handleChangeTitle}
                     />
                   </div>
                   <div className="col-lg-3 col-md-3 col-sm-6">
                     <Input
                       placeholder={staticContent[lang]['adding-category'].descr}
-                      value={categoryDescription}
+                      value={description}
                       handleChange={this.handleChangeDescription}
                     />
                   </div>
                   <div className="col-lg-2 col-md-2 col-sm-6 text-right">
                     <IconSelect
                       onClickFunction={this.changeCategoryIcon}
-                      defaultIcon={categoryIcon}
+                      defaultIcon={icon}
                       iconsArray={iconsArray}
                       lang={lang}
                     />

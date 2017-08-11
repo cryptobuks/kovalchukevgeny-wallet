@@ -14,14 +14,14 @@ function categories(state = initialState.categories, action) {
     case 'ADD_CATEGORY' :
       return [
         ...state, {
-          categoryId: action.categoryId,
-          categoryDescription: action.categoryDescription,
-          categoryTitle: action.categoryTitle,
-          categoryIcon: action.categoryIcon
+          id: action.id,
+          description: action.description,
+          title: action.title,
+          icon: action.icon
         }
       ];
     case 'DELETE_CATEGORY' :
-      return store.filter(category => category.categoryId !== action.categoryId);
+      return store.filter(category => category.id !== action.id);
     default:
       return state;
   }
