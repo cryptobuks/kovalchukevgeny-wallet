@@ -50,6 +50,35 @@ class Helpers {
     return transactions;
   }
 
+  sumSameCategoryTransactions(date) {
+    let obj = {};
+    for(let i = 0; i < date.length; i++) {
+      // Create key string for transaction data
+      let key = date[i].category;
+      /*
+       * if object hasn't key add new,
+       * if key already exist summarize key value and transaction value
+      **/
+      obj[key] = !obj[key] ? +date[i].money : +obj[key] + +date[i].money;
+    }
+
+    let categories = [];
+
+    /*
+     * create array of objects from obj
+     * example:
+     * [{money: 20, category: home}, {money: 10, category: food}]
+    **/
+    for (let prop in obj) {
+      categories.push({
+        money: obj[prop],
+        category: prop
+      });
+    }
+
+    return categories;
+  }
+
   // XMLHttpRequest wrapper using callbacks
   request(obj) {
     return new Promise((resolve, reject) => {

@@ -1,6 +1,10 @@
 export default {
   "eng" : {
     "menu" : ["Home", "Transactions", "Categories", "Report"],
+    "categories-stats" : {
+      "head" : "Categories statistic",
+      "tableHead" : ["Category", "Percentage", "Amount"]
+    },
     "currency-rate" : {
       "head" : "Currency courses",
       "smDescr" : "Currency",
@@ -57,6 +61,10 @@ export default {
   },
   "rus" : {
     "menu" : ["Домашняя", "Транзакции", "Категории", "Отчёт"],
+    "categories-stats" : {
+      "head" : "Статистика по категориям",
+      "tableHead" : ["Категория", "Процентное соотношение", "Итог"]
+    },
     "currency-rate" : {
       "head" : "Курс доллара",
       "smDescr" : "Валюта",

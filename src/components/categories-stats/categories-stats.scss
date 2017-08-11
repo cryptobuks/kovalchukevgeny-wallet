@@ -1,0 +1,57 @@
+.categories-stats {
+
+  .panel-body {
+    padding-top: 0;
+  }
+
+  .table-head {
+
+    .table-data {
+      border-bottom: none;
+    }
+  }
+
+  .table-body {
+
+    .table-data {
+      padding: 10px;
+
+      .amount {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .table-data {
+    &:first-child {
+      width: 35%;
+    }
+
+    &:nth-child(2) {
+      width: 50%;
+    }
+
+    &:last-child {
+      width: 15%;
+      text-align: right;
+    }
+
+    .percentages {
+      margin-right: 5px;
+    }
+  }
+
+  .progress {
+    height: 10px;
+    margin-bottom: 6px;
+    margin-top: 7px;
+
+    .progress-bar {
+      background-color: $accentColor;
+
+      &:last-child:before {
+        background-color: lighten($accentColor, 50);
+      }
+    }
+  }
+}
