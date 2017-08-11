@@ -37,7 +37,7 @@ class MonthCourse extends Component {
 
   saveCourse(date, currentCourse) {
     const { addMonthCourse } = this.props;
-    addMonthCourse(date.format('YYYY-MM'), currentCourse);
+    addMonthCourse(date, currentCourse);
     this.setState({
       date: moment(),
       currentCourse: 0.1
@@ -53,7 +53,7 @@ class MonthCourse extends Component {
     }
 
     course = course.filter(courseItem => {
-      return courseItem.date === moment().format('YYYY-MM');
+      return moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM');
     })[0];
 
     course = course ? course.course : 1;
