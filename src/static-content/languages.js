@@ -56,6 +56,7 @@ export default {
     "categories" : {
       "head" : "categories"
     },
+    "csvTableHead": "Date, Money, Description, Category\n",
     "currency" :  "RUB",
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
@@ -116,6 +117,7 @@ export default {
     "categories" : {
       "head" : "Категории"
     },
+    "csvTableHead": "Дата, Сумма, Описание, Категория\n",
     "currency" :  "руб.",
     "months" : ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
   }

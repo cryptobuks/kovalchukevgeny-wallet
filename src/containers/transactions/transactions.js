@@ -43,12 +43,13 @@ class Transactions extends Component {
   }
 
   convertToCSV(objArray) {
+    const { lang } = this.props;
     objArray = objArray.map(item => {
       item.date = moment(item.date).format('DD/MM/YYYY');
       return item;
     });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-    let str = '';
+    let str = staticContent[lang]['csvTableHead']; // table head
     // TODO: Rewrite to forEach or map
     for (let i = 0; i < array.length; i++) {
       let line = '';
