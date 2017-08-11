@@ -71,6 +71,7 @@ class MonthCourse extends Component {
               <DatePicker
                 locale="en-gb"
                 className="form-control"
+                maxDate={moment()}
                 selected={date}
                 onChange={this.handleChangeData}
               />

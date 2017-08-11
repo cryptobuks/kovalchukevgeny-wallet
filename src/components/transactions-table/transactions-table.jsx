@@ -137,6 +137,7 @@ class TransactionsTable extends Component {
               <DatePicker
                 locale="en-gb"
                 className="form-control"
+                maxDate={moment()}
                 selected={moment(transaction.date)}
                 onChange={this.handleChangeData}
               />

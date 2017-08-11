@@ -117,6 +117,7 @@ class AddingPanel extends PureComponent {
                 <DatePicker
                   locale="en-gb"
                   className="form-control"
+                  maxDate={moment()}
                   selected={date}
                   onChange={this.handleChangeData}
                 />
