@@ -14,33 +14,31 @@ const Home = (props) => {
     <div className="widgets">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-7">
+          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
             <CurrencyRate
               lang={lang}
               course={course}
             />
           </div>
-          <div className="col-lg-6 col-md-7">
+          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
             <TransactionsGraph
               transactions={transactions}
               lang={lang}
             />
           </div>
-          <div className="col-lg-6 col-md-7">
+          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
             <CategoriesStats
               transactions={transactions}
               categories={categories}
               lang={lang}
             />
           </div>
-          <div className="col-lg-6 col-md-6">
+          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
             <TransactionsResults
               transactions={transactions}
               lang={lang}
               course={course}
             />
-          </div>
-          <div className="col-lg-6 col-md-6">
             <MonthCourse
               lang={lang}
             />
