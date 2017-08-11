@@ -15,6 +15,7 @@ const Home = (props) => {
           <div className="col-lg-6 col-md-6">
             <CurrencyRate
               lang={lang}
+              course={course}
             />
           </div>
           <div className="col-lg-6 col-md-7">

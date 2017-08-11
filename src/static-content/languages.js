@@ -3,9 +3,8 @@ export default {
     "menu" : ["Home", "Transactions", "Categories", "Report"],
     "currency-rate" : {
       "head" : "Currency courses",
-      "currency" : "Currency",
-      "dayOne" : "Yesterday",
-      "dayTwo" : "Today"
+      "smDescr" : "Currency",
+      "bigDescr" : "This graphic shows a time-series of currency"
     },
     "transactions-graph" : {
       "head" : "Graph",
@@ -59,10 +58,9 @@ export default {
   "rus" : {
     "menu" : ["Домашняя", "Транзакции", "Категории", "Отчёт"],
     "currency-rate" : {
-      "head" : "Курсы валют",
-      "currency" : "Валюта",
-      "dayOne" : "Вчера",
-      "dayTwo" : "Сегодня"
+      "head" : "Курс доллара",
+      "smDescr" : "Валюта",
+      "bigDescr" : "На этом графике показан временной ряд курсов по месяцам"
     },
     "transactions-graph" : {
       "head" : "График транзакций",

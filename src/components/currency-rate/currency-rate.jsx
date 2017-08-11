@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import MetricsGraphics from 'react-metrics-graphics';
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 import Helpers from './../../helpers/Helpers';
@@ -11,98 +12,24 @@ class CurrencyRate extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currencies: []
-    }
-
     this.Helpers = new Helpers();
-
-    this.dataNormalize = this.dataNormalize.bind(this);
+    this.getMaxValue = this.getMaxValue.bind(this);
   }
 
-  dataNormalize(data, prevRes) {
-    let currencies = prevRes;
-
-    currencies = currencies.map(currency => {
-      for(let i = 0; i < data.length; i++) {
-        if(currency.Cur_ID === data[i].Cur_ID) {
-          currency.Cur_OfficialRateYest = data[i].Cur_OfficialRate
-        }
-      }
-      return currency;
-    });
-
-    return currencies;
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state !== nextState || this.props !== nextProps;
-  }
-
-  componentDidMount() {
-    const { request, formatDateCurr } = this.Helpers;
-
-    const today = formatDateCurr(moment());
-    const yesterday = formatDateCurr(moment(), 'yest');
-
-    let res = [];
-
-    request({url: `http://www.nbrb.by/API/ExRates/Rates?onDate=${today}&Periodicity=0`})
-    .then(data => {
-        let currencies = JSON.parse(data);
-        res = currencies.filter(currency => {
-          return currency.Cur_ID === 145 || currency.Cur_ID === 292 || currency.Cur_ID === 298;
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
-
-    request({url: `http://www.nbrb.by/API/ExRates/Rates?onDate=${yesterday}&Periodicity=0`})
-    .then(data => {
-        let currencies = JSON.parse(data);
-        currencies = currencies.filter(currency => {
-          return currency.Cur_ID === 145 || currency.Cur_ID === 292 || currency.Cur_ID === 298;
-        });
-        this.setState({
-          currencies: this.dataNormalize(currencies, res)
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
+  getMaxValue(array) {
+    if(array && array.length > 0) {
+      return Math.max.apply(Math,array.map(function(currentCourse){return currentCourse.course;}));
+    } else {
+        return 0;
+    }
   }
 
   render() {
-    let { currencies } = this.state;
-    const { lang } = this.props;
+    let { lang, course } = this.props;
 
-    currencies = currencies.map((currency, i) => {
-      // Add icon for currency
-      let iconCurr = '';
-      switch(currency.Cur_ID) {
-        case 145 : iconCurr = 'fa-usd'; break;
-        case 292 : iconCurr = 'fa-eur'; break;
-        default: iconCurr = 'fa-rub'; break;
-      }
-      // Add icon for currency arrow
-      let iconArrow = '';
-      iconArrow = currency.Cur_OfficialRate > currency.Cur_OfficialRateYest ?
-      'fa-long-arrow-up' : 'fa-long-arrow-down';
-
-      return(
-        <tr key={i}>
-          <td className="curr">
-            <span>{currency.Cur_Abbreviation}</span>
-            ({currency.Cur_Scale}<Icon type={'fa'} icon={iconCurr}/>)
-          </td>
-          <td>{currency.Cur_OfficialRateYest.toFixed(4)}</td>
-          <td className="today">
-            {currency.Cur_OfficialRate.toFixed(4)}
-            <Icon type={'fa'} icon={iconArrow} />
-          </td>
-        </tr>
-      );
+    course = course.map(currentCourse => {
+      currentCourse.date = new Date(moment(currentCourse.date).format('YYYY-MM-DD'));
+      return currentCourse;
     });
 
     return (
@@ -110,25 +37,26 @@ class CurrencyRate extends Component {
         specialClass="panel-success currency"
         heading={staticContent[lang]['currency-rate'].head}
       >
-        <table className="table table-striped table-hover ">
-          <thead>
-            <tr>
-              <th>{staticContent[lang]['currency-rate'].currency}</th>
-              <th>{staticContent[lang]['currency-rate'].dayOne}</th>
-              <th>{staticContent[lang]['currency-rate'].dayTwo}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currencies}
-          </tbody>
-        </table>
+        <MetricsGraphics
+          title={staticContent[lang]['currency-rate'].smDescr}
+          description={staticContent[lang]['currency-rate'].bigDescr}
+          min_y_from_data
+          data={course}
+          height={250}
+          width={535}
+          max_y={this.getMaxValue(course)}
+          y_axis={false}
+          x_accessor="date"
+          y_accessor="course"
+        />
       </Panel>
     );
   }
 }
 
 CurrencyRate.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  course: PropTypes.array
 };
 
 export default CurrencyRate;
