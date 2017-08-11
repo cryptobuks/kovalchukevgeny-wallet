@@ -1,14 +1,16 @@
+import moment from 'moment';
+
 class Helpers {
-  sumSameDateTransactions(date) {
+  sumSameDateTransactions(data) {
     let obj = {};
-    for(let i = 0; i < date.length; i++) {
+    for(let i = 0; i < data.length; i++) {
       // Create key string for transaction data
-      let key = this.formatDate(date[i].date, 'dash');
+      let key = moment(data[i].date).format('YYYY-MM-DD');
       /*
        * if object hasn't key add new,
        * if key already exist summarize key value and transaction value
       **/
-      obj[key] = !obj[key] ? +date[i].money : +obj[key] + +date[i].money;
+      obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
     let transaction = {}; let transactions = [];
@@ -21,7 +23,7 @@ class Helpers {
     for (let prop in obj) {
       transactions.push({
         money: obj[prop],
-        date: new Date(this.formatDate(prop, 'dash'))
+        date: new Date(moment(prop).format('YYYY-MM-DD'))
       });
     }
 
@@ -30,23 +32,13 @@ class Helpers {
 
   sumSameCategoryTransactions(date) {
     let obj = {};
+    let categories = [];
+
     for(let i = 0; i < date.length; i++) {
-      // Create key string for transaction data
       let key = date[i].category;
-      /*
-       * if object hasn't key add new,
-       * if key already exist summarize key value and transaction value
-      **/
       obj[key] = !obj[key] ? +date[i].money : +obj[key] + +date[i].money;
     }
 
-    let categories = [];
-
-    /*
-     * create array of objects from obj
-     * example:
-     * [{money: 20, category: home}, {money: 10, category: food}]
-    **/
     for (let prop in obj) {
       categories.push({
         money: obj[prop],
