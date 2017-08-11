@@ -47,7 +47,7 @@ class Reports extends Component {
         <div className="table-row clearfix" key={i} data-row={transaction.id}>
           <div className="table-data clearfix">{date}</div>
           <div className="table-data clearfix">{transaction.money}</div>
-          <div className="table-data clearfix">{transaction.description}</div>
+          <div className="table-data clearfix" title={transaction.description}>{transaction.description}</div>
           <div className="table-data clearfix">{transaction.category}</div>
         </div>
       );
@@ -72,8 +72,6 @@ class Reports extends Component {
           return sum += transaction.money;
         }, 0);
       }
-
-
 
       if(unicTransactions[0]) {
         monthCourse = course.filter(courseItem => {

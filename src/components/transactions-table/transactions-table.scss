@@ -35,6 +35,9 @@
     position: relative;
 
     .table-data {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       &:nth-last-child(2) {
         padding-right: 75px;

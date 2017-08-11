@@ -160,7 +160,7 @@ class TransactionsTable extends Component {
           {/* Description column */}
           <div className="table-data clearfix">
             {!transaction.isEdit ?
-              <span>{transaction.description}</span> :
+              <span title={transaction.description}>{transaction.description}</span> :
               <Input
                 placeholder={staticContent[lang]['adding-panel'].descr}
                 value={this.state.isEditRow.description}
