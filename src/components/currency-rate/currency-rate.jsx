@@ -32,27 +32,27 @@ class CurrencyRate extends Component {
     });
 
     return (
-      <Panel
-        specialClass="panel-success currency"
-        heading={staticContent[lang]['currency-rate'].head}
-      >
-        <div>
-          {course.length > 0 &&
-            <MetricsGraphics
-              title={staticContent[lang]['currency-rate'].smDescr}
-              description={staticContent[lang]['currency-rate'].bigDescr}
-              min_y_from_data
-              data={course}
-              height={250}
-              width={535}
-              max_y={this.getMaxValue(course)}
-              y_axis={false}
-              x_accessor="date"
-              y_accessor="course"
-            />
-          }
-        </div>
-      </Panel>
+      <div>
+        {course.length > 0 &&
+        <Panel
+          specialClass="panel-success currency"
+          heading={staticContent[lang]['currency-rate'].head}
+        >
+          <MetricsGraphics
+            title={staticContent[lang]['currency-rate'].smDescr}
+            description={staticContent[lang]['currency-rate'].bigDescr}
+            min_y_from_data
+            data={course}
+            height={250}
+            width={535}
+            max_y={this.getMaxValue(course)}
+            y_axis={false}
+            x_accessor="date"
+            y_accessor="course"
+          />
+        </Panel>
+      }
+      </div>
     );
   }
 }

@@ -67,21 +67,25 @@ class CategoriesStats extends Component {
     });
 
     return (
-      <Panel
-        specialClass="panel-success categories-stats"
-        heading={staticContent[lang]['categories-stats'].head}
-      >
-        <div className="table">
-          <div className="table-head clearfix">
-            <div className="table-row clearfix">
-              {tableHead}
+      <div>
+        {categories.length > 0 &&
+          <Panel
+            specialClass="panel-success categories-stats"
+            heading={staticContent[lang]['categories-stats'].head}
+          >
+            <div className="table">
+              <div className="table-head clearfix">
+                <div className="table-row clearfix">
+                  {tableHead}
+                </div>
+              </div>
+              <div className="table-body clearfix">
+                {tableDate}
+              </div>
             </div>
-          </div>
-          <div className="table-body clearfix">
-            {tableDate}
-          </div>
-        </div>
-      </Panel>
+          </Panel>
+        }
+      </div>
     );
   }
 }
