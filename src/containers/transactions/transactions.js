@@ -64,8 +64,13 @@ class Transactions extends Component {
   }
 
   download(format, event) {
-    let contents = format === 'json' ? JSON.stringify(this.state.transactions) :
-    this.convertToCSV(this.state.transactions);
+    let { transactions } = this.props;
+    // Filter transactions on current month
+    const monthTransactions = transactions.filter(transaction => {
+      return moment().month() === moment(transaction.date).month();
+    });
+    let contents = format === 'json' ? JSON.stringify(monthTransactions) :
+    this.convertToCSV(monthTransactions);
     const URL = window.URL || window.webkitURL;
     const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
     event.target.href = URL.createObjectURL(blob);
