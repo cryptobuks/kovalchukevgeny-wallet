@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import classNames from 'classnames';
+
 import Icon from './../icon/icon.jsx';
 import Button from './../button/button.jsx';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
 import moment from 'moment';
-import Helpers from './../../helpers/Helpers.js';
+
 import Icon from './../icon/icon.jsx';
 import Input from './../input/input.jsx';
 
@@ -12,8 +12,6 @@ import staticContent from './../../static-content/languages';
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
-
-    this.Helpers = new Helpers();
 
     this.state = {
       activeRow: {},
@@ -120,7 +118,6 @@ class TransactionsTable extends Component {
     });
 
     const tableData = transactions.map((transaction, i) => {
-      const date = this.Helpers.formatDate(transaction.date);
 
       const categoryIconObj = categories.filter(category => {
         if(category.categoryTitle === transaction.category) {
@@ -136,7 +133,7 @@ class TransactionsTable extends Component {
           {/* Data column */}
           <div className="table-data clearfix">
             {!transaction.isEdit ?
-              <span>{date}</span> :
+              <span>{moment(transaction.date).format('DD/MM/YYYY')}</span> :
               <DatePicker
                 locale="en-gb"
                 className="form-control"

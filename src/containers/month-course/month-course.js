@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import Helpers from './../../helpers/Helpers';
+
 import Button from './../../components/button/button.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
+
 import { addMonthCourse } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
@@ -14,8 +15,6 @@ import staticContent from './../../static-content/languages';
 class MonthCourse extends Component {
   constructor(props) {
     super(props);
-
-    this.Helpers = new Helpers();
 
     this.state = {
       date: moment(),

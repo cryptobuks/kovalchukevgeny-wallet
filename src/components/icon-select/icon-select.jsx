@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import enhanceWithClickOutside from 'react-click-outside';
+
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 

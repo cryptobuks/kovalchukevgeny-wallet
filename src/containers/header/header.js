@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import classNames from 'classnames';
+
 import Icon from './../../components/icon/icon.jsx';
 import Navbar from './../../components/navbar/navbar.jsx';
 import Button from './../../components/button/button.jsx';
+
 import { changeLang } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';

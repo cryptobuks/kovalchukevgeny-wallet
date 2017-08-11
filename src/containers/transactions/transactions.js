@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import moment from 'moment';
+
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
+
 import Helpers from './../../helpers/Helpers';
+
 import { deleteTransaction, changeTransaction, addTransaction } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
@@ -40,10 +43,8 @@ class Transactions extends Component {
   }
 
   convertToCSV(objArray) {
-    const { formatDate } = this.Helpers;
-    // To format date to 20/7/2017
     objArray = objArray.map(item => {
-      item.date = formatDate(item.date);
+      item.date = moment(item.date).format('DD/MM/YYYY');
       return item;
     });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;

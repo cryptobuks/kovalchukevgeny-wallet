@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 import Helpers from './../../helpers/Helpers';
@@ -48,7 +49,13 @@ class CategoriesStats extends Component {
           <div className="table-data clearfix">
             <span className="percentages left">{categoryPercentage.toFixed(0)}%</span>
             <div className="progress">
-              <div className="progress-bar" role="progressbar" style={{width: categoryPercentage +'%'}} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+              <div
+                className="progress-bar"
+                role="progressbar"
+                style={{width: categoryPercentage +'%'}}
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
           </div>
           <div className="table-data">

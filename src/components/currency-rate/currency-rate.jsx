@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import MetricsGraphics from 'react-metrics-graphics';
+
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
-import Helpers from './../../helpers/Helpers';
 
 import staticContent from './../../static-content/languages';
 
@@ -12,7 +12,6 @@ class CurrencyRate extends Component {
   constructor(props) {
     super(props);
 
-    this.Helpers = new Helpers();
     this.getMaxValue = this.getMaxValue.bind(this);
   }
 

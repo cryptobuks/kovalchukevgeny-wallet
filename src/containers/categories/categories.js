@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
+
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
+
 import iconsArray from './../../components/icon-select/icons.js';
 
 import staticContent from './../../static-content/languages';

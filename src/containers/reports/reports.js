@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import moment from 'moment';
+
 import Helpers from './../../helpers/Helpers';
+
 import Icon from './../../components/icon/icon.jsx';
 
 import staticContent from './../../static-content/languages';
@@ -41,11 +43,9 @@ class Reports extends Component {
 
   renderMonthTable(transactions) {
     return transactions.map((transaction, i) => {
-      const date = this.Helpers.formatDate(transaction.date);
-
       return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}>
-          <div className="table-data clearfix">{date}</div>
+          <div className="table-data clearfix">{moment(transaction.date).format('DD/MM/YYYY')}</div>
           <div className="table-data clearfix">{transaction.money}</div>
           <div className="table-data clearfix" title={transaction.description}>{transaction.description}</div>
           <div className="table-data clearfix">{transaction.category}</div>

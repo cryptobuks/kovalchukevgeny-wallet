@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import MetricsGraphics from 'react-metrics-graphics';
+
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 
