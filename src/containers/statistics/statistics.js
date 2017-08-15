@@ -8,7 +8,7 @@ import TransactionsResults from './../../components/transactions-results/transac
 import CategoriesStats from './../../components/categories-stats/categories-stats.jsx';
 import MonthCourse from './../month-course/month-course';
 
-const Home = (props) => {
+const Statistics = (props) => {
   const { transactions, lang, course, categories } = props;
   return (
     <div className="widgets">
@@ -49,7 +49,7 @@ const Home = (props) => {
   );
 };
 
-Home.propTypes = {
+Statistics.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,
   lang: PropTypes.string,
@@ -61,4 +61,4 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course
-}))(Home);
+}))(Statistics);

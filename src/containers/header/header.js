@@ -20,24 +20,24 @@ const Header = props => {
       <Navbar>
         <ul className="nav navbar-nav navbar-left">
           <li>
-            <Link activeClassName="active" to="home">
-              <Icon type={'material'} icon={'home'} />
+            <Link activeClassName="active" to="transactions">
+              <Icon type={'material'} icon={'account_balance_wallet'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][0]}
               </span>
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="transactions">
-              <Icon type={'material'} icon={'account_balance_wallet'} />
+            <Link activeClassName="active" to="categories">
+              <Icon type={'material'} icon={'assignment_turned_in'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][1]}
               </span>
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="categories">
-              <Icon type={'material'} icon={'assignment_turned_in'} />
+            <Link activeClassName="active" to="statistics">
+              <Icon type={'material'} icon={'home'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][2]}
               </span>

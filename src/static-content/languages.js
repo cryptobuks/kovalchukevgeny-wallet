@@ -1,6 +1,6 @@
 export default {
   "eng" : {
-    "menu" : ["Home", "Transactions", "Categories", "Report"],
+    "menu" : ["Transactions", "Categories", "Statistics", "Report"],
     "categories-stats" : {
       "head" : "Categories statistic",
       "tableHead" : ["Category", "Percentage", "Amount"]
@@ -61,7 +61,7 @@ export default {
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
   "rus" : {
-    "menu" : ["Домашняя", "Транзакции", "Категории", "Отчёт"],
+    "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт"],
     "categories-stats" : {
       "head" : "Статистика по категориям",
       "tableHead" : ["Категория", "Процентное соотношение", "Итог"]
