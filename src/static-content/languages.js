@@ -56,6 +56,10 @@ export default {
     "categories" : {
       "head" : "categories"
     },
+    "error-page" : {
+      "h2" : "Page not found",
+      "link" : "Back on the main page"
+    },
     "csvTableHead": "Date, Money, Description, Category\n",
     "currency" :  "RUB",
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -116,6 +120,10 @@ export default {
     },
     "categories" : {
       "head" : "Категории"
+    },
+    "error-page" : {
+      "h2" : "Страница не найдена",
+      "link" : "Вернуться на главную"
     },
     "csvTableHead": "Дата, Сумма, Описание, Категория\n",
     "currency" :  "руб.",
