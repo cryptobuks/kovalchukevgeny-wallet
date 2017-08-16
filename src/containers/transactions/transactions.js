@@ -8,6 +8,7 @@ import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
+import Icon from './../../components/icon/icon.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -160,12 +161,18 @@ class Transactions extends Component {
                     onClickFunction={this.download.bind(this, 'json')}
                     specialClass="btn btn-primary"
                     href="data.json"
-                  >{staticContent[lang]['transactions-table'].btnJson}</Button>
+                  >
+                    <Icon icon={'get_app'} />
+                    {staticContent[lang]['transactions-table'].btnJson}
+                  </Button>
                   <Button
                     onClickFunction={this.download.bind(this, 'csv')}
                     specialClass="btn btn-primary"
                     href="data.csv"
-                  >{staticContent[lang]['transactions-table'].btnCsv}</Button>
+                  >
+                    <Icon icon={'get_app'} />
+                    {staticContent[lang]['transactions-table'].btnCsv}
+                  </Button>
                 </div>
               }
               </div>

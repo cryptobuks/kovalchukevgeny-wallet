@@ -21,7 +21,7 @@ const Header = props => {
         <ul className="nav navbar-nav navbar-left">
           <li>
             <Link activeClassName="active" to="transactions">
-              <Icon type={'material'} icon={'account_balance_wallet'} />
+              <Icon icon={'account_balance_wallet'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][0]}
               </span>
@@ -29,7 +29,7 @@ const Header = props => {
           </li>
           <li>
             <Link activeClassName="active" to="categories">
-              <Icon type={'material'} icon={'assignment_turned_in'} />
+              <Icon icon={'assignment_turned_in'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][1]}
               </span>
@@ -37,7 +37,7 @@ const Header = props => {
           </li>
           <li>
             <Link activeClassName="active" to="statistics">
-              <Icon type={'material'} icon={'home'} />
+              <Icon icon={'timeline'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][2]}
               </span>
@@ -45,7 +45,7 @@ const Header = props => {
           </li>
           <li>
             <Link activeClassName="active" to="reports">
-              <Icon type={'material'} icon={'work'} />
+              <Icon icon={'work'} />
               <span className="navigation__item">
                 {staticContent[lang]['menu'][3]}
               </span>

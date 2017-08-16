@@ -228,12 +228,16 @@ class Reports extends Component {
                 onClickFunction={this.download.bind(this, 'json')}
                 specialClass="btn btn-primary"
                 href="report.json"
-              >{staticContent[lang]['reports'].btnJson}</Button>
+              >
+                <Icon icon={'get_app'} />
+                {staticContent[lang]['reports'].btnJson}</Button>
               <Button
                 onClickFunction={this.download.bind(this, 'csv')}
                 specialClass="btn btn-primary"
                 href="report.csv"
-              >{staticContent[lang]['reports'].btnCsv}</Button>
+              >
+                <Icon icon={'get_app'} />
+                {staticContent[lang]['reports'].btnCsv}</Button>
             </div>
           }
           </div>
