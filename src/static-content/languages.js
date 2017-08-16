@@ -50,7 +50,10 @@ export default {
     "reports" : {
       "amountMonth" : "Amount Month",
       "amountDay" : "Amount Day",
-      "monthCourse" : "Month Course"
+      "monthCourse" : "Month Course",
+      "btnJson" : "Export JSON",
+      "btnCsv" : "Export CSV",
+      "tableHead" : ["Date", "Money", "Description", "Category"]
     },
     "month-course" : {
       "head" : "Mount Course",
@@ -118,7 +121,10 @@ export default {
     "reports" : {
       "amountMonth" : "Потрачено за месяц",
       "amountDay" : "Средняя трата в день",
-      "monthCourse" : "Курс на месяц"
+      "monthCourse" : "Курс на месяц",
+      "btnJson" : "Экспортировать JSON",
+      "btnCsv" : "Экспортировать CSV",
+      "tableHead" : ["Дата", "Сумма", "Описание", "Категория"]
     },
     "month-course" : {
       "head" : "Курс на месяц",

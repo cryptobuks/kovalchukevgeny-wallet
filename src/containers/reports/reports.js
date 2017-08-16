@@ -8,6 +8,7 @@ import Helpers from './../../helpers/Helpers';
 
 import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
+import Button from './../../components/button/button.jsx';
 
 import { changeCategory } from './../../actions/actionCreators';
 
@@ -21,12 +22,45 @@ class Reports extends Component {
 
     this.Helpers = new Helpers();
 
+    this.convertToCSV = this.convertToCSV.bind(this);
     this.isCategoryActive = this.isCategoryActive.bind(this);
     this.reMapTransactions = this.reMapTransactions.bind(this);
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
     this.filteredTransactions = this.filteredTransactions.bind(this);
+  }
+
+  convertToCSV(objArray) {
+    const { lang } = this.props;
+    objArray = objArray.map(item => {
+      item.date = moment(item.date).format('DD/MM/YYYY');
+      return item;
+    });
+    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    let str = staticContent[lang]['csvTableHead']; // table head
+    // TODO: Rewrite to forEach or map
+    for (let i = 0; i < array.length; i++) {
+      let line = '';
+      for (let index in array[i]) {
+        if(index !== 'id') { // ignore ids in final table
+          if (line != '') line += ',';
+          line += array[i][index];
+        }
+      }
+      str += line + '\r\n';
+    }
+    return str;
+  }
+
+  download(format, event) {
+    let { transactions } = this.props;
+    let contents = format === 'json' ? JSON.stringify(transactions) :
+    this.convertToCSV(transactions);
+    const URL = window.URL || window.webkitURL;
+    const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
+    event.target.href = URL.createObjectURL(blob);
+    event.target.download = 'report.' + format;
   }
 
   isCategoryActive(category) {
@@ -109,10 +143,10 @@ class Reports extends Component {
 
       amountMonthCurrency = amountMonth / monthCourse.course;
 
-      const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
+      const tableHead = staticContent[lang]['reports']['tableHead'].map((headItem, i) => {
         return (
           <div key={i} className="table-data">
-            {staticContent[lang]['transactions-table']['tableHead'][i]}
+            {staticContent[lang]['reports']['tableHead'][i]}
           </div>
         );
       });
@@ -173,7 +207,7 @@ class Reports extends Component {
   }
 
   render() {
-    let { transactions, categories } = this.props;
+    let { transactions, categories, lang } = this.props;
 
     const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
     return (
@@ -184,6 +218,24 @@ class Reports extends Component {
         <div className="row">
           <div className="col-md-12">
             {this.renderMonthPanels(reMapedTransactions)}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-md-6 col-sm-6">
+          {transactions.length > 0 &&
+            <div className="toolbar">
+              <Button
+                onClickFunction={this.download.bind(this, 'json')}
+                specialClass="btn btn-primary"
+                href="report.json"
+              >{staticContent[lang]['reports'].btnJson}</Button>
+              <Button
+                onClickFunction={this.download.bind(this, 'csv')}
+                specialClass="btn btn-primary"
+                href="report.csv"
+              >{staticContent[lang]['reports'].btnCsv}</Button>
+            </div>
+          }
           </div>
         </div>
       </div>
