@@ -17,9 +17,21 @@ function categories(state = initialState.categories, action) {
           id: action.id,
           description: action.description,
           title: action.title,
-          icon: action.icon
+          icon: action.icon,
+          filter: action.filter
         }
       ];
+    case 'CHANGE_CATEGORY' :
+      store = store.map(category => {
+        if(category.id === action.id) {
+          category.description = action.description;
+          category.title = action.title;
+          category.icon = action.icon;
+          category.filter = action.filter;
+        }
+        return category;
+      });
+      return store;
     case 'DELETE_CATEGORY' :
       return store.filter(category => category.id !== action.id);
     default:

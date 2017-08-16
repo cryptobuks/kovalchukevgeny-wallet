@@ -23,6 +23,7 @@ class Categories extends Component {
     this.state = {
       description: '',
       title: '',
+      filter: true,
       icon: 'fa-car' //default icon
     };
 
@@ -41,6 +42,7 @@ class Categories extends Component {
   clearCategory() {
     this.setState({
       description: '',
+      filter: true,
       title: ''
     });
   }
@@ -60,12 +62,13 @@ class Categories extends Component {
   }
 
   saveCategory() {
-    const { description, title, icon } = this.state;
+    const { description, title, icon, filter } = this.state;
     const { addCategory } = this.props;
     const id = (new Date()).getTime();
-    addCategory(id, description, title, icon);
+    addCategory(id, description, title, icon, filter);
     this.setState({
       description: '',
+      filter: true,
       title: ''
     });
   }

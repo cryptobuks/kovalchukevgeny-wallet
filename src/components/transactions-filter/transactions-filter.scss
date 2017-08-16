@@ -1,0 +1,34 @@
+.reports {
+
+  .filter {
+
+    .panel-body {
+      height: auto;
+      padding-bottom: 0;
+    }
+
+    .categories {
+
+      .category {
+        border: 1px solid #7F7B82;
+        cursor: pointer;
+        display: inline-flex;
+        margin: 0 10px 10px 0;
+        padding: 5px 10px 5px 5px;
+
+        &.active {
+          border-color: $accentColor;
+          color: $accentColor;
+        }
+
+        i {
+          margin-right: 5px
+        }
+
+        &-title {
+
+        }
+      }
+    }
+  }
+}

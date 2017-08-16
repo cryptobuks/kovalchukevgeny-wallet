@@ -30,6 +30,9 @@ export default {
       "bigDescr" : "Amount rubles spent during",
       "tableHead" : ["Date", "Money", "Description", "Category"]
     },
+    "transactions-filter" : {
+      "head" : "Filter"
+    },
     "adding-panel" : {
       "head" : "Add new transaction",
       "descr" : "Description",
@@ -94,6 +97,9 @@ export default {
       "btnCsv" : "Экспортировать CSV",
       "bigDescr" : "Сумма, потраченная в течение",
       "tableHead" : ["Дата", "Сумма", "Описание", "Категория"]
+    },
+    "transactions-filter" : {
+      "head" : "Фильтр транзакций"
     },
     "adding-panel" : {
       "head" : "Добавить новую транзакцию",

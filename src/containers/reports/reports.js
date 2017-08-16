@@ -7,6 +7,9 @@ import moment from 'moment';
 import Helpers from './../../helpers/Helpers';
 
 import Icon from './../../components/icon/icon.jsx';
+import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
+
+import { changeCategory } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -18,10 +21,19 @@ class Reports extends Component {
 
     this.Helpers = new Helpers();
 
+    this.isCategoryActive = this.isCategoryActive.bind(this);
     this.reMapTransactions = this.reMapTransactions.bind(this);
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
+    this.filteredTransactions = this.filteredTransactions.bind(this);
+  }
+
+  isCategoryActive(category) {
+    const { changeCategory } = this.props;
+    let { id, description, title, icon, filter } = category;
+    filter = !filter;
+    changeCategory(id, description, title, icon, filter);
   }
 
   openMonth(event) {
@@ -41,6 +53,20 @@ class Reports extends Component {
       }
     }
     return arrTrans;
+  }
+
+  filteredTransactions(transactions) {
+    const { categories } = this.props;
+    transactions = transactions.filter(transaction => {
+      for(let i = 0; i < categories.length; i++) {
+        if(transaction.category === categories[i].title) {
+          if(categories[i].filter === true) {
+            return transaction;
+          }
+        }
+      }
+    });
+    return transactions;
   }
 
   renderMonthTable(transactions) {
@@ -149,9 +175,12 @@ class Reports extends Component {
   render() {
     let { transactions, categories } = this.props;
 
-    const reMapedTransactions = this.reMapTransactions(transactions);
+    const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
+        <TransactionsFilter
+          isCategoryActive={this.isCategoryActive}
+        />
         <div className="row">
           <div className="col-md-12">
             {this.renderMonthPanels(reMapedTransactions)}
@@ -166,7 +195,8 @@ Reports.propTypes = {
   categories: PropTypes.array,
   transactions: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  course: PropTypes.array,
+  changeCategory: PropTypes.func
 };
 
 export default connect(state => ({
@@ -174,4 +204,4 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course
-}))(LoadingHOC('transactions')(Reports));
+}), { changeCategory })(LoadingHOC('transactions')(Reports));
