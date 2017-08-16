@@ -27,6 +27,10 @@ const Panel = props => {
   );
 }
 
+Panel.defaultProps = {
+  onClickFunction: () => {}
+};
+
 Panel.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
