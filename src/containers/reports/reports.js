@@ -10,6 +10,8 @@ import Icon from './../../components/icon/icon.jsx';
 
 import staticContent from './../../static-content/languages';
 
+import LoadingHOC from './../../HOC/loadingHOC.jsx';
+
 class Reports extends Component {
   constructor(props) {
     super(props);
@@ -172,4 +174,4 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course
-}))(Reports);
+}))(LoadingHOC('transactions')(Reports));

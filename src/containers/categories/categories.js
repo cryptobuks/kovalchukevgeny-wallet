@@ -14,6 +14,8 @@ import iconsArray from './../../components/icon-select/icons.js';
 
 import staticContent from './../../static-content/languages';
 
+import LoadingHOC from './../../HOC/loadingHOC.jsx';
+
 class Categories extends Component {
   constructor(props) {
     super(props);
@@ -172,4 +174,4 @@ Categories.propTypes = {
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang
-}), { addCategory, deleteCategory })(Categories);
+}), { addCategory, deleteCategory })(LoadingHOC('categories')(Categories));

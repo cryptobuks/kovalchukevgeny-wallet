@@ -9,6 +9,8 @@ import Input from './../input/input.jsx';
 
 import staticContent from './../../static-content/languages';
 
+import LoadingHOC from './../../HOC/loadingHOC.jsx';
+
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
@@ -238,4 +240,4 @@ TransactionsTable.propTypes = {
   lang: PropTypes.string
 };
 
-export default TransactionsTable;
+export default LoadingHOC('transactions')(TransactionsTable);

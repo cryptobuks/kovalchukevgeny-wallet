@@ -23,6 +23,8 @@
 @import "../containers/transactions/transactions";
 @import "../containers/reports/reports";
 @import "../containers/month-course/month-course";
+// HOC
+@import "../HOC/loadingHOC";
 
 // ---Sticky Footer---
 .App {
@@ -52,3 +54,7 @@
 // ---Float---
 .left { float: left; }
 .right { float: right; }
+
+.panel-body {
+  position: relative;
+}
