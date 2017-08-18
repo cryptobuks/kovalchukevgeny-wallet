@@ -98,7 +98,7 @@ export default {
       "head" : "Таблица транзакций",
       "btnJson" : "Экспортировать JSON",
       "btnCsv" : "Экспортировать CSV",
-      "bigDescr" : "Сумма, потраченная в течение",
+      "bigDescr" : "Сумма потраченная за",
       "tableHead" : ["Дата", "Сумма", "Описание", "Категория"]
     },
     "transactions-filter" : {

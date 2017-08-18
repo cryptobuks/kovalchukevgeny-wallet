@@ -31,6 +31,7 @@ class Transactions extends Component {
     this.convertToCSV = this.convertToCSV.bind(this);
     this.sortData = this.sortData.bind(this);
     this.sortSheme = this.sortSheme.bind(this);
+    this.spellingDay = this.spellingDay.bind(this);
   }
 
   componentWillMount() {
@@ -109,6 +110,19 @@ class Transactions extends Component {
     });
   }
 
+  spellingDay(date, lang) {
+    const declOfNum = (number, titles) => {
+      let cases = [2, 0, 1, 1, 1, 2];
+      return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+    }
+
+    if(lang === 'eng') {
+      return date === 1 ? 'day' : 'days'
+    } else {
+      return declOfNum(date, ['день', 'дня', 'дней']);
+    }
+  }
+
   render() {
     const { descending, sortby } = this.state;
     let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction } = this.props;
@@ -179,8 +193,9 @@ class Transactions extends Component {
               <div className="col-lg-6 col-md-6 col-sm-6 text-right amount-wrapper">
                 <h5 className="amount">
                   {staticContent[lang]['transactions-table'].bigDescr}
-                  <span>{unicTransactions.length}</span> days:
-                  <span>{amount.toFixed(2)}</span>
+                  <span>{unicTransactions.length} </span>
+                  {this.spellingDay(unicTransactions.length, lang)}:
+                  <span>{amount.toFixed(2)} </span>
                   {staticContent[lang]['currency']}
                 </h5>
               </div>
