@@ -17,11 +17,11 @@ class CategoriesStats extends Component {
 
   render() {
     let { lang, categories, transactions } = this.props;
-
+    // Get month transactions
     transactions = transactions.filter(transaction => {
       return moment(transaction.date).format('YYYY-MM') === moment().format('YYYY-MM');
     });
-
+    // Render table head
     const tableHead = staticContent[lang]['categories-stats']['tableHead'].map((headItem, i) => {
       headItem = headItem.toLowerCase();
       return (
@@ -30,17 +30,19 @@ class CategoriesStats extends Component {
         </div>
       );
     });
-
-    const categoriesStats = this.Helpers.sumSameCategoryTransactions(transactions);
-
+    // Sum money by category
+    let categoriesStats = this.Helpers.sumSameCategoryTransactions(transactions);
+    // Sort data by results of summarized money value
+    if(categoriesStats.length > 0) {
+      categoriesStats.sort((a, b) => b['money'] - a['money']);
+    }
+    // Get amount month money spended
     const amountCategoryMoney = categoriesStats.reduce((sum, currentCategoryStats) => {
       return sum += currentCategoryStats.money;
     }, 0);
-
-    const tableDate = categoriesStats.map((categoryStats, i) => {
-
+    // Render table data
+    const tableData = categoriesStats.map((categoryStats, i) => {
       const categoryPercentage = (categoryStats.money / amountCategoryMoney) * 100;
-
       return(
         <div className="table-row" key={i}>
           <div className="table-data">
@@ -80,7 +82,7 @@ class CategoriesStats extends Component {
                 </div>
               </div>
               <div className="table-body clearfix">
-                {tableDate}
+                {tableData}
               </div>
             </div>
           </Panel>
