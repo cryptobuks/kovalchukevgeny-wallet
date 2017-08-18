@@ -106,7 +106,7 @@ class TransactionsTable extends Component {
     });
 
     const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
-      headItem = headItem.toLowerCase();
+      headItem = staticContent['eng']['transactions-table']['tableHead'][i].toLowerCase();
       return (
         <div className="table-data" key={i} data-cell={headItem}>
           <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span> {/* ignore id */}
