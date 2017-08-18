@@ -60,8 +60,8 @@ class TransactionsTable extends Component {
   }
 
   updateTransaction(isEditRow) {
-    const { id, date, money, description, category } = this.state.isEditRow;
-    this.props.changeTransaction(id, date, money, description, category);
+    let { id, date, money, description, category } = this.state.isEditRow;
+    this.props.changeTransaction(id, date, +money, description, category);
     this.setState({
       isEditRow: false,
       activeRow: false
