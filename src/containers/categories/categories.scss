@@ -35,6 +35,12 @@
     margin-bottom: 0;
     text-transform: uppercase;
   }
+
+  @media screen and (max-width:1200px) {
+    .text-right {
+      text-align: center !important;
+    }
+  }
 }
 
 .category {
