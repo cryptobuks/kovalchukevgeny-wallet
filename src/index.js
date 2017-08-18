@@ -1,5 +1,3 @@
-/*eslint-disable import/default */
-import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -12,6 +10,7 @@ import Transactions from './containers/transactions/transactions';
 import Reports from './containers/reports/reports';
 import ErrorPage from './components/error-page/error-page';
 
+import 'react-redux-toastr/src/styles/index.scss';
 import './styles/main.scss';
 
 import store from './store';
