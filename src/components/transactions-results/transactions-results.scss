@@ -8,10 +8,6 @@
       margin-bottom: 20px;
     }
 
-    h6 {
-      margin: 0;
-    }
-
     .dots {
       border-bottom: 1px dotted #000;
       flex: 1 0 0;
@@ -24,6 +20,31 @@
       .divider {
         margin: 0 5px;
       }
+    }
+  }
+
+  h6 {
+    margin: 0;
+  }
+
+  .table {
+    padding-top: 0;
+
+    .table-data {
+      width: 100%;
+    }
+  }
+
+  .second-level {
+    margin-bottom: 10px;
+  }
+
+  .biggest-transaction {
+    border: 1px solid #7F7B82;
+    padding: 10px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
     }
   }
 }

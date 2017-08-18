@@ -20,6 +20,9 @@ export default {
       "month" : "Month",
       "transactions" : "Transactions",
       "bigTrans" : "The biggest transaction",
+      "bigTransDay" : "Date",
+      "bigTransDescr" : "Description",
+      "bigTransAmount" : "Amount",
       "amountMonth" : "Amount Month",
       "amountDay" : "Amount Day"
     },
@@ -91,6 +94,9 @@ export default {
       "month" : "Месяц",
       "transactions" : "Кол-во транзакций",
       "bigTrans" : "Самая большая транзакция",
+      "bigTransDay" : "Дата",
+      "bigTransDescr" : "Описание",
+      "bigTransAmount" : "Сумма",
       "amountMonth" : "Потрачено за месяц",
       "amountDay" : "Средняя трата в день"
     },

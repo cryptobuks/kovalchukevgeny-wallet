@@ -15,6 +15,7 @@ class TransactionsResults extends Component {
 
     this.getCurrentMonth = this.getCurrentMonth.bind(this);
     this.getMaxValue = this.getMaxValue.bind(this);
+    this.renderBiggestTransaction = this.renderBiggestTransaction.bind(this);
   }
 
   getCurrentMonth() {
@@ -28,6 +29,41 @@ class TransactionsResults extends Component {
     } else {
         return 0;
     }
+  }
+
+  renderBiggestTransaction(transactions) {
+    const { lang } = this.props;
+    const biggestTransactionMoney = this.getMaxValue(transactions);
+
+    let biggestTransaction = transactions.filter(transaction => {
+      return transaction.money === biggestTransactionMoney;
+    });
+
+    return(
+      biggestTransaction.map((transaction, i) => {
+        return (
+          <div className="biggest-transaction" key={i}>
+            <div className="result-wrapper">
+              <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTransDay}</h6>
+              <div className="dots"></div>
+              <h6 className="result">{moment(transaction.date).format('DD/MM')}</h6>
+            </div>
+            <div className="result-wrapper">
+              <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTransDescr}</h6>
+              <div className="dots"></div>
+              <h6 className="result">{transaction.description}</h6>
+            </div>
+            <div className="result-wrapper">
+              <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTransAmount}</h6>
+              <div className="dots"></div>
+              <h6 className="result">
+                <span>{transaction.money.toFixed(2)} {staticContent[lang]['currency']}</span>
+              </h6>
+            </div>
+          </div>
+        );
+      })
+    );
   }
 
   render() {
@@ -70,38 +106,61 @@ class TransactionsResults extends Component {
         specialClass="panel-success results"
         heading={staticContent[lang]['transactions-results'].head}
       >
-        <div className="result-wrapper">
-          <h6 className="result-item">{staticContent[lang]['transactions-results'].month}</h6>
-          <div className="dots"></div>
-          <h6 className="result">{this.getCurrentMonth()}</h6>
-        </div>
-        <div className="result-wrapper">
-          <h6 className="result-item">{staticContent[lang]['transactions-results'].transactions}</h6>
-          <div className="dots"></div>
-          <h6 className="result">{monthTransactions.length}</h6>
-        </div>
-        <div className="result-wrapper">
-          <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTrans}</h6>
-          <div className="dots"></div>
-          <h6 className="result">{this.getMaxValue(monthTransactions)}</h6>
-        </div>
-        <div className="result-wrapper">
-          <h6 className="result-item">{staticContent[lang]['transactions-results'].amountMonth}</h6>
-          <div className="dots"></div>
-          <h6 className="result">
-            <span>{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</span>
-            <span className="divider">/</span>
-            <span>{amountMonthCurrency.toFixed(2)} $</span>
-          </h6>
-        </div>
-        <div className="result-wrapper">
-          <h6 className="result-item">{staticContent[lang]['transactions-results'].amountDay}</h6>
-          <div className="dots"></div>
-          <h6 className="result">
-            <span>{amountDay.toFixed(2)} {staticContent[lang]['currency']}</span>
-            <span className="divider">/</span>
-            <span>{amountDayCurrency.toFixed(2)} $</span>
-          </h6>
+        <div className="table">
+          <div className="table-body">
+            <div className="table-row">
+              <div className="table-data">
+                <div className="result-wrapper">
+                  <h6 className="result-item">{staticContent[lang]['transactions-results'].month}</h6>
+                  <div className="dots"></div>
+                  <h6 className="result">{this.getCurrentMonth()}</h6>
+                </div>
+              </div>
+            </div>
+            <div className="table-row">
+              <div className="table-data">
+                <div className="result-wrapper">
+                  <h6 className="result-item">{staticContent[lang]['transactions-results'].transactions}</h6>
+                  <div className="dots"></div>
+                  <h6 className="result">{monthTransactions.length}</h6>
+                </div>
+              </div>
+            </div>
+            <div className="table-row">
+              <div className="table-data">
+                <div className="result-wrapper">
+                  <h6 className="result-item">{staticContent[lang]['transactions-results'].amountMonth}</h6>
+                  <div className="dots"></div>
+                  <h6 className="result">
+                    <span>{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</span>
+                    <span className="divider">/</span>
+                    <span>{amountMonthCurrency.toFixed(2)} $</span>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div className="table-row">
+              <div className="table-data">
+                <div className="result-wrapper">
+                  <h6 className="result-item">{staticContent[lang]['transactions-results'].amountDay}</h6>
+                  <div className="dots"></div>
+                  <h6 className="result">
+                    <span>{amountDay.toFixed(2)} {staticContent[lang]['currency']}</span>
+                    <span className="divider">/</span>
+                    <span>{amountDayCurrency.toFixed(2)} $</span>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div className="table-row">
+              <div className="table-data">
+                <div className="second-level">
+                  <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTrans}:</h6>
+                </div>
+                <h6 className="result">{this.renderBiggestTransaction(monthTransactions)}</h6>
+              </div>
+            </div>
+          </div>
         </div>
       </Panel>
     );
