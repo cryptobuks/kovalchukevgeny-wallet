@@ -1,0 +1,30 @@
+.redux-toastr {
+
+  .toastr {
+
+    &.rrt-error {
+      background-color: $accentColor;
+    }
+
+    &.rrt-success {
+      background-color: $successColor;
+    }
+  }
+
+  .rrt-confirm-holder .shadow {
+      background-color: rgba(51, 55, 62, 0.8);
+  }
+
+  .rrt-confirm-holder .rrt-confirm .rrt-buttons-holder .rrt-button,
+  .rrt-confirm-holder .rrt-confirm .rrt-message {
+    text-transform: uppercase;
+  }
+
+  .rrt-confirm-holder .rrt-confirm .rrt-buttons-holder .rrt-button.rrt-cancel-btn:active {
+    background-color: $accentColor;
+  }
+
+  .rrt-confirm-holder .rrt-confirm .rrt-buttons-holder .rrt-button.rrt-ok-btn:active {
+    background-color: $successColor;
+  }
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { toastr } from 'react-redux-toastr';
 
 import Button from './../button/button.jsx';
 import Input from './../input/input.jsx';
@@ -70,15 +71,21 @@ class AddingPanel extends PureComponent {
 
   saveTransaction() {
     const { category, money, date, description } = this.state;
-    const { addTransaction } = this.props;
+    const { addTransaction, lang } = this.props;
     const id = Date.now();
-    addTransaction(id, date, +money, description, category);
-    this.setState({
-      category: this.setDefaultCategory(),
-      money: '',
-      date: moment(),
-      description: ''
-    });
+    if(+money === 0 || money === null || money === '' || money === undefined) {
+      toastr.error(staticContent[lang]['toastr'].smallTransValue, {timeOut: 4000});
+    } else if(description.length < 2) {
+      toastr.error(staticContent[lang]['toastr'].smallTransDescr, {timeOut: 4000});
+    } else {
+      addTransaction(id, date, +money, description, category);
+      this.setState({
+        category: this.setDefaultCategory(),
+        money: '',
+        date: moment(),
+        description: ''
+      });
+    }
   }
 
   render() {

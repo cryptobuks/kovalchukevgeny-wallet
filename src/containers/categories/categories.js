@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toastr } from 'react-redux-toastr';
 
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
@@ -48,9 +49,13 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
-    const { deleteCategory } = this.props;
+    const { deleteCategory, lang } = this.props;
     const id = +event.target.parentNode.getAttribute('data-id');
-    deleteCategory(id);
+    toastr.confirm(staticContent[lang]['toastr'].categoryRemove,
+      { onOk: () => {
+        deleteCategory(id);
+      }
+    });
   }
 
   handleChangeDescription(event) {
@@ -63,14 +68,19 @@ class Categories extends Component {
 
   saveCategory() {
     const { description, title, icon, filter } = this.state;
-    const { addCategory } = this.props;
+    const { addCategory, lang } = this.props;
     const id = (new Date()).getTime();
-    addCategory(id, description, title, icon, filter);
-    this.setState({
-      description: '',
-      filter: true,
-      title: ''
-    });
+    if(title.length < 2) {
+      toastr.error(staticContent[lang]['toastr'].smallCategoryName, {timeOut: 4000});
+    } else {
+      addCategory(id, description, title, icon, filter);
+      this.setState({
+        description: '',
+        filter: true,
+        title: ''
+      });
+      toastr.success(staticContent[lang]['toastr'].categoryAdd, {timeOut: 4000});
+    }
   }
 
   render() {
@@ -81,7 +91,7 @@ class Categories extends Component {
       return(
         <div key={i} className="category-card">
           <Panel specialClass="panel-default category">
-            <div data-id={category.categoryId}>
+            <div data-id={category.id}>
               <div className="categ-icon">
                 <Icon type="fa" icon={category.icon} />
               </div>

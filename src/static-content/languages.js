@@ -58,6 +58,15 @@ export default {
       "btnCsv" : "Export CSV",
       "tableHead" : ["Date", "Money", "Description", "Category"]
     },
+    "toastr" : {
+      "smallTransValue" : "Please enter transaction value",
+      "smallTransDescr" : "Very short transaction description",
+      "smallCategoryName": "Very short category name",
+      "categoryAdd" : "New category has been added",
+      "categoryRemove" : "Are you sure that you want to delete category?",
+      "transactionUpdated" : "Transaction successfully updated",
+      "transactionRemove" : "Are you sure that you want to delete transaction?"
+    },
     "month-course" : {
       "head" : "Mount Course",
       "btnSubmit" : "Submit"
@@ -131,6 +140,15 @@ export default {
       "btnJson" : "Экспортировать JSON",
       "btnCsv" : "Экспортировать CSV",
       "tableHead" : ["Дата", "Сумма", "Описание", "Категория"]
+    },
+    "toastr" : {
+      "smallTransValue" : "Пожалуйста, введите величину транзакции",
+      "smallTransDescr" : "Очень короткое описание транзакции",
+      "smallCategoryName": "Очень короткое имя для категории",
+      "categoryAdd" : "Новая категория успешно добавлена",
+      "categoryRemove" : "Вы уверены, что хотите удалить категорию?",
+      "transactionUpdated" : "Транзакция успешно обновлена",
+      "transactionRemove" : "Вы уверены, что хотите удалить транзакцию?"
     },
     "month-course" : {
       "head" : "Курс на месяц",

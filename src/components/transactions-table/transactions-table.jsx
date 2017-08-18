@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
 import moment from 'moment';
+import { toastr } from 'react-redux-toastr';
 
 import Icon from './../icon/icon.jsx';
 import Input from './../input/input.jsx';
@@ -29,10 +30,20 @@ class TransactionsTable extends Component {
     this.editTransaction = this.editTransaction.bind(this);
     this.updateTransaction = this.updateTransaction.bind(this);
     this.cancelChanges = this.cancelChanges.bind(this);
+    this.deleteTransaction = this.deleteTransaction.bind(this);
   }
 
   cancelChanges(isEditRow) {
     this.editTransaction(isEditRow);
+  }
+
+  deleteTransaction(id) {
+    const { deleteTransaction, lang } = this.props;
+    toastr.confirm(staticContent[lang]['toastr'].transactionRemove,
+      { onOk: () => {
+        deleteTransaction(id);
+      }
+    });
   }
 
   handleChangeCategory(event) {
@@ -60,12 +71,14 @@ class TransactionsTable extends Component {
   }
 
   updateTransaction(isEditRow) {
+    const { lang } = this.props;
     let { id, date, money, description, category } = this.state.isEditRow;
     this.props.changeTransaction(id, date, +money, description, category);
     this.setState({
       isEditRow: false,
       activeRow: false
     });
+    toastr.success(staticContent[lang]['toastr'].transactionUpdated, {timeOut: 4000});
   }
 
   openEditMenu(activeRow) {
@@ -95,7 +108,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, descending, sortby, categories, lang, deleteTransaction, sortFunction } = this.props;
+    let { transactions, descending, sortby, categories, lang, sortFunction } = this.props;
     const { activeRow, isEditRow } = this.state;
     const titles = staticContent[lang]['transactions-table'].tableHead;
 
@@ -193,7 +206,7 @@ class TransactionsTable extends Component {
                 type="fa"
               />
               <Icon
-                onClickFunction={() => deleteTransaction(transaction.id)}
+                onClickFunction={() => this.deleteTransaction(transaction.id)}
                 icon={'fa-close'}
                 type="fa"
               />

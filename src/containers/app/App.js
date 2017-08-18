@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReduxToastr from 'react-redux-toastr';
 
 import Header from './../header/header';
 import Footer from './../../components/footer/footer.jsx';
@@ -11,6 +12,13 @@ const App = props => {
   return (
     <div className="App">
       <Header />
+      <ReduxToastr
+        newestOnTop={false}
+        preventDuplicates
+        position="top-center"
+        transitionIn="fadeIn"
+        transitionOut="fadeOut"
+      />
       <div className="main">
         {children}
       </div>
