@@ -57,7 +57,7 @@ class AddingPanel extends PureComponent {
   }
 
   handleChangeMoney(event) {
-    this.setState({money: event.target.value});
+    this.setState({money: +event.target.value});
   }
 
   handleChangeTitle(event) {
@@ -78,7 +78,7 @@ class AddingPanel extends PureComponent {
     } else if(description !== '' && description.length < 2) {
       toastr.error(staticContent[lang]['toastr'].smallTransDescr, {timeOut: 4000});
     } else {
-      addTransaction(id, date, +money, description, category);
+      addTransaction(id, date, money, description, category);
       this.setState({
         category: this.setDefaultCategory(),
         money: '',

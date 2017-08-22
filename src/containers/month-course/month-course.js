@@ -18,7 +18,7 @@ class MonthCourse extends Component {
 
     this.state = {
       date: moment(),
-      currentCourse: 0.1
+      currentCourse: ''
     };
 
     this.handleChangeData = this.handleChangeData.bind(this);
@@ -39,17 +39,13 @@ class MonthCourse extends Component {
     addMonthCourse(date, currentCourse);
     this.setState({
       date: moment(),
-      currentCourse: 0.1
+      currentCourse: ''
     });
   }
 
   render() {
     let { lang, course } = this.props;
     let { currentCourse, date } = this.state;
-
-    if (currentCourse === 0 || currentCourse < 0) {
-      currentCourse = 1;
-    }
 
     course = course.filter(courseItem => {
       return moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM');
