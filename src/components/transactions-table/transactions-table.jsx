@@ -7,6 +7,7 @@ import { toastr } from 'react-redux-toastr';
 
 import Icon from './../icon/icon.jsx';
 import Input from './../input/input.jsx';
+import Button from './../button/button.jsx'
 
 import staticContent from './../../static-content/languages';
 
@@ -125,7 +126,7 @@ class TransactionsTable extends Component {
           <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span> {/* ignore id */}
           {sortby === headItem &&
           <span className="filter-arrow">
-            {descending ? <Icon icon={'arrow_downward'} /> : <Icon icon={'arrow_upward'} />}
+            {descending ? <Icon data-cell={headItem} icon={'arrow_downward'} /> : <Icon data-cell={headItem} icon={'arrow_upward'} />}
           </span>
           }
         </div>
@@ -200,28 +201,20 @@ class TransactionsTable extends Component {
           {/* Edit menu */}
           {!transaction.isEdit ?
             <div className={classNames('edit-menu', {active: transaction.active})}>
-              <Icon
-                onClickFunction={() => this.editTransaction(transaction)}
-                icon={'fa-pencil'}
-                type="fa"
-              />
-              <Icon
-                onClickFunction={() => this.deleteTransaction(transaction.id)}
-                icon={'fa-close'}
-                type="fa"
-              />
+              <Button specialClass="button-icon" onClickFunction={() => this.editTransaction(transaction)}>
+                <Icon icon={'fa-pencil'} type="fa" />
+              </Button>
+              <Button specialClass="button-icon" onClickFunction={() => this.deleteTransaction(transaction.id)}>
+                <Icon icon={'fa-close'} type="fa" />
+              </Button>
             </div> :
             <div className={classNames('change-menu', {active: transaction.isEdit})}>
-              <Icon
-                onClickFunction={() => this.updateTransaction(transaction)}
-                icon={'fa-check'}
-                type="fa"
-              />
-              <Icon
-                onClickFunction={() => this.cancelChanges(transaction)}
-                icon={'fa-close'}
-                type="fa"
-              />
+              <Button specialClass="button-icon" onClickFunction={() => this.updateTransaction(transaction)}>
+                <Icon icon={'fa-check'} type="fa" />
+              </Button>
+              <Button specialClass="button-icon" onClickFunction={() => this.cancelChanges(transaction)}>
+                <Icon icon={'fa-close'} type="fa" />
+              </Button>
             </div>
           }
         </div>

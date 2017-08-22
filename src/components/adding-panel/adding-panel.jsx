@@ -75,7 +75,7 @@ class AddingPanel extends PureComponent {
     const id = Date.now();
     if(+money === 0 || money === null || money === '' || money === undefined) {
       toastr.error(staticContent[lang]['toastr'].smallTransValue, {timeOut: 4000});
-    } else if(description.length < 2) {
+    } else if(description !== '' && description.length < 2) {
       toastr.error(staticContent[lang]['toastr'].smallTransDescr, {timeOut: 4000});
     } else {
       addTransaction(id, date, +money, description, category);
