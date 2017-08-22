@@ -28,3 +28,15 @@
     }
   }
 }
+
+.button-icon {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}

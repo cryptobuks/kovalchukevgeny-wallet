@@ -14,26 +14,26 @@ const Statistics = (props) => {
     <div className="widgets">
       <div className="container">
         <div className="row">
-          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
+          <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <CurrencyRate
               lang={lang}
               course={course}
             />
           </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
+          <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <TransactionsGraph
               transactions={transactions}
               lang={lang}
             />
           </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
+          <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <CategoriesStats
               transactions={transactions}
               categories={categories}
               lang={lang}
             />
           </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-offset-2 col-md-8">
+          <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <TransactionsResults
               transactions={transactions}
               lang={lang}
