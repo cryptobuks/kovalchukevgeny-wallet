@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
+import Button from './../button/button.jsx';
+import Icon from './../icon/icon.jsx';
 
 import staticContent from './../../static-content/languages';
 

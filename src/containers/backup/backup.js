@@ -15,12 +15,16 @@ const Backup = (props) => {
             <Export
               lang={lang}
               course={course}
+              transactions={transactions}
+              categories={categories}
             />
           </div>
           <div className="col-lg-6">
             <Import
               lang={lang}
               course={course}
+              transactions={transactions}
+              categories={categories}
             />
           </div>
         </div>
