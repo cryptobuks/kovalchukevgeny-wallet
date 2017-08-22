@@ -1,6 +1,6 @@
 export default {
   "eng" : {
-    "menu" : ["Transactions", "Categories", "Statistics", "Report"],
+    "menu" : ["Transactions", "Categories", "Statistics", "Report", "Backup"],
     "categories-stats" : {
       "head" : "Categories statistic",
       "tableHead" : ["Category", "Percentage", "Amount"]
@@ -50,6 +50,14 @@ export default {
       "btnCancel" : "Cancel",
       "btnSubmit" : "Submit"
     },
+    "backup-export" : {
+      "head" : "Export data",
+      "btnJson" : "Export JSON",
+    },
+    "backup-import" : {
+      "head" : "Import data",
+      "btnJson" : "Import JSON",
+    },
     "reports" : {
       "amountMonth" : "Amount Month",
       "amountDay" : "Amount Day",
@@ -83,7 +91,7 @@ export default {
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
   "rus" : {
-    "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт"],
+    "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт", "Резервное копирование"],
     "categories-stats" : {
       "head" : "Статистика по категориям",
       "tableHead" : ["Категория", "Процентное соотношение", "Итог"]
@@ -132,6 +140,14 @@ export default {
       "chooseIcon" : "Выберете иконку",
       "btnCancel" : "Отменить",
       "btnSubmit" : "Добавить"
+    },
+    "backup-export" : {
+      "head" : "Экспортирование данных",
+      "btnJson" : "Экспортировать JSON",
+    },
+    "backup-import" : {
+      "head" : "Импортирование данных",
+      "btnJson" : "Импортировать JSON",
     },
     "reports" : {
       "amountMonth" : "Потрачено за месяц",

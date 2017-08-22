@@ -1,0 +1,42 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+
+import Helpers from './../../helpers/Helpers';
+import Panel from './../panel/panel.jsx';
+
+import staticContent from './../../static-content/languages';
+
+class Export extends Component {
+  constructor(props) {
+    super(props);
+
+    this.Helpers = new Helpers();
+  }
+
+  render() {
+    const { transactions, lang } = this.props;
+
+    return (
+      <div>
+        <Panel
+          specialClass="panel-success"
+          heading={staticContent[lang]['backup-export'].head}
+        >
+            !!!
+        </Panel>
+      </div>
+    );
+  }
+}
+
+Export.defaultProps = {
+  transactions: []
+};
+
+Export.propTypes = {
+  transactions: PropTypes.array,
+  lang: PropTypes.string
+};
+
+export default Export;
