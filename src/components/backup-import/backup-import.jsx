@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import XHRUploader from 'react-xhr-uploader';
 
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
@@ -19,13 +20,18 @@ class Import extends Component {
   render() {
     const { transactions, lang } = this.props;
 
+    const myStyles = {dropTargetStyle: {border: 'none', padding: 'none'}};
+
     return (
       <div>
         <Panel
           specialClass="panel-success"
           heading={staticContent[lang]['backup-import'].head}
         >
-            !!!
+          <XHRUploader
+            url='http://localhost:3000/api/uploadfile'
+            styles={myStyles}
+          />
         </Panel>
       </div>
     );

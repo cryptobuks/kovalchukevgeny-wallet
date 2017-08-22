@@ -7,6 +7,8 @@ import favicon from 'serve-favicon';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import * as db from './../server/utils/DataBaseUtils';
+import Busboy from 'busboy';
+import fs from 'fs';
 
 const port = 3000;
 const app = express();
@@ -33,23 +35,31 @@ app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
+app.all('/api/uploadfile', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  next();
+ });
+
+app.post('/api/uploadfile', (req, res) => {
+  const busboy = new Busboy({ headers: req.headers });
+	busboy.on('file', function(fieldname, file, filename) {
+		let saveTo = path.join(__dirname, '../src/uploads/', filename);
+		file.pipe(fs.createWriteStream(saveTo));
+	});
+	busboy.on('finish', function() {
+		res.end('done');
+	});
+  res.on('close', function() {
+    req.unpipe(busboy);
+  });
+	req.pipe(busboy);
+});
+
 app.listen(port, function(err) {
   if (err) {
     console.log(err); // eslint-disable-line no-console
   } else {
     open(`http://localhost:${port}`);
   }
-});
-
-// RESTful api handlers
-app.get('/transactions', (req, res) => {
-  db.listTransactions().then(data => res.send(data));
-});
-
-app.post('/transactions', (req, res) => {
-  db.createTransaction(req.body).then(data => res.send(data));
-});
-
-app.delete('/transactions/:id', (req, res) => {
-  db.deleteTransaction(req.params.id).then(data => res.send(data));
 });
