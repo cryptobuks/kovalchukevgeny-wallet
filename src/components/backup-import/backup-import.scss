@@ -23,4 +23,17 @@
     cursor: pointer;
     margin-right: 10px;
   }
+
+  .file {
+    border-top: 1px solid $accentColor;
+    border-bottom: 1px solid $accentColor;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px 0;
+
+    i {
+      color: $successColor;
+    }
+  }
 }
