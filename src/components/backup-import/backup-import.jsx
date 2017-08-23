@@ -39,10 +39,15 @@ class Import extends Component {
             <p>
               {staticContent[lang]['backup-import'].description}
             </p>
-            <input
-              type="file"
-              ref={(input) => { this.textInput = input; }}
-            />
+            <label className="label-load btn btn-primary">
+              <input
+                type="file"
+                className="inputfile"
+                ref={(input) => { this.textInput = input; }}
+              />
+              <Icon icon="move_to_inbox"/>
+              {staticContent[lang]['backup-import'].btnLoad}
+            </label>
             <Button
               specialClass="btn btn-primary"
               onClickFunction={this.readFile}

@@ -57,6 +57,7 @@ export default {
     },
     "backup-import" : {
       "head" : "Import data",
+      "btnLoad" : "Choose a file",
       "btnSync" : "synchronize",
       "description" : "Pick your files from your computer"
     },
@@ -150,6 +151,7 @@ export default {
     },
     "backup-import" : {
       "head" : "Импортирование данных",
+      "btnLoad" : "Выбирите файл",
       "btnSync" : "Синхронизировать",
       "description" : "Выберите ваши файлы со своего компьютера"
     },
