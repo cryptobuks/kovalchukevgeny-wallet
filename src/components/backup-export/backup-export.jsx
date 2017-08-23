@@ -35,10 +35,14 @@ class Export extends Component {
     return (
       <div>
         <Panel
-          specialClass="panel-success"
+          specialClass="panel-success export"
           heading={staticContent[lang]['backup-export'].head}
         >
+
           <div className="toolbar">
+            <p>
+              {staticContent[lang]['backup-export'].description}
+            </p>
             <Button
               onClickFunction={this.download.bind(this, 'json')}
               specialClass="btn btn-primary"

@@ -20,17 +20,58 @@ class Import extends Component {
   render() {
     const { transactions, lang } = this.props;
 
-    const myStyles = {dropTargetStyle: {border: 'none', padding: 'none'}};
+    const myStyles = {
+      root: {
+        border: '1px solid #dddddd',
+        padding: 10
+      },
+      dropTargetStyle: {
+        padding: 'none',
+        cursor: 'pointer',
+      },
+      placeHolderStyle: {
+        textAlign: 'center',
+        textTransform: 'uppercase'
+      },
+      fileset: {
+        marginTop: 10,
+        paddingTop: 10,
+        borderTop: '1px solid #b91919'
+      },
+      fileDetails: {
+        display: 'flex',
+        alignItems: 'flex-start'
+      },
+      fileName: {
+        flexGrow: '8'
+      },
+      fileSize: {
+        'float': 'right',
+        flexGrow: '2',
+        alignSelf: 'flex-end'
+      },
+      removeButton: {
+        alignSelf: 'flex-end'
+      },
+      progress: {
+        marginTop: 10,
+        width: '100%',
+        height: 16,
+        WebkitAppearance: 'none'
+      }
+    };
 
     return (
       <div>
         <Panel
-          specialClass="panel-success"
+          specialClass="panel-success import"
           heading={staticContent[lang]['backup-import'].head}
         >
           <XHRUploader
             url='http://localhost:3000/api/uploadfile'
+            auto
             styles={myStyles}
+            dropzoneLabel={staticContent[lang]['backup-import'].dropzoneLabel}
           />
         </Panel>
       </div>
