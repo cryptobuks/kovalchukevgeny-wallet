@@ -53,10 +53,12 @@ export default {
     "backup-export" : {
       "head" : "Export data",
       "btnJson" : "Export JSON",
+      "description" : "Save all your data in JSON format on your PC"
     },
     "backup-import" : {
       "head" : "Import data",
       "btnJson" : "Import JSON",
+      "dropzoneLabel" : "Drag and drop your files here or pick them from your computer"
     },
     "reports" : {
       "amountMonth" : "Amount Month",
@@ -144,10 +146,12 @@ export default {
     "backup-export" : {
       "head" : "Экспортирование данных",
       "btnJson" : "Экспортировать JSON",
+      "description" : "Сохраните все ваши данные в JSON формате на вашем компьютере"
     },
     "backup-import" : {
       "head" : "Импортирование данных",
       "btnJson" : "Импортировать JSON",
+      "dropzoneLabel" : "Перетащите ваши файлы сюда или выберите их со своего компьютера",
     },
     "reports" : {
       "amountMonth" : "Потрачено за месяц",
