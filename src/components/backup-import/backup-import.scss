@@ -1,7 +1,12 @@
 .import {
 
-  .fa {
-    color: $accentColor;
-    font-size: 20px;
+  .toolbar {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: center;
+  }
+
+  p {
+    text-transform: uppercase;
   }
 }

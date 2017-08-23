@@ -57,8 +57,8 @@ export default {
     },
     "backup-import" : {
       "head" : "Import data",
-      "btnJson" : "Import JSON",
-      "dropzoneLabel" : "Drag and drop your files here or pick them from your computer"
+      "btnSync" : "synchronize",
+      "description" : "Pick your files from your computer"
     },
     "reports" : {
       "amountMonth" : "Amount Month",
@@ -150,8 +150,8 @@ export default {
     },
     "backup-import" : {
       "head" : "Импортирование данных",
-      "btnJson" : "Импортировать JSON",
-      "dropzoneLabel" : "Перетащите ваши файлы сюда или выберите их со своего компьютера",
+      "btnSync" : "Синхронизировать",
+      "description" : "Выберите ваши файлы со своего компьютера"
     },
     "reports" : {
       "amountMonth" : "Потрачено за месяц",

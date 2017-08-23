@@ -22,9 +22,6 @@ const Backup = (props) => {
           <div className="col-lg-6 col-md-6 col-sm-6">
             <Import
               lang={lang}
-              course={course}
-              transactions={transactions}
-              categories={categories}
             />
           </div>
         </div>

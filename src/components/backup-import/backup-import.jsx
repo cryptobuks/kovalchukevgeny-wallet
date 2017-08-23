@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import XHRUploader from 'react-xhr-uploader';
 
-import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
 import Button from './../button/button.jsx';
 import Icon from './../icon/icon.jsx';
@@ -14,52 +11,23 @@ class Import extends Component {
   constructor(props) {
     super(props);
 
-    this.Helpers = new Helpers();
+    this.readFile = this.readFile.bind(this);
+  }
+
+  readFile() {
+    const file = this.textInput.files[0];
+    const reader = new FileReader();
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) {
+        localStorage.setItem('e-wallet', evt.target.result);
+      }
+    };
+    const blob = file.slice(0, file.size);
+    reader.readAsText(blob);
   }
 
   render() {
-    const { transactions, lang } = this.props;
-
-    const myStyles = {
-      root: {
-        border: '1px solid #dddddd',
-        padding: 10
-      },
-      dropTargetStyle: {
-        padding: 'none',
-        cursor: 'pointer',
-      },
-      placeHolderStyle: {
-        textAlign: 'center',
-        textTransform: 'uppercase'
-      },
-      fileset: {
-        marginTop: 10,
-        paddingTop: 10,
-        borderTop: '1px solid #b91919'
-      },
-      fileDetails: {
-        display: 'flex',
-        alignItems: 'flex-start'
-      },
-      fileName: {
-        flexGrow: '8'
-      },
-      fileSize: {
-        'float': 'right',
-        flexGrow: '2',
-        alignSelf: 'flex-end'
-      },
-      removeButton: {
-        alignSelf: 'flex-end'
-      },
-      progress: {
-        marginTop: 10,
-        width: '100%',
-        height: 16,
-        WebkitAppearance: 'none'
-      }
-    };
+    const { lang } = this.props;
 
     return (
       <div>
@@ -67,12 +35,22 @@ class Import extends Component {
           specialClass="panel-success import"
           heading={staticContent[lang]['backup-import'].head}
         >
-          <XHRUploader
-            url='http://localhost:3000/api/uploadfile'
-            auto
-            styles={myStyles}
-            dropzoneLabel={staticContent[lang]['backup-import'].dropzoneLabel}
-          />
+          <div className="toolbar">
+            <p>
+              {staticContent[lang]['backup-import'].description}
+            </p>
+            <input
+              type="file"
+              ref={(input) => { this.textInput = input; }}
+            />
+            <Button
+              specialClass="btn btn-primary"
+              onClickFunction={this.readFile}
+            >
+              <Icon icon="cached"/>
+              {staticContent[lang]['backup-import'].btnSync}
+            </Button>
+          </div>
         </Panel>
       </div>
     );
@@ -80,11 +58,10 @@ class Import extends Component {
 }
 
 Import.defaultProps = {
-  transactions: []
+
 };
 
 Import.propTypes = {
-  transactions: PropTypes.array,
   lang: PropTypes.string
 };
 
