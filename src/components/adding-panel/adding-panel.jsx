@@ -155,14 +155,16 @@ class AddingPanel extends PureComponent {
               {categories}
             </select>
           </div>
-          <Button
-            specialClass="btn btn-primary"
-            onClickFunction={this.saveTransaction}
-          >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
-          <Button
-            specialClass="btn btn-default"
-            onClickFunction={this.clearTransactionData}
-          >{staticContent[lang]['adding-panel'].btnCancel}</Button>
+          <div className="text-center">
+            <Button
+              specialClass="btn btn-primary"
+              onClickFunction={this.saveTransaction}
+            >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
+            <Button
+              specialClass="btn btn-default"
+              onClickFunction={this.clearTransactionData}
+            >{staticContent[lang]['adding-panel'].btnCancel}</Button>
+          </div>
         </Panel>
       </div>
     );

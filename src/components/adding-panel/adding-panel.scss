@@ -10,10 +10,11 @@
   .adding-panel {
     background-color: #fff;
     left: 50%;
-    width: 320px;
+    margin-bottom: 0;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
+    width: 320px;
   }
 
   .form-item {
@@ -21,6 +22,17 @@
 
     input, select {
       font-size: 14px;
+      padding: 5px;
+    }
+
+    select {
+      max-height: 200px;
+      overflow-y: auto;
+
+      option {
+        font-size: 90%;
+        padding: 0;
+      }
     }
   }
 

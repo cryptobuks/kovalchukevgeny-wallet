@@ -5,7 +5,6 @@
 
   &-head {
     border-bottom: 2px solid #dddddd;
-    color: $accentColor;
     height: 46px;
     overflow-y: hidden;
     position: absolute;
@@ -19,6 +18,10 @@
       position: relative;
       text-transform: uppercase;
 
+      &.active {
+        color: $accentColor;
+      }
+
       .filter-arrow {
         position: absolute;
       }
@@ -30,9 +33,9 @@
   }
 
   &-body {
-    max-height: 596px;
-    overflow-y: auto;
     position: relative;
+    max-height: calc(100vh - 239px);
+    overflow-y: auto;
 
     .table-data {
       overflow: hidden;

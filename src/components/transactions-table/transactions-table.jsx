@@ -121,8 +121,9 @@ class TransactionsTable extends Component {
 
     const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {
       headItem = staticContent['eng']['transactions-table']['tableHead'][i].toLowerCase();
+      console.log(sortby, headItem);
       return (
-        <div className="table-data" key={i} data-cell={headItem}>
+        <div className={`table-data ${sortby === headItem ? 'active' : ''}`} key={i} data-cell={headItem}>
           <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span> {/* ignore id */}
           {sortby === headItem &&
           <span className="filter-arrow">
