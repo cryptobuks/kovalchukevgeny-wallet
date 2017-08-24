@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { toastr } from 'react-redux-toastr';
 import ReactAutocomplete from 'react-autocomplete';
+import classNames from 'classnames';
 
 import Button from './../button/button.jsx';
 import Input from './../input/input.jsx';
@@ -46,6 +47,7 @@ class AddingPanel extends PureComponent {
       date: moment(),
       description: ''
     });
+    this.props.hideAddingPanel();
   }
 
   componentWillMount() {
@@ -71,7 +73,7 @@ class AddingPanel extends PureComponent {
 
   saveTransaction() {
     const { category, money, date, description } = this.state;
-    const { addTransaction, lang } = this.props;
+    const { addTransaction, lang, hideAddingPanel } = this.props;
     const id = Date.now();
     if(+money === 0 || money === null || money === '' || money === undefined) {
       toastr.error(staticContent[lang]['toastr'].smallTransValue, {timeOut: 4000});
@@ -85,12 +87,13 @@ class AddingPanel extends PureComponent {
         date: moment(),
         description: ''
       });
+      hideAddingPanel();
     }
   }
 
   render() {
     const { category, money, date, description } = this.state;
-    let { categories, lang, transactions } = this.props;
+    let { categories, lang, transactions, showPanel } = this.props;
 
     categories = categories.map((category, i) => {
       return(
@@ -99,82 +102,78 @@ class AddingPanel extends PureComponent {
     });
 
     return (
-      <Panel
-        specialClass="panel-default adding-panel"
-      >
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <legend>{staticContent[lang]['adding-panel'].head}</legend>
+      <div className={classNames('adding-panel-wrapper', {'hidden' : !showPanel})}>
+        <Panel
+          specialClass="panel-default panel-success adding-panel"
+          heading={staticContent[lang]['adding-panel'].head}
+        >
+          <div className="form-item">
+            <label className="label">{staticContent[lang]['adding-panel'].dateLabel}</label>
+            <DatePicker
+              locale="en-gb"
+              className="form-control"
+              maxDate={moment()}
+              selected={date}
+              onChange={this.handleChangeData}
+            />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-6 text-right">
-            <Button
-              specialClass="btn btn-default"
-              onClickFunction={this.clearTransactionData}
-            >{staticContent[lang]['adding-panel'].btnCancel}</Button>
-            <Button
-              specialClass="btn btn-primary"
-              onClickFunction={this.saveTransaction}
-            >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
+          <div className="form-item">
+            <label className="label">{staticContent[lang]['adding-panel'].moneyLabel}</label>
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={money}
+              handleChange={this.handleChangeMoney}
+            />
           </div>
-        </div>
-        <table className="table">
-          <tbody>
-            <tr>
-              <td>
-                <DatePicker
-                  locale="en-gb"
-                  className="form-control"
-                  maxDate={moment()}
-                  selected={date}
-                  onChange={this.handleChangeData}
-                />
-              </td>
-              <td>
-                <Input
-                  type="number"
-                  placeholder="0.00"
-                  value={money}
-                  handleChange={this.handleChangeMoney}
-                />
-              </td>
-              <td className="autocomplete">
-                <ReactAutocomplete
-                  items={this.Helpers.getUnicDescription(transactions)}
-                  shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
-                  getItemValue={item => item.label}
-                  renderItem={(item, highlighted) =>
-                    <div
-                      key={item.id}
-                      style={{ backgroundColor: highlighted ? '#eee' : '#fff'}}
-                    >
-                      {item.label}
-                    </div>
-                  }
-                  value={description}
-                  onChange={e => this.setState({ description: e.target.value })}
-                  onSelect={value => this.setState({ description: value })}
-                />
-              </td>
-              <td>
-                <select
-                  className="form-control"
-                  value={this.state.category}
-                  onChange={this.handleChangeCategory}
+          <div className="autocomplete form-item">
+            <label className="label">{staticContent[lang]['adding-panel'].descrLabel}</label>
+            <ReactAutocomplete
+              items={this.Helpers.getUnicDescription(transactions)}
+              shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
+              getItemValue={item => item.label}
+              renderItem={(item, highlighted) =>
+                <div
+                  key={item.id}
+                  style={{ backgroundColor: highlighted ? '#eee' : '#fff'}}
                 >
-                  {categories}
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </Panel>
+                  {item.label}
+                </div>
+              }
+              value={description}
+              onChange={e => this.setState({ description: e.target.value })}
+              onSelect={value => this.setState({ description: value })}
+            />
+          </div>
+          <div className="form-item">
+            <label className="label">{staticContent[lang]['adding-panel'].categoryLabel}</label>
+            <select
+              className="form-control"
+              value={this.state.category}
+              onChange={this.handleChangeCategory}
+            >
+              {categories}
+            </select>
+          </div>
+          <Button
+            specialClass="btn btn-primary"
+            onClickFunction={this.saveTransaction}
+          >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
+          <Button
+            specialClass="btn btn-default"
+            onClickFunction={this.clearTransactionData}
+          >{staticContent[lang]['adding-panel'].btnCancel}</Button>
+        </Panel>
+      </div>
     );
   }
 }
 
 AddingPanel.propTypes = {
   categories: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  hideAddingPanel: PropTypes.func,
+  showPanel: PropTypes.bool
 };
 
 export default AddingPanel;

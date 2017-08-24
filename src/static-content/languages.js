@@ -28,7 +28,7 @@ export default {
     },
     "transactions-table" : {
       "head" : "Transactions",
-      "btnJson" : "Export JSON",
+      "btnAdd" : "Add transaction",
       "btnCsv" : "Export CSV",
       "bigDescr" : "Amount rubles spent during",
       "tableHead" : ["Date", "Money", "Description", "Category"]
@@ -38,7 +38,10 @@ export default {
     },
     "adding-panel" : {
       "head" : "Add new transaction",
-      "descr" : "Description",
+      "dateLabel" : "Date:",
+      "moneyLabel" : "Money:",
+      "descrLabel" : "Description:",
+      "categoryLabel" : "Category:",
       "btnCancel" : "Cancel",
       "btnSubmit" : "Submit"
     },
@@ -122,7 +125,7 @@ export default {
     },
     "transactions-table" : {
       "head" : "Таблица транзакций",
-      "btnJson" : "Экспортировать JSON",
+      "btnAdd" : "Добавить транзакцию",
       "btnCsv" : "Экспортировать CSV",
       "bigDescr" : "Сумма потраченная за",
       "tableHead" : ["Дата", "Сумма", "Описание", "Категория"]
@@ -132,7 +135,10 @@ export default {
     },
     "adding-panel" : {
       "head" : "Добавить новую транзакцию",
-      "descr" : "Описание",
+      "dateLabel" : "Выберите дату:",
+      "moneyLabel" : "Укажите сумму:",
+      "descrLabel" : "Добавьте описание:",
+      "categoryLabel" : "Выберите категорию:",
       "btnCancel" : "Отменить",
       "btnSubmit" : "Добавить"
     },

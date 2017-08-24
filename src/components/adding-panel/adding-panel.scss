@@ -1,38 +1,49 @@
-.adding-panel {
-  padding: 10px;
+.adding-panel-wrapper {
+  background-color: rgba(0,0,0,.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 101;
 
-  .panel-body {
-    padding: 0;
+  .adding-panel {
+    background-color: #fff;
+    left: 50%;
+    width: 320px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+
+  .form-item {
+    margin-bottom: 20px;
 
     input, select {
       font-size: 14px;
     }
   }
 
-  legend {
-    border-bottom: transparent;
-    margin-bottom: 10px;
+  .label {
+    color: $accentColor;
+    font-size: 12px;
+    padding: 0;
     text-transform: uppercase;
+    margin-bottom: 5px;
   }
 
-  .btn {
-    margin-left: 10px;
+  .btn-primary {
+    margin-right: 10px;
   }
 
-  table {
-    margin-bottom: 0;
 
-    tr {
+  .autocomplete {
 
-      &:first-child {
-        background-color: transparent;
-      }
+    & > div {
 
-      td {
-        border-top: transparent;
-        padding-bottom: 0;
-        padding-top: 0;
-        width: 25%;
+      & > div {
+        left: auto !important;
+        top: auto !important;
       }
     }
   }

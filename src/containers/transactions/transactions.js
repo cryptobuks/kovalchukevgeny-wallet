@@ -25,13 +25,16 @@ class Transactions extends Component {
     this.state = {
       sortby: null,
       descending: false,
-      transactions: this.props.transactions
+      transactions: this.props.transactions,
+      showPanel: false
     };
 
     this.convertToCSV = this.convertToCSV.bind(this);
     this.sortData = this.sortData.bind(this);
     this.sortSheme = this.sortSheme.bind(this);
     this.spellingDay = this.spellingDay.bind(this);
+    this.showAddingPanel = this.showAddingPanel.bind(this);
+    this.hideAddingPanel = this.hideAddingPanel.bind(this);
   }
 
   componentWillMount() {
@@ -123,8 +126,16 @@ class Transactions extends Component {
     }
   }
 
+  showAddingPanel() {
+    this.setState({ showPanel: true });
+  }
+
+  hideAddingPanel() {
+    this.setState({ showPanel: false });
+  }
+
   render() {
-    const { descending, sortby } = this.state;
+    const { descending, sortby, showPanel } = this.state;
     let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction } = this.props;
     let amount = 0;
 
@@ -150,6 +161,8 @@ class Transactions extends Component {
               lang={lang}
               addTransaction={addTransaction}
               transactions={transactions}
+              showPanel={showPanel}
+              hideAddingPanel={this.hideAddingPanel}
             />
             {transactions.length > 0 &&
               <Panel
@@ -172,6 +185,13 @@ class Transactions extends Component {
               <div className="col-lg-6 col-md-6 col-sm-6">
               {transactions.length > 0 &&
                 <div className="toolbar">
+                  <Button
+                    onClickFunction={this.showAddingPanel}
+                    specialClass="btn btn-primary"
+                  >
+                    <Icon icon={'add'} />
+                    {staticContent[lang]['transactions-table'].btnAdd}
+                  </Button>
                   <Button
                     onClickFunction={this.download.bind(this, 'csv')}
                     specialClass="btn btn-primary"
