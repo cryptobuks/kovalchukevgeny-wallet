@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { toastr } from 'react-redux-toastr';
+import ReactAutocomplete from 'react-autocomplete';
 
 import Button from './../button/button.jsx';
 import Input from './../input/input.jsx';
 import Panel from './../panel/panel.jsx';
+
+import Helpers from './../../helpers/Helpers';
 
 import { addTransaction } from './../../actions/actionCreators';
 
@@ -18,6 +21,8 @@ import staticContent from './../../static-content/languages';
 class AddingPanel extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.Helpers = new Helpers();
 
     this.state = {
       category: '',
@@ -30,7 +35,6 @@ class AddingPanel extends PureComponent {
     this.handleChangeData = this.handleChangeData.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeMoney = this.handleChangeMoney.bind(this);
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.setDefaultCategory = this.setDefaultCategory.bind(this);
     this.saveTransaction = this.saveTransaction.bind(this);
   }
@@ -60,10 +64,6 @@ class AddingPanel extends PureComponent {
     this.setState({money: +event.target.value});
   }
 
-  handleChangeTitle(event) {
-    this.setState({description: event.target.value});
-  }
-
   setDefaultCategory() {
     const category = this.props.categories[0];
     return category ? category.title : '';
@@ -90,7 +90,7 @@ class AddingPanel extends PureComponent {
 
   render() {
     const { category, money, date, description } = this.state;
-    let { categories, lang } = this.props;
+    let { categories, lang, transactions } = this.props;
 
     categories = categories.map((category, i) => {
       return(
@@ -137,11 +137,22 @@ class AddingPanel extends PureComponent {
                   handleChange={this.handleChangeMoney}
                 />
               </td>
-              <td>
-                <Input
-                  placeholder={staticContent[lang]['adding-panel'].descr}
+              <td className="autocomplete">
+                <ReactAutocomplete
+                  items={this.Helpers.getUnicDescription(transactions)}
+                  shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
+                  getItemValue={item => item.label}
+                  renderItem={(item, highlighted) =>
+                    <div
+                      key={item.id}
+                      style={{ backgroundColor: highlighted ? '#eee' : '#fff'}}
+                    >
+                      {item.label}
+                    </div>
+                  }
                   value={description}
-                  handleChange={this.handleChangeTitle}
+                  onChange={e => this.setState({ description: e.target.value })}
+                  onSelect={value => this.setState({ description: value })}
                 />
               </td>
               <td>

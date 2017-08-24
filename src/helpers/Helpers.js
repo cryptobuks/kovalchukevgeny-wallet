@@ -48,6 +48,24 @@ class Helpers {
 
     return categories;
   }
+
+  getUnicDescription(data) {
+    let obj = {};
+    let descriptions = [];
+
+    for(let i = 0; i < data.length; i++) {
+      let key = data[i].description;
+      obj[key] = data[i].description;
+    }
+
+    for (let prop in obj) {
+      descriptions.push({
+        label: obj[prop]
+      });
+    }
+
+    return descriptions;
+  }
 }
 
 export default Helpers;
