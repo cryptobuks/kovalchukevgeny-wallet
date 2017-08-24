@@ -15,7 +15,7 @@
       a {
         color: $accentTextColor;
         text-transform: uppercase;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
         padding-top: 10px;
 
         &:hover,
@@ -25,7 +25,7 @@
         }
 
         &.active {
-          background-color: rgba(185,25,25,.6);          
+          background-color: rgba(185,25,25,.6);
 
           &:hover {
             cursor: default;

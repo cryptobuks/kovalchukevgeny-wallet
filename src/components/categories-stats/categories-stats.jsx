@@ -62,7 +62,7 @@ class CategoriesStats extends Component {
             </div>
           </div>
           <div className="table-data">
-            <span className="amount">{categoryStats.money}</span>
+            <span className="amount">{categoryStats.money.toFixed(2)}</span>
             {staticContent[lang]['currency']}
           </div>
         </div>
