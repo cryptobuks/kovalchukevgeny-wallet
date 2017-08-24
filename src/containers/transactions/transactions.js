@@ -149,6 +149,7 @@ class Transactions extends Component {
               categories={categories}
               lang={lang}
               addTransaction={addTransaction}
+              transactions={transactions}
             />
             {transactions.length > 0 &&
               <Panel
@@ -171,14 +172,6 @@ class Transactions extends Component {
               <div className="col-lg-6 col-md-6 col-sm-6">
               {transactions.length > 0 &&
                 <div className="toolbar">
-                  <Button
-                    onClickFunction={this.download.bind(this, 'json')}
-                    specialClass="btn btn-primary"
-                    href="data.json"
-                  >
-                    <Icon icon={'get_app'} />
-                    {staticContent[lang]['transactions-table'].btnJson}
-                  </Button>
                   <Button
                     onClickFunction={this.download.bind(this, 'csv')}
                     specialClass="btn btn-primary"

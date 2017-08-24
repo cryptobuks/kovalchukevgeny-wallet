@@ -225,13 +225,6 @@ class Reports extends Component {
           {transactions.length > 0 &&
             <div className="toolbar">
               <Button
-                onClickFunction={this.download.bind(this, 'json')}
-                specialClass="btn btn-primary"
-                href="report.json"
-              >
-                <Icon icon={'get_app'} />
-                {staticContent[lang]['reports'].btnJson}</Button>
-              <Button
                 onClickFunction={this.download.bind(this, 'csv')}
                 specialClass="btn btn-primary"
                 href="report.csv"
