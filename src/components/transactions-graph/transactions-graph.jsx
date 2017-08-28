@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import MetricsGraphics from 'react-metrics-graphics';
@@ -8,40 +8,33 @@ import Panel from './../panel/panel.jsx';
 
 import staticContent from './../../static-content/languages';
 
-class TransactionsGraph extends Component {
-  constructor(props) {
-    super(props);
+const TransactionsGraph = props => {
+  const Helper = new Helpers();
+  const { transactions, lang } = props;
 
-    this.Helpers = new Helpers();
-  }
+  // Filter transactions on current month
+  const monthTransactions = transactions.filter(transaction => {
+    return moment().month() === moment(transaction.date).month();
+  });
 
-  render() {
-    const { transactions, lang } = this.props;
-
-    // Filter transactions on current month
-    const monthTransactions = transactions.filter(transaction => {
-      return moment().month() === moment(transaction.date).month();
-    });
-
-    return (
-      <div>
-        {transactions.length > 0 &&
-          <Panel heading={staticContent[lang]['transactions-graph'].head}>
-            <MetricsGraphics
-              title={staticContent[lang]['transactions-graph'].smDescr}
-              description={staticContent[lang]['transactions-graph'].bigDescr}
-              data={this.Helpers.sumSameDateTransactions(monthTransactions)}
-              height={250}
-              width={535}
-              x_accessor="date"
-              y_accessor="money"
-              yax_units="BYR "
-            />
-          </Panel>
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      {transactions.length > 0 &&
+        <Panel heading={staticContent[lang]['transactions-graph'].head}>
+          <MetricsGraphics
+            title={staticContent[lang]['transactions-graph'].smDescr}
+            description={staticContent[lang]['transactions-graph'].bigDescr}
+            data={Helper.sumSameDateTransactions(monthTransactions)}
+            height={250}
+            width={535}
+            x_accessor="date"
+            y_accessor="money"
+            yax_units="BYR "
+          />
+        </Panel>
+      }
+    </div>
+  );
 }
 
 TransactionsGraph.defaultProps = {

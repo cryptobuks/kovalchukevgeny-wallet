@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -16,7 +16,7 @@ import staticContent from './../../static-content/languages';
 
 import LoadingHOC from './../../HOC/loadingHOC.jsx';
 
-class Reports extends Component {
+class Reports extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -214,6 +214,8 @@ class Reports extends Component {
       <div className="container reports">
         <TransactionsFilter
           isCategoryActive={this.isCategoryActive}
+          lang={lang}
+          categories={categories}
         />
         <div className="row">
           <div className="col-md-12">

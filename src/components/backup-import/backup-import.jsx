@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,7 +8,7 @@ import Icon from './../icon/icon.jsx';
 
 import staticContent from './../../static-content/languages';
 
-class Import extends Component {
+class Import extends PureComponent {
   constructor(props) {
     super(props);
 

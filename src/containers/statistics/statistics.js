@@ -8,7 +8,7 @@ import TransactionsResults from './../../components/transactions-results/transac
 import CategoriesStats from './../../components/categories-stats/categories-stats.jsx';
 import MonthCourse from './../month-course/month-course';
 
-const Statistics = (props) => {
+const Statistics = props => {
   const { transactions, lang, course, categories } = props;
   return (
     <div className="widgets">

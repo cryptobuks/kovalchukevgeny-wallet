@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Panel from './../panel/panel.jsx';
@@ -7,13 +7,10 @@ import Icon from './../icon/icon.jsx';
 
 import staticContent from './../../static-content/languages';
 
-class Export extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Export = props => {
 
-  download(format, event) {
-    let { transactions, categories, course } = this.props;
+  const download = (format, event) => {
+    let { transactions, categories, course } = props;
     const data = {
       transactions,
       categories,
@@ -26,31 +23,30 @@ class Export extends Component {
     event.target.download = 'backup.' + format;
   }
 
-  render() {
-    const { transactions, lang } = this.props;
-    return (
-      <div>
-        <Panel
-          specialClass="export"
-          heading={staticContent[lang]['backup-export'].head}
-        >
-          <div className="toolbar">
-            <p>
-              {staticContent[lang]['backup-export'].description}
-            </p>
-            <Button
-              onClickFunction={this.download.bind(this, 'json')}
-              specialClass="btn btn-primary"
-              href="backup.json"
-            >
-              <Icon icon={'get_app'} />
-              {staticContent[lang]['backup-export'].btnJson}
-            </Button>
-          </div>
-        </Panel>
-      </div>
-    );
-  }
+  const { transactions, lang } = props;
+
+  return (
+    <div>
+      <Panel
+        specialClass="export"
+        heading={staticContent[lang]['backup-export'].head}
+      >
+        <div className="toolbar">
+          <p>
+            {staticContent[lang]['backup-export'].description}
+          </p>
+          <Button
+            onClickFunction={download.bind(this, 'json')}
+            specialClass="btn btn-primary"
+            href="backup.json"
+          >
+            <Icon icon={'get_app'} />
+            {staticContent[lang]['backup-export'].btnJson}
+          </Button>
+        </div>
+      </Panel>
+    </div>
+  );
 }
 
 Export.defaultProps = {

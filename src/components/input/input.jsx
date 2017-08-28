@@ -1,30 +1,18 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class Input extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let {
-      type,
-      specialClass,
-      placeholder,
-      value,
-      handleChange } = this.props;
-
-    return(
-      <input
-        type={type}
-        className={classNames('form-control', specialClass)}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-      />
-    );
-  }
+const Input = props => {
+  let { type, specialClass, placeholder, value, handleChange } = props;
+  return(
+    <input
+      type={type}
+      className={classNames('form-control', specialClass)}
+      placeholder={placeholder}
+      value={value}
+      onChange={handleChange}
+    />
+  );
 }
 
 Input.defaultProps = {
