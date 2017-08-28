@@ -46,7 +46,13 @@ const icons = [
   'fa-home',
   'fa-lightbulb-o',
   'fa-bug',
-  'fa-briefcase'
+  'fa-briefcase',
+  'fa-heartbeat',
+  'fa-key',
+  'fa-tree',
+  'fa-camera',
+  'fa-bed',
+  'fa-beer'
 ];
 
 export default icons;
