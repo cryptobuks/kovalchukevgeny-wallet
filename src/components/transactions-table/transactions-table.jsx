@@ -76,8 +76,8 @@ class TransactionsTable extends Component {
     let { id, date, money, description, category } = this.state.isEditRow;
     this.props.changeTransaction(id, date, +money, description, category);
     this.setState({
-      isEditRow: false,
-      activeRow: false
+      isEditRow: {},
+      activeRow: {}
     });
     toastr.success(staticContent[lang]['toastr'].transactionUpdated, {timeOut: 4000});
   }
