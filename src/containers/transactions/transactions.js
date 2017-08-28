@@ -166,7 +166,7 @@ class Transactions extends Component {
             />
             {transactions.length > 0 &&
               <Panel
-                specialClass="panel-primary tr-table"
+                specialClass="tr-table"
                 heading={staticContent[lang]['transactions-table'].head}
               >
                 <TransactionsTable

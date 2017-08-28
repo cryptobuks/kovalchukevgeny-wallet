@@ -62,7 +62,7 @@ class Import extends Component {
     return (
       <div>
         <Panel
-          specialClass="panel-success import"
+          specialClass="import"
           heading={staticContent[lang]['backup-import'].head}
         >
           <div className="toolbar">

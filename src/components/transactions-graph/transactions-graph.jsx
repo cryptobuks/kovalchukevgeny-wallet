@@ -26,10 +26,7 @@ class TransactionsGraph extends Component {
     return (
       <div>
         {transactions.length > 0 &&
-          <Panel
-            specialClass="panel-success"
-            heading={staticContent[lang]['transactions-graph'].head}
-          >
+          <Panel heading={staticContent[lang]['transactions-graph'].head}>
             <MetricsGraphics
               title={staticContent[lang]['transactions-graph'].smDescr}
               description={staticContent[lang]['transactions-graph'].bigDescr}

@@ -56,7 +56,7 @@ class MonthCourse extends Component {
     return (
       <div>
         <Panel
-          specialClass="panel-success month-course"
+          specialClass="month-course"
           heading={staticContent[lang]['month-course'].head}
         >
           <div className="row">

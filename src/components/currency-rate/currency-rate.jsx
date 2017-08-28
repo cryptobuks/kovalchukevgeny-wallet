@@ -35,7 +35,7 @@ class CurrencyRate extends Component {
       <div>
         {course.length > 0 &&
         <Panel
-          specialClass="panel-success currency"
+          specialClass="currency"
           heading={staticContent[lang]['currency-rate'].head}
         >
           <MetricsGraphics

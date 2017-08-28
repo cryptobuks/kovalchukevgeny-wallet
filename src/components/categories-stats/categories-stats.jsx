@@ -73,7 +73,7 @@ class CategoriesStats extends Component {
       <div>
         {categories.length > 0 &&
           <Panel
-            specialClass="panel-success categories-stats"
+            specialClass="categories-stats"
             heading={staticContent[lang]['categories-stats'].head}
           >
             <div className="table">

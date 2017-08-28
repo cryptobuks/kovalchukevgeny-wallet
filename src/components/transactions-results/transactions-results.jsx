@@ -103,7 +103,7 @@ class TransactionsResults extends Component {
 
     return (
       <Panel
-        specialClass="panel-success results"
+        specialClass="results"
         heading={staticContent[lang]['transactions-results'].head}
       >
         <div className="table">

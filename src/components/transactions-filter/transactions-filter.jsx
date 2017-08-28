@@ -36,9 +36,7 @@ class TransactionsFilter extends Component {
       <div className="filter">
         <div className="row">
           <div className="col-lg-12">
-            <Panel specialClass="panel-default panel-success"
-              heading={staticContent[lang]['transactions-filter'].head}
-            >
+            <Panel heading={staticContent[lang]['transactions-filter'].head}>
               <div className="categories">
                 {categories}
               </div>

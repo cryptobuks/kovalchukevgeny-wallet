@@ -88,7 +88,7 @@ class Categories extends Component {
     categories = categories.map((category, i) => {
       return(
         <div key={i} className="category-card">
-          <Panel specialClass="panel-default category">
+          <Panel specialClass="category">
             <div data-id={category.id}>
               <div className="categ-icon">
                 <Icon type="fa" icon={category.icon} />
@@ -114,7 +114,7 @@ class Categories extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <Panel specialClass="panel-default">
+              <Panel>
                 <div className="row">
                   <div className="col-lg-2 col-md-12">
                     <legend>{staticContent[lang]['adding-category'].head}</legend>

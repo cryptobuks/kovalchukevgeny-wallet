@@ -31,7 +31,7 @@ class Export extends Component {
     return (
       <div>
         <Panel
-          specialClass="panel-success export"
+          specialClass="export"
           heading={staticContent[lang]['backup-export'].head}
         >
           <div className="toolbar">
