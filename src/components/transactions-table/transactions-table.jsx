@@ -111,7 +111,6 @@ class TransactionsTable extends Component {
   render() {
     let { transactions, descending, sortby, categories, lang, sortFunction } = this.props;
     const { activeRow, isEditRow } = this.state;
-    const titles = staticContent[lang]['transactions-table'].tableHead;
 
     const selectCategories = categories.map((category, i) => {
       return(
@@ -142,7 +141,6 @@ class TransactionsTable extends Component {
         };
       })[0] || null;
 
-      const categoryIcon = categoryIconObj ? categoryIconObj.icon : '';
       return(
         <div className="table-row clearfix" key={i} data-row={transaction.id}
           onClick={() => this.openEditMenu(transaction)}
@@ -163,7 +161,10 @@ class TransactionsTable extends Component {
           {/* Money column */}
           <div className="table-data clearfix">
             {!transaction.isEdit ?
-              <span>{transaction.money}</span> :
+              <span>
+                <span>{transaction.money} </span>
+                <span>{staticContent[lang]['currency']}</span>
+              </span> :
               <Input
                 type="number"
                 placeholder="0.00"
@@ -187,7 +188,7 @@ class TransactionsTable extends Component {
           <div className="table-data clearfix">
             {!transaction.isEdit ?
               <span>
-                <Icon icon={categoryIcon} type="fa" />
+                <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
                 {transaction.category}
               </span> :
               <select
