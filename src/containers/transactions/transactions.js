@@ -35,6 +35,7 @@ class Transactions extends Component {
     this.spellingDay = this.spellingDay.bind(this);
     this.showAddingPanel = this.showAddingPanel.bind(this);
     this.hideAddingPanel = this.hideAddingPanel.bind(this);
+    this.renderTableFooter = this.renderTableFooter.bind(this);
   }
 
   componentWillMount() {
@@ -134,6 +135,19 @@ class Transactions extends Component {
     this.setState({ showPanel: false });
   }
 
+  renderTableFooter(amount, unicTransactions) {
+    const { lang } = this.props;
+    return(
+      <span className="amount">
+        {staticContent[lang]['transactions-table'].bigDescr}
+        <span>{unicTransactions.length} </span>
+        {this.spellingDay(unicTransactions.length, lang)}:
+        <span>{amount.toFixed(2)} </span>
+        {staticContent[lang]['currency']}
+      </span>
+    );
+  }
+
   render() {
     const { descending, sortby, showPanel } = this.state;
     let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction } = this.props;
@@ -168,6 +182,7 @@ class Transactions extends Component {
               <Panel
                 specialClass="tr-table"
                 heading={staticContent[lang]['transactions-table'].head}
+                footer={this.renderTableFooter(amount, unicTransactions)}
               >
                 <TransactionsTable
                   transactions={monthTransactions}
@@ -182,7 +197,7 @@ class Transactions extends Component {
               </Panel>
             }
             <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-6">
+              <div className="col-lg-12">
               {transactions.length > 0 &&
                 <div className="toolbar">
                   <Button
@@ -202,15 +217,6 @@ class Transactions extends Component {
                   </Button>
                 </div>
               }
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-6 text-right amount-wrapper">
-                <h5 className="amount">
-                  {staticContent[lang]['transactions-table'].bigDescr}
-                  <span>{unicTransactions.length} </span>
-                  {this.spellingDay(unicTransactions.length, lang)}:
-                  <span>{amount.toFixed(2)} </span>
-                  {staticContent[lang]['currency']}
-                </h5>
               </div>
             </div>
           </div>

@@ -29,6 +29,7 @@
     white-space: nowrap;
 
     &:first-child {
+      text-align: left;
       width: 30%;
     }
 
@@ -37,8 +38,8 @@
     }
 
     &:last-child {
-      width: 20%;
       text-align: right;
+      width: 20%;
     }
 
     .percentages {

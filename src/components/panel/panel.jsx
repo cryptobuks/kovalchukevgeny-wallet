@@ -38,7 +38,10 @@ Panel.propTypes = {
     PropTypes.string
   ]).isRequired,
   heading: PropTypes.string,
-  footer: PropTypes.string,
+  footer: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   onClickFunction: PropTypes.func
 };
 
