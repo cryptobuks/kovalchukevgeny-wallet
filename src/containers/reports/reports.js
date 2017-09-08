@@ -10,7 +10,7 @@ import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import Button from './../../components/button/button.jsx';
 
-import { changeCategory } from './../../actions/actionCreators';
+import { changeCategory, changeAllCategories } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -210,13 +210,19 @@ class Reports extends PureComponent {
   }
 
   render() {
-    let { transactions, categories, lang, changeCategory } = this.props;
+    let {
+      transactions,
+      categories,
+      lang,
+      changeCategory,
+      changeAllCategories } = this.props;
 
     const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
         <TransactionsFilter
           changeCategory={changeCategory}
+          changeAllCategories={changeAllCategories}
           lang={lang}
           categories={categories}
         />
@@ -250,7 +256,8 @@ Reports.propTypes = {
   transactions: PropTypes.array,
   lang: PropTypes.string,
   course: PropTypes.array,
-  changeCategory: PropTypes.func
+  changeCategory: PropTypes.func,
+  changeAllCategories: PropTypes.func
 };
 
 export default connect(state => ({
@@ -258,4 +265,4 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course
-}), { changeCategory })(LoadingHOC('transactions')(Reports));
+}), { changeCategory, changeAllCategories })(LoadingHOC('transactions')(Reports));

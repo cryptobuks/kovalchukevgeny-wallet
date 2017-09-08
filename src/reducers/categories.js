@@ -32,6 +32,8 @@ function categories(state = initialState.categories, action) {
         return category;
       });
       return store;
+    case 'CHANGE_ALL_CATEGORIES' :
+      return action.categories;
     case 'DELETE_CATEGORY' :
       return store.filter(category => category.id !== action.id);
     default:

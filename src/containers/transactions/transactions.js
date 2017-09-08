@@ -13,7 +13,12 @@ import TransactionsFilter from './../../components/transactions-filter/transacti
 
 import Helpers from './../../helpers/Helpers';
 
-import { deleteTransaction, changeTransaction, addTransaction, changeCategory } from './../../actions/actionCreators';
+import {
+  deleteTransaction,
+  changeTransaction,
+  addTransaction,
+  changeCategory,
+  changeAllCategories } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -166,7 +171,15 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby, showPanel } = this.state;
-    let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction, changeCategory } = this.props;
+    let {
+      transactions,
+      categories,
+      lang,
+      deleteTransaction,
+      changeTransaction,
+      addTransaction,
+      changeCategory,
+      changeAllCategories } = this.props;
     let amount = 0;
 
     // Filter transactions on current month
@@ -198,6 +211,7 @@ class Transactions extends Component {
               categories={categories}
               lang={lang}
               changeCategory={changeCategory}
+              changeAllCategories={changeAllCategories}
             />
           </div>
           <div className="col-lg-9 col-md-9">
@@ -256,11 +270,12 @@ Transactions.propTypes = {
   deleteTransaction: PropTypes.func,
   changeTransaction: PropTypes.func,
   addTransaction: PropTypes.func,
-  changeCategory: PropTypes.func
+  changeCategory: PropTypes.func,
+  changeAllCategories: PropTypes.func
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}), { deleteTransaction, changeTransaction, addTransaction, changeCategory })(Transactions);
+}), { deleteTransaction, changeTransaction, addTransaction, changeCategory, changeAllCategories })(Transactions);

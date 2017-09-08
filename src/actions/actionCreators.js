@@ -1,4 +1,3 @@
-// add transaction
 export function addTransaction(id, date, money, description, category) {
   return {
     type: 'ADD_TRANSACTION',
@@ -10,7 +9,6 @@ export function addTransaction(id, date, money, description, category) {
   };
 }
 
-// change transaction
 export function changeTransaction(id, date, money, description, category) {
   return {
     type: 'CHANGE_TRANSACTION',
@@ -22,7 +20,6 @@ export function changeTransaction(id, date, money, description, category) {
   };
 }
 
-// delete transaction
 export function deleteTransaction(transactionId) {
   return {
     type: 'DELETE_TRANSACTION',
@@ -30,7 +27,6 @@ export function deleteTransaction(transactionId) {
   };
 }
 
-// add category
 export function addCategory(id, description, title, icon, filter) {
   return {
     type: 'ADD_CATEGORY',
@@ -42,7 +38,6 @@ export function addCategory(id, description, title, icon, filter) {
   };
 }
 
-// change category
 export function changeCategory(id, description, title, icon, filter) {
   return {
     type: 'CHANGE_CATEGORY',
@@ -54,7 +49,13 @@ export function changeCategory(id, description, title, icon, filter) {
   };
 }
 
-// delete category
+export function changeAllCategories(categories) {
+  return {
+    type: 'CHANGE_ALL_CATEGORIES',
+    categories
+  };
+}
+
 export function deleteCategory(id) {
   return {
     type: 'DELETE_CATEGORY',
@@ -62,7 +63,6 @@ export function deleteCategory(id) {
   };
 }
 
-// change language
 export function changeLang(lang) {
   return {
     type: 'CHANGE_LANGUAGE',
@@ -70,7 +70,6 @@ export function changeLang(lang) {
   };
 }
 
-// add month course
 export function addMonthCourse(date, course) {
   return {
     type: 'ADD_MONTH-COURSE',

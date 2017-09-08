@@ -22,12 +22,12 @@ class TransactionsFilter extends PureComponent {
   }
 
   selectAll() {
-    let { categories, changeCategory } = this.props;
-    categories.forEach(category => {
-      let { id, description, title, icon, filter } = category;
-      filter = this.state.selectAll;
-      changeCategory(id, description, title, icon, filter);
+    let { categories, changeAllCategories } = this.props;
+    categories = categories.map(category => {
+      category.filter = this.state.selectAll
+      return category;
     });
+    changeAllCategories(categories);
     this.setState({ selectAll: !this.state.selectAll });
   }
 
