@@ -2,7 +2,6 @@
 @import "variables";
 // Vendors
 @import "vendor/bootstrap/theme";
-@import "vendor/metricsgraphics/metricsgraphics";
 @import "vendor/datepicker/react-datepicker";
 @import "vendor/toastr/index";
 // Components
@@ -12,7 +11,6 @@
 @import '../components/navbar/navbar';
 @import '../components/icon-select/icon-select';
 @import "../components/footer/footer";
-@import "../components/transactions-graph/transactions-graph";
 @import "../components/transactions-results/transactions-results";
 @import "../components/panel/panel";
 @import "../components/button/button";
