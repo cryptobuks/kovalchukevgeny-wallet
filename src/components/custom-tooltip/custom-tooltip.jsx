@@ -9,13 +9,19 @@ class CustomTooltip extends PureComponent {
   render() {
     const { active, lang } = this.props;
     if (active) {
-      const { payload, label, category } = this.props;
+      const { payload, label, category, currency } = this.props;
       return (
         <div className="custom-tooltip">
-          {label &&
+          {(label && !currency) &&
             <p className="intro month">
               {staticContent[lang]['custom-tooltip'].date}:
               <span>{moment(label).format('Do MMMM')}</span>
+            </p>
+          }
+          {currency &&
+            <p className="intro month">
+              {staticContent[lang]['custom-tooltip'].course}:
+              <span>{moment(label).format('MMMM YYYY')}</span>
             </p>
           }
           {category &&

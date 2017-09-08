@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import MetricsGraphics from 'react-metrics-graphics';
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'Recharts';
 
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
+import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -20,9 +21,26 @@ const CurrencyRate = props => {
     }
   }
 
+  let getMinValue = array => {
+    if(array && array.length > 0) {
+      return Math.min.apply(Math,array.map(function(currentCourse){return currentCourse.course;}));
+    } else {
+        return 0;
+    }
+  }
+
   course = course.map(currentCourse => {
     currentCourse.date = new Date(moment(currentCourse.date).format('YYYY-MM-DD'));
     return currentCourse;
+  });
+
+  course = course.map((item, index) => {
+    const date = moment(item.date).format('MMM YYYY');
+    return {
+      id: index,
+      name: date,
+      value: item.course
+    }
   });
 
   return (
@@ -32,18 +50,14 @@ const CurrencyRate = props => {
         specialClass="currency"
         heading={staticContent[lang]['currency-rate'].head}
       >
-        <MetricsGraphics
-          title={staticContent[lang]['currency-rate'].smDescr}
-          description={staticContent[lang]['currency-rate'].bigDescr}
-          min_y_from_data
-          data={course}
-          height={250}
-          width={535}
-          max_y={getMaxValue(course)}
-          y_axis={false}
-          x_accessor="date"
-          y_accessor="course"
-        />
+        <AreaChart width={550} height={250} data={course}
+          margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+          <XAxis dataKey="name"/>
+          <YAxis unit={staticContent[lang].currency} domain={[getMinValue(course), getMaxValue(course)]}/>
+          <CartesianGrid strokeDasharray="6 6"/>
+          <Tooltip content={<CustomTooltip lang={lang} currency/>}/>
+          <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
+        </AreaChart>
       </Panel>
     }
     </div>

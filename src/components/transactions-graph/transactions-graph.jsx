@@ -33,10 +33,10 @@ const TransactionsGraph = props => {
     <div>
       {transactions.length > 0 &&
         <Panel heading={staticContent[lang]['transactions-graph'].head}>
-          <AreaChart width={550} height={257} data={transactionsData}
+          <AreaChart width={550} height={250} data={transactionsData}
             margin={{top: 10, right: 30, left: 0, bottom: 0}}>
             <XAxis dataKey="name"/>
-            <YAxis />
+            <YAxis unit={staticContent[lang].currency}/>
             <CartesianGrid strokeDasharray="1 1"/>
             <Tooltip content={<CustomTooltip lang={lang}/>}/>
             <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />

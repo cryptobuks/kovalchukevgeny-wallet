@@ -6,9 +6,7 @@ export default {
       "tableHead" : ["Category", "Percentage", "Amount"]
     },
     "currency-rate" : {
-      "head" : "Currency courses",
-      "smDescr" : "Currency",
-      "bigDescr" : "This graphic shows a time-series of currency"
+      "head" : "Currency courses"
     },
     "transactions-graph" : {
       "head" : "Graph"
@@ -16,7 +14,8 @@ export default {
     "custom-tooltip" : {
       "date" : "Date",
       "money" : "Money",
-      "category" : "Category"
+      "category" : "Category",
+      "course" : "Coures"
     },
     "transactions-results" : {
       "head" : "Month results",
@@ -106,9 +105,7 @@ export default {
       "tableHead" : ["Категория", "Процентное соотношение", "Итог"]
     },
     "currency-rate" : {
-      "head" : "Курс доллара",
-      "smDescr" : "Валюта",
-      "bigDescr" : "На этом графике показан временной ряд курсов по месяцам"
+      "head" : "Курс доллара"
     },
     "transactions-graph" : {
       "head" : "График транзакций"
@@ -116,7 +113,8 @@ export default {
     "custom-tooltip" : {
       "date" : "Дата",
       "money" : "Сумма",
-      "category" : "Категория"
+      "category" : "Категория",
+      "course" : "Курс"
     },
     "transactions-results" : {
       "head" : "Отчёт за месяц",
