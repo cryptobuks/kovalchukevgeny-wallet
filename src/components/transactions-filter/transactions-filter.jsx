@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -9,36 +9,75 @@ import Panel from './../../components/panel/panel.jsx';
 
 import staticContent from './../../static-content/languages';
 
-const TransactionsFilter = props => {
-  let { categories, lang, isCategoryActive } = props;
+class TransactionsFilter extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  categories = categories.map((category, i) => {
-    return(
-      <div
-        key={i}
-        data-filter={category.title}
-        className={classNames('category', {active: category.filter})}
-        onClick={() => isCategoryActive(category)}
-      >
-        <Icon icon={category.filter ? 'check_box' : 'check_box_outline_blank'} />
-        <span className="category-title">{category.title}</span>
-      </div>
-    );
-  });
+    this.state = {
+      selectAll: false
+    }
 
-  return (
-    <div className="filter">
-      <div className="row">
-        <div className="col-lg-12">
-          <Panel heading={staticContent[lang]['transactions-filter'].head}>
-            <div className="categories">
-              {categories}
-            </div>
-          </Panel>
+    this.isCategoryActive = this.isCategoryActive.bind(this);
+    this.selectAll = this.selectAll.bind(this);
+  }
+
+  selectAll() {
+    let { categories, changeCategory } = this.props;
+    categories.forEach(category => {
+      let { id, description, title, icon, filter } = category;
+      filter = this.state.selectAll;
+      changeCategory(id, description, title, icon, filter);
+    });
+    this.setState({ selectAll: !this.state.selectAll });
+  }
+
+  isCategoryActive(category) {
+    let { changeCategory } = this.props;
+    let { id, description, title, icon, filter } = category;
+    filter = !filter;
+    changeCategory(id, description, title, icon, filter);
+  }
+
+  render() {
+    let { categories, lang, changeCategory } = this.props;
+
+    categories = categories.map((category, i) => {
+      return(
+        <div
+          key={i}
+          data-filter={category.title}
+          className={classNames('category', {active: category.filter})}
+          onClick={() => this.isCategoryActive(category)}
+        >
+          <Icon icon={category.filter ? 'check_box' : 'check_box_outline_blank'} />
+          <span className="category-title">{category.title}</span>
+        </div>
+      );
+    });
+
+    return (
+      <div className="filter">
+        <div className="row">
+          <div className="col-lg-12">
+            <Panel heading={staticContent[lang]['transactions-filter'].head}>
+              <div className="toolbar">
+                <Button
+                  onClickFunction={this.selectAll}
+                  specialClass="btn btn-primary"
+                >
+                  <Icon icon={'done_all'} />
+                  {staticContent[lang]['transactions-filter'].btnSelect}
+                </Button>
+              </div>
+              <div className="categories">
+                {categories}
+              </div>
+            </Panel>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 TransactionsFilter.propTypes = {

@@ -23,7 +23,6 @@ class Reports extends PureComponent {
     this.Helpers = new Helpers();
 
     this.convertToCSV = this.convertToCSV.bind(this);
-    this.isCategoryActive = this.isCategoryActive.bind(this);
     this.reMapTransactions = this.reMapTransactions.bind(this);
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
@@ -61,13 +60,6 @@ class Reports extends PureComponent {
     const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
     event.target.href = URL.createObjectURL(blob);
     event.target.download = 'report.' + format;
-  }
-
-  isCategoryActive(category) {
-    const { changeCategory } = this.props;
-    let { id, description, title, icon, filter } = category;
-    filter = !filter;
-    changeCategory(id, description, title, icon, filter);
   }
 
   openMonth(event) {
@@ -218,13 +210,13 @@ class Reports extends PureComponent {
   }
 
   render() {
-    let { transactions, categories, lang } = this.props;
+    let { transactions, categories, lang, changeCategory } = this.props;
 
     const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
         <TransactionsFilter
-          isCategoryActive={this.isCategoryActive}
+          changeCategory={changeCategory}
           lang={lang}
           categories={categories}
         />

@@ -37,7 +37,8 @@ export default {
       "tableHead" : ["Date", "Money", "Description", "Category"]
     },
     "transactions-filter" : {
-      "head" : "Filter"
+      "head" : "Filter",
+      "btnSelect" : "Select all"
     },
     "adding-panel" : {
       "head" : "Add new transaction",
@@ -137,7 +138,8 @@ export default {
       "tableHead" : ["Дата", "Сумма", "Описание", "Категория"]
     },
     "transactions-filter" : {
-      "head" : "Фильтр транзакций"
+      "head" : "Фильтр транзакций",
+      "btnSelect" : "Выбрать все"
     },
     "adding-panel" : {
       "head" : "Добавить новую транзакцию",

@@ -9,10 +9,11 @@ import TransactionsTable from './../../components/transactions-table/transaction
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import Icon from './../../components/icon/icon.jsx';
+import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
-import { deleteTransaction, changeTransaction, addTransaction } from './../../actions/actionCreators';
+import { deleteTransaction, changeTransaction, addTransaction, changeCategory } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -36,6 +37,7 @@ class Transactions extends Component {
     this.showAddingPanel = this.showAddingPanel.bind(this);
     this.hideAddingPanel = this.hideAddingPanel.bind(this);
     this.renderTableFooter = this.renderTableFooter.bind(this);
+    this.filteredTransactions = this.filteredTransactions.bind(this);
   }
 
   componentWillMount() {
@@ -82,6 +84,20 @@ class Transactions extends Component {
     const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
     event.target.href = URL.createObjectURL(blob);
     event.target.download = 'data.' + format;
+  }
+
+  filteredTransactions(transactions) {
+    const { categories } = this.props;
+    transactions = transactions.filter(transaction => {
+      for(let i = 0; i < categories.length; i++) {
+        if(transaction.category === categories[i].title) {
+          if(categories[i].filter === true) {
+            return transaction;
+          }
+        }
+      }
+    });
+    return transactions;
   }
 
   sortSheme(dataArray, column, descending) {
@@ -150,11 +166,11 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby, showPanel } = this.state;
-    let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction } = this.props;
+    let { transactions, categories, lang, deleteTransaction, changeTransaction, addTransaction, changeCategory } = this.props;
     let amount = 0;
 
     // Filter transactions on current month
-    const monthTransactions = transactions.filter(transaction => {
+    const monthTransactions = this.filteredTransactions(transactions).filter(transaction => {
       return moment().month() === moment(transaction.date).month();
     });
 
@@ -167,17 +183,24 @@ class Transactions extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container transactions">
         <div className="row">
-          <div className="col-md-12">
-            <AddingPanel
+          <AddingPanel
+            categories={categories}
+            lang={lang}
+            addTransaction={addTransaction}
+            transactions={transactions}
+            showPanel={showPanel}
+            hideAddingPanel={this.hideAddingPanel}
+          />
+          <div className="col-lg-3 col-md-3">
+            <TransactionsFilter
               categories={categories}
               lang={lang}
-              addTransaction={addTransaction}
-              transactions={transactions}
-              showPanel={showPanel}
-              hideAddingPanel={this.hideAddingPanel}
+              changeCategory={changeCategory}
             />
+          </div>
+          <div className="col-lg-9 col-md-9">
             {transactions.length > 0 &&
               <Panel
                 specialClass="tr-table"
@@ -198,7 +221,7 @@ class Transactions extends Component {
             }
             <div className="row">
               <div className="col-lg-12">
-              {transactions.length > 0 &&
+                {transactions.length > 0 &&
                 <div className="toolbar">
                   <Button
                     onClickFunction={this.showAddingPanel}
@@ -216,7 +239,7 @@ class Transactions extends Component {
                     {staticContent[lang]['transactions-table'].btnCsv}
                   </Button>
                 </div>
-              }
+                }
               </div>
             </div>
           </div>
@@ -232,11 +255,12 @@ Transactions.propTypes = {
   lang: PropTypes.string,
   deleteTransaction: PropTypes.func,
   changeTransaction: PropTypes.func,
-  addTransaction: PropTypes.func
+  addTransaction: PropTypes.func,
+  changeCategory: PropTypes.func
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}), { deleteTransaction, changeTransaction, addTransaction })(Transactions);
+}), { deleteTransaction, changeTransaction, addTransaction, changeCategory })(Transactions);
