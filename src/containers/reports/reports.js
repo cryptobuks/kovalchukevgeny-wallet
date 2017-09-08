@@ -108,9 +108,9 @@ class Reports extends PureComponent {
       const categoryIconObj = this.props.categories.filter(category => {
         if(category.title === transaction.category) {
           return category.icon;
-        };
+        }
       })[0] || null;
-      
+
       return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}>
           <div className="table-data clearfix">{moment(transaction.date).format('DD/MM/YYYY')}</div>

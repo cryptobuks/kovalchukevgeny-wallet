@@ -11,9 +11,12 @@ export default {
       "bigDescr" : "This graphic shows a time-series of currency"
     },
     "transactions-graph" : {
-      "head" : "Graph",
-      "smDescr" : "Transactions",
-      "bigDescr" : "This graphic shows a time-series of transactions"
+      "head" : "Graph"
+    },
+    "custom-tooltip" : {
+      "date" : "Date",
+      "money" : "Money",
+      "category" : "Category"
     },
     "transactions-results" : {
       "head" : "Month results",
@@ -108,9 +111,12 @@ export default {
       "bigDescr" : "На этом графике показан временной ряд курсов по месяцам"
     },
     "transactions-graph" : {
-      "head" : "График транзакций",
-      "smDescr" : "Транзакции",
-      "bigDescr" : "На этом графике показан временной ряд транзакций"
+      "head" : "График транзакций"
+    },
+    "custom-tooltip" : {
+      "date" : "Дата",
+      "money" : "Сумма",
+      "category" : "Категория"
     },
     "transactions-results" : {
       "head" : "Отчёт за месяц",

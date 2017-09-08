@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import MetricsGraphics from 'react-metrics-graphics';
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'Recharts';
 
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
+import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -17,20 +18,29 @@ const TransactionsGraph = props => {
     return moment().month() === moment(transaction.date).month();
   });
 
+  // Remaped data for graph
+  let transactionsData = Helper.sumSameDateTransactions(monthTransactions).sort((a, b) => a['date'] - b['date']);
+  transactionsData = transactionsData.map((item, index) => {
+    const date = moment(item.date).format('MMM D');
+    return {
+      id: index,
+      name: date,
+      value: item.money
+    }
+  });
+
   return (
     <div>
       {transactions.length > 0 &&
         <Panel heading={staticContent[lang]['transactions-graph'].head}>
-          <MetricsGraphics
-            title={staticContent[lang]['transactions-graph'].smDescr}
-            description={staticContent[lang]['transactions-graph'].bigDescr}
-            data={Helper.sumSameDateTransactions(monthTransactions)}
-            height={250}
-            width={535}
-            x_accessor="date"
-            y_accessor="money"
-            yax_units="BYR "
-          />
+          <AreaChart width={550} height={257} data={transactionsData}
+            margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+            <XAxis dataKey="name"/>
+            <YAxis />
+            <CartesianGrid strokeDasharray="1 1"/>
+            <Tooltip content={<CustomTooltip lang={lang}/>}/>
+            <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
+          </AreaChart>
         </Panel>
       }
     </div>
