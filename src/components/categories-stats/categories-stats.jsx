@@ -5,6 +5,7 @@ import { PieChart, Pie, Legend, Tooltip } from 'Recharts';
 
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
+import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -120,7 +121,7 @@ const CategoriesStats = props => {
               layout='vertical'
               wrapperStyle={{top: 20, left: 320}}
             />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip lang={lang} category/>}/>
           </PieChart>
         </Panel>
       }
