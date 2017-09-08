@@ -61,3 +61,25 @@
     }
   }
 }
+
+.stats {
+  margin-bottom: 0;
+
+  .expanded {
+
+    &.panel-body {
+      height: auto;
+      padding: 0 10px;
+    }
+  }
+
+  .panel-heading {
+    cursor: pointer;
+  }
+
+  .panel-body {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+}

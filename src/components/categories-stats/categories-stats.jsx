@@ -39,6 +39,10 @@ const CategoriesStats = props => {
   const amountCategoryMoney = categoriesStats.reduce((sum, currentCategoryStats) => {
     return sum += currentCategoryStats.money;
   }, 0);
+  // Show/Hide stats data
+  const openStats = event => {
+    event.currentTarget.nextSibling.classList.toggle("expanded");
+  }
   // Render table data
   const tableData = categoriesStats.map((categoryStats, i) => {
     const categoryPercentage = (categoryStats.money / amountCategoryMoney) * 100;
@@ -88,20 +92,9 @@ const CategoriesStats = props => {
           specialClass="categories-stats"
           heading={staticContent[lang]['categories-stats'].head}
         >
-          <div className="table">
-            <div className="table-head clearfix">
-              <div className="table-row clearfix">
-                {tableHead}
-              </div>
-            </div>
-            <div className="table-body clearfix">
-              {tableData}
-            </div>
-          </div>
           <PieChart width={300} height={300}>
             <Pie
               data={categoriesStatsPie}
-              isAnimationActive={false}
               dataKey="value"
               cx={150}
               cy={150}
@@ -109,7 +102,6 @@ const CategoriesStats = props => {
               outerRadius={100}
               fill="#8884d8"
             >
-
             </Pie>
             <Legend
               dataKey="money"
@@ -123,7 +115,33 @@ const CategoriesStats = props => {
             />
             <Tooltip content={<CustomTooltip lang={lang} category/>}/>
           </PieChart>
+
+          <div className="panel stats">
+            <div
+              onClick={(e) => openStats(e)}
+              className="panel-heading clearfix">
+              <h3 className="panel-title left">
+                {staticContent[lang]['categories-stats'].details}
+              </h3>
+              <h3 className="panel-title right">
+                <Icon type="fa" icon="fa-caret-square-o-down" />
+              </h3>
+            </div>
+            <div className="panel-body">
+              <div className="table">
+                <div className="table-head clearfix">
+                  <div className="table-row clearfix">
+                    {tableHead}
+                  </div>
+                </div>
+                <div className="table-body clearfix">
+                  {tableData}
+                </div>
+              </div>
+            </div>
+          </div>
         </Panel>
+
       }
     </div>
   );

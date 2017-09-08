@@ -3,7 +3,8 @@ export default {
     "menu" : ["Transactions", "Categories", "Statistics", "Report", "Backup"],
     "categories-stats" : {
       "head" : "Categories statistic",
-      "tableHead" : ["Category", "Percentage", "Amount"]
+      "tableHead" : ["Category", "Percentage", "Amount"],
+      "details" : "Detailed data"
     },
     "currency-rate" : {
       "head" : "Currency courses"
@@ -102,7 +103,8 @@ export default {
     "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт", "Резервное копирование"],
     "categories-stats" : {
       "head" : "Статистика по категориям",
-      "tableHead" : ["Категория", "Процентное соотношение", "Итог"]
+      "tableHead" : ["Категория", "Процентное соотношение", "Итог"],
+      "details" : "Развёрнутая информация"
     },
     "currency-rate" : {
       "head" : "Курс доллара"
