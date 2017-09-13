@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { PieChart, Pie, Legend, Tooltip } from 'Recharts';
+import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'Recharts';
 
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
@@ -92,30 +92,33 @@ const CategoriesStats = props => {
           specialClass="categories-stats"
           heading={staticContent[lang]['categories-stats'].head}
         >
-          <PieChart width={300} height={300}>
-            <Pie
-              data={categoriesStatsPie}
-              dataKey="value"
-              cx={150}
-              cy={150}
-              innerRadius={50}
-              outerRadius={100}
-              fill="#8884d8"
-            >
-            </Pie>
-            <Legend
-              dataKey="money"
-              valueKey="category"
-              iconType='circle'
-              iconSize={10}
-              width={120}
-              height={140}
-              layout='vertical'
-              wrapperStyle={{top: 20, left: 320}}
-            />
-            <Tooltip content={<CustomTooltip lang={lang} type={'category'}/>}/>
-          </PieChart>
-
+          <div className="graph-wrapper">
+            <ResponsiveContainer>
+              <PieChart width={300} height={300}>
+                <Pie
+                  data={categoriesStatsPie}
+                  dataKey="value"
+                  cx={150}
+                  cy={150}
+                  innerRadius={50}
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                </Pie>
+                <Legend
+                  dataKey="money"
+                  valueKey="category"
+                  iconType='circle'
+                  iconSize={10}
+                  width={120}
+                  height={140}
+                  layout='vertical'
+                  wrapperStyle={{top: 20, left: 320}}
+                />
+                <Tooltip content={<CustomTooltip lang={lang} type={'category'}/>}/>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>          
           <div className="panel stats">
             <div
               onClick={(e) => openStats(e)}

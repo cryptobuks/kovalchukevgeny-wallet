@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'Recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'Recharts';
 
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
@@ -66,16 +66,20 @@ const ReportsGraph = props => {
           specialClass="reports-graph"
           heading={staticContent[lang]['transactions-graph'].head}
         >
-          <LineChart width={1150} height={400} data={resArr}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-            <XAxis dataKey="name"/>
-            <YAxis/>
-            <CartesianGrid strokeDasharray="3 3"/>
-            <Tooltip content={<CustomTooltip lang={lang} type={'report'}/>}/>
-            <Legend />
-            {linesArr}
-          </LineChart>
-        </Panel>
+          <div className="graph-wrapper">
+            <ResponsiveContainer>
+              <LineChart width={1150} height={400} data={resArr}
+                margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <CartesianGrid strokeDasharray="3 3"/>
+                <Tooltip content={<CustomTooltip lang={lang} type={'report'}/>}/>
+                <Legend />
+                {linesArr}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </Panel>         
       }
     </div>
   );
