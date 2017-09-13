@@ -49,6 +49,24 @@ class Helpers {
     return categories;
   }
 
+  sumSameMonthTransactions(data) {
+    let obj = {};
+    let categories = [];
+
+    for(let i = 0; i < data.length; i++) {
+      let key = data[i].category;
+      obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
+    }
+
+    for (let prop in obj) {
+      categories.push({
+        [prop]: obj[prop]
+      });
+    }
+
+    return categories;
+  }
+
   getUnicDescription(data) {
     let obj = {};
     let descriptions = [];

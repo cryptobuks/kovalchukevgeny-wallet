@@ -57,6 +57,10 @@
       & > div {
         left: auto !important;
         top: auto !important;
+
+        & > div {
+          cursor: pointer !important;
+        }
       }
     }
   }

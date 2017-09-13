@@ -9,6 +9,7 @@ import Helpers from './../../helpers/Helpers';
 import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import Button from './../../components/button/button.jsx';
+import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 
 import { changeCategory, changeAllCategories } from './../../actions/actionCreators';
 
@@ -220,6 +221,11 @@ class Reports extends PureComponent {
     const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
+        <ReportsGraph
+          transactions={this.filteredTransactions(transactions)}
+          categories={categories}
+          lang={lang}
+        />
         <TransactionsFilter
           changeCategory={changeCategory}
           changeAllCategories={changeAllCategories}

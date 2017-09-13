@@ -9,7 +9,8 @@ class CustomTooltip extends PureComponent {
   render() {
     const { active, lang } = this.props;
     if (active) {
-      const { payload, label, category, currency } = this.props;
+      const { payload, label, category, currency, report } = this.props;
+      console.log(this.props);
       return (
         <div className="custom-tooltip">
           {(label && !currency) &&
