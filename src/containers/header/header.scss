@@ -17,8 +17,25 @@
 
         &.active {
           color: $accentColor;
+
+          img {
+            opacity: 1;
+          }
         }
       }
+    }
+  }
+
+  .flag-icon {
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+    overflow: hidden;
+    vertical-align: bottom;
+
+    img {
+      width: 26px;
+      opacity: .5;
     }
   }
 }

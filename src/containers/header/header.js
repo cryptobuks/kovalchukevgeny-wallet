@@ -10,6 +10,9 @@ import Button from './../../components/button/button.jsx';
 
 import { changeLang } from './../../actions/actionCreators';
 
+import usa from './../../images/usa.svg';
+import rus from './../../images/rus.svg';
+
 import staticContent from './../../static-content/languages';
 
 const Header = props => {
@@ -65,14 +68,22 @@ const Header = props => {
             <span
               className={lang === 'eng' ? 'active' : ''}
               onClick={() => changeLang('eng')}
-            >eng</span>
+            >eng
+            <span className="flag-icon flag-icon-usa">
+              <img src={usa} alt="english" />
+            </span>
+            </span>
           </li>
           <li>/</li>
           <li>
             <span
               className={lang === 'rus' ? 'active' : ''}
               onClick={() => changeLang('rus')}
-            >rus</span>
+            >rus
+            <span className="flag-icon flag-icon-rus">
+              <img src={rus} alt="russian" />
+            </span>
+            </span>
           </li>
         </ul>
       </Navbar>

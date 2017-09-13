@@ -16,7 +16,7 @@ const Footer = () => {
               <li>
                 <Button
                   href="https://github.com/kovalchukevgeny/wallet">
-                  <Icon type={'material'} icon={'link'} />
+                  <Icon icon={'link'} />
                   <span>GitHub</span>
                 </Button>
               </li>
@@ -25,7 +25,7 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6">
             <h6 className="heart">
               <span>Created with love</span>
-              <i className="material-icons">favorite</i>
+              <Icon icon={'favorite'} />
             </h6>
           </div>
         </div>
