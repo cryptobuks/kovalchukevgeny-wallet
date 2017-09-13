@@ -113,7 +113,7 @@ const CategoriesStats = props => {
               layout='vertical'
               wrapperStyle={{top: 20, left: 320}}
             />
-            <Tooltip content={<CustomTooltip lang={lang} category/>}/>
+            <Tooltip content={<CustomTooltip lang={lang} type={'category'}/>}/>
           </PieChart>
 
           <div className="panel stats">

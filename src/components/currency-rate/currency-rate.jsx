@@ -55,7 +55,7 @@ const CurrencyRate = props => {
           <XAxis dataKey="name"/>
           <YAxis unit={staticContent[lang].currency} domain={[getMinValue(course), getMaxValue(course)]}/>
           <CartesianGrid strokeDasharray="6 6"/>
-          <Tooltip content={<CustomTooltip lang={lang} currency/>}/>
+          <Tooltip content={<CustomTooltip lang={lang} type={'currency'}/>}/>
           <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
         </AreaChart>
       </Panel>

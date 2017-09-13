@@ -71,7 +71,7 @@ const ReportsGraph = props => {
             <XAxis dataKey="name"/>
             <YAxis/>
             <CartesianGrid strokeDasharray="3 3"/>
-            <Tooltip content={<CustomTooltip lang={lang} report/>}/>
+            <Tooltip content={<CustomTooltip lang={lang} type={'report'}/>}/>
             <Legend />
             {linesArr}
           </LineChart>

@@ -38,7 +38,7 @@ const TransactionsGraph = props => {
             <XAxis dataKey="name"/>
             <YAxis unit={staticContent[lang].currency}/>
             <CartesianGrid strokeDasharray="1 1"/>
-            <Tooltip content={<CustomTooltip lang={lang}/>}/>
+            <Tooltip content={<CustomTooltip lang={lang} type={'transactions'}/>}/>
             <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
           </AreaChart>
         </Panel>

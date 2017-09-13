@@ -9,35 +9,71 @@ class CustomTooltip extends PureComponent {
   render() {
     const { active, lang } = this.props;
     if (active) {
-      const { payload, label, category, currency, report } = this.props;
-      console.log(this.props);
-      return (
-        <div className="custom-tooltip">
-          {(label && !currency) &&
-            <p className="intro month">
-              {staticContent[lang]['custom-tooltip'].date}:
-              <span>{moment(label).format('Do MMMM')}</span>
-            </p>
-          }
-          {currency &&
-            <p className="intro month">
-              {staticContent[lang]['custom-tooltip'].course}:
-              <span>{moment(label).format('MMMM YYYY')}</span>
-            </p>
-          }
-          {category &&
-            <p className="intro category">
-              {staticContent[lang]['custom-tooltip'].category}:
-              <span>{payload[0].name}</span>
-            </p>
-          }
-          <p className="intro money">
-            {staticContent[lang]['custom-tooltip'].money}:
-            <span>{payload[0].value}</span>
-            <span>{staticContent[lang].currency}</span>
-          </p>
-        </div>
-      );
+      const { payload, label, type } = this.props;
+
+      let payloadResults = payload.map((item, i) => {
+        if(item.value > 0) {
+          return (
+            <div key={i} className="custom-tooltip">
+              <p className="intro category">
+                {item.name}: <span>{item.value}</span>
+                <span>{staticContent[lang].currency}</span>
+              </p>
+            </div>
+          );
+        } return null;
+      });
+
+      switch (type) {
+        case 'category':
+          return (
+              <div className="custom-tooltip">
+                <p className="intro category">
+                  {staticContent[lang]['custom-tooltip'].category}:
+                  <span>{payload[0].name}</span>
+                </p>
+              </div>
+          );
+          break;
+        case 'currency':
+          return (
+            <div className="custom-tooltip">
+              <p className="intro month">
+                {staticContent[lang]['custom-tooltip'].course}:
+                <span>{moment(label).format('MMMM YYYY')}</span>
+              </p>
+            </div>
+          );
+          break;
+        case 'report':
+          return (
+            <div>
+              {payloadResults}
+            </div>
+          );
+          break;
+        case 'transactions':
+          return (
+            <div className="custom-tooltip">
+              <p className="intro month">
+                {staticContent[lang]['custom-tooltip'].date}:
+                <span>{moment(label).format('Do MMMM')}</span>
+              </p>
+            </div>
+          );
+          break;
+        default:
+          return (
+            <div className="custom-tooltip">
+              <p className="intro money">
+                {staticContent[lang]['custom-tooltip'].money}:
+                <span>{payload[0].value}</span>
+                <span>{staticContent[lang].currency}</span>
+              </p>
+            </div>
+          );
+          break;
+      }
     }
     return null;
   }
