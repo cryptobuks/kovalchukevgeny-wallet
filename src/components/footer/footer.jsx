@@ -8,10 +8,10 @@ const Footer = () => {
     <footer className="footer">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+          <div className="col-lg-2 col-md-3">
             <div className="logo">e-wallet</div>
           </div>
-          <div className="col-lg-10 col-md-9 col-sm-9 col-xs-6">
+          <div className="col-lg-7 col-md-3">
             <ul>
               <li>
                 <Button
@@ -21,6 +21,12 @@ const Footer = () => {
                 </Button>
               </li>
             </ul>
+          </div>
+          <div className="col-lg-3 col-md-6">
+            <h6 className="heart">
+              <span>Created with love</span>
+              <i className="material-icons">favorite</i>
+            </h6>
           </div>
         </div>
       </div>

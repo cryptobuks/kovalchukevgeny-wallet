@@ -3,6 +3,10 @@
   margin-top: 10px;
   padding: 0 40px;
 
+  @media screen and (max-width: 992px) {
+    text-align: center;
+  }
+
   ul {
     line-height: 47px;
     list-style: none;
@@ -21,4 +25,33 @@
       }
     }
   }
+
+  h6 {
+    color: $accentTextColor;
+    font-weight: 900;
+    line-height: 47px;
+    margin: 0;
+    text-align: right;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 992px) {
+      text-align: center;
+    }
+
+    &.heart {
+      i {
+        animation: heart 1s ease infinite;
+        color: #e51c23;
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    }
+
+    a { margin-left: 5px; }
+  }
+}
+
+@keyframes heart {
+  0% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
