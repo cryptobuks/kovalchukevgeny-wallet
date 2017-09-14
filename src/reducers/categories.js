@@ -18,7 +18,8 @@ function categories(state = initialState.categories, action) {
           description: action.description,
           title: action.title,
           icon: action.icon,
-          filter: action.filter
+          filter: action.filter,
+          color: action.color
         }
       ];
     case 'CHANGE_CATEGORY' :
@@ -28,6 +29,7 @@ function categories(state = initialState.categories, action) {
           category.title = action.title;
           category.icon = action.icon;
           category.filter = action.filter;
+          category.color = action.color;
         }
         return category;
       });

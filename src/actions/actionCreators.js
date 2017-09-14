@@ -27,14 +27,15 @@ export function deleteTransaction(transactionId) {
   };
 }
 
-export function addCategory(id, description, title, icon, filter) {
+export function addCategory(id, description, title, icon, filter, color) {
   return {
     type: 'ADD_CATEGORY',
     id,
     description,
     title,
     icon,
-    filter
+    filter,
+    color
   };
 }
 
@@ -45,7 +46,8 @@ export function changeCategory(id, description, title, icon, filter) {
     description,
     title,
     icon,
-    filter
+    filter,
+    color
   };
 }
 

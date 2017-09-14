@@ -54,6 +54,7 @@ export default {
       "category" : "Category",
       "descr" : "Small description",
       "chooseIcon" : "Choose icon",
+      "chooseColor" : "Choose color",
       "btnCancel" : "Cancel",
       "btnSubmit" : "Submit"
     },
@@ -155,6 +156,7 @@ export default {
       "category" : "Категория",
       "descr" : "Небольшое описание",
       "chooseIcon" : "Выберете иконку",
+      "chooseColor" : "Выберете цвет",
       "btnCancel" : "Отменить",
       "btnSubmit" : "Добавить"
     },

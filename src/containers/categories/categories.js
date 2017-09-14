@@ -6,12 +6,14 @@ import { toastr } from 'react-redux-toastr';
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
+import ColorSelect from './../../components/color-select/color-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
 
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
 import iconsArray from './../../components/icon-select/icons.js';
+import colorsArray from './../../components/color-select/colors.js';
 
 import staticContent from './../../static-content/languages';
 
@@ -23,10 +25,12 @@ class Categories extends Component {
       description: '',
       title: '',
       filter: true,
-      icon: 'fa-car' //default icon
+      icon: 'fa-car', // default icon
+      color: '#b91919' // default color
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
+    this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
     this.deleteCategory = this.deleteCategory.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
@@ -36,6 +40,10 @@ class Categories extends Component {
 
   changeCategoryIcon(icon) {
     this.setState({icon: icon});
+  }
+
+  changeCategoryColor(color) {
+    this.setState({color: color});
   }
 
   clearCategory() {
@@ -65,13 +73,13 @@ class Categories extends Component {
   }
 
   saveCategory() {
-    const { description, title, icon, filter } = this.state;
+    const { description, title, icon, filter, color } = this.state;
     const { addCategory, lang } = this.props;
     const id = (new Date()).getTime();
     if(title.length < 2) {
       toastr.error(staticContent[lang]['toastr'].smallCategoryName, {timeOut: 4000});
     } else {
-      addCategory(id, description, title, icon, filter);
+      addCategory(id, description, title, icon, filter, color);
       this.setState({
         description: '',
         filter: true,
@@ -82,7 +90,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { description, title, icon } = this.state;
+    const { description, title, icon, color } = this.state;
     let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
@@ -116,7 +124,7 @@ class Categories extends Component {
             <div className="col-lg-12">
               <Panel>
                 <div className="row">
-                  <div className="col-lg-2 col-md-12">
+                  <div className="col-lg-12">
                     <legend>{staticContent[lang]['adding-category'].head}</legend>
                   </div>
                   <div className="col-lg-2 col-md-2 col-sm-6">
@@ -126,18 +134,26 @@ class Categories extends Component {
                       handleChange={this.handleChangeTitle}
                     />
                   </div>
-                  <div className="col-lg-3 col-md-4 col-sm-6">
+                  <div className="col-lg-3 col-md-3 col-sm-6">
                     <Input
                       placeholder={staticContent[lang]['adding-category'].descr}
                       value={description}
                       handleChange={this.handleChangeDescription}
                     />
                   </div>
-                  <div className="col-lg-2 col-md-3 col-sm-6 text-right">
+                  <div className="col-lg-2 col-md-2 col-sm-6 text-right">
                     <IconSelect
                       onClickFunction={this.changeCategoryIcon}
                       defaultIcon={icon}
                       iconsArray={iconsArray}
+                      lang={lang}
+                    />
+                  </div>
+                  <div className="col-lg-2 col-md-2 col-sm-6 text-right">
+                    <ColorSelect
+                      onClickFunction={this.changeCategoryColor}
+                      defaultColor={color}
+                      colorsArray={colorsArray}
                       lang={lang}
                     />
                   </div>
