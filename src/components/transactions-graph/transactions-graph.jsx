@@ -11,12 +11,7 @@ import staticContent from './../../static-content/languages';
 
 const TransactionsGraph = props => {
   const Helper = new Helpers();
-  const { transactions, lang } = props;
-
-  // Filter transactions on current month
-  const monthTransactions = transactions.filter(transaction => {
-    return moment().month() === moment(transaction.date).month();
-  });
+  const { monthTransactions, lang } = props;
 
   // Remaped data for graph
   let transactionsData = Helper.sumSameDateTransactions(monthTransactions).sort((a, b) => a['date'] - b['date']);
@@ -31,7 +26,7 @@ const TransactionsGraph = props => {
 
   return (
     <div>
-      {transactions.length > 0 &&
+      {monthTransactions.length > 0 &&
         <Panel
           specialClass="transactions-graph"
           heading={staticContent[lang]['transactions-graph'].head}
@@ -55,11 +50,11 @@ const TransactionsGraph = props => {
 }
 
 TransactionsGraph.defaultProps = {
-  transactions: []
+  monthTransactions: []
 };
 
 TransactionsGraph.propTypes = {
-  transactions: PropTypes.array,
+  monthTransactions: PropTypes.array,
   lang: PropTypes.string
 };
 

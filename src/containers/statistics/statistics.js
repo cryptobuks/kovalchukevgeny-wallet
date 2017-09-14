@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import CurrencyRate from './../../components/currency-rate/currency-rate.jsx';
 import TransactionsGraph from './../../components/transactions-graph/transactions-graph.jsx';
@@ -10,6 +11,12 @@ import MonthCourse from './../month-course/month-course';
 
 const Statistics = props => {
   const { transactions, lang, course, categories } = props;
+
+  // Filter transactions on current month
+  const monthTransactions = transactions.filter(transaction => {
+    return moment().month() === moment(transaction.date).month();
+  });
+
   return (
     <div className="widgets">
       <div className="container">
@@ -22,7 +29,7 @@ const Statistics = props => {
           </div>
           <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <TransactionsGraph
-              transactions={transactions}
+              monthTransactions={monthTransactions}
               lang={lang}
             />
           </div>
@@ -35,7 +42,7 @@ const Statistics = props => {
           </div>
           <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <TransactionsResults
-              transactions={transactions}
+              monthTransactions={monthTransactions}
               lang={lang}
               course={course}
             />

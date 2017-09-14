@@ -59,17 +59,12 @@ const TransactionsResults = props => {
     );
   }
 
-  const { transactions, lang, course } = props;
+  const { monthTransactions, lang, course } = props;
   const today = new Date();
   let amountDay = 0;
   let amountMonth = 0;
   let amountDayCurrency = 0;
   let amountMonthCurrency = 0;
-
-  // Filter transactions on current month
-  const monthTransactions = transactions.filter(transaction => {
-    return moment().month() === moment(transaction.date).month();
-  });
 
   let monthCourse = { course: 1 }
 
