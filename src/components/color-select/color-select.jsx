@@ -67,10 +67,10 @@ class ColorSelect extends PureComponent {
 }
 
 ColorSelect.defaultProps = {
-  defaultColor: 'fa-paw',
+  defaultColor: '#b91919',
   onClickFunction: () => {},
   position: 'bottom',
-  colorsArray: ['fa-paw', 'fa-car']
+  colorsArray: ['#ff9e01', '#ffcc01']
 };
 
 ColorSelect.propTypes = {
