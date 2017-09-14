@@ -10,6 +10,7 @@ import Transactions from './containers/transactions/transactions';
 import Reports from './containers/reports/reports';
 import ErrorPage from './components/error-page/error-page';
 import Backup from './containers/backup/backup';
+import CategoryEditor from './containers/category-editor/category-editor';
 
 import './styles/main.scss';
 
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <Route path="/transactions" component={Transactions} />
         <Route path="/categories" component={Categories} />
+        <Route path="/categories/:id" component={CategoryEditor} />
         <Route path="/statistics" component={Statistics} />
         <Route path="/reports" component={Reports} />
         <Route path="/backup" component={Backup} />

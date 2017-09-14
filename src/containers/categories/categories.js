@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
+import { Link } from 'react-router';
 
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
@@ -33,9 +34,11 @@ class Categories extends Component {
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
     this.deleteCategory = this.deleteCategory.bind(this);
+    this.editCategory = this.editCategory.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.saveCategory = this.saveCategory.bind(this);
+    this.renderCategoryCard = this.renderCategoryCard.bind(this);
   }
 
   changeCategoryIcon(icon) {
@@ -64,6 +67,11 @@ class Categories extends Component {
     });
   }
 
+  editCategory(event) {
+    const { deleteCategory, lang } = this.props;
+    const id = +event.target.parentNode.getAttribute('data-id');
+  }
+
   handleChangeDescription(event) {
     this.setState({description: event.target.value});
   }
@@ -89,11 +97,8 @@ class Categories extends Component {
     }
   }
 
-  render() {
-    const { description, title, icon, color } = this.state;
-    let { categories, lang } = this.props;
-
-    categories = categories.map((category, i) => {
+  renderCategoryCard(categories) {
+    return categories.map((category, i) => {
       return(
         <div key={i} className="category-card">
           <Panel specialClass="category">
@@ -111,79 +116,88 @@ class Categories extends Component {
                 specialClass="close"
                 onClickFunction={this.deleteCategory}
               >&times;</Button>
+              <Link
+                className="edit"
+                to={`/categories/${category.id}`}
+              >Edit</Link>
             </div>
           </Panel>
         </div>
       );
     });
+  }
+
+  render() {
+    const { description, title, icon, color } = this.state;
+    let { categories, lang } = this.props;
 
     return (
-      <div className="categories">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <Panel>
-                <div className="row">
-                  <div className="col-lg-12">
-                    <legend>{staticContent[lang]['adding-category'].head}</legend>
-                  </div>
-                  <div className="col-lg-2 col-md-2 col-sm-6">
-                    <Input
-                      placeholder={staticContent[lang]['adding-category'].category}
-                      value={title}
-                      handleChange={this.handleChangeTitle}
-                    />
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6">
-                    <Input
-                      placeholder={staticContent[lang]['adding-category'].descr}
-                      value={description}
-                      handleChange={this.handleChangeDescription}
-                    />
-                  </div>
-                  <div className="col-lg-2 col-md-2 col-sm-6 text-right">
-                    <IconSelect
-                      onClickFunction={this.changeCategoryIcon}
-                      defaultIcon={icon}
-                      iconsArray={iconsArray}
-                      lang={lang}
-                    />
-                  </div>
-                  <div className="col-lg-2 col-md-2 col-sm-6 text-right">
-                    <ColorSelect
-                      onClickFunction={this.changeCategoryColor}
-                      defaultColor={color}
-                      colorsArray={colorsArray}
-                      lang={lang}
-                    />
-                  </div>
-                  <div className="col-lg-3 col-md-3 col-sm-6 text-right">
-                    <Button
-                      specialClass="btn btn-default"
-                      onClickFunction={this.clearCategory}
-                    >{staticContent[lang]['adding-category'].btnCancel}</Button>
-                    <Button
-                      specialClass="btn btn-primary"
-                      onClickFunction={this.saveCategory}
-                    >{staticContent[lang]['adding-category'].btnSubmit}</Button>
-                  </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <Panel
+              specialClass="categories"
+            >
+              <div className="row">
+                <div className="col-lg-12">
+                  <legend>{staticContent[lang]['adding-category'].head}</legend>
                 </div>
-              </Panel>
-            </div>
+                <div className="col-lg-2 col-md-2 col-sm-6">
+                  <Input
+                    placeholder={staticContent[lang]['adding-category'].category}
+                    value={title}
+                    handleChange={this.handleChangeTitle}
+                  />
+                </div>
+                <div className="col-lg-3 col-md-3 col-sm-6">
+                  <Input
+                    placeholder={staticContent[lang]['adding-category'].descr}
+                    value={description}
+                    handleChange={this.handleChangeDescription}
+                  />
+                </div>
+                <div className="col-lg-2 col-md-2 col-sm-6 text-right">
+                  <IconSelect
+                    onClickFunction={this.changeCategoryIcon}
+                    defaultIcon={icon}
+                    iconsArray={iconsArray}
+                    lang={lang}
+                  />
+                </div>
+                <div className="col-lg-2 col-md-2 col-sm-6 text-right">
+                  <ColorSelect
+                    onClickFunction={this.changeCategoryColor}
+                    defaultColor={color}
+                    colorsArray={colorsArray}
+                    lang={lang}
+                  />
+                </div>
+                <div className="col-lg-3 col-md-3 col-sm-6 text-right">
+                  <Button
+                    specialClass="btn btn-default"
+                    onClickFunction={this.clearCategory}
+                  >{staticContent[lang]['adding-category'].btnCancel}</Button>
+                  <Button
+                    specialClass="btn btn-primary"
+                    onClickFunction={this.saveCategory}
+                  >{staticContent[lang]['adding-category'].btnSubmit}</Button>
+                </div>
+              </div>
+            </Panel>
           </div>
-          <div className="row">
-            <div className="col-lg-12">
-            {categories.length > 0 &&
-              <Panel
-                specialClass="panel-primary categories-panel"
-                heading={staticContent[lang]['categories'].head}
-              >
-                <div className="categories-wrapper">
-                  {categories}
-                </div>
-              </Panel>
-            }
-            </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-12">
+          {categories.length > 0 &&
+            <Panel
+              specialClass="panel-primary categories-panel"
+              heading={staticContent[lang]['categories'].head}
+            >
+              <div className="categories-wrapper">
+                {this.renderCategoryCard(categories)}
+              </div>
+            </Panel>
+          }
           </div>
         </div>
       </div>

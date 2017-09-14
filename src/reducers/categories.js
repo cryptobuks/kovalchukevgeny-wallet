@@ -22,13 +22,12 @@ function categories(state = initialState.categories, action) {
           color: action.color
         }
       ];
-    case 'CHANGE_CATEGORY' :
+    case 'UPDATE_CATEGORY' :
       store = store.map(category => {
         if(category.id === action.id) {
           category.description = action.description;
           category.title = action.title;
           category.icon = action.icon;
-          category.filter = action.filter;
           category.color = action.color;
         }
         return category;

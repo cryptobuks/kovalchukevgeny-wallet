@@ -93,6 +93,12 @@ export default {
     "categories" : {
       "head" : "categories"
     },
+    "category-editor" : {
+      "head" : "edit category",
+      "category" : "Category name",
+      "descr" : "Small description",
+      "btnUpdate" : "Update category"
+    },
     "error-page" : {
       "h2" : "Page not found",
       "link" : "Back on the main page"
@@ -194,6 +200,12 @@ export default {
     },
     "categories" : {
       "head" : "Категории"
+    },
+    "category-editor" : {
+      "head" : "Редактировать категорию",
+      "category" : "Категория",
+      "descr" : "Небольшое описание",
+      "btnUpdate" : "Обновить"
     },
     "error-page" : {
       "h2" : "Страница не найдена",

@@ -39,14 +39,13 @@ export function addCategory(id, description, title, icon, filter, color) {
   };
 }
 
-export function changeCategory(id, description, title, icon, filter) {
+export function updateCategory(id, description, title, icon, color) {
   return {
-    type: 'CHANGE_CATEGORY',
+    type: 'UPDATE_CATEGORY',
     id,
     description,
     title,
     icon,
-    filter,
     color
   };
 }
