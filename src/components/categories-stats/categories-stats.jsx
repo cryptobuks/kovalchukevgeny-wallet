@@ -103,6 +103,7 @@ const CategoriesStats = props => {
                   innerRadius={50}
                   outerRadius={100}
                   fill="#8884d8"
+                  label
                 >
                 </Pie>
                 <Legend
@@ -118,7 +119,7 @@ const CategoriesStats = props => {
                 <Tooltip content={<CustomTooltip lang={lang} type={'category'}/>}/>
               </PieChart>
             </ResponsiveContainer>
-          </div>          
+          </div>
           <div className="panel stats">
             <div
               onClick={(e) => openStats(e)}
