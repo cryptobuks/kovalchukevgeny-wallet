@@ -219,6 +219,7 @@ class Transactions extends Component {
               <Panel
                 specialClass="tr-table"
                 heading={staticContent[lang]['transactions-table'].head}
+                headingIcon="view_list"
                 footer={this.renderTableFooter(amount, unicTransactions)}
               >
                 <TransactionsTable

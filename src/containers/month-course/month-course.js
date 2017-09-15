@@ -7,6 +7,7 @@ import moment from 'moment';
 import Button from './../../components/button/button.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
+import Icon from './../../components/icon/icon.jsx';
 
 import { addMonthCourse } from './../../actions/actionCreators';
 
@@ -58,6 +59,7 @@ class MonthCourse extends Component {
         <Panel
           specialClass="month-course"
           heading={staticContent[lang]['month-course'].head}
+          headingIcon="attach_money"
         >
           <div className="row">
             <div className="col-lg-6">
@@ -77,10 +79,15 @@ class MonthCourse extends Component {
                 value={currentCourse}
                 handleChange={this.handleChangeCourse}
               />
-              <Button
-                specialClass="btn btn-primary"
-                onClickFunction={() => this.saveCourse(date, currentCourse)}
-              >{staticContent[lang]['month-course'].btnSubmit}</Button>
+              <div className="toolbar">
+                <Button
+                  specialClass="btn btn-primary"
+                  onClickFunction={() => this.saveCourse(date, currentCourse)}
+                >
+                  <Icon icon={'attach_money'} />
+                  {staticContent[lang]['month-course'].btnSubmit}
+                </Button>
+              </div>
             </div>
           </div>
         </Panel>

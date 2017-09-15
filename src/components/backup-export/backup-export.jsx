@@ -26,26 +26,25 @@ const Export = props => {
   const { transactions, lang } = props;
 
   return (
-    <div>
-      <Panel
-        specialClass="export"
-        heading={staticContent[lang]['backup-export'].head}
-      >
-        <div className="toolbar">
-          <p>
-            {staticContent[lang]['backup-export'].description}
-          </p>
-          <Button
-            onClickFunction={download.bind(this, 'json')}
-            specialClass="btn btn-primary"
-            href="backup.json"
-          >
-            <Icon icon={'get_app'} />
-            {staticContent[lang]['backup-export'].btnJson}
-          </Button>
-        </div>
-      </Panel>
-    </div>
+    <Panel
+      specialClass="export"
+      heading={staticContent[lang]['backup-export'].head}
+      headingIcon="backup"
+    >
+      <div className="toolbar">
+        <p>
+          {staticContent[lang]['backup-export'].description}
+        </p>
+        <Button
+          onClickFunction={download.bind(this, 'json')}
+          specialClass="btn btn-primary"
+          href="backup.json"
+        >
+          <Icon icon={'get_app'} />
+          {staticContent[lang]['backup-export'].btnJson}
+        </Button>
+      </div>
+    </Panel>
   );
 }
 

@@ -5,10 +5,17 @@
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
+
+    i {
+      line-height: 0;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
   }
 
   .panel-heading {
     background-color: #7F7B82;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     color: $accentTextColor;
   }
 }

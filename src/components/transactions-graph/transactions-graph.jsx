@@ -30,6 +30,7 @@ const TransactionsGraph = props => {
         <Panel
           specialClass="transactions-graph"
           heading={staticContent[lang]['transactions-graph'].head}
+          headingIcon="multiline_chart"
           >
           <div className="graph-wrapper">
             <ResponsiveContainer>

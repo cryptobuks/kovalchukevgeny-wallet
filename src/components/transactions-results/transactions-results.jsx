@@ -92,6 +92,7 @@ const TransactionsResults = props => {
     <Panel
       specialClass="results"
       heading={staticContent[lang]['transactions-results'].head}
+      headingIcon="insert_invitation"
     >
       <div className="table">
         <div className="table-body">

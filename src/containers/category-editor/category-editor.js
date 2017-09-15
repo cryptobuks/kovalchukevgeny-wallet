@@ -90,6 +90,7 @@ class CategoryEditor extends PureComponent {
             <Panel
               specialClass="category-editor"
               heading={staticContent[lang]['category-editor'].head}
+              headingIcon="settings"
             >
               <div className="row">
                 <div className="col-lg-3 col-md-2 col-sm-6">

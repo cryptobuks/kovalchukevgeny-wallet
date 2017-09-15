@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import Button from './../button/button.jsx';
 import Input from './../input/input.jsx';
 import Panel from './../panel/panel.jsx';
+import Icon from './../icon/icon.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -155,15 +156,21 @@ class AddingPanel extends PureComponent {
               {categories}
             </select>
           </div>
-          <div className="text-center">
+          <div className="text-center toolbar">
             <Button
               specialClass="btn btn-primary"
               onClickFunction={this.saveTransaction}
-            >{staticContent[lang]['adding-panel'].btnSubmit}</Button>
+            >
+              <Icon icon={'save'} />
+              {staticContent[lang]['adding-panel'].btnSubmit}
+            </Button>
             <Button
               specialClass="btn btn-default"
               onClickFunction={this.clearTransactionData}
-            >{staticContent[lang]['adding-panel'].btnCancel}</Button>
+            >
+              <Icon icon={'undo'} />
+              {staticContent[lang]['adding-panel'].btnCancel}
+            </Button>
           </div>
         </Panel>
       </div>

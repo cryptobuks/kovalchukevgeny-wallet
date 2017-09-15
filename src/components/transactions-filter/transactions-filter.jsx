@@ -56,26 +56,24 @@ class TransactionsFilter extends PureComponent {
     });
 
     return (
-      <div className="filter">
-        <div className="row">
-          <div className="col-lg-12">
-            <Panel heading={staticContent[lang]['transactions-filter'].head}>
-              <div className="toolbar">
-                <Button
-                  onClickFunction={this.selectAll}
-                  specialClass="btn btn-primary"
-                >
-                  <Icon icon={'done_all'} />
-                  {staticContent[lang]['transactions-filter'].btnSelect}
-                </Button>
-              </div>
-              <div className="categories">
-                {categories}
-              </div>
-            </Panel>
-          </div>
+      <Panel
+        specialClass="filter"
+        heading={staticContent[lang]['transactions-filter'].head}
+        headingIcon="filter_list"
+      >
+        <div className="toolbar">
+          <Button
+            onClickFunction={this.selectAll}
+            specialClass="btn btn-primary"
+          >
+            <Icon icon={'done_all'} />
+            {staticContent[lang]['transactions-filter'].btnSelect}
+          </Button>
         </div>
-      </div>
+        <div className="categories">
+          {categories}
+        </div>
+      </Panel>
     );
   }
 }

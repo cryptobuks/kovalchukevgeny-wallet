@@ -89,7 +89,7 @@ const CategoriesStats = props => {
       return category.title === categoryStats.category
     })[0];
     categoryColor = categoryColor.color ? categoryColor.color : '#33373';
-    
+
     return {
       id: index,
       name: categoryStats.category,
@@ -104,6 +104,7 @@ const CategoriesStats = props => {
         <Panel
           specialClass="categories-stats"
           heading={staticContent[lang]['categories-stats'].head}
+          headingIcon="pie_chart"
         >
           <div className="graph-wrapper">
             <ResponsiveContainer>
@@ -138,13 +139,14 @@ const CategoriesStats = props => {
               onClick={(e) => openStats(e)}
               className="panel-heading clearfix">
               <h3 className="panel-title left">
+                <Icon icon={'format_list_bulleted'} />
                 {staticContent[lang]['categories-stats'].details}
               </h3>
               <h3 className="panel-title right">
-                <Icon type="fa" icon="fa-caret-square-o-down" />
+                <Icon icon="arrow_drop_down_circle" />
               </h3>
             </div>
-            <div className="panel-body">
+            <div className="panel-body expanded">
               <div className="table">
                 <div className="table-head clearfix">
                   <div className="table-row clearfix">

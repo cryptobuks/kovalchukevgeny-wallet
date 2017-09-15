@@ -175,10 +175,11 @@ class Reports extends PureComponent {
                 onClick={(e) => this.openMonth(e)}
                 className="panel-heading clearfix">
                 <h3 className="panel-title left">
+                  <Icon icon={'today'} />
                   {`${staticContent[lang]['months'][i]} ${moment(reMapedTransaction.date).year()}`}
                 </h3>
                 <h3 className="panel-title right">
-                  <Icon type="fa" icon="fa-caret-square-o-down" />
+                  <Icon icon="arrow_drop_down_circle" />
                 </h3>
               </div>
               <div className="panel-body">

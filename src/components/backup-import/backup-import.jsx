@@ -63,36 +63,35 @@ class Import extends PureComponent {
     const { file } = this.state;
 
     return (
-      <div>
-        <Panel
-          specialClass="import"
-          heading={staticContent[lang]['backup-import'].head}
-        >
-          <div className="toolbar">
-            <p>
-              {staticContent[lang]['backup-import'].description}
-            </p>
-            {this.renderInfoAboutFile(file)}
-            <label className="label-load btn btn-primary">
-              <input
-                type="file"
-                className="inputfile"
-                onChange={this.updateLoading}
-                ref={(input) => { this.fileInput = input; }}
-              />
-              <Icon icon="move_to_inbox"/>
-              {staticContent[lang]['backup-import'].btnLoad}
-            </label>
-            <Button
-              specialClass={classNames('btn btn-primary', {'disabled': !file.name})}
-              onClickFunction={this.readFile}
-            >
-              <Icon icon="cached"/>
-              {staticContent[lang]['backup-import'].btnSync}
-            </Button>
-          </div>
-        </Panel>
-      </div>
+      <Panel
+        specialClass="import"
+        heading={staticContent[lang]['backup-import'].head}
+        headingIcon="open_in_browser"
+      >
+        <div className="toolbar">
+          <p>
+            {staticContent[lang]['backup-import'].description}
+          </p>
+          {this.renderInfoAboutFile(file)}
+          <label className="label-load btn btn-primary">
+            <input
+              type="file"
+              className="inputfile"
+              onChange={this.updateLoading}
+              ref={(input) => { this.fileInput = input; }}
+            />
+            <Icon icon="move_to_inbox"/>
+            {staticContent[lang]['backup-import'].btnLoad}
+          </label>
+          <Button
+            specialClass={classNames('btn btn-primary', {'disabled': !file.name})}
+            onClickFunction={this.readFile}
+          >
+            <Icon icon="cached"/>
+            {staticContent[lang]['backup-import'].btnSync}
+          </Button>
+        </div>
+      </Panel>
     );
   }
 }

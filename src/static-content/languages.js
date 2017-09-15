@@ -47,7 +47,7 @@ export default {
       "descrLabel" : "Description:",
       "categoryLabel" : "Category:",
       "btnCancel" : "Cancel",
-      "btnSubmit" : "Submit"
+      "btnSubmit" : "Save"
     },
     "adding-category" : {
       "head" : "New category",
@@ -56,7 +56,7 @@ export default {
       "chooseIcon" : "Choose icon",
       "chooseColor" : "Choose color",
       "btnCancel" : "Cancel",
-      "btnSubmit" : "Submit"
+      "btnSubmit" : "Save"
     },
     "backup-export" : {
       "head" : "Export data",
@@ -158,7 +158,7 @@ export default {
       "descrLabel" : "Добавьте описание:",
       "categoryLabel" : "Выберите категорию:",
       "btnCancel" : "Отменить",
-      "btnSubmit" : "Добавить"
+      "btnSubmit" : "Сохранить"
     },
     "adding-category" : {
       "head" : "Новая категория",
@@ -167,7 +167,7 @@ export default {
       "chooseIcon" : "Выберете иконку",
       "chooseColor" : "Выберете цвет",
       "btnCancel" : "Отменить",
-      "btnSubmit" : "Добавить"
+      "btnSubmit" : "Сохранить"
     },
     "backup-export" : {
       "head" : "Экспортирование данных",

@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import Icon from './../icon/icon.jsx';
+
 const Panel = props => {
-  const { heading, footer, children, specialClass, onClickFunction } = props;
+  const { heading, footer, children, specialClass, onClickFunction, headingIcon } = props;
 
   return (
     <div className={classNames('panel', specialClass)}>
@@ -11,9 +13,12 @@ const Panel = props => {
       <div
         onClick={(e) => onClickFunction(e)}
         className="panel-heading">
-        <h3
-          className="panel-title"
-        >{heading}</h3>
+        <h3 className="panel-title">
+          {headingIcon &&
+            <Icon icon={headingIcon} />
+          }
+          {heading}
+        </h3>
       </div>}
       <div className="panel-body">
         {React.Children.map(children, (child) => {
@@ -38,6 +43,7 @@ Panel.propTypes = {
     PropTypes.string
   ]).isRequired,
   heading: PropTypes.string,
+  headingIcon: PropTypes.string,
   footer: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object

@@ -180,14 +180,22 @@ class Categories extends Component {
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-6 text-right">
-                  <Button
-                    specialClass="btn btn-default"
-                    onClickFunction={this.clearCategory}
-                  >{staticContent[lang]['adding-category'].btnCancel}</Button>
-                  <Button
-                    specialClass="btn btn-primary"
-                    onClickFunction={this.saveCategory}
-                  >{staticContent[lang]['adding-category'].btnSubmit}</Button>
+                  <div className="toolbar">
+                    <Button
+                      specialClass="btn btn-primary"
+                      onClickFunction={this.saveCategory}
+                    >
+                      <Icon icon={'save'} />
+                      {staticContent[lang]['adding-category'].btnSubmit}
+                    </Button>
+                    <Button
+                      specialClass="btn btn-default"
+                      onClickFunction={this.clearCategory}
+                    >
+                      <Icon icon={'undo'} />
+                      {staticContent[lang]['adding-category'].btnCancel}
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Panel>
@@ -199,6 +207,7 @@ class Categories extends Component {
             <Panel
               specialClass="panel-primary categories-panel"
               heading={staticContent[lang]['categories'].head}
+              headingIcon="work"
             >
               <div className="categories-wrapper">
                 {this.renderCategoryCard(categories)}

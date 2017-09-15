@@ -49,6 +49,7 @@ const CurrencyRate = props => {
       <Panel
         specialClass="currency"
         heading={staticContent[lang]['currency-rate'].head}
+        headingIcon="monetization_on"
       >
         <div className="graph-wrapper">
           <ResponsiveContainer>
