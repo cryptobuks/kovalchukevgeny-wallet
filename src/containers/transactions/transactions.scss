@@ -58,23 +58,6 @@
 
 .transactions {
 
-  .filter {
-
-    .categories {
-
-      & > div {
-        display: flex;
-        margin-right: 0;
-
-        span {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-      }
-    }
-  }
-
   .table-data {
 
     &:nth-child(1) { width: 15%; }

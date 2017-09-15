@@ -145,6 +145,14 @@ class TransactionsTable extends Component {
         };
       })[0] || null;
 
+      let categoryColor = categories.filter(category => {
+        if(category.id === transaction.category) {
+          return category.color;
+        };
+      })[0];
+
+      categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
+
       return(
         <div className="table-row clearfix" key={i} data-row={transaction.id}
           onClick={() => this.openEditMenu(transaction)}
@@ -192,7 +200,9 @@ class TransactionsTable extends Component {
           <div className="table-data clearfix">
             {!transaction.isEdit ?
               <span>
-                <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
+                <span className="icon-wrapper" style={{backgroundColor: categoryColor}}>
+                  <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
+                </span>
                 {this.Helpers.getCategoryById(categories, transaction)}
               </span> :
               <select

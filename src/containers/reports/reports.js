@@ -11,7 +11,7 @@ import TransactionsFilter from './../../components/transactions-filter/transacti
 import Button from './../../components/button/button.jsx';
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 
-import { changeCategory, changeAllCategories } from './../../actions/actionCreators';
+import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -106,6 +106,14 @@ class Reports extends PureComponent {
         }
       })[0] || null;
 
+      let categoryColor = categories.filter(category => {
+        if(category.id === transaction.category) {
+          return category.color;
+        };
+      })[0];
+
+      categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
+
       return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}>
           <div className="table-data clearfix">{moment(transaction.date).format('DD/MM/YYYY')}</div>
@@ -113,7 +121,9 @@ class Reports extends PureComponent {
           <div className="table-data clearfix" title={transaction.description}>{transaction.description}</div>
           <div className="table-data clearfix">
             <span>
-              <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
+              <span className="icon-wrapper" style={{backgroundColor: categoryColor}}>
+                <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
+              </span>
               {this.Helpers.getCategoryById(categories, transaction)}
             </span>
           </div>
@@ -217,7 +227,7 @@ class Reports extends PureComponent {
       transactions,
       categories,
       lang,
-      changeCategory,
+      updateCategory,
       changeAllCategories } = this.props;
 
     const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
@@ -228,30 +238,28 @@ class Reports extends PureComponent {
           categories={categories}
           lang={lang}
         /> */}
-        <TransactionsFilter
-          changeCategory={changeCategory}
-          changeAllCategories={changeAllCategories}
-          lang={lang}
-          categories={categories}
-        />
         <div className="row">
-          <div className="col-md-12">
-            {this.renderMonthPanels(reMapedTransactions)}
+          <div className="col-lg-3 col-md-3">
+            <TransactionsFilter
+              updateCategory={updateCategory}
+              changeAllCategories={changeAllCategories}
+              lang={lang}
+              categories={categories}
+            />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
-          {transactions.length > 0 &&
-            <div className="toolbar">
-              <Button
-                onClickFunction={this.download.bind(this, 'csv')}
-                specialClass="btn btn-primary"
-                href="report.csv"
-              >
-                <Icon icon={'get_app'} />
-                {staticContent[lang]['reports'].btnCsv}</Button>
-            </div>
-          }
+          <div className="col-lg-9 col-md-9">
+            {this.renderMonthPanels(reMapedTransactions)}
+            {transactions.length > 0 &&
+              <div className="toolbar">
+                <Button
+                  onClickFunction={this.download.bind(this, 'csv')}
+                  specialClass="btn btn-primary"
+                  href="report.csv"
+                >
+                  <Icon icon={'get_app'} />
+                  {staticContent[lang]['reports'].btnCsv}</Button>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -264,7 +272,7 @@ Reports.propTypes = {
   transactions: PropTypes.array,
   lang: PropTypes.string,
   course: PropTypes.array,
-  changeCategory: PropTypes.func,
+  updateCategory: PropTypes.func,
   changeAllCategories: PropTypes.func
 };
 
@@ -273,4 +281,4 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course
-}), { changeCategory, changeAllCategories })(LoadingHOC('transactions')(Reports));
+}), { updateCategory, changeAllCategories })(LoadingHOC('transactions')(Reports));

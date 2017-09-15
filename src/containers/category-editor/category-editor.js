@@ -49,6 +49,7 @@ class CategoryEditor extends PureComponent {
       description: category.description,
       title: category.title,
       icon: category.icon,
+      filter: category.filter,
       color: category.color || '#b91919'
     });
   }
@@ -70,10 +71,10 @@ class CategoryEditor extends PureComponent {
   }
 
   updateCategory() {
-    const { id, description, title, icon, color } = this.state;
+    const { id, description, title, icon, filter, color } = this.state;
     const { updateCategory, categories } = this.props;
 
-    updateCategory(id, description, title, icon, color);
+    updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
     toastr.success('Category updated', { timeOut: 3000 });
   }

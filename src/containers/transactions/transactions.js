@@ -17,7 +17,7 @@ import {
   deleteTransaction,
   changeTransaction,
   addTransaction,
-  changeCategory,
+  updateCategory,
   changeAllCategories } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
@@ -178,7 +178,7 @@ class Transactions extends Component {
       deleteTransaction,
       changeTransaction,
       addTransaction,
-      changeCategory,
+      updateCategory,
       changeAllCategories } = this.props;
     let amount = 0;
 
@@ -210,7 +210,7 @@ class Transactions extends Component {
             <TransactionsFilter
               categories={categories}
               lang={lang}
-              changeCategory={changeCategory}
+              updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
             />
           </div>
@@ -270,7 +270,7 @@ Transactions.propTypes = {
   deleteTransaction: PropTypes.func,
   changeTransaction: PropTypes.func,
   addTransaction: PropTypes.func,
-  changeCategory: PropTypes.func,
+  updateCategory: PropTypes.func,
   changeAllCategories: PropTypes.func
 };
 
@@ -278,4 +278,4 @@ export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}), { deleteTransaction, changeTransaction, addTransaction, changeCategory, changeAllCategories })(Transactions);
+}), { deleteTransaction, changeTransaction, addTransaction, updateCategory, changeAllCategories })(Transactions);

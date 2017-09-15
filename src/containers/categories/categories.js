@@ -99,7 +99,7 @@ class Categories extends Component {
 
   renderCategoryCard(categories) {
     return categories.map((category, i) => {
-      const categoryColor = category.color ? category.color : '#33373'
+      const categoryColor = category.color ? category.color : '#33373e'
       return(
         <div key={i} className="category-card">
           <Panel specialClass="category">

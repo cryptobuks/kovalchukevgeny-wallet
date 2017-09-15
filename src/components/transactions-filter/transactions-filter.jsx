@@ -32,14 +32,14 @@ class TransactionsFilter extends PureComponent {
   }
 
   isCategoryActive(category) {
-    let { changeCategory } = this.props;
-    let { id, description, title, icon, filter } = category;
+    let { updateCategory } = this.props;
+    let { id, description, title, icon, filter, color } = category;
     filter = !filter;
-    changeCategory(id, description, title, icon, filter);
+    updateCategory(id, description, title, icon, filter, color);
   }
 
   render() {
-    let { categories, lang, changeCategory } = this.props;
+    let { categories, lang } = this.props;
 
     categories = categories.map((category, i) => {
       return(

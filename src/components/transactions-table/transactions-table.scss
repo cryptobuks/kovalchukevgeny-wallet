@@ -101,7 +101,7 @@
   &-data {
     border-bottom: 1px solid $borderColor;
     float: left;
-    min-height: 44px;
+    min-height: 46px;
     padding: 10px;
 
     &:nth-child(1) { width: 20%; }
@@ -109,9 +109,20 @@
     &:nth-child(3) { width: 40%; }
     &:nth-child(4) { width: 20%; }
 
-    .fa {
-      color: $accentColor;
+    .icon-wrapper {
+      border-radius: 50%;
+      display: inline-block;
+      height: 25px;
+      line-height: 20px;
       margin-right: 5px;
+      padding: 3px;
+      text-align: center;
+      vertical-align: middle;
+      width: 25px;
+
+      .fa {
+        color: $accentTextColor;
+      }
     }
   }
 
@@ -119,7 +130,7 @@
   .edit-menu {
     background-color: #7F7B82 !important;
     opacity: 0;
-    padding: 7px 10px;
+    padding: 8px 10px;
     position: absolute;
     right: -62px;
     text-align: center;

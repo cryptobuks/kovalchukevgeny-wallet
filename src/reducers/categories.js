@@ -28,6 +28,7 @@ function categories(state = initialState.categories, action) {
           category.description = action.description;
           category.title = action.title;
           category.icon = action.icon;
+          category.filter = action.filter;
           category.color = action.color;
         }
         return category;
