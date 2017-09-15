@@ -81,17 +81,20 @@ const CategoriesStats = props => {
     );
   });
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#ed0cc1', '#f91616', '#ede944', '#827d7d'];
   // Remap data for graph
   let categoriesStatsPie = categoriesStats.map((categoryStats, index) => {
     const categoryPercentage = Math.round((categoryStats.money / amountCategoryMoney) * 100);
 
-    COLORS[index] = COLORS[index] ? COLORS[index] : COLORS[Math.round(0 - 0.5 + Math.random() * (8 - 1 + 1))];
+    let categoryColor = categories.filter(category => {
+      return category.title === categoryStats.category
+    })[0];
+    categoryColor = categoryColor.color ? categoryColor.color : '#33373';
+    
     return {
       id: index,
       name: categoryStats.category,
       value: categoryStats.money,
-      fill: COLORS[index]
+      fill: categoryColor
     }
   });
 

@@ -99,11 +99,12 @@ class Categories extends Component {
 
   renderCategoryCard(categories) {
     return categories.map((category, i) => {
+      const categoryColor = category.color ? category.color : '#33373'
       return(
         <div key={i} className="category-card">
           <Panel specialClass="category">
             <div data-id={category.id}>
-              <div className="categ-icon">
+              <div className="categ-icon" style={{backgroundColor: categoryColor}}>
                 <Icon type="fa" icon={category.icon} />
               </div>
               <h5>{category.title}</h5>
