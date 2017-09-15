@@ -59,6 +59,11 @@ class CustomTooltip extends PureComponent {
                 {staticContent[lang]['custom-tooltip'].date}:
                 <span>{moment(label).format('Do MMMM')}</span>
               </p>
+              <p className="intro month">
+                {staticContent[lang]['custom-tooltip'].money}:
+                <span>{payload[0].value}</span>
+                <span>{staticContent[lang].currency}</span>
+              </p>
             </div>
           );
           break;

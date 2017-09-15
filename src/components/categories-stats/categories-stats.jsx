@@ -35,6 +35,16 @@ const CategoriesStats = props => {
   if(categoriesStats.length > 0) {
     categoriesStats.sort((a, b) => b['money'] - a['money']);
   }
+  // Remap category object, transform category title from id to title
+  categoriesStats = categoriesStats.map(category => {
+    const currentCategory = categories.filter(item => {
+      return +category.category === item.id;
+    })[0];
+    return {
+        money: category.money,
+        category: currentCategory.title
+    }
+  });
   // Get amount month money spended
   const amountCategoryMoney = categoriesStats.reduce((sum, currentCategoryStats) => {
     return sum += currentCategoryStats.money;

@@ -84,6 +84,13 @@ class Helpers {
 
     return descriptions;
   }
+
+  getCategoryById(categories, transaction) {
+    const category = categories.filter(category => {
+      return transaction.category === category.id
+    })[0];
+    return category ? category.title : '';
+  }
 }
 
 export default Helpers;

@@ -86,7 +86,7 @@ class Reports extends PureComponent {
     const { categories } = this.props;
     transactions = transactions.filter(transaction => {
       for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].title) {
+        if(transaction.category === categories[i].id) {
           if(categories[i].filter === true) {
             return transaction;
           }
@@ -97,9 +97,11 @@ class Reports extends PureComponent {
   }
 
   renderMonthTable(transactions) {
+    const { categories } = this.props;
+
     return transactions.map((transaction, i) => {
       const categoryIconObj = this.props.categories.filter(category => {
-        if(category.title === transaction.category) {
+        if(category.id === transaction.category) {
           return category.icon;
         }
       })[0] || null;
@@ -112,7 +114,7 @@ class Reports extends PureComponent {
           <div className="table-data clearfix">
             <span>
               <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
-              {transaction.category}
+              {this.Helpers.getCategoryById(categories, transaction)}
             </span>
           </div>
         </div>

@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import moment from 'moment';
 import { toastr } from 'react-redux-toastr';
 
+import Helpers from './../../helpers/Helpers';
+
 import Icon from './../icon/icon.jsx';
 import Input from './../input/input.jsx';
 import Button from './../button/button.jsx'
@@ -16,6 +18,8 @@ import LoadingHOC from './../../HOC/loadingHOC.jsx';
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
+
+    this.Helpers = new Helpers();
 
     this.state = {
       activeRow: {},
@@ -74,7 +78,7 @@ class TransactionsTable extends Component {
   updateTransaction(isEditRow) {
     const { lang } = this.props;
     let { id, date, money, description, category } = this.state.isEditRow;
-    this.props.changeTransaction(id, date, +money, description, category);
+    this.props.changeTransaction(id, date, +money, description, +category);
     this.setState({
       isEditRow: {},
       activeRow: {}
@@ -114,7 +118,7 @@ class TransactionsTable extends Component {
 
     const selectCategories = categories.map((category, i) => {
       return(
-        <option key={i} value={category.title}>{category.title}</option>
+        <option key={i} value={category.id}>{category.title}</option>
       );
     });
 
@@ -136,7 +140,7 @@ class TransactionsTable extends Component {
     const tableData = transactions.map((transaction, i) => {
 
       const categoryIconObj = categories.filter(category => {
-        if(category.title === transaction.category) {
+        if(category.id === transaction.category) {
           return category.icon;
         };
       })[0] || null;
@@ -189,7 +193,7 @@ class TransactionsTable extends Component {
             {!transaction.isEdit ?
               <span>
                 <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
-                {transaction.category}
+                {this.Helpers.getCategoryById(categories, transaction)}
               </span> :
               <select
                 className="form-control"

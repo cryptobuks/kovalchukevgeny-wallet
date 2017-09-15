@@ -95,7 +95,7 @@ class Transactions extends Component {
     const { categories } = this.props;
     transactions = transactions.filter(transaction => {
       for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].title) {
+        if(transaction.category === categories[i].id) {
           if(categories[i].filter === true) {
             return transaction;
           }

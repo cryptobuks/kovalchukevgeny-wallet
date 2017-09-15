@@ -68,11 +68,11 @@ class AddingPanel extends PureComponent {
 
   setDefaultCategory() {
     const category = this.props.categories[0];
-    return category ? category.title : '';
+    return category ? category.id : '';
   }
 
   saveTransaction() {
-    const { category, money, date, description } = this.state;
+    let { category, money, date, description } = this.state;
     const { addTransaction, lang, hideAddingPanel } = this.props;
     const id = Date.now();
     if(+money === 0 || money === null || money === '' || money === undefined) {
@@ -80,7 +80,7 @@ class AddingPanel extends PureComponent {
     } else if(description !== '' && description.length < 2) {
       toastr.error(staticContent[lang]['toastr'].smallTransDescr, {timeOut: 4000});
     } else {
-      addTransaction(id, date, money, description, category);
+      addTransaction(id, date, money, description, +category);
       this.setState({
         category: this.setDefaultCategory(),
         money: '',
@@ -97,7 +97,7 @@ class AddingPanel extends PureComponent {
 
     categories = categories.map((category, i) => {
       return(
-        <option key={i} value={category.title}>{category.title}</option>
+        <option key={i} value={category.id}>{category.title}</option>
       );
     });
 
