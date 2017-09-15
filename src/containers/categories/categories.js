@@ -98,6 +98,7 @@ class Categories extends Component {
   }
 
   renderCategoryCard(categories) {
+    const { lang } = this.props;
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e'
       return(
@@ -117,10 +118,15 @@ class Categories extends Component {
                 specialClass="close"
                 onClickFunction={this.deleteCategory}
               >&times;</Button>
-              <Link
-                className="edit"
-                to={`/categories/${category.id}`}
-              >Edit</Link>
+              <div className="toolbar">
+                <Link
+                  className="edit btn-primary btn"
+                  to={`/categories/${category.id}`}
+                >
+                  <Icon icon={'create'} />
+                  {staticContent[lang]['categories'].btnEdit}
+                </Link>
+              </div>
             </div>
           </Panel>
         </div>
