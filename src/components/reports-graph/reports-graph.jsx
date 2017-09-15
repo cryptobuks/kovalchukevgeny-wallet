@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'Recharts';
 
 import Helpers from './../../helpers/Helpers';
+
 import Panel from './../panel/panel.jsx';
 import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 
@@ -12,6 +13,11 @@ import staticContent from './../../static-content/languages';
 const ReportsGraph = props => {
   const Helper = new Helpers();
   const { transactions, categories, lang } = props;
+
+  const newTransactions = transactions.map(transaction => {
+    transaction.category = Helper.getCategoryById(categories, transaction);
+    return transaction;
+  })
 
   const reMapTransactions = transactions => {
     let arrTrans = [];
@@ -28,13 +34,13 @@ const ReportsGraph = props => {
     return arrTrans;
   }
 
-  let categoriesData = reMapTransactions(transactions);
+  let categoriesData = reMapTransactions(newTransactions);
 
   categoriesData = categoriesData.map(categoryData => {
     categoryData = Helper.sumSameMonthTransactions(categoryData);
     return categoryData;
   })
-
+console.log(categoriesData);
   let categoriesObj = {}
   for (let i = 0; i < categories.length; i++) {
     let key = categories[i].title;
@@ -51,12 +57,16 @@ const ReportsGraph = props => {
     Object.assign(resArr[i], ...categoriesData[i]);
   }
 
+  // let categoryColor = categories.filter(category => {
+  //   return category.title === categoryStats.category
+  // })[0];
+  // categoryColor = categoryColor.color ? categoryColor.color : '#33373';
+
   let linesArr = [];
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#ed0cc1', '#f91616', '#ede944', '#827d7d'];
   let type, dataKey, stroke = '';
+
   for( let prop in categoriesObj ) {
-    const color = COLORS[Math.round(0 - 0.5 + Math.random() * (8 - 1 + 1))];
-    linesArr.push(<Line key={prop} type="monotone" dataKey={prop} stroke={color} />)
+    linesArr.push(<Line key={prop} type="monotone" dataKey={prop} stroke={'#000'} />)
   }
 
   return (
@@ -79,7 +89,7 @@ const ReportsGraph = props => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </Panel>         
+        </Panel>
       }
     </div>
   );

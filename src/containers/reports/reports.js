@@ -223,11 +223,11 @@ class Reports extends PureComponent {
     const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
-        <ReportsGraph
+        {/* <ReportsGraph
           transactions={this.filteredTransactions(transactions)}
           categories={categories}
           lang={lang}
-        />
+        /> */}
         <TransactionsFilter
           changeCategory={changeCategory}
           changeAllCategories={changeAllCategories}
