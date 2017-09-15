@@ -40,9 +40,14 @@ const CategoriesStats = props => {
     const currentCategory = categories.filter(item => {
       return +category.category === item.id;
     })[0];
+    let categoryColor = categories.filter(item => {
+      return +category.category === item.id;
+    })[0];
+    categoryColor = categoryColor.color ? categoryColor.color : '#b91919';
     return {
         money: category.money,
-        category: currentCategory.title
+        category: currentCategory.title,
+        color: categoryColor
     }
   });
   // Get amount month money spended
@@ -52,7 +57,7 @@ const CategoriesStats = props => {
   // Show/Hide stats data
   const openStats = event => {
     event.currentTarget.nextSibling.classList.toggle("expanded");
-  }
+  };
   // Render table data
   const tableData = categoriesStats.map((categoryStats, i) => {
     const categoryPercentage = (categoryStats.money / amountCategoryMoney) * 100;
@@ -67,7 +72,7 @@ const CategoriesStats = props => {
             <div
               className="progress-bar"
               role="progressbar"
-              style={{width: categoryPercentage +'%'}}
+              style={{width: categoryPercentage +'%', backgroundColor: categoryStats.color}}
               aria-valuemin="0"
               aria-valuemax="100"
             ></div>
@@ -88,7 +93,7 @@ const CategoriesStats = props => {
     let categoryColor = categories.filter(category => {
       return category.title === categoryStats.category
     })[0];
-    categoryColor = categoryColor.color ? categoryColor.color : '#33373';
+    categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
 
     return {
       id: index,
