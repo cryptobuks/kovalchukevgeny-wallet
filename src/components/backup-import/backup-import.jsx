@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { toastr } from 'react-redux-toastr';
 
 import Panel from './../panel/panel.jsx';
 import Button from './../button/button.jsx';
@@ -22,6 +23,7 @@ class Import extends PureComponent {
   }
 
   readFile() {
+    const { lang } = this.props;
     if(this.state.file.name && this.state.file.size) {
       const file = this.fileInput.files[0];
       const reader = new FileReader();
@@ -33,6 +35,7 @@ class Import extends PureComponent {
       const blob = file.slice(0, file.size);
       reader.readAsText(blob);
     }
+    toastr.success(staticContent[lang]['toastr'].syncMessage, { timeOut: 3000 });
   }
 
   renderInfoAboutFile(file) {

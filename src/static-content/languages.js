@@ -83,15 +83,18 @@ export default {
       "smallCategoryName": "Very short category name",
       "categoryAdd" : "New category has been added",
       "categoryRemove" : "Are you sure that you want to delete category?",
+      "categoryUpdated" : "Category updated",
       "transactionUpdated" : "Transaction successfully updated",
-      "transactionRemove" : "Are you sure that you want to delete transaction?"
+      "transactionRemove" : "Are you sure that you want to delete transaction?",
+      "syncMessage" : "Synchronization successfully completed, please update your browser",
     },
     "month-course" : {
       "head" : "Mount Course",
       "btnSubmit" : "Submit"
     },
     "categories" : {
-      "head" : "categories"
+      "head" : "categories",
+      "btnEdit": "edit"
     },
     "category-editor" : {
       "head" : "edit category",
@@ -191,15 +194,18 @@ export default {
       "smallCategoryName": "Очень короткое имя для категории",
       "categoryAdd" : "Новая категория успешно добавлена",
       "categoryRemove" : "Вы уверены, что хотите удалить категорию?",
+      "categoryUpdated" : "Категория успешно обновлена",
       "transactionUpdated" : "Транзакция успешно обновлена",
-      "transactionRemove" : "Вы уверены, что хотите удалить транзакцию?"
+      "transactionRemove" : "Вы уверены, что хотите удалить транзакцию?",
+      "syncMessage" : "Синхронизация успешно выполнена, пожалуйста обновите браузер"
     },
     "month-course" : {
       "head" : "Курс на месяц",
       "btnSubmit" : "Установить"
     },
     "categories" : {
-      "head" : "Категории"
+      "head" : "Категории",
+      "btnEdit": "Изменить"
     },
     "category-editor" : {
       "head" : "Редактировать категорию",
