@@ -86,7 +86,7 @@ export default {
       "categoryUpdated" : "Category updated",
       "transactionUpdated" : "Transaction successfully updated",
       "transactionRemove" : "Are you sure that you want to delete transaction?",
-      "syncMessage" : "Synchronization successfully completed, please update your browser",
+      "syncMessage" : "Synchronization successfully completed, please update your browser"
     },
     "month-course" : {
       "head" : "Mount Course",

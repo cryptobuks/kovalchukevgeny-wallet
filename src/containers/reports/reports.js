@@ -109,7 +109,7 @@ class Reports extends PureComponent {
       let categoryColor = categories.filter(category => {
         if(category.id === transaction.category) {
           return category.color;
-        };
+        }
       })[0];
 
       categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
