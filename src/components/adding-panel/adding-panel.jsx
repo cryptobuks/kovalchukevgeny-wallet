@@ -74,12 +74,15 @@ class AddingPanel extends PureComponent {
 
   saveTransaction() {
     let { category, money, date, description } = this.state;
-    const { addTransaction, lang, hideAddingPanel } = this.props;
+    const { addTransaction, lang, hideAddingPanel, categories } = this.props;
     const id = Date.now();
+
     if(+money === 0 || money === null || money === '' || money === undefined) {
       toastr.error(staticContent[lang]['toastr'].smallTransValue, {timeOut: 4000});
     } else if(description !== '' && description.length < 2) {
       toastr.error(staticContent[lang]['toastr'].smallTransDescr, {timeOut: 4000});
+    } else if(categories.length === 0) {
+      toastr.error(staticContent[lang]['description'], {timeOut: 4000});
     } else {
       addTransaction(id, date, money, description, +category);
       this.setState({
@@ -146,6 +149,7 @@ class AddingPanel extends PureComponent {
               onSelect={value => this.setState({ description: value })}
             />
           </div>
+          {categories.length > 0 &&
           <div className="form-item">
             <label className="label">{staticContent[lang]['adding-panel'].categoryLabel}</label>
             <select
@@ -156,6 +160,7 @@ class AddingPanel extends PureComponent {
               {categories}
             </select>
           </div>
+          }
           <div className="text-center toolbar">
             <Button
               specialClass="btn btn-primary"

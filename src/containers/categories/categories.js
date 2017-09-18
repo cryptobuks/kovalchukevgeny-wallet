@@ -34,7 +34,6 @@ class Categories extends Component {
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
     this.deleteCategory = this.deleteCategory.bind(this);
-    this.editCategory = this.editCategory.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.saveCategory = this.saveCategory.bind(this);
@@ -42,11 +41,11 @@ class Categories extends Component {
   }
 
   changeCategoryIcon(icon) {
-    this.setState({icon: icon});
+    this.setState({ icon: icon });
   }
 
   changeCategoryColor(color) {
-    this.setState({color: color});
+    this.setState({ color: color });
   }
 
   clearCategory() {
@@ -60,30 +59,22 @@ class Categories extends Component {
   deleteCategory(event) {
     const { deleteCategory, lang } = this.props;
     const id = +event.target.parentNode.getAttribute('data-id');
-    toastr.confirm(staticContent[lang]['toastr'].categoryRemove,
-      { onOk: () => {
-        deleteCategory(id);
-      }
-    });
-  }
-
-  editCategory(event) {
-    const { deleteCategory, lang } = this.props;
-    const id = +event.target.parentNode.getAttribute('data-id');
+    toastr.confirm(staticContent[lang]['toastr'].categoryRemove, { onOk: () => deleteCategory(id) });
   }
 
   handleChangeDescription(event) {
-    this.setState({description: event.target.value});
+    this.setState({ description: event.target.value });
   }
 
   handleChangeTitle(event) {
-    this.setState({title: event.target.value});
+    this.setState({ title: event.target.value });
   }
 
   saveCategory() {
     const { description, title, icon, filter, color } = this.state;
     const { addCategory, lang } = this.props;
-    const id = (new Date()).getTime();
+    const id = Date.now();
+
     if(title.length < 2) {
       toastr.error(staticContent[lang]['toastr'].smallCategoryName, {timeOut: 4000});
     } else {
@@ -100,7 +91,7 @@ class Categories extends Component {
   renderCategoryCard(categories) {
     const { lang } = this.props;
     return categories.map((category, i) => {
-      const categoryColor = category.color ? category.color : '#33373e'
+      const categoryColor = category.color ? category.color : '#33373e';
       return(
         <div key={i} className="category-card">
           <Panel specialClass="category">
@@ -220,6 +211,14 @@ class Categories extends Component {
     );
   }
 }
+
+Categories.defaultProps = {
+  lang: 'eng',
+  categories: [],
+  transactions: [],
+  addCategory: () => {},
+  deleteCategory: () => {}
+};
 
 Categories.propTypes = {
   categories: PropTypes.array,

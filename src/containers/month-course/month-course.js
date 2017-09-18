@@ -96,6 +96,12 @@ class MonthCourse extends Component {
   }
 }
 
+MonthCourse.defaultProps = {
+  lang: 'eng',
+  course: [],
+  addMonthCourse: () => {}
+};
+
 MonthCourse.propTypes = {
   lang: PropTypes.string,
   course: PropTypes.array,

@@ -30,6 +30,13 @@ const Backup = (props) => {
   );
 };
 
+Backup.defaultProps = {
+  lang: 'eng',
+  categories: [],
+  transactions: [],
+  course: []
+};
+
 Backup.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,

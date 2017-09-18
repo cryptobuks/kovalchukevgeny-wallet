@@ -10,13 +10,13 @@ import Button from './../../components/button/button.jsx';
 
 import { changeLang } from './../../actions/actionCreators';
 
-import usa from './../../images/usa.svg';
-import rus from './../../images/rus.svg';
+import usa from './../../images/usa.svg'; // eslint-disable-line
+import rus from './../../images/rus.svg'; // eslint-disable-line
 
 import staticContent from './../../static-content/languages';
 
 const Header = props => {
-  const { lang, changeLang } = props;
+  const { lang, changeLang, transactions } = props;
 
   return (
     <div className="header">
@@ -38,6 +38,7 @@ const Header = props => {
               </span>
             </Link>
           </li>
+          {transactions.length > 0 &&
           <li>
             <Link activeClassName="active" to="statistics">
               <Icon icon={'timeline'} />
@@ -46,6 +47,8 @@ const Header = props => {
               </span>
             </Link>
           </li>
+          }
+          {transactions.length > 0 &&
           <li>
             <Link activeClassName="active" to="reports">
               <Icon icon={'work'} />
@@ -54,6 +57,8 @@ const Header = props => {
               </span>
             </Link>
           </li>
+          }
+          {transactions.length > 0 &&
           <li>
             <Link activeClassName="active" to="backup">
               <Icon icon={'backup'} />
@@ -62,6 +67,7 @@ const Header = props => {
               </span>
             </Link>
           </li>
+          }
         </ul>
         <ul className="nav navbar-nav navbar-right languages">
           <li>
@@ -91,11 +97,19 @@ const Header = props => {
   );
 };
 
+Header.defaultProps = {
+  lang: 'eng',
+  transactions: [],
+  changeLang: () => {}
+};
+
 Header.propTypes = {
   lang: PropTypes.string,
+  transactions: PropTypes.array,
   changeLang: PropTypes.func
 };
 
 export default connect(state => ({
-  lang: state.lang
+  lang: state.lang,
+  transactions: state.transactions
 }), { changeLang }, null, { pure: false })(Header);

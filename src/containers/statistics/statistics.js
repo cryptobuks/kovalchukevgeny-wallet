@@ -56,6 +56,13 @@ const Statistics = props => {
   );
 };
 
+Statistics.defaultProps = {
+  lang: 'eng',
+  categories: [],
+  transactions: [],
+  course: []
+};
+
 Statistics.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,

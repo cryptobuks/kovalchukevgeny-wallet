@@ -206,6 +206,7 @@ class Transactions extends Component {
             showPanel={showPanel}
             hideAddingPanel={this.hideAddingPanel}
           />
+          {transactions.length > 0 ?
           <div className="col-lg-3 col-md-3">
             <TransactionsFilter
               categories={categories}
@@ -213,7 +214,8 @@ class Transactions extends Component {
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
             />
-          </div>
+          </div> : <h4>{staticContent[lang]["description"]}</h4>
+          }
           <div className="col-lg-9 col-md-9">
             {transactions.length > 0 &&
               <Panel
@@ -236,7 +238,6 @@ class Transactions extends Component {
             }
             <div className="row">
               <div className="col-lg-12">
-                {transactions.length > 0 &&
                 <div className="toolbar">
                   <Button
                     onClickFunction={this.showAddingPanel}
@@ -245,6 +246,7 @@ class Transactions extends Component {
                     <Icon icon={'add'} />
                     {staticContent[lang]['transactions-table'].btnAdd}
                   </Button>
+                  {transactions.length > 0 &&
                   <Button
                     onClickFunction={this.download.bind(this, 'csv')}
                     specialClass="btn btn-primary"
@@ -253,8 +255,9 @@ class Transactions extends Component {
                     <Icon icon={'get_app'} />
                     {staticContent[lang]['transactions-table'].btnCsv}
                   </Button>
+                  }
                 </div>
-                }
+
               </div>
             </div>
           </div>
@@ -263,6 +266,17 @@ class Transactions extends Component {
     );
   }
 }
+
+Transactions.defaultProps = {
+  categories: [],
+  transactions: [],
+  lang: 'eng',
+  deleteTransaction: () => {},
+  changeTransaction: () => {},
+  addTransaction: () => {},
+  updateCategory: () => {},
+  changeAllCategories: () => {}
+};
 
 Transactions.propTypes = {
   categories: PropTypes.array,

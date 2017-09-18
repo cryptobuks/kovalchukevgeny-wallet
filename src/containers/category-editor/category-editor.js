@@ -11,6 +11,7 @@ import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
 import ColorSelect from './../../components/color-select/color-select.jsx';
 import Button from './../../components/button/button.jsx';
+import Icon from './../../components/icon/icon.jsx';
 
 import { updateCategory } from './../../actions/actionCreators.js';
 
@@ -39,10 +40,7 @@ class CategoryEditor extends PureComponent {
 
   componentWillMount() {
     const { categories } = this.props;
-
-    const category = categories.filter(category => {
-      return category.id === +this.props.routeParams.id
-    })[0];
+    const category = categories.filter(category => category.id === +this.props.routeParams.id)[0];
 
     this.setState({
       id: category.id,
@@ -55,11 +53,11 @@ class CategoryEditor extends PureComponent {
   }
 
   changeCategoryIcon(icon) {
-    this.setState({ icon: icon });
+    this.setState({ icon });
   }
 
   changeCategoryColor(color) {
-    this.setState({ color: color });
+    this.setState({ color });
   }
 
   handleChangeDescription(event) {
@@ -72,7 +70,7 @@ class CategoryEditor extends PureComponent {
 
   updateCategory() {
     const { id, description, title, icon, filter, color } = this.state;
-    const { updateCategory, categories, lang } = this.props;
+    const { updateCategory, lang } = this.props;
 
     updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
@@ -124,10 +122,15 @@ class CategoryEditor extends PureComponent {
                   />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 text-right">
-                  <Button
-                    specialClass="btn btn-primary"
-                    onClickFunction={this.updateCategory}
-                  >{staticContent[lang]['category-editor'].btnUpdate}</Button>
+                  <div className="toolbar">
+                    <Button
+                      specialClass="btn btn-primary"
+                      onClickFunction={this.updateCategory}
+                    >
+                      <Icon icon="done" />
+                      {staticContent[lang]['category-editor'].btnUpdate}
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Panel>
@@ -139,7 +142,9 @@ class CategoryEditor extends PureComponent {
 }
 
 CategoryEditor.defaultProps = {
-  onClickFunction: () => {}
+  onClickFunction: () => {},
+  lang: 'eng',
+  categories: []
 };
 
 CategoryEditor.propTypes = {

@@ -257,6 +257,15 @@ class Reports extends Component {
   }
 }
 
+Reports.defaultProps = {
+  lang: 'eng',
+  categories: [],
+  transactions: [],
+  course: [],
+  updateCategory: () => {},
+  changeAllCategories: () => {},
+};
+
 Reports.propTypes = {
   categories: PropTypes.array,
   transactions: PropTypes.array,

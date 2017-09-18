@@ -1,6 +1,7 @@
 export default {
   "eng" : {
     "menu" : ["Transactions", "Categories", "Statistics", "Report", "Backup"],
+    "description" : "Please, firstly create new category and then add new transaction...",
     "categories-stats" : {
       "head" : "Categories statistic",
       "tableHead" : ["Category", "Percentage", "Amount"],
@@ -112,6 +113,7 @@ export default {
   },
   "rus" : {
     "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт", "Резервное копирование"],
+    "description" : "Пожалуйста, сначала создайте новую категорию, а затем добавьте новую транзакцию...",
     "categories-stats" : {
       "head" : "Статистика по категориям",
       "tableHead" : ["Категория", "Процентное соотношение", "Итог"],
