@@ -67,7 +67,8 @@ IconSelect.defaultProps = {
   defaultIcon: 'fa-paw',
   onClickFunction: () => {},
   position: 'bottom',
-  iconsArray: ['fa-paw', 'fa-car']
+  iconsArray: ['fa-paw', 'fa-car'],
+  lang: 'eng'
 };
 
 IconSelect.propTypes = {

@@ -18,6 +18,10 @@ const ErrorPage = props => {
   );
 };
 
+ErrorPage.defaultProps = {
+  lang: 'eng'
+};
+
 ErrorPage.propTypes = {
   lang: PropTypes.string
 };

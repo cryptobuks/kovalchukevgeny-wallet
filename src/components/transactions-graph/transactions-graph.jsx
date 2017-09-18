@@ -51,7 +51,8 @@ const TransactionsGraph = props => {
 }
 
 TransactionsGraph.defaultProps = {
-  monthTransactions: []
+  monthTransactions: [],
+  lang: 'eng'
 };
 
 TransactionsGraph.propTypes = {

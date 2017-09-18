@@ -183,6 +183,13 @@ class AddingPanel extends PureComponent {
   }
 }
 
+AddingPanel.defaultProps = {
+  categories: [],
+  lang: 'eng',
+  hideAddingPanel: () => {},
+  showPanel: () => {}
+};
+
 AddingPanel.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,

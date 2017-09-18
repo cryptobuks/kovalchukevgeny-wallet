@@ -51,7 +51,8 @@ const Export = props => {
 Export.defaultProps = {
   transactions: [],
   categories: [],
-  course: []
+  course: [],
+  lang: 'eng'
 };
 
 Export.propTypes = {

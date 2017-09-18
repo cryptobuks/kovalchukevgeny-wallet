@@ -60,7 +60,9 @@ const ReportsGraph = props => {
 }
 
 ReportsGraph.defaultProps = {
-  transactions: []
+  transactions: [],
+  categories: [],
+  lang: 'eng'
 };
 
 ReportsGraph.propTypes = {

@@ -69,6 +69,11 @@ const CurrencyRate = props => {
   );
 }
 
+CurrencyRate.defaultProps = {
+  lang: 'eng',
+  course: [],
+};
+
 CurrencyRate.propTypes = {
   lang: PropTypes.string,
   course: PropTypes.array

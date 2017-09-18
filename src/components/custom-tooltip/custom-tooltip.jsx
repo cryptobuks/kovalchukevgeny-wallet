@@ -64,6 +64,11 @@ class CustomTooltip extends PureComponent {
   }
 };
 
+CustomTooltip.defaultProps = {
+  payload: [],
+  lang: 'eng'
+}
+
 CustomTooltip.propTypes = {
   type: PropTypes.string,
   payload: PropTypes.array,

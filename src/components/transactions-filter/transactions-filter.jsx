@@ -78,6 +78,12 @@ class TransactionsFilter extends PureComponent {
   }
 }
 
+TransactionsFilter.defaultProps = {
+  categories: [],
+  lang: 'eng',
+  isCategoryActive: () => {}
+};
+
 TransactionsFilter.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,

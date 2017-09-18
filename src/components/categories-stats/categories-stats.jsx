@@ -171,6 +171,12 @@ const CategoriesStats = props => {
   );
 }
 
+CategoriesStats.defaultProps = {
+  lang: 'eng',
+  categories: [],
+  transactions: []
+};
+
 CategoriesStats.propTypes = {
   lang: PropTypes.string,
   categories: PropTypes.array,

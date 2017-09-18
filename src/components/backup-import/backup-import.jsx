@@ -97,7 +97,7 @@ class Import extends PureComponent {
 }
 
 Import.defaultProps = {
-
+  lang: 'eng'
 };
 
 Import.propTypes = {

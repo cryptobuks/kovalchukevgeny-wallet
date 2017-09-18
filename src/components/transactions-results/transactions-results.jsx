@@ -155,7 +155,9 @@ const TransactionsResults = props => {
 }
 
 TransactionsResults.defaultProps = {
-  transactions: []
+  transactions: [],
+  lang: 'eng',
+  course: []
 };
 
 TransactionsResults.propTypes = {

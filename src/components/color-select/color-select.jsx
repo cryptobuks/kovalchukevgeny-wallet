@@ -70,7 +70,8 @@ ColorSelect.defaultProps = {
   defaultColor: '#b91919',
   onClickFunction: () => {},
   position: 'bottom',
-  colorsArray: ['#ff9e01', '#ffcc01']
+  colorsArray: ['#ff9e01', '#ffcc01'],
+  lang: 'eng'
 };
 
 ColorSelect.propTypes = {

@@ -252,6 +252,15 @@ class TransactionsTable extends Component {
   }
 }
 
+TransactionsTable.defaultProps = {
+  categories: [],
+  transactions: [],
+  lang: 'eng',
+  descending: false,
+  sortFunction: () => {},
+  deleteTransaction: () => {}
+};
+
 TransactionsTable.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,
