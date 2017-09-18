@@ -34,8 +34,8 @@ class Import extends PureComponent {
       };
       const blob = file.slice(0, file.size);
       reader.readAsText(blob);
+      toastr.success(staticContent[lang]['toastr'].syncMessage, { timeOut: 3000 });
     }
-    toastr.success(staticContent[lang]['toastr'].syncMessage, { timeOut: 3000 });
   }
 
   renderInfoAboutFile(file) {
