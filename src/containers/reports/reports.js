@@ -97,7 +97,7 @@ class Reports extends PureComponent {
   }
 
   renderMonthTable(transactions) {
-    const { categories } = this.props;
+    const { categories, lang } = this.props;
 
     return transactions.map((transaction, i) => {
       const categoryIconObj = this.props.categories.filter(category => {
@@ -117,7 +117,10 @@ class Reports extends PureComponent {
       return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}>
           <div className="table-data clearfix">{moment(transaction.date).format('DD/MM/YYYY')}</div>
-          <div className="table-data clearfix">{transaction.money}</div>
+          <div className="table-data clearfix">
+            <span>{transaction.money} </span>
+            <span>{staticContent[lang]['currency']}</span>
+          </div>
           <div className="table-data clearfix" title={transaction.description}>{transaction.description}</div>
           <div className="table-data clearfix">
             <span>

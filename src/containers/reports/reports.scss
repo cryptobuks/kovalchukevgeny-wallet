@@ -2,6 +2,16 @@
 
   .expanded {
 
+    .panel-heading {
+
+      .right {
+
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
     .panel-body {
       height: auto;
     }
@@ -9,6 +19,10 @@
 
   .panel-heading {
     cursor: pointer;
+
+    i {
+      transition: all .3s ease;
+    }
   }
 
   .panel-body {
