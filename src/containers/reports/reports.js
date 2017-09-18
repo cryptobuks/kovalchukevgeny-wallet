@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -17,14 +17,13 @@ import staticContent from './../../static-content/languages';
 
 import LoadingHOC from './../../HOC/loadingHOC.jsx';
 
-class Reports extends PureComponent {
+class Reports extends Component {
   constructor(props) {
     super(props);
 
     this.Helpers = new Helpers();
 
     this.convertToCSV = this.convertToCSV.bind(this);
-    this.reMapTransactions = this.reMapTransactions.bind(this);
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
@@ -67,20 +66,7 @@ class Reports extends PureComponent {
     event.currentTarget.parentNode.parentNode.classList.toggle("expanded");
   }
 
-  reMapTransactions(transactions) {
-    let arrTrans = [];
-    for(let i = 0; i < 12; i++) {
-      let res = transactions.filter(transaction => {
-        return moment(transaction.date).month() === i;
-      });
-      if(res && res.length > 0) {
-        arrTrans[i] = res;
-      } else {
-        arrTrans[i] = [];
-      }
-    }
-    return arrTrans;
-  }
+
 
   filteredTransactions(transactions) {
     const { categories } = this.props;
@@ -234,14 +220,14 @@ class Reports extends PureComponent {
       updateCategory,
       changeAllCategories } = this.props;
 
-    const reMapedTransactions = this.reMapTransactions(this.filteredTransactions(transactions));
+    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
-        {/* <ReportsGraph
+        <ReportsGraph
           transactions={this.filteredTransactions(transactions)}
           categories={categories}
           lang={lang}
-        /> */}
+        />
         <div className="row">
           <div className="col-lg-3 col-md-3">
             <TransactionsFilter

@@ -11,19 +11,6 @@ class CustomTooltip extends PureComponent {
     if (active) {
       const { payload, label, type } = this.props;
 
-      let payloadResults = payload.map((item, i) => {
-        if(item.value > 0) {
-          return (
-            <div key={i} className="custom-tooltip">
-              <p className="intro category">
-                {item.name}: <span>{item.value}</span>
-                <span>{staticContent[lang].currency}</span>
-              </p>
-            </div>
-          );
-        } return null;
-      });
-
       switch (type) {
         case 'category':
           return (
@@ -42,13 +29,6 @@ class CustomTooltip extends PureComponent {
                 {staticContent[lang]['custom-tooltip'].course}:
                 <span>{moment(label).format('MMMM YYYY')}</span>
               </p>
-            </div>
-          );
-          break;
-        case 'report':
-          return (
-            <div>
-              {payloadResults}
             </div>
           );
           break;

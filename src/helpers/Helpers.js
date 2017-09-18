@@ -91,6 +91,21 @@ class Helpers {
     })[0];
     return category ? category.title : '';
   }
+
+  groupTransactionsByMonths(transactions) {
+    let arrTrans = [];
+    for(let i = 0; i < 12; i++) {
+      let res = transactions.filter(transaction => {
+        return moment(transaction.date).month() === i;
+      });
+      if(res && res.length > 0) {
+        arrTrans[i] = res;
+      } else {
+        arrTrans[i] = [];
+      }
+    }
+    return arrTrans;
+  }
 }
 
 export default Helpers;

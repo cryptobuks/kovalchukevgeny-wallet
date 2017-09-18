@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'Recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'Recharts';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -14,59 +14,24 @@ const ReportsGraph = props => {
   const Helper = new Helpers();
   const { transactions, categories, lang } = props;
 
-  const newTransactions = transactions.map(transaction => {
-    transaction.category = Helper.getCategoryById(categories, transaction);
-    return transaction;
-  })
+  let categoriesData = Helper.groupTransactionsByMonths(transactions);
 
-  const reMapTransactions = transactions => {
-    let arrTrans = [];
-    for(let i = 0; i < 12; i++) {
-      let res = transactions.filter(transaction => {
-        return moment(transaction.date).month() === i;
-      });
-      if(res && res.length > 0) {
-        arrTrans[i] = res;
-      } else {
-        arrTrans[i] = [];
-      }
+  categoriesData = categoriesData.map(item => {
+    let sum = 0;
+    for(let i = 0; i < item.length; i++) {
+      sum += item[i].money;
     }
-    return arrTrans;
-  }
-
-  let categoriesData = reMapTransactions(newTransactions);
-
-  categoriesData = categoriesData.map(categoryData => {
-    categoryData = Helper.sumSameMonthTransactions(categoryData);
-    return categoryData;
-  })
-console.log(categoriesData);
-  let categoriesObj = {}
-  for (let i = 0; i < categories.length; i++) {
-    let key = categories[i].title;
-    categoriesObj[key] = 0;
-  }
+    return sum;
+  });
 
   let resArr = [];
   for (let i = 0; i < categoriesData.length; i++) {
-    resArr[i] = {
-      id: i,
-      name: moment(moment().month(i)).format('MMM')
+    if (categoriesData[i] > 0) {
+      resArr.push({
+        name: moment(moment().month(i)).format('MMM'),
+        money: categoriesData[i]
+      })
     }
-    Object.assign(resArr[i], categoriesObj);
-    Object.assign(resArr[i], ...categoriesData[i]);
-  }
-
-  // let categoryColor = categories.filter(category => {
-  //   return category.title === categoryStats.category
-  // })[0];
-  // categoryColor = categoryColor.color ? categoryColor.color : '#33373';
-
-  let linesArr = [];
-  let type, dataKey, stroke = '';
-
-  for( let prop in categoriesObj ) {
-    linesArr.push(<Line key={prop} type="monotone" dataKey={prop} stroke={'#000'} />)
   }
 
   return (
@@ -78,15 +43,14 @@ console.log(categoriesData);
         >
           <div className="graph-wrapper">
             <ResponsiveContainer>
-              <LineChart width={1150} height={400} data={resArr}
+              <BarChart width={600} height={300} data={resArr}
                 margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                <XAxis dataKey="name"/>
-                <YAxis/>
-                <CartesianGrid strokeDasharray="3 3"/>
-                <Tooltip content={<CustomTooltip lang={lang} type={'report'}/>}/>
-                <Legend />
-                {linesArr}
-              </LineChart>
+               <XAxis dataKey="name"/>
+               <YAxis/>
+               <CartesianGrid strokeDasharray="3 3"/>
+               <Tooltip content={<CustomTooltip lang={lang}/>}/>
+               <Bar type="monotone" dataKey="money" fill="rgba(185, 25, 25, 0.6)" stroke="#b91919" />
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </Panel>
