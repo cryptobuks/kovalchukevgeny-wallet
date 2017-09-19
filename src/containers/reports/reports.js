@@ -221,11 +221,6 @@ class Reports extends Component {
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.filteredTransactions(transactions));
     return (
       <div className="container reports">
-        <ReportsGraph
-          transactions={this.filteredTransactions(transactions)}
-          categories={categories}
-          lang={lang}
-        />
         <div className="row">
           <div className="col-lg-3 col-md-3">
             <TransactionsFilter
@@ -236,17 +231,22 @@ class Reports extends Component {
             />
           </div>
           <div className="col-lg-9 col-md-9">
+            <ReportsGraph
+              transactions={this.filteredTransactions(transactions)}
+              categories={categories}
+              lang={lang}
+            />
             {this.renderMonthPanels(reMapedTransactions)}
             {transactions.length > 0 &&
-              <div className="toolbar">
-                <Button
-                  onClickFunction={this.download.bind(this, 'csv')}
-                  specialClass="btn btn-primary"
-                  href="report.csv"
-                >
-                  <Icon icon={'get_app'} />
-                  {staticContent[lang]['reports'].btnCsv}</Button>
-              </div>
+            <div className="toolbar">
+              <Button
+                onClickFunction={this.download.bind(this, 'csv')}
+                specialClass="btn btn-primary"
+                href="report.csv"
+              >
+                <Icon icon={'get_app'} />
+                {staticContent[lang]['reports'].btnCsv}</Button>
+            </div>
             }
           </div>
         </div>
