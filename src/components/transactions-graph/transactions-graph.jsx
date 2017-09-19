@@ -15,10 +15,9 @@ const TransactionsGraph = props => {
 
   // Remaped data for graph
   let transactionsData = Helper.sumSameDateTransactions(monthTransactions).sort((a, b) => a['date'] - b['date']);
-  transactionsData = transactionsData.map((item, index) => {
+  transactionsData = transactionsData.map(item => {
     const date = moment(item.date).format('MMM D');
     return {
-      id: index,
       name: date,
       value: item.money
     }

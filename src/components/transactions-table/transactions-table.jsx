@@ -44,11 +44,7 @@ class TransactionsTable extends Component {
 
   deleteTransaction(id) {
     const { deleteTransaction, lang } = this.props;
-    toastr.confirm(staticContent[lang]['toastr'].transactionRemove,
-      { onOk: () => {
-        deleteTransaction(id);
-      }
-    });
+    toastr.confirm(staticContent[lang]['toastr'].transactionRemove, { onOk: () => deleteTransaction(id) });
   }
 
   handleChangeCategory(event) {
@@ -96,7 +92,7 @@ class TransactionsTable extends Component {
         }
         transaction.active = false;
       })[0];
-      this.setState({activeRow: activeTransaction});
+      this.setState({ activeRow: activeTransaction });
     }
   }
 
@@ -109,7 +105,7 @@ class TransactionsTable extends Component {
       }
       transaction.isEdit = false;
     })[0];
-    this.setState({isEditRow: editableTransaction});
+    this.setState({ isEditRow: editableTransaction });
   }
 
   render() {

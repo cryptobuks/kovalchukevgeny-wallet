@@ -165,7 +165,6 @@ const CategoriesStats = props => {
             </div>
           </div>
         </Panel>
-
       }
     </div>
   );

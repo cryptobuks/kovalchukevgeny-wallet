@@ -17,6 +17,7 @@ class IconSelect extends PureComponent {
     };
 
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.renderDropdown = this.renderDropdown.bind(this);
   }
 
   toggleSelect() {
@@ -27,11 +28,10 @@ class IconSelect extends PureComponent {
     this.setState({isSelectVisible: false});
   }
 
-  render() {
-    const { onClickFunction, defaultIcon, position, iconsArray, lang } = this.props;
-    const { isSelectVisible } = this.state;
+  renderDropdown(iconsArray) {
+    const { onClickFunction, defaultIcon } = this.props;
 
-    let icons = iconsArray.map((icon, i) => {
+    return iconsArray.map((icon, i) => {
       return (
         <li
           key={i}
@@ -43,6 +43,11 @@ class IconSelect extends PureComponent {
         </li>
       );
     });
+  }
+
+  render() {
+    const { defaultIcon, position, iconsArray, lang } = this.props;
+    const { isSelectVisible } = this.state;
 
     return (
       <div
@@ -54,7 +59,7 @@ class IconSelect extends PureComponent {
         <div className={classNames('icon-select', position, {hide: !isSelectVisible})}>
           <Panel>
             <ul className="clearfix">
-              {icons}
+              {this.renderDropdown(iconsArray)}
             </ul>
           </Panel>
         </div>

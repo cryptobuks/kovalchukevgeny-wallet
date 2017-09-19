@@ -28,11 +28,11 @@ class MonthCourse extends Component {
   }
 
   handleChangeData(date) {
-    this.setState({date: date});
+    this.setState({ date: date });
   }
 
   handleChangeCourse(event) {
-    this.setState({currentCourse: +event.target.value});
+    this.setState({ currentCourse: +event.target.value });
   }
 
   saveCourse(date, currentCourse) {

@@ -14,9 +14,7 @@ const Panel = props => {
         onClick={(e) => onClickFunction(e)}
         className="panel-heading">
         <h3 className="panel-title">
-          {headingIcon &&
-            <Icon icon={headingIcon} />
-          }
+          {headingIcon && <Icon icon={headingIcon} />}
           {heading}
         </h3>
       </div>}

@@ -13,7 +13,6 @@ import staticContent from './../../static-content/languages';
 const ReportsGraph = props => {
   const Helper = new Helpers();
   const { transactions, categories, lang } = props;
-
   let categoriesData = Helper.groupTransactionsByMonths(transactions);
 
   categoriesData = categoriesData.map(item => {

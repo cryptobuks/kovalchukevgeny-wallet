@@ -52,19 +52,19 @@ class AddingPanel extends PureComponent {
   }
 
   componentWillMount() {
-    this.setState({category: this.setDefaultCategory()});
+    this.setState({ category: this.setDefaultCategory() });
   }
 
   handleChangeCategory(event) {
-    this.setState({category: event.target.value});
+    this.setState({ category: event.target.value });
   }
 
   handleChangeData(date) {
-    this.setState({date: date});
+    this.setState({ date });
   }
 
   handleChangeMoney(event) {
-    this.setState({money: +event.target.value});
+    this.setState({ money: +event.target.value });
   }
 
   setDefaultCategory() {

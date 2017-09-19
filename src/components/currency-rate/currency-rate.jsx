@@ -10,35 +10,25 @@ import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 import staticContent from './../../static-content/languages';
 
 const CurrencyRate = props => {
-
   let { lang, course } = props;
 
   let getMaxValue = array => {
     if(array && array.length > 0) {
-      return Math.max.apply(Math,array.map(function(currentCourse){return currentCourse.course;}));
-    } else {
-        return 0;
+      return Math.max.apply(Math,array.map(currentCourse => currentCourse.course));
     }
+    return 0;
   }
 
   let getMinValue = array => {
     if(array && array.length > 0) {
-      return Math.min.apply(Math,array.map(function(currentCourse){return currentCourse.course;}));
-    } else {
-        return 0;
+      return Math.min.apply(Math,array.map(currentCourse => currentCourse.course));
     }
+    return 0;
   }
 
-  course = course.map(currentCourse => {
-    currentCourse.date = new Date(moment(currentCourse.date).format('YYYY-MM-DD'));
-    return currentCourse;
-  });
-
-  course = course.map((item, index) => {
-    const date = moment(item.date).format('MMM YYYY');
+  course = course.map(item => {
     return {
-      id: index,
-      name: date,
+      name: moment(item.date).format('MMM YYYY'),
       value: item.course
     }
   });

@@ -66,8 +66,6 @@ class Reports extends Component {
     event.currentTarget.parentNode.parentNode.classList.toggle("expanded");
   }
 
-
-
   filteredTransactions(transactions) {
     const { categories } = this.props;
     transactions = transactions.filter(transaction => {

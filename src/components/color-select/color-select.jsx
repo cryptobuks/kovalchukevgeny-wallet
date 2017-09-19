@@ -17,21 +17,21 @@ class ColorSelect extends PureComponent {
     };
 
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.renderDropdown = this.renderDropdown.bind(this);
   }
 
   toggleSelect() {
-    this.setState({isSelectVisible: !this.state.isSelectVisible});
+    this.setState({ isSelectVisible: !this.state.isSelectVisible });
   }
 
   handleClickOutside() {
-    this.setState({isSelectVisible: false});
+    this.setState({ isSelectVisible: false });
   }
 
-  render() {
-    const { onClickFunction, defaultColor, position, colorsArray, lang } = this.props;
-    const { isSelectVisible } = this.state;
+  renderDropdown(colorsArray) {
+    const { onClickFunction, defaultColor } = this.props;
 
-    let colors = colorsArray.map((color, i) => {
+    return colorsArray.map((color, i) => {
       return (
         <li
           key={i}
@@ -46,6 +46,11 @@ class ColorSelect extends PureComponent {
         </li>
       );
     });
+  }
+
+  render() {
+    const { defaultColor, position, colorsArray, lang } = this.props;
+    const { isSelectVisible } = this.state;
 
     return (
       <div
@@ -57,7 +62,7 @@ class ColorSelect extends PureComponent {
         <div className={classNames('color-select', position, {hide: !isSelectVisible})}>
           <Panel>
             <ul className="clearfix">
-              {colors}
+              {this.renderDropdown(colorsArray)}
             </ul>
           </Panel>
         </div>

@@ -11,11 +11,7 @@ const Export = props => {
 
   const download = (format, event) => {
     let { transactions, categories, course } = props;
-    const data = {
-      transactions,
-      categories,
-      course
-    };
+    const data = { transactions, categories, course };
     let contents = JSON.stringify(data);
     const URL = window.URL || window.webkitURL;
     const blob = new Blob([contents], {type: `text/${format};charset=utf-8;`});

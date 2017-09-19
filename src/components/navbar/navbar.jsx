@@ -18,7 +18,7 @@ class Navbar extends PureComponent {
   }
 
   showNav() {
-    this.setState({isShow: !this.state.isShow});
+    this.setState({ isShow: !this.state.isShow });
   }
 
   render() {

@@ -63,11 +63,11 @@ class Transactions extends Component {
     });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
     let str = staticContent[lang]['csvTableHead']; // table head
-    // TODO: Rewrite to forEach or map
     for (let i = 0; i < array.length; i++) {
       let line = '';
       for (let index in array[i]) {
-        if(index !== 'id') { // ignore ids in final table
+        // ignore excess data in final table
+        if(index !== 'id' || index !== 'active' || index !== 'isEdit') {
           if (line != '') line += ',';
           line += array[i][index];
         }
@@ -257,7 +257,6 @@ class Transactions extends Component {
                   </Button>
                   }
                 </div>
-
               </div>
             </div>
           </div>

@@ -8,20 +8,13 @@ import Panel from './../panel/panel.jsx';
 import staticContent from './../../static-content/languages';
 
 const TransactionsResults = props => {
-
   const Helper = new Helpers();
-
-  const getCurrentMonth = () => {
-    const { lang } = props;
-    return staticContent[lang]['months'][moment().month()];
-  }
 
   const getMaxValue = array => {
     if(array && array.length > 0) {
-      return Math.max.apply(Math,array.map(function(transaction){return transaction.money;}));
-    } else {
-        return 0;
+      return Math.max.apply(Math,array.map(transaction => transaction.money));
     }
+    return 0;
   }
 
   const renderBiggestTransaction = transactions => {
@@ -101,7 +94,7 @@ const TransactionsResults = props => {
               <div className="result-wrapper">
                 <h6 className="result-item">{staticContent[lang]['transactions-results'].month}</h6>
                 <div className="dots"></div>
-                <h6 className="result">{getCurrentMonth()}</h6>
+                <h6 className="result">{staticContent[lang]['months'][moment().month()]}</h6>
               </div>
             </div>
           </div>
