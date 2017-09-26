@@ -56,9 +56,10 @@ class Transactions extends Component {
   }
 
   convertToCSV(objArray) {
-    const { lang } = this.props;
+    const { lang, categories } = this.props;
     objArray = objArray.map(item => {
       item.date = moment(item.date).format('DD/MM/YYYY');
+      item.category = this.Helpers.getCategoryById(categories, item);
       return item;
     });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
@@ -67,7 +68,7 @@ class Transactions extends Component {
       let line = '';
       for (let index in array[i]) {
         // ignore excess data in final table
-        if(index !== 'id' || index !== 'active' || index !== 'isEdit') {
+        if(index !== 'id') {
           if (line != '') line += ',';
           line += array[i][index];
         }

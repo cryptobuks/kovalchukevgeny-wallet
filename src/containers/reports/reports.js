@@ -31,18 +31,19 @@ class Reports extends Component {
   }
 
   convertToCSV(objArray) {
-    const { lang } = this.props;
+    const { lang, categories } = this.props;
     objArray = objArray.map(item => {
       item.date = moment(item.date).format('DD/MM/YYYY');
+      item.category = this.Helpers.getCategoryById(categories, item);
       return item;
     });
     let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
     let str = staticContent[lang]['csvTableHead']; // table head
-    // TODO: Rewrite to forEach or map
     for (let i = 0; i < array.length; i++) {
       let line = '';
       for (let index in array[i]) {
-        if(index !== 'id') { // ignore ids in final table
+        // ignore excess data in final table
+        if(index !== 'id') {
           if (line != '') line += ',';
           line += array[i][index];
         }
@@ -261,7 +262,7 @@ Reports.defaultProps = {
   transactions: [],
   course: [],
   updateCategory: () => {},
-  changeAllCategories: () => {},
+  changeAllCategories: () => {}
 };
 
 Reports.propTypes = {
