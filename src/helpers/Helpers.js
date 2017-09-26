@@ -30,13 +30,13 @@ class Helpers {
     return transactions;
   }
 
-  sumSameCategoryTransactions(date) {
+  sumSameCategoryTransactions(data) {
     let obj = {};
     let categories = [];
 
-    for(let i = 0; i < date.length; i++) {
-      let key = date[i].category;
-      obj[key] = !obj[key] ? +date[i].money : +obj[key] + +date[i].money;
+    for(let i = 0; i < data.length; i++) {
+      let key = data[i].category;
+      obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
     for (let prop in obj) {
@@ -103,6 +103,12 @@ class Helpers {
       }
     }
     return arrTrans;
+  }
+
+  getCurrentMonthTransactions(transactions) {
+    return transactions.filter(transaction => {
+      return moment().month() === moment(transaction.date).month();
+    });
   }
 }
 

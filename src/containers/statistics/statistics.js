@@ -9,13 +9,11 @@ import TransactionsResults from './../../components/transactions-results/transac
 import CategoriesStats from './../../components/categories-stats/categories-stats.jsx';
 import MonthCourse from './../month-course/month-course';
 
-const Statistics = props => {
-  const { transactions, lang, course, categories } = props;
+import Helpers from './../../helpers/Helpers';
 
-  // Filter transactions on current month
-  const monthTransactions = transactions.filter(transaction => {
-    return moment().month() === moment(transaction.date).month();
-  });
+const Statistics = props => {
+  const Helper = new Helpers();
+  const { transactions, lang, course, categories } = props;
 
   return (
     <div className="widgets">
@@ -29,7 +27,7 @@ const Statistics = props => {
           </div>
           <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <TransactionsGraph
-              monthTransactions={monthTransactions}
+              monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
               lang={lang}
             />
           </div>
@@ -42,7 +40,7 @@ const Statistics = props => {
           </div>
           <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <TransactionsResults
-              monthTransactions={monthTransactions}
+              monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
               lang={lang}
               course={course}
             />

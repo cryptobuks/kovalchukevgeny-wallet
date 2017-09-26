@@ -80,9 +80,7 @@ class Transactions extends Component {
   download(format, event) {
     let { transactions } = this.props;
     // Filter transactions on current month
-    const monthTransactions = transactions.filter(transaction => {
-      return moment().month() === moment(transaction.date).month();
-    });
+    const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     let contents = format === 'json' ? JSON.stringify(monthTransactions) :
     this.convertToCSV(monthTransactions);
     const URL = window.URL || window.webkitURL;
@@ -183,10 +181,7 @@ class Transactions extends Component {
     let amount = 0;
 
     // Filter transactions on current month
-    const monthTransactions = this.filteredTransactions(transactions).filter(transaction => {
-      return moment().month() === moment(transaction.date).month();
-    });
-
+    const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
     if(monthTransactions && monthTransactions.length > 0) {
