@@ -86,9 +86,7 @@ class Helpers {
   }
 
   getCategoryById(categories, transaction) {
-    const category = categories.filter(category => {
-      return transaction.category === category.id;
-    })[0];
+    const category = categories.find(category => transaction.category === category.id);
     return category ? category.title : '';
   }
 

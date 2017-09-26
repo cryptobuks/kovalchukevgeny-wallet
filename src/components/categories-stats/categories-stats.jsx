@@ -37,12 +37,8 @@ const CategoriesStats = props => {
   }
   // Remap category object, transform category title from id to title
   categoriesStats = categoriesStats.map(category => {
-    const currentCategory = categories.filter(item => {
-      return +category.category === item.id;
-    })[0];
-    let categoryColor = categories.filter(item => {
-      return +category.category === item.id;
-    })[0];
+    const currentCategory = categories.find(item => +category.category === item.id);
+    let categoryColor = categories.find(item => +category.category === item.id);
     categoryColor = categoryColor.color ? categoryColor.color : '#b91919';
     return {
         money: category.money,
@@ -90,9 +86,9 @@ const CategoriesStats = props => {
   let categoriesStatsPie = categoriesStats.map((categoryStats, index) => {
     const categoryPercentage = Math.round((categoryStats.money / amountCategoryMoney) * 100);
 
-    let categoryColor = categories.filter(category => {
+    let categoryColor = categories.find(category => {
       return category.title === categoryStats.category
-    })[0];
+    });
     categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
 
     return {

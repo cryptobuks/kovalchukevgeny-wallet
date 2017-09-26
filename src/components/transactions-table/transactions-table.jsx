@@ -85,26 +85,26 @@ class TransactionsTable extends Component {
   openEditMenu(activeRow) {
     if(activeRow.id !== this.state.isEditRow.id) {
       const oldActiveRow = this.state.activeRow || {};
-      const activeTransaction = this.props.transactions.filter(transaction => {
+      const activeTransaction = this.props.transactions.find(transaction => {
         if(transaction.id === activeRow.id && activeRow.id !== oldActiveRow.id) {
           transaction.active = true;
           return transaction;
         }
         transaction.active = false;
-      })[0];
+      });
       this.setState({ activeRow: activeTransaction });
     }
   }
 
   editTransaction(isEditRow) {
     const oldEditRow = this.state.isEditRow || {};
-    const editableTransaction = this.props.transactions.filter(transaction => {
+    const editableTransaction = this.props.transactions.find(transaction => {
       if(transaction.id === isEditRow.id && isEditRow.id !== oldEditRow.id) {
         transaction.isEdit = true;
         return transaction;
       }
       transaction.isEdit = false;
-    })[0];
+    });
     this.setState({ isEditRow: editableTransaction });
   }
 
@@ -135,17 +135,17 @@ class TransactionsTable extends Component {
 
     const tableData = transactions.map((transaction, i) => {
 
-      const categoryIconObj = categories.filter(category => {
+      const categoryIconObj = categories.find(category => {
         if(category.id === transaction.category) {
           return category.icon;
         };
-      })[0] || null;
+      }) || null;
 
-      let categoryColor = categories.filter(category => {
+      let categoryColor = categories.find(category => {
         if(category.id === transaction.category) {
           return category.color;
         };
-      })[0];
+      });
 
       categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
 

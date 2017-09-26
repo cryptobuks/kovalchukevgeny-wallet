@@ -13,7 +13,7 @@ function course(state = initialState.course, action) {
   let store = [...state];
   switch (action.type) {
     case 'ADD_MONTH-COURSE' :
-    if(!store.filter(course => moment(course.date).format('YYYY-MM') === moment(action.date).format('YYYY-MM'))[0]) {
+    if(!store.find(course => moment(course.date).format('YYYY-MM') === moment(action.date).format('YYYY-MM'))) {
       return [
         ...store, {
           date: action.date,

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import InputMask from 'react-input-mask';
 
 import Button from './../../components/button/button.jsx';
 import Panel from './../../components/panel/panel.jsx';
@@ -48,9 +49,9 @@ class MonthCourse extends Component {
     let { lang, course } = this.props;
     let { currentCourse, date } = this.state;
 
-    course = course.filter(courseItem => {
+    course = course.find(courseItem => {
       return moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM');
-    })[0];
+    });
 
     course = course ? course.course : 1;
 

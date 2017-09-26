@@ -21,9 +21,7 @@ const TransactionsResults = props => {
     const { lang } = props;
     const biggestTransactionMoney = getMaxValue(transactions);
 
-    let biggestTransaction = transactions.filter(transaction => {
-      return transaction.money === biggestTransactionMoney;
-    });
+    let biggestTransaction = transactions.filter(transaction => transaction.money === biggestTransactionMoney);
 
     return(
       biggestTransaction.map((transaction, i) => {
@@ -62,9 +60,9 @@ const TransactionsResults = props => {
   let monthCourse = { course: 1 }
 
   if(monthTransactions[0]) {
-    monthCourse = course.filter(currentCourse => {
+    monthCourse = course.find(currentCourse => {
       return moment(currentCourse.date).format('YYYY-MM') === moment(monthTransactions[0].date).format('YYYY-MM');
-    })[0] || { course: 1 };
+    }) || { course: 1 };
   }
 
   const unicTransactions = Helper.sumSameDateTransactions(monthTransactions);

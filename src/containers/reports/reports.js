@@ -84,17 +84,17 @@ class Reports extends Component {
     const { categories, lang } = this.props;
 
     return transactions.map((transaction, i) => {
-      const categoryIconObj = this.props.categories.filter(category => {
+      const categoryIconObj = this.props.categories.find(category => {
         if(category.id === transaction.category) {
           return category.icon;
         }
-      })[0] || null;
+      }) || null;
 
-      let categoryColor = categories.filter(category => {
+      let categoryColor = categories.find(category => {
         if(category.id === transaction.category) {
           return category.color;
         }
-      })[0];
+      });
 
       categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
 
@@ -139,9 +139,9 @@ class Reports extends Component {
       }
 
       if(unicTransactions[0]) {
-        monthCourse = course.filter(courseItem => {
+        monthCourse = course.find(courseItem => {
           return moment(courseItem.date).format('YYYY-MM') === moment(unicTransactions[0].date).format('YYYY-MM');
-        })[0] || { course: 1 };
+        }) || { course: 1 };
       }
 
       amountMonthCurrency = amountMonth / monthCourse.course;
