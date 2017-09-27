@@ -57,7 +57,6 @@ const Header = props => {
             </Link>
           </li>
           }
-          {transactions.length > 0 &&
           <li>
             <Link activeClassName="active" to="backup">
               <Icon icon={'backup'} />
@@ -66,7 +65,6 @@ const Header = props => {
               </span>
             </Link>
           </li>
-          }
         </ul>
         <ul className="nav navbar-nav navbar-right languages">
           <li>
