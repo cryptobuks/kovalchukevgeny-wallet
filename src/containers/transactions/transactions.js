@@ -8,7 +8,6 @@ import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
-import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 
@@ -202,8 +201,8 @@ class Transactions extends Component {
                   <Button
                     onClickFunction={this.showAddingPanel}
                     specialClass="btn btn-primary"
+                    icon="add"
                   >
-                    <Icon icon={'add'} />
                     {staticContent[lang]['transactions-table'].btnAdd}
                   </Button>
                   {transactions.length > 0 &&

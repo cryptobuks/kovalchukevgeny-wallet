@@ -15,8 +15,9 @@ const Footer = () => {
             <ul>
               <li>
                 <Button
-                  href="https://github.com/kovalchukevgeny/wallet">
-                  <Icon icon={'link'} />
+                  href="https://github.com/kovalchukevgeny/wallet"
+                  icon="link"
+                >
                   <span>GitHub</span>
                 </Button>
               </li>

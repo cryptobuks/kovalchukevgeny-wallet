@@ -11,7 +11,6 @@ import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
 import ColorSelect from './../../components/color-select/color-select.jsx';
 import Button from './../../components/button/button.jsx';
-import Icon from './../../components/icon/icon.jsx';
 
 import { updateCategory } from './../../actions/actionCreators.js';
 
@@ -126,8 +125,8 @@ class CategoryEditor extends PureComponent {
                     <Button
                       specialClass="btn btn-primary"
                       onClickFunction={this.updateCategory}
+                      icon="done"
                     >
-                      <Icon icon="done" />
                       {staticContent[lang]['category-editor'].btnUpdate}
                     </Button>
                   </div>

@@ -7,7 +7,6 @@ import moment from 'moment';
 import Button from './../../components/button/button.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
-import Icon from './../../components/icon/icon.jsx';
 
 import { addMonthCourse } from './../../actions/actionCreators';
 
@@ -28,7 +27,7 @@ class MonthCourse extends Component {
   }
 
   handleChangeData(date) {
-    this.setState({ date: date });
+    this.setState({ date });
   }
 
   handleChangeCourse(event) {
@@ -83,8 +82,8 @@ class MonthCourse extends Component {
                 <Button
                   specialClass="btn btn-primary"
                   onClickFunction={() => this.saveCourse(date, currentCourse)}
+                  icon="attach_money"
                 >
-                  <Icon icon={'attach_money'} />
                   {staticContent[lang]['month-course'].btnSubmit}
                 </Button>
               </div>

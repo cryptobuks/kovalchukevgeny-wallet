@@ -65,8 +65,8 @@ class TransactionsFilter extends PureComponent {
           <Button
             onClickFunction={this.selectAll}
             specialClass="btn btn-primary"
+            icon="done_all"
           >
-            <Icon icon={'done_all'} />
             {staticContent[lang]['transactions-filter'].btnSelect}
           </Button>
         </div>

@@ -10,7 +10,6 @@ import classNames from 'classnames';
 import Button from './../button/button.jsx';
 import Input from './../input/input.jsx';
 import Panel from './../panel/panel.jsx';
-import Icon from './../icon/icon.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -73,9 +72,9 @@ class AddingPanel extends PureComponent {
   }
 
   saveTransaction() {
-    let { category, money, date, description } = this.state;
     const { addTransaction, lang, hideAddingPanel, categories } = this.props;
     const id = Date.now();
+    let { category, money, date, description } = this.state;
 
     if(+money === 0 || money === null || money === '' || money === undefined) {
       toastr.error(staticContent[lang]['toastr'].smallTransValue, {timeOut: 4000});
@@ -165,15 +164,15 @@ class AddingPanel extends PureComponent {
             <Button
               specialClass="btn btn-primary"
               onClickFunction={this.saveTransaction}
+              icon="save"
             >
-              <Icon icon={'save'} />
               {staticContent[lang]['adding-panel'].btnSubmit}
             </Button>
             <Button
               specialClass="btn btn-default"
               onClickFunction={this.clearTransactionData}
+              icon="undo"
             >
-              <Icon icon={'undo'} />
               {staticContent[lang]['adding-panel'].btnCancel}
             </Button>
           </div>

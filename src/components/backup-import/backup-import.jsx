@@ -86,8 +86,8 @@ class Import extends PureComponent {
           <Button
             specialClass={classNames('btn btn-primary', {'disabled': !file.name})}
             onClickFunction={this.readFile}
+            icon="cached"
           >
-            <Icon icon="cached"/>
             {staticContent[lang]['backup-import'].btnSync}
           </Button>
         </div>

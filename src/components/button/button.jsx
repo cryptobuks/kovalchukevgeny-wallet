@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import Icon from './../icon/icon.jsx';
+
 const Button = props => {
 
-  let { onClickFunction, specialClass, children, href } = props;
+  let { onClickFunction, specialClass, children, href, icon } = props;
 
   return (
     href ?
@@ -14,6 +16,9 @@ const Button = props => {
       type="link"
       className={classNames(specialClass)}
     >
+      {icon &&
+        <Icon icon={icon} />
+      }
       {React.Children.map(children, (child) => {
         return child;
       })}
@@ -23,6 +28,9 @@ const Button = props => {
       type="button"
       className={classNames(specialClass)}
     >
+      {icon &&
+        <Icon icon={icon} />
+      }
       {React.Children.map(children, (child) => {
         return child;
       })}
@@ -43,7 +51,8 @@ Button.propTypes = {
   ]).isRequired,
   href: PropTypes.string,
   onClickFunction: PropTypes.func.isRequired,
-  specialClass: PropTypes.string
+  specialClass: PropTypes.string,
+  icon: PropTypes.string
 };
 
 export default Button;

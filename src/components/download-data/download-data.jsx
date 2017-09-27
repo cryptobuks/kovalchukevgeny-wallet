@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import Button from './../../components/button/button.jsx';
-import Icon from './../../components/icon/icon.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -59,8 +58,8 @@ class DownloadData extends PureComponent {
         onClickFunction={this.download.bind(this, fileFormat)}
         specialClass="btn btn-primary"
         href={`${fileName}.${fileFormat}`}
+        icon="get_app"
       >
-        <Icon icon={'get_app'} />
         {btnText}
       </Button>
     )

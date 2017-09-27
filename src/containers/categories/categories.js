@@ -175,15 +175,15 @@ class Categories extends Component {
                     <Button
                       specialClass="btn btn-primary"
                       onClickFunction={this.saveCategory}
+                      icon="save"
                     >
-                      <Icon icon={'save'} />
                       {staticContent[lang]['adding-category'].btnSubmit}
                     </Button>
                     <Button
                       specialClass="btn btn-default"
                       onClickFunction={this.clearCategory}
+                      icon="undo"
                     >
-                      <Icon icon={'undo'} />
                       {staticContent[lang]['adding-category'].btnCancel}
                     </Button>
                   </div>
