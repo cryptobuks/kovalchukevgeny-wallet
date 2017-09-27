@@ -13,8 +13,6 @@ import Button from './../button/button.jsx'
 
 import staticContent from './../../static-content/languages';
 
-import LoadingHOC from './../../HOC/loadingHOC.jsx';
-
 class TransactionsTable extends Component {
   constructor(props) {
     super(props);
@@ -267,4 +265,4 @@ TransactionsTable.propTypes = {
   lang: PropTypes.string
 };
 
-export default LoadingHOC('transactions')(TransactionsTable);
+export default TransactionsTable;

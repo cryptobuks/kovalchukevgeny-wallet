@@ -80,7 +80,6 @@ class Transactions extends Component {
 
   download(format, event) {
     let { transactions } = this.props;
-    // Filter transactions on current month
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     let contents = format === 'json' ? JSON.stringify(monthTransactions) :
     this.convertToCSV(monthTransactions);
@@ -221,7 +220,7 @@ class Transactions extends Component {
                 footer={this.renderTableFooter(amount, unicTransactions)}
               >
                 <TransactionsTable
-                  transactions={monthTransactions}
+                  transactions={this.filteredTransactions(monthTransactions)}
                   deleteTransaction={deleteTransaction}
                   changeTransaction={changeTransaction}
                   descending={descending}
