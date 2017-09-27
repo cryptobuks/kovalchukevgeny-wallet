@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Panel from './../panel/panel.jsx';
-import Button from './../button/button.jsx';
-import Icon from './../icon/icon.jsx';
+import DownloadData from './../download-data/download-data.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -31,14 +30,12 @@ const Export = props => {
         <p>
           {staticContent[lang]['backup-export'].description}
         </p>
-        <Button
-          onClickFunction={download.bind(this, 'json')}
-          specialClass="btn btn-primary"
-          href="backup.json"
-        >
-          <Icon icon={'get_app'} />
-          {staticContent[lang]['backup-export'].btnJson}
-        </Button>
+        <DownloadData
+          transactions={transactions}
+          fileName="backup"
+          fileFormat="json"
+          btnText={staticContent[lang]['backup-export'].btnJson}
+        />
       </div>
     </Panel>
   );

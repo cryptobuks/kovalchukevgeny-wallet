@@ -8,8 +8,8 @@ import Helpers from './../../helpers/Helpers';
 
 import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
-import Button from './../../components/button/button.jsx';
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
+import DownloadData from './../../components/download-data/download-data.jsx';
 
 import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
 
@@ -23,44 +23,10 @@ class Reports extends Component {
 
     this.Helpers = new Helpers();
 
-    this.convertToCSV = this.convertToCSV.bind(this);
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
     this.filteredTransactions = this.filteredTransactions.bind(this);
-  }
-
-  convertToCSV(objArray) {
-    const { lang, categories } = this.props;
-    objArray = objArray.map(item => {
-      item.date = moment(item.date).format('DD/MM/YYYY');
-      item.category = this.Helpers.getCategoryById(categories, item);
-      return item;
-    });
-    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-    let str = staticContent[lang]['csvTableHead']; // table head
-    for (let i = 0; i < array.length; i++) {
-      let line = '';
-      for (let index in array[i]) {
-        // ignore excess data in final table
-        if(index !== 'id') {
-          if (line != '') line += ',';
-          line += array[i][index];
-        }
-      }
-      str += line + '\r\n';
-    }
-    return str;
-  }
-
-  download(format, event) {
-    let { transactions } = this.props;
-    let contents = format === 'json' ? JSON.stringify(transactions) :
-    this.convertToCSV(transactions);
-    const URL = window.URL || window.webkitURL;
-    const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
-    event.target.href = URL.createObjectURL(blob);
-    event.target.download = 'report.' + format;
   }
 
   openMonth(event) {
@@ -240,13 +206,13 @@ class Reports extends Component {
             {this.renderMonthPanels(reMapedTransactions)}
             {transactions.length > 0 &&
             <div className="toolbar">
-              <Button
-                onClickFunction={this.download.bind(this, 'csv')}
-                specialClass="btn btn-primary"
-                href="report.csv"
-              >
-                <Icon icon={'get_app'} />
-                {staticContent[lang]['reports'].btnCsv}</Button>
+              <DownloadData
+                transactions={transactions}
+                categories={categories}
+                fileName="report"
+                fileFormat="csv"
+                btnText={staticContent[lang]['reports'].btnCsv}
+              />
             </div>
             }
           </div>

@@ -10,6 +10,7 @@ import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
+import DownloadData from './../../components/download-data/download-data.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -35,7 +36,6 @@ class Transactions extends Component {
       showPanel: false
     };
 
-    this.convertToCSV = this.convertToCSV.bind(this);
     this.sortData = this.sortData.bind(this);
     this.sortSheme = this.sortSheme.bind(this);
     this.spellingDay = this.spellingDay.bind(this);
@@ -53,40 +53,6 @@ class Transactions extends Component {
       const column = Object.keys(transactions[0])[1];
       this.sortData(event = null, column);
     }
-  }
-
-  convertToCSV(objArray) {
-    const { lang, categories } = this.props;
-    objArray = objArray.map(item => {
-      item.date = moment(item.date).format('DD/MM/YYYY');
-      item.category = this.Helpers.getCategoryById(categories, item);
-      return item;
-    });
-    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-    let str = staticContent[lang]['csvTableHead']; // table head
-    for (let i = 0; i < array.length; i++) {
-      let line = '';
-      for (let index in array[i]) {
-        // ignore excess data in final table
-        if(index !== 'id') {
-          if (line != '') line += ',';
-          line += array[i][index];
-        }
-      }
-      str += line + '\r\n';
-    }
-    return str;
-  }
-
-  download(format, event) {
-    let { transactions } = this.props;
-    const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
-    let contents = format === 'json' ? JSON.stringify(monthTransactions) :
-    this.convertToCSV(monthTransactions);
-    const URL = window.URL || window.webkitURL;
-    const blob = new Blob(['\ufeff' + contents], {type: `text/${format};charset=utf-8;`});
-    event.target.href = URL.createObjectURL(blob);
-    event.target.download = 'data.' + format;
   }
 
   filteredTransactions(transactions) {
@@ -180,7 +146,6 @@ class Transactions extends Component {
       changeAllCategories } = this.props;
     let amount = 0;
 
-    // Filter transactions on current month
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
@@ -213,23 +178,23 @@ class Transactions extends Component {
           }
           <div className="col-lg-9 col-md-9">
             {transactions.length > 0 &&
-              <Panel
-                specialClass="tr-table"
-                heading={staticContent[lang]['transactions-table'].head}
-                headingIcon="view_list"
-                footer={this.renderTableFooter(amount, unicTransactions)}
-              >
-                <TransactionsTable
-                  transactions={this.filteredTransactions(monthTransactions)}
-                  deleteTransaction={deleteTransaction}
-                  changeTransaction={changeTransaction}
-                  descending={descending}
-                  sortby={sortby}
-                  sortFunction={this.sortData}
-                  categories={categories}
-                  lang={lang}
-                />
-              </Panel>
+            <Panel
+              specialClass="tr-table"
+              heading={staticContent[lang]['transactions-table'].head}
+              headingIcon="view_list"
+              footer={this.renderTableFooter(amount, unicTransactions)}
+            >
+              <TransactionsTable
+                transactions={this.filteredTransactions(monthTransactions)}
+                deleteTransaction={deleteTransaction}
+                changeTransaction={changeTransaction}
+                descending={descending}
+                sortby={sortby}
+                sortFunction={this.sortData}
+                categories={categories}
+                lang={lang}
+              />
+            </Panel>
             }
             <div className="row">
               <div className="col-lg-12">
@@ -242,14 +207,13 @@ class Transactions extends Component {
                     {staticContent[lang]['transactions-table'].btnAdd}
                   </Button>
                   {transactions.length > 0 &&
-                  <Button
-                    onClickFunction={this.download.bind(this, 'csv')}
-                    specialClass="btn btn-primary"
-                    href="data.csv"
-                  >
-                    <Icon icon={'get_app'} />
-                    {staticContent[lang]['transactions-table'].btnCsv}
-                  </Button>
+                  <DownloadData
+                    transactions={monthTransactions}
+                    categories={categories}
+                    fileName="monthExpenses"
+                    fileFormat="csv"
+                    btnText={staticContent[lang]['transactions-table'].btnCsv}
+                  />
                   }
                 </div>
               </div>
