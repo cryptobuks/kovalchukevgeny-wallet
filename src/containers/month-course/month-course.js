@@ -101,9 +101,9 @@ MonthCourse.defaultProps = {
 };
 
 MonthCourse.propTypes = {
-  lang: PropTypes.string,
+  addMonthCourse: PropTypes.func,
   course: PropTypes.array,
-  addMonthCourse: PropTypes.func
+  lang: PropTypes.string
 };
 
 export default connect(state => ({

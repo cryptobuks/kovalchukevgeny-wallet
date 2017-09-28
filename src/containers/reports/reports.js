@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -128,7 +127,8 @@ class Reports extends Component {
             <div className="panel panel-primary res-table">
               <div
                 onClick={(e) => this.openMonth(e)}
-                className="panel-heading clearfix">
+                className="panel-heading clearfix"
+              >
                 <h3 className="panel-title left">
                   <Icon icon={'today'} />
                   {`${staticContent[lang]['months'][i]} ${moment(reMapedTransaction.date).year()}`}
@@ -155,8 +155,8 @@ class Reports extends Component {
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountMonth']}
                       <span>{amountMonth.toFixed(2)}</span>
-                      {staticContent[lang]['currency']} /
-                      <span>{amountMonthCurrency.toFixed(2)}</span>$
+                      {staticContent[lang]['currency']} {'/'}
+                      <span>{amountMonthCurrency.toFixed(2)}</span>{'$'}
                     </h5>
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountDay']}
@@ -234,11 +234,11 @@ Reports.defaultProps = {
 
 Reports.propTypes = {
   categories: PropTypes.array,
-  transactions: PropTypes.array,
-  lang: PropTypes.string,
+  changeAllCategories: PropTypes.func,
   course: PropTypes.array,
-  updateCategory: PropTypes.func,
-  changeAllCategories: PropTypes.func
+  lang: PropTypes.string,
+  transactions: PropTypes.array,
+  updateCategory: PropTypes.func
 };
 
 export default connect(state => ({

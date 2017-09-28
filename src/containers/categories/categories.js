@@ -111,7 +111,8 @@ class Categories extends Component {
               <Button
                 specialClass="close"
                 onClickFunction={this.deleteCategory}
-              >&times;</Button>
+                icon="clear"
+              />
               <ButtonToolbar>
                 <Link
                   className="edit btn-primary btn"
@@ -218,8 +219,8 @@ Categories.defaultProps = {
 };
 
 Categories.propTypes = {
-  categories: PropTypes.array,
   addCategory: PropTypes.func,
+  categories: PropTypes.array,
   deleteCategory: PropTypes.func,
   lang: PropTypes.string
 };

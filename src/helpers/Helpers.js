@@ -13,7 +13,7 @@ class Helpers {
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
-    let transaction = {}; let transactions = [];
+    let transactions = [];
 
     /*
      * create array of objects from obj

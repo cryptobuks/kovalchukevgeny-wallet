@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
@@ -125,7 +123,7 @@ class Transactions extends Component {
       <span className="amount">
         {staticContent[lang]['transactions-table'].bigDescr}
         <span>{unicTransactions.length} </span>
-        {this.spellingDay(unicTransactions.length, lang)}:
+        {this.spellingDay(unicTransactions.length, lang)}{':'}
         <span>{amount.toFixed(2)} </span>
         {staticContent[lang]['currency']}
       </span>
@@ -234,14 +232,14 @@ Transactions.defaultProps = {
 };
 
 Transactions.propTypes = {
-  categories: PropTypes.array,
-  transactions: PropTypes.array,
-  lang: PropTypes.string,
-  deleteTransaction: PropTypes.func,
-  changeTransaction: PropTypes.func,
   addTransaction: PropTypes.func,
-  updateCategory: PropTypes.func,
-  changeAllCategories: PropTypes.func
+  categories: PropTypes.array,
+  changeAllCategories: PropTypes.func,
+  changeTransaction: PropTypes.func,
+  deleteTransaction: PropTypes.func,
+  lang: PropTypes.string,
+  transactions: PropTypes.array,
+  updateCategory: PropTypes.func
 };
 
 export default connect(state => ({

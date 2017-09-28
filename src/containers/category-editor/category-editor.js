@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { browserHistory } from 'react-router';
 import enhanceWithClickOutside from 'react-click-outside';
 import { toastr } from 'react-redux-toastr';
@@ -140,14 +139,14 @@ class CategoryEditor extends PureComponent {
 }
 
 CategoryEditor.defaultProps = {
-  onClickFunction: () => {},
+  categories: [],
   lang: 'eng',
-  categories: []
+  onClickFunction: () => {}
 };
 
 CategoryEditor.propTypes = {
-  onClickFunction: PropTypes.func,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  onClickFunction: PropTypes.func
 };
 
 export default connect(state => ({

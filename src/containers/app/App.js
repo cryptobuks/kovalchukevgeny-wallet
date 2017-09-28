@@ -5,8 +5,6 @@ import ReduxToastr from 'react-redux-toastr';
 import Header from './../header/header';
 import Footer from './../../components/footer/footer.jsx';
 
-import api from './../../api/index';
-
 const App = props => {
   const { children } = props;
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import CurrencyRate from './../../components/currency-rate/currency-rate.jsx';
 import TransactionsGraph from './../../components/transactions-graph/transactions-graph.jsx';
@@ -55,17 +54,17 @@ const Statistics = props => {
 };
 
 Statistics.defaultProps = {
-  lang: 'eng',
   categories: [],
-  transactions: [],
-  course: []
+  course: [],
+  lang: 'eng',
+  transactions: []
 };
 
 Statistics.propTypes = {
-  transactions: PropTypes.array,
   categories: PropTypes.array,
+  course: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({

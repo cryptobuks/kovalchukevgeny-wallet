@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import classNames from 'classnames';
 
 import Icon from './../../components/icon/icon.jsx';
 import Navbar from './../../components/navbar/navbar.jsx';
@@ -71,18 +70,18 @@ const Header = props => {
             <span
               className={lang === 'eng' ? 'active' : ''}
               onClick={() => changeLang('eng')}
-            >eng
+            >{'eng'}
             <span className="flag-icon flag-icon-usa">
               <img src={usa} alt="english" />
             </span>
             </span>
           </li>
-          <li>/</li>
+          <li>{'/'}</li>
           <li>
             <span
               className={lang === 'rus' ? 'active' : ''}
               onClick={() => changeLang('rus')}
-            >rus
+            >{'rus'}
             <span className="flag-icon flag-icon-rus">
               <img src={rus} alt="russian" />
             </span>
@@ -101,9 +100,9 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
+  changeLang: PropTypes.func,
   lang: PropTypes.string,
-  transactions: PropTypes.array,
-  changeLang: PropTypes.func
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({

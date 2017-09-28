@@ -38,10 +38,10 @@ Backup.defaultProps = {
 };
 
 Backup.propTypes = {
-  transactions: PropTypes.array,
   categories: PropTypes.array,
+  course: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({
