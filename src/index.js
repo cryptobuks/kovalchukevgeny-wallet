@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
+import { Router, Route, browserHistory, Redirect } from 'react-router';
 
 import App from './containers/app/App.js';
 import Categories from './containers/categories/categories';

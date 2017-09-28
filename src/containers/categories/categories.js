@@ -10,6 +10,7 @@ import IconSelect from './../../components/icon-select/icon-select.jsx';
 import ColorSelect from './../../components/color-select/color-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
+import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
@@ -41,11 +42,11 @@ class Categories extends Component {
   }
 
   changeCategoryIcon(icon) {
-    this.setState({ icon: icon });
+    this.setState({ icon });
   }
 
   changeCategoryColor(color) {
-    this.setState({ color: color });
+    this.setState({ color });
   }
 
   clearCategory() {
@@ -90,9 +91,11 @@ class Categories extends Component {
 
   renderCategoryCard(categories) {
     const { lang } = this.props;
+
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
-      return(
+
+      return (
         <div key={i} className="category-card">
           <Panel specialClass="category">
             <div data-id={category.id}>
@@ -109,7 +112,7 @@ class Categories extends Component {
                 specialClass="close"
                 onClickFunction={this.deleteCategory}
               >&times;</Button>
-              <div className="toolbar">
+              <ButtonToolbar>
                 <Link
                   className="edit btn-primary btn"
                   to={`/categories/${category.id}`}
@@ -117,7 +120,7 @@ class Categories extends Component {
                   <Icon icon={'create'} />
                   {staticContent[lang]['categories'].btnEdit}
                 </Link>
-              </div>
+              </ButtonToolbar>
             </div>
           </Panel>
         </div>
@@ -127,15 +130,13 @@ class Categories extends Component {
 
   render() {
     const { description, title, icon, color } = this.state;
-    let { categories, lang } = this.props;
+    const { categories, lang } = this.props;
 
     return (
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <Panel
-              specialClass="categories"
-            >
+            <Panel specialClass="categories">
               <div className="row">
                 <div className="col-lg-12">
                   <legend>{staticContent[lang]['adding-category'].head}</legend>
@@ -171,22 +172,18 @@ class Categories extends Component {
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-6 text-right">
-                  <div className="toolbar">
+                  <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
                       onClickFunction={this.saveCategory}
                       icon="save"
-                    >
-                      {staticContent[lang]['adding-category'].btnSubmit}
-                    </Button>
+                    >{staticContent[lang]['adding-category'].btnSubmit}</Button>
                     <Button
                       specialClass="btn btn-default"
                       onClickFunction={this.clearCategory}
                       icon="undo"
-                    >
-                      {staticContent[lang]['adding-category'].btnCancel}
-                    </Button>
-                  </div>
+                    >{staticContent[lang]['adding-category'].btnCancel}</Button>
+                  </ButtonToolbar>
                 </div>
               </div>
             </Panel>
@@ -194,9 +191,9 @@ class Categories extends Component {
         </div>
         <div className="row">
           <div className="col-lg-12">
-          {categories.length > 0 &&
+            {categories.length > 0 &&
             <Panel
-              specialClass="panel-primary categories-panel"
+              specialClass="categories-panel"
               heading={staticContent[lang]['categories'].head}
               headingIcon="work"
             >
@@ -204,7 +201,7 @@ class Categories extends Component {
                 {this.renderCategoryCard(categories)}
               </div>
             </Panel>
-          }
+            }
           </div>
         </div>
       </div>

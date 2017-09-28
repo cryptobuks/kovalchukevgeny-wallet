@@ -202,9 +202,7 @@ class Transactions extends Component {
                     onClickFunction={this.showAddingPanel}
                     specialClass="btn btn-primary"
                     icon="add"
-                  >
-                    {staticContent[lang]['transactions-table'].btnAdd}
-                  </Button>
+                  >{staticContent[lang]['transactions-table'].btnAdd}</Button>
                   {transactions.length > 0 &&
                   <DownloadData
                     transactions={monthTransactions}

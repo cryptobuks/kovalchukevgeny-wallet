@@ -19,9 +19,8 @@ const TransactionsResults = props => {
 
   const renderBiggestTransaction = transactions => {
     const { lang } = props;
-    const biggestTransactionMoney = getMaxValue(transactions);
 
-    let biggestTransaction = transactions.filter(transaction => transaction.money === biggestTransactionMoney);
+    let biggestTransaction = transactions.filter(transaction => transaction.money === getMaxValue(transactions));
 
     return(
       biggestTransaction.map((transaction, i) => {

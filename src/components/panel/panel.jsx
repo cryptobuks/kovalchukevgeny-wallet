@@ -17,7 +17,8 @@ const Panel = props => {
           {headingIcon && <Icon icon={headingIcon} />}
           {heading}
         </h3>
-      </div>}
+      </div>
+      }
       <div className="panel-body">
         {React.Children.map(children, (child) => {
           return child;
@@ -25,7 +26,8 @@ const Panel = props => {
       </div>
       {footer && <div className="panel-footer">
         <h3 className="panel-title panel-footer">{footer}</h3>
-      </div>}
+      </div>
+      }
     </div>
   );
 }

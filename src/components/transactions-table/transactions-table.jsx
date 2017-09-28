@@ -48,25 +48,25 @@ class TransactionsTable extends Component {
   handleChangeCategory(event) {
     let isEditRow = this.state.isEditRow;
     isEditRow.category = event.target.value;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   handleChangeData(date) {
     let isEditRow = this.state.isEditRow;
     isEditRow.date = date;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   handleChangeMoney(event) {
     let isEditRow = this.state.isEditRow;
     isEditRow.money = event.target.value;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   handleChangeDescription(event) {
     let isEditRow = this.state.isEditRow;
     isEditRow.description = event.target.value;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   updateTransaction(isEditRow) {
@@ -121,7 +121,7 @@ class TransactionsTable extends Component {
 
       return (
         <div className={`table-data ${sortby === headItem ? 'active' : ''}`} key={i} data-cell={headItem}>
-          <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span> {/* ignore id */}
+          <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span>
           {sortby === headItem &&
           <span className="filter-arrow">
             {descending ? <Icon data-cell={headItem} icon={'arrow_downward'} /> : <Icon data-cell={headItem} icon={'arrow_upward'} />}

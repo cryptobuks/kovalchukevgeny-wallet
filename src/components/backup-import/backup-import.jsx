@@ -6,6 +6,7 @@ import { toastr } from 'react-redux-toastr';
 import Panel from './../panel/panel.jsx';
 import Button from './../button/button.jsx';
 import Icon from './../icon/icon.jsx';
+import ButtonToolbar from './../button-toolbar/button-toolbar.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -68,7 +69,7 @@ class Import extends PureComponent {
         heading={staticContent[lang]['backup-import'].head}
         headingIcon="open_in_browser"
       >
-        <div className="toolbar">
+        <ButtonToolbar>
           <p>
             {staticContent[lang]['backup-import'].description}
           </p>
@@ -87,10 +88,8 @@ class Import extends PureComponent {
             specialClass={classNames('btn btn-primary', {'disabled': !file.name})}
             onClickFunction={this.readFile}
             icon="cached"
-          >
-            {staticContent[lang]['backup-import'].btnSync}
-          </Button>
-        </div>
+          >{staticContent[lang]['backup-import'].btnSync}</Button>
+        </ButtonToolbar>
       </Panel>
     );
   }

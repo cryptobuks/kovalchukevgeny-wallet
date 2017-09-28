@@ -7,6 +7,7 @@ import moment from 'moment';
 import Button from './../../components/button/button.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
+import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 
 import { addMonthCourse } from './../../actions/actionCreators';
 
@@ -78,15 +79,13 @@ class MonthCourse extends Component {
                 value={currentCourse}
                 handleChange={this.handleChangeCourse}
               />
-              <div className="toolbar">
+              <ButtonToolbar>
                 <Button
                   specialClass="btn btn-primary"
                   onClickFunction={() => this.saveCourse(date, currentCourse)}
                   icon="attach_money"
-                >
-                  {staticContent[lang]['month-course'].btnSubmit}
-                </Button>
-              </div>
+                >{staticContent[lang]['month-course'].btnSubmit}</Button>
+              </ButtonToolbar>
             </div>
           </div>
         </Panel>

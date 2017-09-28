@@ -10,6 +10,7 @@ import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
+import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 
 import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
 
@@ -205,7 +206,7 @@ class Reports extends Component {
             />
             {this.renderMonthPanels(reMapedTransactions)}
             {transactions.length > 0 &&
-            <div className="toolbar">
+            <ButtonToolbar>
               <DownloadData
                 transactions={transactions}
                 categories={categories}
@@ -213,7 +214,7 @@ class Reports extends Component {
                 fileFormat="csv"
                 btnText={staticContent[lang]['reports'].btnCsv}
               />
-            </div>
+            </ButtonToolbar>
             }
           </div>
         </div>
