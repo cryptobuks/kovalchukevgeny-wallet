@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import DayExpenses from './../../components/day-expenses/day-expenses.jsx';
+import Row from './../../components/row/row.jsx';
+import Container from './../../components/container/container.jsx';
 
 import { changeLang } from './../../actions/actionCreators';
 
@@ -13,18 +14,18 @@ class MonthReport extends Component {
   }
 
   render() {
-    let { lang } = this.props;
+    const { lang } = this.props;
 
     return (
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-12">
-            <DayExpenses 
+            <DayExpenses
               lang={lang}
             />
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
@@ -37,10 +38,12 @@ MonthReport.defaultProps = {
 
 MonthReport.propTypes = {
   categories: PropTypes.array,
-  transactions: PropTypes.array,
   lang: PropTypes.string,
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({
-  lang: state.lang
+  categories: state.categories,
+  lang: state.lang,
+  transactions: state.transactions
 }), { changeLang })(MonthReport);
