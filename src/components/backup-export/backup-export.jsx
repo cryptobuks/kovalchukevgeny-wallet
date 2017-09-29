@@ -24,18 +24,18 @@ const Export = props => {
   return (
     <Panel
       specialClass="export"
-      heading={staticContent[lang]['backup-export'].head}
+      heading={staticContent[lang]['backup-export']['head']}
       headingIcon="backup"
     >
       <ButtonToolbar>
         <p>
-          {staticContent[lang]['backup-export'].description}
+          {staticContent[lang]['backup-export']['description']}
         </p>
         <DownloadData
           transactions={transactions}
           fileName="backup"
           fileFormat="json"
-          btnText={staticContent[lang]['backup-export'].btnJson}
+          btnText={staticContent[lang]['backup-export']['btnJson']}
         />
       </ButtonToolbar>
     </Panel>

@@ -212,7 +212,7 @@ class Reports extends Component {
                 categories={categories}
                 fileName="report"
                 fileFormat="csv"
-                btnText={staticContent[lang]['reports'].btnCsv}
+                btnText={staticContent[lang]['reports']['btnCsv']}
               />
             </ButtonToolbar>
             }

@@ -35,7 +35,7 @@ class Import extends PureComponent {
       };
       const blob = file.slice(0, file.size);
       reader.readAsText(blob);
-      toastr.success(staticContent[lang]['toastr'].syncMessage, { timeOut: 3000 });
+      toastr.success(staticContent[lang]['toastr']['syncMessage'], { timeOut: 3000 });
     }
   }
 
@@ -66,12 +66,12 @@ class Import extends PureComponent {
     return (
       <Panel
         specialClass="import"
-        heading={staticContent[lang]['backup-import'].head}
+        heading={staticContent[lang]['backup-import']['head']}
         headingIcon="open_in_browser"
       >
         <ButtonToolbar>
           <p>
-            {staticContent[lang]['backup-import'].description}
+            {staticContent[lang]['backup-import']['description']}
           </p>
           {this.renderInfoAboutFile(file)}
           <label className="label-load btn btn-primary">
@@ -82,13 +82,13 @@ class Import extends PureComponent {
               ref={(input) => { this.fileInput = input; }}
             />
             <Icon icon="move_to_inbox"/>
-            {staticContent[lang]['backup-import'].btnLoad}
+            {staticContent[lang]['backup-import']['btnLoad']}
           </label>
           <Button
             specialClass={classNames('btn btn-primary', {'disabled': !file.name})}
             onClickFunction={this.readFile}
             icon="cached"
-          >{staticContent[lang]['backup-import'].btnSync}</Button>
+          >{staticContent[lang]['backup-import']['btnSync']}</Button>
         </ButtonToolbar>
       </Panel>
     );

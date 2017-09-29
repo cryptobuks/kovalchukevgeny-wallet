@@ -58,7 +58,7 @@ class MonthCourse extends Component {
       <div>
         <Panel
           specialClass="month-course"
-          heading={staticContent[lang]['month-course'].head}
+          heading={staticContent[lang]['month-course']['head']}
           headingIcon="attach_money"
         >
           <div className="row">
@@ -84,7 +84,7 @@ class MonthCourse extends Component {
                   specialClass="btn btn-primary"
                   onClickFunction={() => this.saveCourse(date, currentCourse)}
                   icon="attach_money"
-                >{staticContent[lang]['month-course'].btnSubmit}</Button>
+                >{staticContent[lang]['month-course']['btnSubmit']}</Button>
               </ButtonToolbar>
             </div>
           </div>

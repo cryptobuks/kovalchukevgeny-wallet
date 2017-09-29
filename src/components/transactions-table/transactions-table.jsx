@@ -42,7 +42,7 @@ class TransactionsTable extends Component {
 
   deleteTransaction(id) {
     const { deleteTransaction, lang } = this.props;
-    toastr.confirm(staticContent[lang]['toastr'].transactionRemove, { onOk: () => deleteTransaction(id) });
+    toastr.confirm(staticContent[lang]['toastr']['transactionRemove'], { onOk: () => deleteTransaction(id) });
   }
 
   handleChangeCategory(event) {
@@ -77,7 +77,7 @@ class TransactionsTable extends Component {
       isEditRow: {},
       activeRow: {}
     });
-    toastr.success(staticContent[lang]['toastr'].transactionUpdated, {timeOut: 4000});
+    toastr.success(staticContent[lang]['toastr']['transactionUpdated'], {timeOut: 4000});
   }
 
   openEditMenu(activeRow) {
@@ -184,7 +184,7 @@ class TransactionsTable extends Component {
             {!transaction.isEdit ?
               <span title={transaction.description}>{transaction.description}</span> :
               <Input
-                placeholder={staticContent[lang]['adding-panel'].descr}
+                placeholder={staticContent[lang]['adding-panel']['descr']}
                 value={this.state.isEditRow.description}
                 handleChange={this.handleChangeDescription}
               />
