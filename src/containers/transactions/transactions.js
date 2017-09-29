@@ -8,6 +8,7 @@ import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
+import ButtonsToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -39,7 +40,6 @@ class Transactions extends Component {
     this.showAddingPanel = this.showAddingPanel.bind(this);
     this.hideAddingPanel = this.hideAddingPanel.bind(this);
     this.renderTableFooter = this.renderTableFooter.bind(this);
-    this.filteredTransactions = this.filteredTransactions.bind(this);
   }
 
   componentWillMount() {
@@ -50,20 +50,6 @@ class Transactions extends Component {
       const column = Object.keys(transactions[0])[1];
       this.sortData(event = null, column);
     }
-  }
-
-  filteredTransactions(transactions) {
-    const { categories } = this.props;
-    transactions = transactions.filter(transaction => {
-      for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].id) {
-          if(categories[i].filter === true) {
-            return transaction;
-          }
-        }
-      }
-    });
-    return transactions;
   }
 
   sortSheme(dataArray, column, descending) {
@@ -99,7 +85,7 @@ class Transactions extends Component {
   spellingDay(date, lang) {
     const declOfNum = (number, titles) => {
       let cases = [2, 0, 1, 1, 1, 2];
-      return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+      return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10  :5] ];
     };
 
     if(lang === 'eng') {
@@ -147,9 +133,7 @@ class Transactions extends Component {
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
     if(monthTransactions && monthTransactions.length > 0) {
-      amount = unicTransactions.reduce((sum, transaction) => {
-        return sum += transaction.money;
-      }, 0);
+      amount = unicTransactions.reduce((sum, transaction) => sum += transaction.money, 0);
     }
 
     return (
@@ -182,7 +166,7 @@ class Transactions extends Component {
               footer={this.renderTableFooter(amount, unicTransactions)}
             >
               <TransactionsTable
-                transactions={this.filteredTransactions(monthTransactions)}
+                transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
                 deleteTransaction={deleteTransaction}
                 changeTransaction={changeTransaction}
                 descending={descending}
@@ -195,7 +179,7 @@ class Transactions extends Component {
             }
             <div className="row">
               <div className="col-lg-12">
-                <div className="toolbar">
+                <ButtonsToolbar>
                   <Button
                     onClickFunction={this.showAddingPanel}
                     specialClass="btn btn-primary"
@@ -210,7 +194,7 @@ class Transactions extends Component {
                     btnText={staticContent[lang]['transactions-table']['btnCsv']}
                   />
                   }
-                </div>
+                </ButtonsToolbar>
               </div>
             </div>
           </div>

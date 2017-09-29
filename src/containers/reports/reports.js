@@ -26,25 +26,10 @@ class Reports extends Component {
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
-    this.filteredTransactions = this.filteredTransactions.bind(this);
   }
 
   openMonth(event) {
     event.currentTarget.parentNode.parentNode.classList.toggle("expanded");
-  }
-
-  filteredTransactions(transactions) {
-    const { categories } = this.props;
-    transactions = transactions.filter(transaction => {
-      for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].id) {
-          if(categories[i].filter === true) {
-            return transaction;
-          }
-        }
-      }
-    });
-    return transactions;
   }
 
   renderMonthTable(transactions) {
@@ -186,7 +171,7 @@ class Reports extends Component {
       updateCategory,
       changeAllCategories } = this.props;
 
-    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.filteredTransactions(transactions));
+    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     return (
       <div className="container reports">
         <div className="row">
@@ -200,7 +185,7 @@ class Reports extends Component {
           </div>
           <div className="col-lg-9 col-md-9">
             <ReportsGraph
-              transactions={this.filteredTransactions(transactions)}
+              transactions={this.Helpers.filteredTransactions(transactions, categories)}
               categories={categories}
               lang={lang}
             />

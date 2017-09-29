@@ -110,6 +110,19 @@ class Helpers {
       return moment().month() === moment(transaction.date).month();
     });
   }
+
+  filteredTransactions(transactions, categories) {
+    transactions = transactions.filter(transaction => {
+      for(let i = 0; i < categories.length; i++) {
+        if(transaction.category === categories[i].id) {
+          if(categories[i].filter === true) {
+            return transaction;
+          }
+        }
+      }
+    });
+    return transactions;
+  }
 }
 
 export default Helpers;
