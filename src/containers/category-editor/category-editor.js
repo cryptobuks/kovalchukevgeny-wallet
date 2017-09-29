@@ -11,6 +11,8 @@ import IconSelect from './../../components/icon-select/icon-select.jsx';
 import ColorSelect from './../../components/color-select/color-select.jsx';
 import Button from './../../components/button/button.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import { updateCategory } from './../../actions/actionCreators.js';
 
@@ -81,15 +83,15 @@ class CategoryEditor extends PureComponent {
     const { lang } = this.props;
 
     return (
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-12">
             <Panel
               specialClass="category-editor"
               heading={staticContent[lang]['category-editor']['head']}
               headingIcon="settings"
             >
-              <div className="row">
+              <Row>
                 <div className="col-lg-3 col-md-2 col-sm-6">
                   <Input
                     placeholder={staticContent[lang]['category-editor']['category']}
@@ -129,11 +131,11 @@ class CategoryEditor extends PureComponent {
                     >{staticContent[lang]['category-editor']['btnUpdate']}</Button>
                   </ButtonToolbar>
                 </div>
-              </div>
+              </Row>
             </Panel>
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }

@@ -11,6 +11,8 @@ import ColorSelect from './../../components/color-select/color-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
@@ -134,11 +136,11 @@ class Categories extends Component {
     const { categories, lang } = this.props;
 
     return (
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-12">
             <Panel specialClass="categories">
-              <div className="row">
+              <Row>
                 <div className="col-lg-12">
                   <legend>{staticContent[lang]['adding-category']['head']}</legend>
                 </div>
@@ -186,11 +188,11 @@ class Categories extends Component {
                     >{staticContent[lang]['adding-category']['btnCancel']}</Button>
                   </ButtonToolbar>
                 </div>
-              </div>
+              </Row>
             </Panel>
           </div>
-        </div>
-        <div className="row">
+        </Row>
+        <Row>
           <div className="col-lg-12">
             {categories.length > 0 &&
             <Panel
@@ -204,8 +206,8 @@ class Categories extends Component {
             </Panel>
             }
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }

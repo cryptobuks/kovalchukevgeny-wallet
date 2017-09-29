@@ -4,29 +4,29 @@ import PropTypes from 'prop-types';
 
 import Export from './../../components/backup-export/backup-export.jsx';
 import Import from './../../components/backup-import/backup-import.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 const Backup = (props) => {
   const { transactions, lang, course, categories } = props;
   return (
-    <div className="widgets">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <Export
-              lang={lang}
-              course={course}
-              transactions={transactions}
-              categories={categories}
-            />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <Import
-              lang={lang}
-            />
-          </div>
+    <Container>
+      <Row>
+        <div className="col-lg-6 col-md-6 col-sm-6">
+          <Export
+            lang={lang}
+            course={course}
+            transactions={transactions}
+            categories={categories}
+          />
         </div>
-      </div>
-    </div>
+        <div className="col-lg-6 col-md-6 col-sm-6">
+          <Import
+            lang={lang}
+          />
+        </div>
+      </Row>
+    </Container>
   );
 };
 

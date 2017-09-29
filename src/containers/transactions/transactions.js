@@ -9,6 +9,8 @@ import Button from './../../components/button/button.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonsToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -137,8 +139,8 @@ class Transactions extends Component {
     }
 
     return (
-      <div className="container transactions">
-        <div className="row">
+      <Container specialClass="transactions">
+        <Row>
           <AddingPanel
             categories={categories}
             lang={lang}
@@ -177,7 +179,7 @@ class Transactions extends Component {
               />
             </Panel>
             }
-            <div className="row">
+            <Row>
               <div className="col-lg-12">
                 <ButtonsToolbar>
                   <Button
@@ -196,10 +198,10 @@ class Transactions extends Component {
                   }
                 </ButtonsToolbar>
               </div>
-            </div>
+            </Row>
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }

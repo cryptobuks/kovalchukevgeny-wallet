@@ -7,6 +7,8 @@ import TransactionsGraph from './../../components/transactions-graph/transaction
 import TransactionsResults from './../../components/transactions-results/transactions-results.jsx';
 import CategoriesStats from './../../components/categories-stats/categories-stats.jsx';
 import MonthCourse from './../month-course/month-course';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -16,8 +18,8 @@ const Statistics = props => {
 
   return (
     <div className="widgets">
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <CurrencyRate
               lang={lang}
@@ -47,8 +49,8 @@ const Statistics = props => {
               lang={lang}
             />
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     </div>
   );
 };

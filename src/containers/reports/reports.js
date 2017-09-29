@@ -10,6 +10,8 @@ import TransactionsFilter from './../../components/transactions-filter/transacti
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
 
@@ -173,8 +175,8 @@ class Reports extends Component {
 
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     return (
-      <div className="container reports">
-        <div className="row">
+      <Container specialClass="reports">
+        <Row>
           <div className="col-lg-3 col-md-3">
             <TransactionsFilter
               updateCategory={updateCategory}
@@ -202,8 +204,8 @@ class Reports extends Component {
             </ButtonToolbar>
             }
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }

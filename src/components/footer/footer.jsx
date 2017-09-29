@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Button from './../../components/button/button.jsx';
-import Icon from './../../components/icon/icon.jsx';
+import Button from './../button/button.jsx';
+import Icon from './../icon/icon.jsx';
+import Container from './../container/container.jsx';
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container-fluid">
+      <Container fluid>
         <div className="row">
           <div className="col-lg-2 col-md-3">
             <div className="logo">e-wallet</div>
@@ -28,7 +29,7 @@ const Footer = () => {
             </h6>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
