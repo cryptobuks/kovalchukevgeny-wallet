@@ -13,6 +13,7 @@ import Panel from './../../components/panel/panel.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
@@ -138,43 +139,43 @@ class Categories extends Component {
     return (
       <Container>
         <Row>
-          <div className="col-lg-12">
+          <Col lg={12}>
             <Panel specialClass="categories">
               <Row>
-                <div className="col-lg-12">
+                <Col lg={12}>
                   <legend>{staticContent[lang]['adding-category']['head']}</legend>
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6">
+                </Col>
+                <Col lg={2} md={2} sm={6}>
                   <Input
                     placeholder={staticContent[lang]['adding-category']['category']}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-6">
+                </Col>
+                <Col lg={3} md={3} sm={6}>
                   <Input
                     placeholder={staticContent[lang]['adding-category']['descr']}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 text-right">
+                </Col>
+                <Col lg={2} md={2} sm={6} specialClass="text-right">
                   <IconSelect
                     onClickFunction={this.changeCategoryIcon}
                     defaultIcon={icon}
                     iconsArray={iconsArray}
                     lang={lang}
                   />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 text-right">
+                </Col>
+                <Col lg={2} md={2} sm={6} specialClass="text-right">
                   <ColorSelect
                     onClickFunction={this.changeCategoryColor}
                     defaultColor={color}
                     colorsArray={colorsArray}
                     lang={lang}
                   />
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-6 text-right">
+                </Col>
+                <Col lg={3} md={3} sm={6} specialClass="text-right">
                   <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
@@ -187,13 +188,13 @@ class Categories extends Component {
                       icon="undo"
                     >{staticContent[lang]['adding-category']['btnCancel']}</Button>
                   </ButtonToolbar>
-                </div>
+                </Col>
               </Row>
             </Panel>
-          </div>
+          </Col>
         </Row>
         <Row>
-          <div className="col-lg-12">
+          <Col lg={12}>
             {categories.length > 0 &&
             <Panel
               specialClass="categories-panel"
@@ -205,7 +206,7 @@ class Categories extends Component {
               </div>
             </Panel>
             }
-          </div>
+          </Col>
         </Row>
       </Container>
     );

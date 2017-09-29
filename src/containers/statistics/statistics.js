@@ -9,6 +9,7 @@ import CategoriesStats from './../../components/categories-stats/categories-stat
 import MonthCourse from './../month-course/month-course';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -17,41 +18,34 @@ const Statistics = props => {
   const { transactions, lang, course, categories } = props;
 
   return (
-    <div className="widgets">
-      <Container>
-        <Row>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <CurrencyRate
-              lang={lang}
-              course={course}
-            />
-          </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <TransactionsGraph
-              monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
-              lang={lang}
-            />
-          </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <CategoriesStats
-              transactions={transactions}
-              categories={categories}
-              lang={lang}
-            />
-          </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <TransactionsResults
-              monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
-              lang={lang}
-              course={course}
-            />
-            <MonthCourse
-              lang={lang}
-            />
-          </div>
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        <Col lg={6} md={6}>
+          <CurrencyRate lang={lang} course={course} />
+        </Col>
+        <Col lg={6} md={6}>
+          <TransactionsGraph
+            monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
+            lang={lang}
+          />
+        </Col>
+        <Col lg={6} md={6}>
+          <CategoriesStats
+            transactions={transactions}
+            categories={categories}
+            lang={lang}
+          />
+        </Col>
+        <Col lg={6} md={6}>
+          <TransactionsResults
+            monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
+            lang={lang}
+            course={course}
+          />
+          <MonthCourse lang={lang} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

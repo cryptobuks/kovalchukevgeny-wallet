@@ -9,6 +9,7 @@ import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import { addMonthCourse } from './../../actions/actionCreators';
 
@@ -62,10 +63,10 @@ class MonthCourse extends Component {
         headingIcon="attach_money"
       >
         <Row>
-          <div className="col-lg-6">
+          <Col lg={6}>
             <h1 className="text-center">{course}</h1>
-          </div>
-          <div className="col-lg-6">
+          </Col>
+          <Col lg={6}>
             <DatePicker
               locale="en-gb"
               className="form-control"
@@ -86,7 +87,7 @@ class MonthCourse extends Component {
                 icon="attach_money"
               >{staticContent[lang]['month-course']['btnSubmit']}</Button>
             </ButtonToolbar>
-          </div>
+          </Col>
         </Row>
       </Panel>
     );

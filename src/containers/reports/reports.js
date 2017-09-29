@@ -12,6 +12,7 @@ import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
 
@@ -177,15 +178,15 @@ class Reports extends Component {
     return (
       <Container specialClass="reports">
         <Row>
-          <div className="col-lg-3 col-md-3">
+          <Col lg={3} md={3}>
             <TransactionsFilter
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
               lang={lang}
               categories={categories}
             />
-          </div>
-          <div className="col-lg-9 col-md-9">
+          </Col>
+          <Col lg={9} md={9}>
             <ReportsGraph
               transactions={this.Helpers.filteredTransactions(transactions, categories)}
               categories={categories}
@@ -203,7 +204,7 @@ class Reports extends Component {
               />
             </ButtonToolbar>
             }
-          </div>
+          </Col>
         </Row>
       </Container>
     );
