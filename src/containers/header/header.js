@@ -57,11 +57,21 @@ const Header = props => {
             </Link>
           </li>
           }
+          {transactions.length > 0 &&
+          <li>
+            <Link activeClassName="active" to="month-report">
+              <Icon icon={'storage'} />
+              <span className="navigation__item">
+                {staticContent[lang]['menu'][4]}
+              </span>
+            </Link>
+          </li>
+          }
           <li>
             <Link activeClassName="active" to="backup">
               <Icon icon={'backup'} />
               <span className="navigation__item">
-                {staticContent[lang]['menu'][4]}
+                {staticContent[lang]['menu'][5]}
               </span>
             </Link>
           </li>
