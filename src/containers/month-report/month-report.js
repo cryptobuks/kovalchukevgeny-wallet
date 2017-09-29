@@ -28,4 +28,4 @@ MonthReport.propTypes = {
 
 export default connect(state => ({
   lang: state.lang
-}))(MonthReport);
+}), { changeLang })(MonthReport);
