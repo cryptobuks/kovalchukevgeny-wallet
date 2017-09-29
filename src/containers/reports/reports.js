@@ -186,6 +186,7 @@ class Reports extends Component {
       changeAllCategories } = this.props;
 
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.filteredTransactions(transactions));
+    console.log(reMapedTransactions)
     return (
       <div className="container reports">
         <div className="row">
