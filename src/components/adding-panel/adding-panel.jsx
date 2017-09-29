@@ -100,7 +100,7 @@ class AddingPanel extends PureComponent {
     let { categories, lang, transactions, showPanel } = this.props;
 
     categories = categories.map((category, i) => {
-      return(
+      return (
         <option key={i} value={category.id}>{category.title}</option>
       );
     });

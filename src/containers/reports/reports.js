@@ -75,7 +75,7 @@ class Reports extends Component {
   }
 
   renderMonthPanels(reMapedTransactions) {
-    let { lang, course } = this.props;
+    const { lang, course } = this.props;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);

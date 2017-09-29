@@ -47,7 +47,8 @@ class MonthCourse extends Component {
   }
 
   render() {
-    let { lang, course } = this.props;
+    const { lang } = this.props;
+    let { course } = this.props;
     let { currentCourse, date } = this.state;
 
     course = course.find(courseItem => {
