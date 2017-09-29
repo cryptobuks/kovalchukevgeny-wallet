@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Input = props => {
-  let { type, specialClass, placeholder, value, handleChange } = props;
+  const { type, specialClass, placeholder, value, handleChange } = props;
   return(
     <input
       type={type}

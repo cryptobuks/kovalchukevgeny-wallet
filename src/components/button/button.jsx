@@ -39,7 +39,7 @@ const Button = props => {
 }
 
 Button.defaultProps = {
-  children: 'button',
+  children: '',
   onClickFunction: () => {}
 };
 

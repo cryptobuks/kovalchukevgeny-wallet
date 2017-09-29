@@ -104,7 +104,7 @@ const CategoriesStats = props => {
       {categories.length > 0 &&
         <Panel
           specialClass="categories-stats"
-          heading={staticContent[lang]['categories-stats'].head}
+          heading={staticContent[lang]['categories-stats']['head']}
           headingIcon="pie_chart"
         >
           <div className="graph-wrapper">
@@ -141,7 +141,7 @@ const CategoriesStats = props => {
               className="panel-heading clearfix">
               <h3 className="panel-title left">
                 <Icon icon={'format_list_bulleted'} />
-                {staticContent[lang]['categories-stats'].details}
+                {staticContent[lang]['categories-stats']['details']}
               </h3>
               <h3 className="panel-title right">
                 <Icon icon="arrow_drop_down_circle" />

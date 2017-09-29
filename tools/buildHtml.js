@@ -3,7 +3,7 @@
 // In this case, the transformation is useful since we only use a separate css file in prod.
 import fs from 'fs';
 import cheerio from 'cheerio';
-import colors from 'colors';
+import colors from 'colors'; // eslint-disable-line
 
 /*eslint-disable no-console */
 

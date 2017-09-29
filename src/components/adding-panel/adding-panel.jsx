@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import Button from './../button/button.jsx';
 import Input from './../input/input.jsx';
 import Panel from './../panel/panel.jsx';
+import ButtonToolbar from './../button-toolbar/button-toolbar.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -77,9 +78,9 @@ class AddingPanel extends PureComponent {
     let { category, money, date, description } = this.state;
 
     if(+money === 0 || money === null || money === '' || money === undefined) {
-      toastr.error(staticContent[lang]['toastr'].smallTransValue, {timeOut: 4000});
+      toastr.error(staticContent[lang]['toastr']['smallTransValue'], {timeOut: 4000});
     } else if(description !== '' && description.length < 2) {
-      toastr.error(staticContent[lang]['toastr'].smallTransDescr, {timeOut: 4000});
+      toastr.error(staticContent[lang]['toastr']['smallTransDescr'], {timeOut: 4000});
     } else if(categories.length === 0) {
       toastr.error(staticContent[lang]['description'], {timeOut: 4000});
     } else {
@@ -108,10 +109,10 @@ class AddingPanel extends PureComponent {
       <div className={classNames('adding-panel-wrapper', {'hidden' : !showPanel})}>
         <Panel
           specialClass="adding-panel"
-          heading={staticContent[lang]['adding-panel'].head}
+          heading={staticContent[lang]['adding-panel']['head']}
         >
           <div className="form-item">
-            <label className="label">{staticContent[lang]['adding-panel'].dateLabel}</label>
+            <label className="label">{staticContent[lang]['adding-panel']['dateLabel']}</label>
             <DatePicker
               locale="en-gb"
               className="form-control"
@@ -121,7 +122,7 @@ class AddingPanel extends PureComponent {
             />
           </div>
           <div className="form-item">
-            <label className="label">{staticContent[lang]['adding-panel'].moneyLabel}</label>
+            <label className="label">{staticContent[lang]['adding-panel']['moneyLabel']}</label>
             <Input
               type="number"
               placeholder="0.00"
@@ -130,7 +131,7 @@ class AddingPanel extends PureComponent {
             />
           </div>
           <div className="autocomplete form-item">
-            <label className="label">{staticContent[lang]['adding-panel'].descrLabel}</label>
+            <label className="label">{staticContent[lang]['adding-panel']['descrLabel']}</label>
             <ReactAutocomplete
               items={this.Helpers.getUnicDescription(transactions)}
               shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
@@ -160,22 +161,18 @@ class AddingPanel extends PureComponent {
             </select>
           </div>
           }
-          <div className="text-center toolbar">
+          <ButtonToolbar specialClass="text-center">
             <Button
               specialClass="btn btn-primary"
               onClickFunction={this.saveTransaction}
               icon="save"
-            >
-              {staticContent[lang]['adding-panel'].btnSubmit}
-            </Button>
+            >{staticContent[lang]['adding-panel']['btnSubmit']}</Button>
             <Button
               specialClass="btn btn-default"
               onClickFunction={this.clearTransactionData}
               icon="undo"
-            >
-              {staticContent[lang]['adding-panel'].btnCancel}
-            </Button>
-          </div>
+            >{staticContent[lang]['adding-panel']['btnCancel']}</Button>
+          </ButtonToolbar>
         </Panel>
       </div>
     );

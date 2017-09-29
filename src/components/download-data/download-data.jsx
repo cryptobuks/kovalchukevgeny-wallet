@@ -59,9 +59,7 @@ class DownloadData extends PureComponent {
         specialClass="btn btn-primary"
         href={`${fileName}.${fileFormat}`}
         icon="get_app"
-      >
-        {btnText}
-      </Button>
+      >{btnText}</Button>
     )
   }
 }

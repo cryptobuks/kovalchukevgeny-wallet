@@ -10,6 +10,9 @@ import IconSelect from './../../components/icon-select/icon-select.jsx';
 import ColorSelect from './../../components/color-select/color-select.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
+import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import { addCategory, deleteCategory } from './../../actions/actionCreators';
 
@@ -41,11 +44,11 @@ class Categories extends Component {
   }
 
   changeCategoryIcon(icon) {
-    this.setState({ icon: icon });
+    this.setState({ icon });
   }
 
   changeCategoryColor(color) {
-    this.setState({ color: color });
+    this.setState({ color });
   }
 
   clearCategory() {
@@ -59,7 +62,7 @@ class Categories extends Component {
   deleteCategory(event) {
     const { deleteCategory, lang } = this.props;
     const id = +event.target.parentNode.getAttribute('data-id');
-    toastr.confirm(staticContent[lang]['toastr'].categoryRemove, { onOk: () => deleteCategory(id) });
+    toastr.confirm(staticContent[lang]['toastr']['categoryRemove'], { onOk: () => deleteCategory(id) });
   }
 
   handleChangeDescription(event) {
@@ -76,7 +79,7 @@ class Categories extends Component {
     const id = Date.now();
 
     if(title.length < 2) {
-      toastr.error(staticContent[lang]['toastr'].smallCategoryName, {timeOut: 4000});
+      toastr.error(staticContent[lang]['toastr']['smallCategoryName'], {timeOut: 4000});
     } else {
       addCategory(id, description, title, icon, filter, color);
       this.setState({
@@ -84,15 +87,17 @@ class Categories extends Component {
         filter: true,
         title: ''
       });
-      toastr.success(staticContent[lang]['toastr'].categoryAdd, {timeOut: 4000});
+      toastr.success(staticContent[lang]['toastr']['categoryAdd'], {timeOut: 4000});
     }
   }
 
   renderCategoryCard(categories) {
     const { lang } = this.props;
+
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
-      return(
+
+      return (
         <div key={i} className="category-card">
           <Panel specialClass="category">
             <div data-id={category.id}>
@@ -108,16 +113,17 @@ class Categories extends Component {
               <Button
                 specialClass="close"
                 onClickFunction={this.deleteCategory}
-              >&times;</Button>
-              <div className="toolbar">
+                icon="clear"
+              />
+              <ButtonToolbar>
                 <Link
                   className="edit btn-primary btn"
                   to={`/categories/${category.id}`}
                 >
                   <Icon icon={'create'} />
-                  {staticContent[lang]['categories'].btnEdit}
+                  {staticContent[lang]['categories']['btnEdit']}
                 </Link>
-              </div>
+              </ButtonToolbar>
             </div>
           </Panel>
         </div>
@@ -127,29 +133,27 @@ class Categories extends Component {
 
   render() {
     const { description, title, icon, color } = this.state;
-    let { categories, lang } = this.props;
+    const { categories, lang } = this.props;
 
     return (
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-12">
-            <Panel
-              specialClass="categories"
-            >
-              <div className="row">
+            <Panel specialClass="categories">
+              <Row>
                 <div className="col-lg-12">
-                  <legend>{staticContent[lang]['adding-category'].head}</legend>
+                  <legend>{staticContent[lang]['adding-category']['head']}</legend>
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6">
                   <Input
-                    placeholder={staticContent[lang]['adding-category'].category}
+                    placeholder={staticContent[lang]['adding-category']['category']}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-6">
                   <Input
-                    placeholder={staticContent[lang]['adding-category'].descr}
+                    placeholder={staticContent[lang]['adding-category']['descr']}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
@@ -171,43 +175,39 @@ class Categories extends Component {
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-6 text-right">
-                  <div className="toolbar">
+                  <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
                       onClickFunction={this.saveCategory}
                       icon="save"
-                    >
-                      {staticContent[lang]['adding-category'].btnSubmit}
-                    </Button>
+                    >{staticContent[lang]['adding-category']['btnSubmit']}</Button>
                     <Button
                       specialClass="btn btn-default"
                       onClickFunction={this.clearCategory}
                       icon="undo"
-                    >
-                      {staticContent[lang]['adding-category'].btnCancel}
-                    </Button>
-                  </div>
+                    >{staticContent[lang]['adding-category']['btnCancel']}</Button>
+                  </ButtonToolbar>
                 </div>
-              </div>
+              </Row>
             </Panel>
           </div>
-        </div>
-        <div className="row">
+        </Row>
+        <Row>
           <div className="col-lg-12">
-          {categories.length > 0 &&
+            {categories.length > 0 &&
             <Panel
-              specialClass="panel-primary categories-panel"
-              heading={staticContent[lang]['categories'].head}
+              specialClass="categories-panel"
+              heading={staticContent[lang]['categories']['head']}
               headingIcon="work"
             >
               <div className="categories-wrapper">
                 {this.renderCategoryCard(categories)}
               </div>
             </Panel>
-          }
+            }
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
@@ -221,8 +221,8 @@ Categories.defaultProps = {
 };
 
 Categories.propTypes = {
-  categories: PropTypes.array,
   addCategory: PropTypes.func,
+  categories: PropTypes.array,
   deleteCategory: PropTypes.func,
   lang: PropTypes.string
 };

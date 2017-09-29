@@ -38,7 +38,7 @@ const CurrencyRate = props => {
       {course.length > 0 &&
       <Panel
         specialClass="currency"
-        heading={staticContent[lang]['currency-rate'].head}
+        heading={staticContent[lang]['currency-rate']['head']}
         headingIcon="monetization_on"
       >
         <div className="graph-wrapper">
@@ -46,7 +46,7 @@ const CurrencyRate = props => {
             <AreaChart width={550} height={250} data={course}
               margin={{top: 10, right: 30, left: 0, bottom: 0}}>
               <XAxis dataKey="name"/>
-              <YAxis unit={staticContent[lang].currency} domain={[getMinValue(course), getMaxValue(course)]}/>
+              <YAxis unit={staticContent[lang]['currency']} domain={[getMinValue(course), getMaxValue(course)]}/>
               <CartesianGrid strokeDasharray="6 6"/>
               <Tooltip content={<CustomTooltip lang={lang} type={'currency'}/>}/>
               <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />

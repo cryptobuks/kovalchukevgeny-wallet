@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { browserHistory } from 'react-router';
 import enhanceWithClickOutside from 'react-click-outside';
 import { toastr } from 'react-redux-toastr';
@@ -11,6 +10,9 @@ import Input from './../../components/input/input.jsx';
 import IconSelect from './../../components/icon-select/icon-select.jsx';
 import ColorSelect from './../../components/color-select/color-select.jsx';
 import Button from './../../components/button/button.jsx';
+import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import { updateCategory } from './../../actions/actionCreators.js';
 
@@ -73,7 +75,7 @@ class CategoryEditor extends PureComponent {
 
     updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
-    toastr.success(staticContent[lang]['toastr'].categoryUpdated, { timeOut: 3000 });
+    toastr.success(staticContent[lang]['toastr']['categoryUpdated'], { timeOut: 3000 });
   }
 
   render() {
@@ -81,25 +83,25 @@ class CategoryEditor extends PureComponent {
     const { lang } = this.props;
 
     return (
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-12">
             <Panel
               specialClass="category-editor"
-              heading={staticContent[lang]['category-editor'].head}
+              heading={staticContent[lang]['category-editor']['head']}
               headingIcon="settings"
             >
-              <div className="row">
+              <Row>
                 <div className="col-lg-3 col-md-2 col-sm-6">
                   <Input
-                    placeholder={staticContent[lang]['category-editor'].category}
+                    placeholder={staticContent[lang]['category-editor']['category']}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-6">
                   <Input
-                    placeholder={staticContent[lang]['category-editor'].descr}
+                    placeholder={staticContent[lang]['category-editor']['descr']}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
@@ -121,34 +123,32 @@ class CategoryEditor extends PureComponent {
                   />
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-6 text-right">
-                  <div className="toolbar">
+                  <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
                       onClickFunction={this.updateCategory}
                       icon="done"
-                    >
-                      {staticContent[lang]['category-editor'].btnUpdate}
-                    </Button>
-                  </div>
+                    >{staticContent[lang]['category-editor']['btnUpdate']}</Button>
+                  </ButtonToolbar>
                 </div>
-              </div>
+              </Row>
             </Panel>
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
 
 CategoryEditor.defaultProps = {
-  onClickFunction: () => {},
+  categories: [],
   lang: 'eng',
-  categories: []
+  onClickFunction: () => {}
 };
 
 CategoryEditor.propTypes = {
-  onClickFunction: PropTypes.func,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  onClickFunction: PropTypes.func
 };
 
 export default connect(state => ({

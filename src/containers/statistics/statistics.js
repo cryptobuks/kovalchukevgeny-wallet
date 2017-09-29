@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import CurrencyRate from './../../components/currency-rate/currency-rate.jsx';
 import TransactionsGraph from './../../components/transactions-graph/transactions-graph.jsx';
 import TransactionsResults from './../../components/transactions-results/transactions-results.jsx';
 import CategoriesStats from './../../components/categories-stats/categories-stats.jsx';
 import MonthCourse from './../month-course/month-course';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -17,8 +18,8 @@ const Statistics = props => {
 
   return (
     <div className="widgets">
-      <div className="container">
-        <div className="row">
+      <Container>
+        <Row>
           <div className="col-lg-offset-0 col-lg-6 col-md-6">
             <CurrencyRate
               lang={lang}
@@ -48,24 +49,24 @@ const Statistics = props => {
               lang={lang}
             />
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     </div>
   );
 };
 
 Statistics.defaultProps = {
-  lang: 'eng',
   categories: [],
-  transactions: [],
-  course: []
+  course: [],
+  lang: 'eng',
+  transactions: []
 };
 
 Statistics.propTypes = {
-  transactions: PropTypes.array,
   categories: PropTypes.array,
+  course: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({

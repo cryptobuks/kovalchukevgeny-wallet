@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Panel from './../panel/panel.jsx';
 import DownloadData from './../download-data/download-data.jsx';
+import ButtonToolbar from './../button-toolbar/button-toolbar.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -23,20 +24,20 @@ const Export = props => {
   return (
     <Panel
       specialClass="export"
-      heading={staticContent[lang]['backup-export'].head}
+      heading={staticContent[lang]['backup-export']['head']}
       headingIcon="backup"
     >
-      <div className="toolbar">
+      <ButtonToolbar>
         <p>
-          {staticContent[lang]['backup-export'].description}
+          {staticContent[lang]['backup-export']['description']}
         </p>
         <DownloadData
           transactions={transactions}
           fileName="backup"
           fileFormat="json"
-          btnText={staticContent[lang]['backup-export'].btnJson}
+          btnText={staticContent[lang]['backup-export']['btnJson']}
         />
-      </div>
+      </ButtonToolbar>
     </Panel>
   );
 }

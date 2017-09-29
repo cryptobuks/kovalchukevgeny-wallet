@@ -7,8 +7,6 @@ import favicon from 'serve-favicon';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import * as db from './../server/utils/DataBaseUtils';
-import Busboy from 'busboy';
-import fs from 'fs';
 
 const port = 3000;
 const app = express();

@@ -6,6 +6,7 @@ import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
+import ButtonToolbar from './../button-toolbar/button-toolbar.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -58,18 +59,16 @@ class TransactionsFilter extends PureComponent {
     return (
       <Panel
         specialClass="filter"
-        heading={staticContent[lang]['transactions-filter'].head}
+        heading={staticContent[lang]['transactions-filter']['head']}
         headingIcon="filter_list"
       >
-        <div className="toolbar">
+        <ButtonToolbar>
           <Button
             onClickFunction={this.selectAll}
             specialClass="btn btn-primary"
             icon="done_all"
-          >
-            {staticContent[lang]['transactions-filter'].btnSelect}
-          </Button>
-        </div>
+          >{staticContent[lang]['transactions-filter']['btnSelect']}</Button>
+        </ButtonToolbar>
         <div className="categories">
           {categories}
         </div>

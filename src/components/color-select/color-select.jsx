@@ -57,7 +57,7 @@ class ColorSelect extends PureComponent {
         className={classNames('category-color', {active: isSelectVisible})}
         onClick={this.toggleSelect}
       >
-        <strong>{staticContent[lang]['adding-category'].chooseColor}</strong>
+        <strong>{staticContent[lang]['adding-category']['chooseColor']}</strong>
           <span className="colorRound" style={{'backgroundColor': defaultColor}}></span>
         <div className={classNames('color-select', position, {hide: !isSelectVisible})}>
           <Panel>

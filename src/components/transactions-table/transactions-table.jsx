@@ -42,31 +42,31 @@ class TransactionsTable extends Component {
 
   deleteTransaction(id) {
     const { deleteTransaction, lang } = this.props;
-    toastr.confirm(staticContent[lang]['toastr'].transactionRemove, { onOk: () => deleteTransaction(id) });
+    toastr.confirm(staticContent[lang]['toastr']['transactionRemove'], { onOk: () => deleteTransaction(id) });
   }
 
   handleChangeCategory(event) {
     let isEditRow = this.state.isEditRow;
     isEditRow.category = event.target.value;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   handleChangeData(date) {
     let isEditRow = this.state.isEditRow;
     isEditRow.date = date;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   handleChangeMoney(event) {
     let isEditRow = this.state.isEditRow;
     isEditRow.money = event.target.value;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   handleChangeDescription(event) {
     let isEditRow = this.state.isEditRow;
     isEditRow.description = event.target.value;
-    this.setState({isEditRow});
+    this.setState({ isEditRow });
   }
 
   updateTransaction(isEditRow) {
@@ -77,7 +77,7 @@ class TransactionsTable extends Component {
       isEditRow: {},
       activeRow: {}
     });
-    toastr.success(staticContent[lang]['toastr'].transactionUpdated, {timeOut: 4000});
+    toastr.success(staticContent[lang]['toastr']['transactionUpdated'], {timeOut: 4000});
   }
 
   openEditMenu(activeRow) {
@@ -121,7 +121,7 @@ class TransactionsTable extends Component {
 
       return (
         <div className={`table-data ${sortby === headItem ? 'active' : ''}`} key={i} data-cell={headItem}>
-          <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span> {/* ignore id */}
+          <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span>
           {sortby === headItem &&
           <span className="filter-arrow">
             {descending ? <Icon data-cell={headItem} icon={'arrow_downward'} /> : <Icon data-cell={headItem} icon={'arrow_upward'} />}
@@ -184,7 +184,7 @@ class TransactionsTable extends Component {
             {!transaction.isEdit ?
               <span title={transaction.description}>{transaction.description}</span> :
               <Input
-                placeholder={staticContent[lang]['adding-panel'].descr}
+                placeholder={staticContent[lang]['adding-panel']['descr']}
                 value={this.state.isEditRow.description}
                 handleChange={this.handleChangeDescription}
               />

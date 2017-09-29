@@ -13,7 +13,7 @@ class Helpers {
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
-    let transaction = {}; let transactions = [];
+    let transactions = [];
 
     /*
      * create array of objects from obj
@@ -109,6 +109,19 @@ class Helpers {
     return transactions.filter(transaction => {
       return moment().month() === moment(transaction.date).month();
     });
+  }
+
+  filteredTransactions(transactions, categories) {
+    transactions = transactions.filter(transaction => {
+      for(let i = 0; i < categories.length; i++) {
+        if(transaction.category === categories[i].id) {
+          if(categories[i].filter === true) {
+            return transaction;
+          }
+        }
+      }
+    });
+    return transactions;
   }
 }
 

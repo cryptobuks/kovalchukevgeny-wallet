@@ -26,24 +26,24 @@ const TransactionsGraph = props => {
   return (
     <div>
       {monthTransactions.length > 0 &&
-        <Panel
-          specialClass="transactions-graph"
-          heading={staticContent[lang]['transactions-graph'].head}
-          headingIcon="multiline_chart"
-          >
-          <div className="graph-wrapper">
-            <ResponsiveContainer>
-              <AreaChart width={550} height={250} data={transactionsData}
-                margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-                <XAxis dataKey="name"/>
-                <YAxis unit={staticContent[lang].currency}/>
-                <CartesianGrid strokeDasharray="1 1"/>
-                <Tooltip content={<CustomTooltip lang={lang} type={'transactions'}/>}/>
-                <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-        </Panel>
+      <Panel
+        specialClass="transactions-graph"
+        heading={staticContent[lang]['transactions-graph']['head']}
+        headingIcon="multiline_chart"
+        >
+        <div className="graph-wrapper">
+          <ResponsiveContainer>
+            <AreaChart width={550} height={250} data={transactionsData}
+              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+              <XAxis dataKey="name"/>
+              <YAxis unit={staticContent[lang]['currency']}/>
+              <CartesianGrid strokeDasharray="1 1"/>
+              <Tooltip content={<CustomTooltip lang={lang} type={'transactions'}/>}/>
+              <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </Panel>
       }
     </div>
   );

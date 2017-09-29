@@ -9,10 +9,10 @@ if (!initialState || !initialState.lang) {
 }
 
 function transactions(state = initialState.lang, action) {
-  let store = [...state];
   switch (action.type) {
-    case 'CHANGE_LANGUAGE' :
-    return store = action.lang;
+    case 'CHANGE_LANGUAGE' : {
+      return action.lang;
+    }
     default:
       return state;
   }
