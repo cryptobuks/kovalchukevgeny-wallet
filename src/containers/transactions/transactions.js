@@ -11,6 +11,7 @@ import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonsToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -150,16 +151,16 @@ class Transactions extends Component {
             hideAddingPanel={this.hideAddingPanel}
           />
           {transactions.length > 0 ?
-          <div className="col-lg-3 col-md-3">
+          <Col lg={3} md={3}>
             <TransactionsFilter
               categories={categories}
               lang={lang}
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
             />
-          </div> : <h4>{staticContent[lang]["description"]}</h4>
+          </Col> : <h4>{staticContent[lang]["description"]}</h4>
           }
-          <div className="col-lg-9 col-md-9">
+          <Col lg={9} md={9}>
             {transactions.length > 0 &&
             <Panel
               specialClass="tr-table"
@@ -180,7 +181,7 @@ class Transactions extends Component {
             </Panel>
             }
             <Row>
-              <div className="col-lg-12">
+              <Col lg={12}>
                 <ButtonsToolbar>
                   <Button
                     onClickFunction={this.showAddingPanel}
@@ -197,9 +198,9 @@ class Transactions extends Component {
                   />
                   }
                 </ButtonsToolbar>
-              </div>
+              </Col>
             </Row>
-          </div>
+          </Col>
         </Row>
       </Container>
     );

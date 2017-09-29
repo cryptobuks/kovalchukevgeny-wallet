@@ -13,6 +13,7 @@ import Button from './../../components/button/button.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import { updateCategory } from './../../actions/actionCreators.js';
 
@@ -85,44 +86,44 @@ class CategoryEditor extends PureComponent {
     return (
       <Container>
         <Row>
-          <div className="col-lg-12">
+          <Col lg={12}>
             <Panel
               specialClass="category-editor"
               heading={staticContent[lang]['category-editor']['head']}
               headingIcon="settings"
             >
               <Row>
-                <div className="col-lg-3 col-md-2 col-sm-6">
+                <Col lg={3} md={2} sm={6}>
                   <Input
                     placeholder={staticContent[lang]['category-editor']['category']}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-6">
+                </Col>
+                <Col lg={3} md={3} sm={6}>
                   <Input
                     placeholder={staticContent[lang]['category-editor']['descr']}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
-                </div>
-                <div className="col-lg-2 col-md-4 col-sm-6 text-right">
+                </Col>
+                <Col lg={2} md={4} sm={6} specialClass="text-right">
                   <IconSelect
                     onClickFunction={this.changeCategoryIcon}
                     defaultIcon={icon}
                     iconsArray={iconsArray}
                     lang={lang}
                   />
-                </div>
-                <div className="col-lg-2 col-md-4 col-sm-6 text-right">
+                </Col>
+                <Col lg={2} md={4} sm={6} specialClass="text-right">
                   <ColorSelect
                     onClickFunction={this.changeCategoryColor}
                     defaultColor={color}
                     colorsArray={colorsArray}
                     lang={lang}
                   />
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-6 text-right">
+                </Col>
+                <Col lg={2} md={2} sm={6} specialClass="text-right">
                   <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
@@ -130,10 +131,10 @@ class CategoryEditor extends PureComponent {
                       icon="done"
                     >{staticContent[lang]['category-editor']['btnUpdate']}</Button>
                   </ButtonToolbar>
-                </div>
+                </Col>
               </Row>
             </Panel>
-          </div>
+          </Col>
         </Row>
       </Container>
     );
