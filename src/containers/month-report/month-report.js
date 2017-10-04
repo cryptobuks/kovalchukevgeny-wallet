@@ -45,6 +45,10 @@ class MonthReport extends Component {
       }
     });
 
+    transactionsByDay.sort((a, b) => {
+      return moment(b[0].date).date() - moment(a[0].date).date();
+    })
+
     return (
       <div className="month-report">
         {transactionsByDay.map((dayTransaction, index) => {
