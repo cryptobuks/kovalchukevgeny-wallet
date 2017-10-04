@@ -9,18 +9,14 @@ import Col from './../../components/col/col.jsx';
 import Container from './../../components/container/container.jsx';
 
 const DayExpenses = props => {
-    let dayExpenses = props.transaction.map((item) => {
-        return item.money;
-    });
+    const dayExpenses = props.transaction.map(item => item.money);
 
-    let totalExpenses = dayExpenses.reduce((total, current) => {
-        return total + current;
-    });
+    let totalExpenses = dayExpenses.reduce((total, current) => total + current);
 
     return (
         <Panel
-            heading={moment(props.transaction[0].date).format('DD/MM/YYYY') + ' ' + props.day}
-            footer={"- " + String(totalExpenses)}>
+            heading={`${moment(props.transaction[0].date).format('DD/MM/YYYY')} ${props.day}`}
+            footer={`- ${String(totalExpenses)}`}>
             <Container>
                 {props.transaction.map((item, index) => {
                     return (
@@ -32,7 +28,7 @@ const DayExpenses = props => {
                             </Col>
                             <Col lg={10} md={9} sm={9} xs={8}>
                                 <h5>{item.categoryName}</h5>
-                                <div>{item.description}</div>
+                                <p>{item.description}</p>
                             </Col>
                             <Col lg={1} md={2} sm={2} xs={2}>
                                 <div className="money">-{item.money}</div>
@@ -47,14 +43,11 @@ const DayExpenses = props => {
 }
 
 DayExpenses.defaultProps = {
-    payload: [],
     lang: 'eng'
 }
 
 DayExpenses.propTypes = {
     type: PropTypes.string,
-    payload: PropTypes.array,
-    label: PropTypes.string,
     lang: PropTypes.string
 }
 

@@ -25,22 +25,21 @@ class MonthReport extends Component {
       transactions,
       categories } = this.props;
 
-    let currentMonthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
+    const currentMonthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     let transactionsByDay = [];
     let currentProcessedDay = null;
-    currentMonthTransactions.map((transaction, index, array) => {
+    currentMonthTransactions.forEach((transaction, index, array) => {
       if (moment(transaction.date).date() !== currentProcessedDay) {
         currentProcessedDay = moment(transaction.date).date();
-        transactionsByDay.push(array.filter((item) => {
+        transactionsByDay.push(array.filter(item => {
           if (moment(item.date).date() === currentProcessedDay) {
-            let category = this.Helpers.getCategoryItemById(categories, item.category);
+            const category = this.Helpers.getCategoryItemById(categories, item.category);
             item['categoryName'] = category.title;
             item['categoryIcon'] = category.icon;
             item['categoryColor'] = category.color;
             return true;
-          } else {
-            return false;
           }
+          return false;
         }));
       }
     });
@@ -59,7 +58,7 @@ class MonthReport extends Component {
                   <DayExpenses
                     lang={lang}
                     transaction={dayTransaction}
-                    day={this.Helpers.getDayName(moment(dayTransaction[0].date).day(), this.props.lang)}
+                    day={this.Helpers.getDayName(moment(dayTransaction[0].date).day(), lang)}
                   />
                 </Col>
               </Row>
