@@ -8,6 +8,7 @@ import Categories from './containers/categories/categories';
 import Statistics from './containers/statistics/statistics';
 import Transactions from './containers/transactions/transactions';
 import Reports from './containers/reports/reports';
+import MonthReport from './containers/month-report/month-report';
 import ErrorPage from './components/error-page/error-page';
 import Backup from './containers/backup/backup';
 import CategoryEditor from './containers/category-editor/category-editor';
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/categories/:id" component={CategoryEditor} />
         <Route path="/statistics" component={Statistics} />
         <Route path="/reports" component={Reports} />
+        <Route path="/month-report" component={MonthReport} />
         <Route path="/backup" component={Backup} />
         <Route path="*" component={ErrorPage} />
       </Route>

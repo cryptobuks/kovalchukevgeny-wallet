@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Icon from './../icon/icon.jsx';
 import Button from './../button/button.jsx';
+import Container from './../container/container.jsx';
 
 class Navbar extends PureComponent {
   constructor(props) {
@@ -27,7 +28,7 @@ class Navbar extends PureComponent {
 
     return (
       <nav className={classNames('navbar', `${specialClass}`)}>
-        <div className="container-fluid">
+        <Container fluid>
           <div className="navbar-header">
             <Button
               specialClass="navbar-toggle"
@@ -44,7 +45,7 @@ class Navbar extends PureComponent {
               return child;
             })}
           </div>
-        </div>
+        </Container>
       </nav>
     );
   }

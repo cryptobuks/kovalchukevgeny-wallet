@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const ButtonToolbar = props => {
+const Row = props => {
 
   const { specialClass, children } = props;
 
   return (
-    <div className={classNames('toolbar', specialClass)}>
+    <div className={classNames('row', specialClass)}>
       {React.Children.map(children, (child) => {
         return child;
       })}
@@ -15,11 +15,11 @@ const ButtonToolbar = props => {
   );
 }
 
-ButtonToolbar.defaultProps = {
+Row.defaultProps = {
   specialClass: ''
 };
 
-ButtonToolbar.propTypes = {
+Row.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
@@ -28,4 +28,4 @@ ButtonToolbar.propTypes = {
   specialClass: PropTypes.string
 };
 
-export default ButtonToolbar;
+export default Row;

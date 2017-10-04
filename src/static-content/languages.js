@@ -1,6 +1,6 @@
 export default {
   "eng" : {
-    "menu" : ["Transactions", "Categories", "Statistics", "Report", "Backup"],
+    "menu" : ["Transactions", "Categories", "Statistics", "Report", "Month Report", "Backup"],
     "description" : "Please, firstly create new category and then add new transaction...",
     "categories-stats" : {
       "head" : "Categories statistic",
@@ -112,7 +112,7 @@ export default {
     "months" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   },
   "rus" : {
-    "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт", "Резервное копирование"],
+    "menu" : ["Транзакции", "Категории", "Статистика", "Отчёт", "Расходы за месяц", "Резервное копирование"],
     "description" : "Пожалуйста, сначала создайте новую категорию, а затем добавьте новую транзакцию...",
     "categories-stats" : {
       "head" : "Статистика по категориям",

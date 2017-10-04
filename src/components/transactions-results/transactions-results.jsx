@@ -27,17 +27,17 @@ const TransactionsResults = props => {
         return (
           <div className="biggest-transaction" key={i}>
             <div className="result-wrapper">
-              <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTransDay}</h6>
+              <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTransDay']}</h6>
               <div className="dots"></div>
               <h6 className="result">{moment(transaction.date).format('DD/MM')}</h6>
             </div>
             <div className="result-wrapper">
-              <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTransDescr}</h6>
+              <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTransDescr']}</h6>
               <div className="dots"></div>
               <h6 className="result">{transaction.description}</h6>
             </div>
             <div className="result-wrapper">
-              <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTransAmount}</h6>
+              <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTransAmount']}</h6>
               <div className="dots"></div>
               <h6 className="result">
                 <span>{transaction.money.toFixed(2)} {staticContent[lang]['currency']}</span>
@@ -81,7 +81,7 @@ const TransactionsResults = props => {
   return (
     <Panel
       specialClass="results"
-      heading={staticContent[lang]['transactions-results'].head}
+      heading={staticContent[lang]['transactions-results']['head']}
       headingIcon="insert_invitation"
     >
       <div className="table">
@@ -89,7 +89,7 @@ const TransactionsResults = props => {
           <div className="table-row">
             <div className="table-data">
               <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results'].month}</h6>
+                <h6 className="result-item">{staticContent[lang]['transactions-results']['month']}</h6>
                 <div className="dots"></div>
                 <h6 className="result">{staticContent[lang]['months'][moment().month()]}</h6>
               </div>
@@ -98,7 +98,7 @@ const TransactionsResults = props => {
           <div className="table-row">
             <div className="table-data">
               <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results'].transactions}</h6>
+                <h6 className="result-item">{staticContent[lang]['transactions-results']['transactions']}</h6>
                 <div className="dots"></div>
                 <h6 className="result">{monthTransactions.length}</h6>
               </div>
@@ -107,7 +107,7 @@ const TransactionsResults = props => {
           <div className="table-row">
             <div className="table-data">
               <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results'].amountMonth}</h6>
+                <h6 className="result-item">{staticContent[lang]['transactions-results']['amountMonth']}</h6>
                 <div className="dots"></div>
                 <h6 className="result">
                   <span>{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</span>
@@ -120,7 +120,7 @@ const TransactionsResults = props => {
           <div className="table-row">
             <div className="table-data">
               <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results'].amountDay}</h6>
+                <h6 className="result-item">{staticContent[lang]['transactions-results']['amountDay']}</h6>
                 <div className="dots"></div>
                 <h6 className="result">
                   <span>{amountDay.toFixed(2)} {staticContent[lang]['currency']}</span>
@@ -133,7 +133,7 @@ const TransactionsResults = props => {
           <div className="table-row">
             <div className="table-data">
               <div className="second-level">
-                <h6 className="result-item">{staticContent[lang]['transactions-results'].bigTrans}:</h6>
+                <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTrans']}:</h6>
               </div>
               <h6 className="result">{renderBiggestTransaction(monthTransactions)}</h6>
             </div>

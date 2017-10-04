@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -11,6 +10,9 @@ import TransactionsFilter from './../../components/transactions-filter/transacti
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
 
@@ -27,25 +29,10 @@ class Reports extends Component {
     this.renderMonthPanels = this.renderMonthPanels.bind(this);
     this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
-    this.filteredTransactions = this.filteredTransactions.bind(this);
   }
 
   openMonth(event) {
     event.currentTarget.parentNode.parentNode.classList.toggle("expanded");
-  }
-
-  filteredTransactions(transactions) {
-    const { categories } = this.props;
-    transactions = transactions.filter(transaction => {
-      for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].id) {
-          if(categories[i].filter === true) {
-            return transaction;
-          }
-        }
-      }
-    });
-    return transactions;
   }
 
   renderMonthTable(transactions) {
@@ -128,7 +115,8 @@ class Reports extends Component {
             <div className="panel panel-primary res-table">
               <div
                 onClick={(e) => this.openMonth(e)}
-                className="panel-heading clearfix">
+                className="panel-heading clearfix"
+              >
                 <h3 className="panel-title left">
                   <Icon icon={'today'} />
                   {`${staticContent[lang]['months'][i]} ${moment(reMapedTransaction.date).year()}`}
@@ -155,8 +143,8 @@ class Reports extends Component {
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountMonth']}
                       <span>{amountMonth.toFixed(2)}</span>
-                      {staticContent[lang]['currency']} /
-                      <span>{amountMonthCurrency.toFixed(2)}</span>$
+                      {staticContent[lang]['currency']} {'/'}
+                      <span>{amountMonthCurrency.toFixed(2)}</span>{'$'}
                     </h5>
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountDay']}
@@ -186,21 +174,21 @@ class Reports extends Component {
       updateCategory,
       changeAllCategories } = this.props;
 
-    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.filteredTransactions(transactions));
+    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     return (
-      <div className="container reports">
-        <div className="row">
-          <div className="col-lg-3 col-md-3">
+      <Container specialClass="reports">
+        <Row>
+          <Col lg={3} md={3}>
             <TransactionsFilter
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
               lang={lang}
               categories={categories}
             />
-          </div>
-          <div className="col-lg-9 col-md-9">
+          </Col>
+          <Col lg={9} md={9}>
             <ReportsGraph
-              transactions={this.filteredTransactions(transactions)}
+              transactions={this.Helpers.filteredTransactions(transactions, categories)}
               categories={categories}
               lang={lang}
             />
@@ -212,13 +200,13 @@ class Reports extends Component {
                 categories={categories}
                 fileName="report"
                 fileFormat="csv"
-                btnText={staticContent[lang]['reports'].btnCsv}
+                btnText={staticContent[lang]['reports']['btnCsv']}
               />
             </ButtonToolbar>
             }
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
@@ -234,11 +222,11 @@ Reports.defaultProps = {
 
 Reports.propTypes = {
   categories: PropTypes.array,
-  transactions: PropTypes.array,
-  lang: PropTypes.string,
+  changeAllCategories: PropTypes.func,
   course: PropTypes.array,
-  updateCategory: PropTypes.func,
-  changeAllCategories: PropTypes.func
+  lang: PropTypes.string,
+  transactions: PropTypes.array,
+  updateCategory: PropTypes.func
 };
 
 export default connect(state => ({

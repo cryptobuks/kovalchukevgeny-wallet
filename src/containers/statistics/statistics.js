@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import CurrencyRate from './../../components/currency-rate/currency-rate.jsx';
 import TransactionsGraph from './../../components/transactions-graph/transactions-graph.jsx';
 import TransactionsResults from './../../components/transactions-results/transactions-results.jsx';
 import CategoriesStats from './../../components/categories-stats/categories-stats.jsx';
 import MonthCourse from './../month-course/month-course';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -16,56 +18,49 @@ const Statistics = props => {
   const { transactions, lang, course, categories } = props;
 
   return (
-    <div className="widgets">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <CurrencyRate
-              lang={lang}
-              course={course}
-            />
-          </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <TransactionsGraph
-              monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
-              lang={lang}
-            />
-          </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <CategoriesStats
-              transactions={transactions}
-              categories={categories}
-              lang={lang}
-            />
-          </div>
-          <div className="col-lg-offset-0 col-lg-6 col-md-6">
-            <TransactionsResults
-              monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
-              lang={lang}
-              course={course}
-            />
-            <MonthCourse
-              lang={lang}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col lg={6} md={6}>
+          <CurrencyRate lang={lang} course={course} />
+        </Col>
+        <Col lg={6} md={6}>
+          <TransactionsGraph
+            monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
+            lang={lang}
+          />
+        </Col>
+        <Col lg={6} md={6}>
+          <CategoriesStats
+            transactions={transactions}
+            categories={categories}
+            lang={lang}
+          />
+        </Col>
+        <Col lg={6} md={6}>
+          <TransactionsResults
+            monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
+            lang={lang}
+            course={course}
+          />
+          <MonthCourse lang={lang} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 Statistics.defaultProps = {
-  lang: 'eng',
   categories: [],
-  transactions: [],
-  course: []
+  course: [],
+  lang: 'eng',
+  transactions: []
 };
 
 Statistics.propTypes = {
-  transactions: PropTypes.array,
   categories: PropTypes.array,
+  course: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({

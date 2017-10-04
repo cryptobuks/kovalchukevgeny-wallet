@@ -1,17 +1,20 @@
 import React from 'react';
 
-import Button from './../../components/button/button.jsx';
-import Icon from './../../components/icon/icon.jsx';
+import Button from './../button/button.jsx';
+import Icon from './../icon/icon.jsx';
+import Container from './../container/container.jsx';
+import Row from './../row/row.jsx';
+import Col from './../col/col.jsx';
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-lg-2 col-md-3">
+      <Container fluid>
+        <Row>
+          <Col lg={2} md={3}>
             <div className="logo">e-wallet</div>
-          </div>
-          <div className="col-lg-7 col-md-3">
+          </Col>
+          <Col lg={7} md={3}>
             <ul>
               <li>
                 <Button
@@ -20,15 +23,15 @@ const Footer = () => {
                 ><span>GitHub</span></Button>
               </li>
             </ul>
-          </div>
-          <div className="col-lg-3 col-md-6">
+          </Col>
+          <Col lg={3} md={6}>
             <h6 className="heart">
               <span>Created with love</span>
               <Icon icon={'favorite'} />
             </h6>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </footer>
   );
 }

@@ -8,6 +8,8 @@ import Button from './../../components/button/button.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import Input from './../../components/input/input.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import { addMonthCourse } from './../../actions/actionCreators';
 
@@ -55,41 +57,39 @@ class MonthCourse extends Component {
     course = course ? course.course : 1;
 
     return (
-      <div>
-        <Panel
-          specialClass="month-course"
-          heading={staticContent[lang]['month-course'].head}
-          headingIcon="attach_money"
-        >
-          <div className="row">
-            <div className="col-lg-6">
-              <h1 className="text-center">{course}</h1>
-            </div>
-            <div className="col-lg-6">
-              <DatePicker
-                locale="en-gb"
-                className="form-control"
-                maxDate={moment()}
-                selected={date}
-                onChange={this.handleChangeData}
-              />
-              <Input
-                type="number"
-                placeholder="0.00"
-                value={currentCourse}
-                handleChange={this.handleChangeCourse}
-              />
-              <ButtonToolbar>
-                <Button
-                  specialClass="btn btn-primary"
-                  onClickFunction={() => this.saveCourse(date, currentCourse)}
-                  icon="attach_money"
-                >{staticContent[lang]['month-course'].btnSubmit}</Button>
-              </ButtonToolbar>
-            </div>
-          </div>
-        </Panel>
-      </div>
+      <Panel
+        specialClass="month-course"
+        heading={staticContent[lang]['month-course']['head']}
+        headingIcon="attach_money"
+      >
+        <Row>
+          <Col lg={6}>
+            <h1 className="text-center">{course}</h1>
+          </Col>
+          <Col lg={6}>
+            <DatePicker
+              locale="en-gb"
+              className="form-control"
+              maxDate={moment()}
+              selected={date}
+              onChange={this.handleChangeData}
+            />
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={currentCourse}
+              handleChange={this.handleChangeCourse}
+            />
+            <ButtonToolbar>
+              <Button
+                specialClass="btn btn-primary"
+                onClickFunction={() => this.saveCourse(date, currentCourse)}
+                icon="attach_money"
+              >{staticContent[lang]['month-course']['btnSubmit']}</Button>
+            </ButtonToolbar>
+          </Col>
+        </Row>
+      </Panel>
     );
   }
 }
@@ -101,9 +101,9 @@ MonthCourse.defaultProps = {
 };
 
 MonthCourse.propTypes = {
-  lang: PropTypes.string,
+  addMonthCourse: PropTypes.func,
   course: PropTypes.array,
-  addMonthCourse: PropTypes.func
+  lang: PropTypes.string
 };
 
 export default connect(state => ({

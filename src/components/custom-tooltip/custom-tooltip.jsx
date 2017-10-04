@@ -17,7 +17,7 @@ class CustomTooltip extends PureComponent {
         return (
           <div className="custom-tooltip">
             <p className="intro category">
-              {staticContent[lang]['custom-tooltip'].category}:
+              {staticContent[lang]['custom-tooltip']['category']}:
               <span>{payload[0].name}</span>
             </p>
           </div>
@@ -27,7 +27,7 @@ class CustomTooltip extends PureComponent {
         return (
           <div className="custom-tooltip">
             <p className="intro month">
-              {staticContent[lang]['custom-tooltip'].course}:
+              {staticContent[lang]['custom-tooltip']['course']}:
               <span>{moment(label).format('MMMM YYYY')}</span>
             </p>
           </div>
@@ -41,9 +41,9 @@ class CustomTooltip extends PureComponent {
               <span>{moment(label).format('Do MMMM')}</span>
             </p>
             <p className="intro month">
-              {staticContent[lang]['custom-tooltip'].money}:
+              {staticContent[lang]['custom-tooltip']['money']}:
               <span>{payload[0].value}</span>
-              <span>{staticContent[lang].currency}</span>
+              <span>{staticContent[lang]['currency']}</span>
             </p>
           </div>
         );
@@ -52,9 +52,9 @@ class CustomTooltip extends PureComponent {
         return (
           <div className="custom-tooltip">
             <p className="intro money">
-              {staticContent[lang]['custom-tooltip'].money}:
+              {staticContent[lang]['custom-tooltip']['money']}:
               <span>{payload[0].value}</span>
-              <span>{staticContent[lang].currency}</span>
+              <span>{staticContent[lang]['currency']}</span>
             </p>
           </div>
         );

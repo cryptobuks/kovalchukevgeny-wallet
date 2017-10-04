@@ -38,7 +38,7 @@ const ReportsGraph = props => {
       {transactions.length > 0 &&
         <Panel
           specialClass="reports-graph"
-          heading={staticContent[lang]['transactions-graph'].head}
+          heading={staticContent[lang]['transactions-graph']['head']}
         >
           <div className="graph-wrapper">
             <ResponsiveContainer>

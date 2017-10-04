@@ -4,29 +4,30 @@ import PropTypes from 'prop-types';
 
 import Export from './../../components/backup-export/backup-export.jsx';
 import Import from './../../components/backup-import/backup-import.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 const Backup = (props) => {
   const { transactions, lang, course, categories } = props;
   return (
-    <div className="widgets">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <Export
-              lang={lang}
-              course={course}
-              transactions={transactions}
-              categories={categories}
-            />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <Import
-              lang={lang}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col lg={6} md={6} sm={6}>
+          <Export
+            lang={lang}
+            course={course}
+            transactions={transactions}
+            categories={categories}
+          />
+        </Col>
+        <Col lg={6} md={6} sm={6}>
+          <Import
+            lang={lang}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -38,10 +39,10 @@ Backup.defaultProps = {
 };
 
 Backup.propTypes = {
-  transactions: PropTypes.array,
   categories: PropTypes.array,
+  course: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  transactions: PropTypes.array
 };
 
 export default connect(state => ({

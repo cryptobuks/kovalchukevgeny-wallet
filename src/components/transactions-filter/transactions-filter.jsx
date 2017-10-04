@@ -59,7 +59,7 @@ class TransactionsFilter extends PureComponent {
     return (
       <Panel
         specialClass="filter"
-        heading={staticContent[lang]['transactions-filter'].head}
+        heading={staticContent[lang]['transactions-filter']['head']}
         headingIcon="filter_list"
       >
         <ButtonToolbar>
@@ -67,7 +67,7 @@ class TransactionsFilter extends PureComponent {
             onClickFunction={this.selectAll}
             specialClass="btn btn-primary"
             icon="done_all"
-          >{staticContent[lang]['transactions-filter'].btnSelect}</Button>
+          >{staticContent[lang]['transactions-filter']['btnSelect']}</Button>
         </ButtonToolbar>
         <div className="categories">
           {categories}

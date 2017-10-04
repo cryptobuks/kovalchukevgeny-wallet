@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
@@ -10,6 +8,10 @@ import Panel from './../../components/panel/panel.jsx';
 import Button from './../../components/button/button.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
+import ButtonsToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import Container from './../../components/container/container.jsx';
+import Row from './../../components/row/row.jsx';
+import Col from './../../components/col/col.jsx';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -41,7 +43,6 @@ class Transactions extends Component {
     this.showAddingPanel = this.showAddingPanel.bind(this);
     this.hideAddingPanel = this.hideAddingPanel.bind(this);
     this.renderTableFooter = this.renderTableFooter.bind(this);
-    this.filteredTransactions = this.filteredTransactions.bind(this);
   }
 
   componentWillMount() {
@@ -52,20 +53,6 @@ class Transactions extends Component {
       const column = Object.keys(transactions[0])[1];
       this.sortData(event = null, column);
     }
-  }
-
-  filteredTransactions(transactions) {
-    const { categories } = this.props;
-    transactions = transactions.filter(transaction => {
-      for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].id) {
-          if(categories[i].filter === true) {
-            return transaction;
-          }
-        }
-      }
-    });
-    return transactions;
   }
 
   sortSheme(dataArray, column, descending) {
@@ -101,7 +88,7 @@ class Transactions extends Component {
   spellingDay(date, lang) {
     const declOfNum = (number, titles) => {
       let cases = [2, 0, 1, 1, 1, 2];
-      return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+      return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10  :5] ];
     };
 
     if(lang === 'eng') {
@@ -123,9 +110,9 @@ class Transactions extends Component {
     const { lang } = this.props;
     return(
       <span className="amount">
-        {staticContent[lang]['transactions-table'].bigDescr}
+        {staticContent[lang]['transactions-table']['bigDescr']}
         <span>{unicTransactions.length} </span>
-        {this.spellingDay(unicTransactions.length, lang)}:
+        {this.spellingDay(unicTransactions.length, lang)}{':'}
         <span>{amount.toFixed(2)} </span>
         {staticContent[lang]['currency']}
       </span>
@@ -149,14 +136,12 @@ class Transactions extends Component {
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
     if(monthTransactions && monthTransactions.length > 0) {
-      amount = unicTransactions.reduce((sum, transaction) => {
-        return sum += transaction.money;
-      }, 0);
+      amount = unicTransactions.reduce((sum, transaction) => sum += transaction.money, 0);
     }
 
     return (
-      <div className="container transactions">
-        <div className="row">
+      <Container specialClass="transactions">
+        <Row>
           <AddingPanel
             categories={categories}
             lang={lang}
@@ -166,25 +151,25 @@ class Transactions extends Component {
             hideAddingPanel={this.hideAddingPanel}
           />
           {transactions.length > 0 ?
-          <div className="col-lg-3 col-md-3">
+          <Col lg={3} md={3}>
             <TransactionsFilter
               categories={categories}
               lang={lang}
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
             />
-          </div> : <h4>{staticContent[lang]["description"]}</h4>
+          </Col> : <h4>{staticContent[lang]["description"]}</h4>
           }
-          <div className="col-lg-9 col-md-9">
+          <Col lg={9} md={9}>
             {transactions.length > 0 &&
             <Panel
               specialClass="tr-table"
-              heading={staticContent[lang]['transactions-table'].head}
+              heading={staticContent[lang]['transactions-table']['head']}
               headingIcon="view_list"
               footer={this.renderTableFooter(amount, unicTransactions)}
             >
               <TransactionsTable
-                transactions={this.filteredTransactions(monthTransactions)}
+                transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
                 deleteTransaction={deleteTransaction}
                 changeTransaction={changeTransaction}
                 descending={descending}
@@ -195,29 +180,29 @@ class Transactions extends Component {
               />
             </Panel>
             }
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="toolbar">
+            <Row>
+              <Col lg={12}>
+                <ButtonsToolbar>
                   <Button
                     onClickFunction={this.showAddingPanel}
                     specialClass="btn btn-primary"
                     icon="add"
-                  >{staticContent[lang]['transactions-table'].btnAdd}</Button>
+                  >{staticContent[lang]['transactions-table']['btnAdd']}</Button>
                   {transactions.length > 0 &&
                   <DownloadData
                     transactions={monthTransactions}
                     categories={categories}
                     fileName="monthExpenses"
                     fileFormat="csv"
-                    btnText={staticContent[lang]['transactions-table'].btnCsv}
+                    btnText={staticContent[lang]['transactions-table']['btnCsv']}
                   />
                   }
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                </ButtonsToolbar>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
@@ -234,14 +219,14 @@ Transactions.defaultProps = {
 };
 
 Transactions.propTypes = {
-  categories: PropTypes.array,
-  transactions: PropTypes.array,
-  lang: PropTypes.string,
-  deleteTransaction: PropTypes.func,
-  changeTransaction: PropTypes.func,
   addTransaction: PropTypes.func,
-  updateCategory: PropTypes.func,
-  changeAllCategories: PropTypes.func
+  categories: PropTypes.array,
+  changeAllCategories: PropTypes.func,
+  changeTransaction: PropTypes.func,
+  deleteTransaction: PropTypes.func,
+  lang: PropTypes.string,
+  transactions: PropTypes.array,
+  updateCategory: PropTypes.func
 };
 
 export default connect(state => ({
