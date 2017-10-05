@@ -32,7 +32,7 @@ class Reports extends Component {
   }
 
   openMonth(event) {
-    event.currentTarget.parentNode.parentNode.classList.toggle("expanded");
+    event.currentTarget.parentNode.parentNode.classList.toggle('expanded');
   }
 
   renderMonthTable(transactions) {
@@ -60,10 +60,13 @@ class Reports extends Component {
             <span>{transaction.money} </span>
             <span>{staticContent[lang]['currency']}</span>
           </div>
-          <div className="table-data clearfix" title={transaction.description}>{transaction.description}</div>
+          <div
+            className="table-data clearfix"
+            title={transaction.description}
+          >{transaction.description}</div>
           <div className="table-data clearfix">
             <span>
-              <span className="icon-wrapper" style={{backgroundColor: categoryColor}}>
+              <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}>
                 <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
               </span>
               {this.Helpers.getCategoryById(categories, transaction)}
@@ -114,7 +117,7 @@ class Reports extends Component {
           {reMapedTransaction.length > 0 &&
             <div className="panel panel-primary res-table">
               <div
-                onClick={(e) => this.openMonth(e)}
+                onClick={e => this.openMonth(e)}
                 className="panel-heading clearfix"
               >
                 <h3 className="panel-title left">
@@ -167,7 +170,7 @@ class Reports extends Component {
   }
 
   render() {
-    let {
+    const {
       transactions,
       categories,
       lang,

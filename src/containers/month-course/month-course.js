@@ -49,7 +49,7 @@ class MonthCourse extends Component {
   render() {
     const { lang } = this.props;
     let { course } = this.props;
-    let { currentCourse, date } = this.state;
+    const { currentCourse, date } = this.state;
 
     course = course.find(courseItem => {
       return moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM');
