@@ -80,7 +80,7 @@ class Categories extends Component {
     const id = Date.now();
 
     if(title.length < 2) {
-      toastr.error(staticContent[lang]['toastr']['smallCategoryName'], {timeOut: 4000});
+      toastr.error(staticContent[lang]['toastr']['smallCategoryName'], { timeOut: 4000 });
     } else {
       addCategory(id, description, title, icon, filter, color);
       this.setState({
@@ -88,7 +88,7 @@ class Categories extends Component {
         filter: true,
         title: ''
       });
-      toastr.success(staticContent[lang]['toastr']['categoryAdd'], {timeOut: 4000});
+      toastr.success(staticContent[lang]['toastr']['categoryAdd'], { timeOut: 4000 });
     }
   }
 
@@ -102,7 +102,7 @@ class Categories extends Component {
         <div key={i} className="category-card">
           <Panel specialClass="category">
             <div data-id={category.id}>
-              <div className="categ-icon" style={{backgroundColor: categoryColor}}>
+              <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
                 <Icon type="fa" icon={category.icon} />
               </div>
               <h5>{category.title}</h5>

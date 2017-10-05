@@ -8,7 +8,7 @@ import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
 import Col from './../../components/col/col.jsx';
 
-const Backup = (props) => {
+const Backup = props => {
   const { transactions, lang, course, categories } = props;
   return (
     <Container>

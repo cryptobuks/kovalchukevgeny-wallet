@@ -143,13 +143,14 @@ class CategoryEditor extends PureComponent {
 
 CategoryEditor.defaultProps = {
   categories: [],
-  lang: 'eng',
-  onClickFunction: () => {}
+  lang: 'eng'
 };
 
 CategoryEditor.propTypes = {
   lang: PropTypes.string,
-  onClickFunction: PropTypes.func
+  updateCategory: PropTypes.func,
+  categories: PropTypes.array,
+  routeParams: PropTypes.object
 };
 
 export default connect(state => ({
