@@ -132,6 +132,10 @@ class Transactions extends Component {
 
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
+    const monthCategories = monthTransactions.map(transaction => transaction.category);
+    const monthActiveCategories = categories.filter(category => {
+      return monthCategories.find(montCategory => montCategory === category.id);
+    });
 
     if(monthTransactions && monthTransactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => sum += transaction.money, 0);
@@ -151,7 +155,7 @@ class Transactions extends Component {
           {transactions.length > 0 ?
           <Col lg={3} md={3}>
             <TransactionsFilter
-              categories={categories}
+              categories={monthActiveCategories}
               lang={lang}
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
