@@ -91,10 +91,8 @@ class Helpers {
   }
 
   getCategoryItemById(categories, categoryId) {
-    const category = categories.find((category) => {
-      return category.id === categoryId;
-    });
-    return category ? category : '';
+    const category = categories.find(category => category.id === categoryId) || {};
+    return category;
   }
 
   getDayName(dayNumber, lang) {

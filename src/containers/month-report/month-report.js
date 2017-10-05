@@ -20,14 +20,11 @@ class MonthReport extends Component {
   }
 
   render() {
-    const {
-      lang,
-      transactions,
-      categories } = this.props;
-
+    const { lang, transactions, categories } = this.props;
     const currentMonthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
-    let transactionsByDay = [];
+    const transactionsByDay = [];
     let currentProcessedDay = null;
+
     currentMonthTransactions.forEach((transaction, index, array) => {
       if (moment(transaction.date).date() !== currentProcessedDay) {
         currentProcessedDay = moment(transaction.date).date();
@@ -44,9 +41,7 @@ class MonthReport extends Component {
       }
     });
 
-    transactionsByDay.sort((a, b) => {
-      return moment(b[0].date).date() - moment(a[0].date).date();
-    })
+    transactionsByDay.sort((a, b) => moment(b[0].date).date() - moment(a[0].date).date());
 
     return (
       <div className="month-report">
