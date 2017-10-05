@@ -33,11 +33,7 @@ Container.defaultProps = {
 };
 
 Container.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.element,
-    PropTypes.string
-  ]).isRequired,
+  children: PropTypes.any.isRequired,
   specialClass: PropTypes.string,
   lg: PropTypes.number,
   md: PropTypes.number,

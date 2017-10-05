@@ -9,17 +9,8 @@ import staticContent from './../../static-content/languages';
 
 const Export = props => {
 
-  const download = (format, event) => {
-    let { transactions, categories, course } = props;
-    const data = { transactions, categories, course };
-    let contents = JSON.stringify(data);
-    const URL = window.URL || window.webkitURL;
-    const blob = new Blob([contents], {type: `text/${format};charset=utf-8;`});
-    event.target.href = URL.createObjectURL(blob);
-    event.target.download = 'backup.' + format;
-  }
-
-  const { transactions, lang } = props;
+  const { transactions, categories, course, lang } = props;
+  const data = { transactions, categories, course };
 
   return (
     <Panel
@@ -32,7 +23,7 @@ const Export = props => {
           {staticContent[lang]['backup-export']['description']}
         </p>
         <DownloadData
-          transactions={transactions}
+          transactions={data}
           fileName="backup"
           fileFormat="json"
           btnText={staticContent[lang]['backup-export']['btnJson']}

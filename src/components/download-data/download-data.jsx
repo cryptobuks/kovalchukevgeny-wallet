@@ -74,7 +74,10 @@ DownloadData.defaultProps = {
 }
 
 DownloadData.propTypes = {
-  transactions: PropTypes.array,
+  transactions: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   categories: PropTypes.array,
   fileName: PropTypes.string,
   fileFormat: PropTypes.string,
