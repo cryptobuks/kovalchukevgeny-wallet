@@ -90,13 +90,43 @@ class Helpers {
     return category ? category.title : '';
   }
 
+  getCategoryItemById(categories, categoryId) {
+    const category = categories.find(category => category.id === categoryId) || {};
+    return category;
+  }
+
+  getDayName(dayNumber, lang) {
+    const days = {
+      'rus': [
+        'Воскресенье',
+        'Понедельник',
+        'Вторник',
+        'Среда',
+        'Четверг',
+        'Пятница',
+        'Суббота'
+      ],
+      'eng': [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ]
+    };
+
+    return days[lang][dayNumber];
+  }
+
   groupTransactionsByMonths(transactions) {
     const arrTrans = [];
     for(let i = 0; i < 12; i++) {
       const res = transactions.filter(transaction => {
         return moment(transaction.date).month() === i;
       });
-      if(res && res.length > 0) {
+      if (res && res.length > 0) {
         arrTrans[i] = res;
       } else {
         arrTrans[i] = [];
@@ -107,15 +137,15 @@ class Helpers {
 
   getCurrentMonthTransactions(transactions) {
     return transactions.filter(transaction => {
-      return moment().month() === moment(transaction.date).month();
+      return moment().month() === moment(transaction.date).month() && moment().year() === moment(transaction.date).year();
     });
   }
 
   filteredTransactions(transactions, categories) {
     transactions = transactions.filter(transaction => {
-      for(let i = 0; i < categories.length; i++) {
-        if(transaction.category === categories[i].id) {
-          if(categories[i].filter === true) {
+      for (let i = 0; i < categories.length; i++) {
+        if (transaction.category === categories[i].id) {
+          if (categories[i].filter === true) {
             return transaction;
           }
         }

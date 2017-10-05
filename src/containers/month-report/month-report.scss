@@ -1,0 +1,50 @@
+.month-report {
+    .icon-wrapper {
+        border-radius: 50%;
+        display: inline-block;
+        height: 25px;
+        line-height: 20px;
+        margin-right: 5px;
+        padding: 3px;
+        text-align: center;
+        vertical-align: middle;
+        width: 25px;
+    }
+
+    .fa {
+        color: $accentTextColor;
+    }
+
+    .panel .container {
+        width: 100%;
+    }
+
+    .panel-body .row {
+        border-bottom: 1px solid $borderColor;
+        padding: 10px 0;
+    }
+
+    .panel-body .row:first-child {
+        padding-top: 0;
+    }
+
+    .panel-body .row:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .panel-body h5 {
+        margin: 0;
+    }
+
+    .panel-body .money {
+        color: $accentColor;
+        font-size: 16px;
+        text-align: right;
+    }
+
+    .panel-footer {
+        font-size: 16px;
+        padding-right: 10px;
+    }
+}
