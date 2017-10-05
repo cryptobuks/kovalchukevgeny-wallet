@@ -21,9 +21,11 @@ class MonthReport extends Component {
 
   render() {
     const { lang, transactions, categories } = this.props;
-    const currentMonthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
+    const currentMonthTransactions = [];
     const transactionsByDay = [];
     let currentProcessedDay = null;
+
+    this.Helpers.getCurrentMonthTransactions(transactions).forEach(transaction => currentMonthTransactions.push({ ...transaction }));
 
     currentMonthTransactions.forEach((transaction, index, array) => {
       if (moment(transaction.date).date() !== currentProcessedDay) {
