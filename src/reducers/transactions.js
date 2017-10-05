@@ -12,29 +12,29 @@ function transactions(state = initialState.transactions, action) {
   let store = [...state];
   switch (action.type) {
     case 'ADD_TRANSACTION' :
-    return [
-      ...state, {
-        id: action.id,
-        date: action.date,
-        money: action.money,
-        description: action.description,
-        category: action.category
-      }
-    ];
+      return [
+        ...state, {
+          id: action.id,
+          date: action.date,
+          money: action.money,
+          description: action.description,
+          category: action.category
+        }
+      ];
     case 'CHANGE_TRANSACTION' :
-    store = store.map(transaction => {
-      if(transaction.id === action.id) {
-        transaction.date = action.date;
-        transaction.money = action.money;
-        transaction.description = action.description;
-        transaction.category = action.category;
-        // TODO: do not add this in store
-        transaction.active = undefined;
-        transaction.isEdit = undefined;
-      }
-      return transaction;
-    });
-    return store;
+      store = store.map(transaction => {
+        if(transaction.id === action.id) {
+          transaction.date = action.date;
+          transaction.money = action.money;
+          transaction.description = action.description;
+          transaction.category = action.category;
+          // TODO: do not add this in store
+          transaction.active = undefined;
+          transaction.isEdit = undefined;
+        }
+        return transaction;
+      });
+      return store;
     case 'DELETE_TRANSACTION' :
       return store.filter(transaction => transaction.id !== action.transactionId);
     default:

@@ -4,7 +4,7 @@ import open from 'open';
 import compression from 'compression';
 import favicon from 'serve-favicon';
 
-/*eslint-disable no-console */
+/* eslint-disable no-console */
 const port = process.env.PORT || 3000;
 const app = express();
 

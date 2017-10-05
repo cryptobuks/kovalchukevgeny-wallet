@@ -16,7 +16,7 @@ const compiler = webpack(config);
 db.setUpConnection();
 
 // Using bodyParser middleware
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 
 // Allow requests from any origin
 app.use(cors({ origin: '*' }));
@@ -27,13 +27,14 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-app.use(favicon(path.join(__dirname,'assets','public','favicon.ico')));
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join( __dirname, '../src/index.html'));
+app.use(favicon(path.join(__dirname,'assets', 'public', 'favicon.ico')));
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-app.listen(port, function(err) {
+app.listen(port, function (err) {
   if (err) {
     console.log(err); // eslint-disable-line no-console
   } else {

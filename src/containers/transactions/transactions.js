@@ -63,11 +63,10 @@ class Transactions extends Component {
         (+a[column] > +b[column] ? 1 : -1) :
         (+a[column] < +b[column] ? 1 : -1);
       // Sort strings
-      } else {
-        return descending ?
-        (a[column] > b[column] ? 1 : -1) :
-        (a[column] < b[column] ? 1 : -1);
       }
+      return descending ?
+      (a[column] > b[column] ? 1 : -1) :
+      (a[column] < b[column] ? 1 : -1);
     });
   }
 
@@ -79,23 +78,22 @@ class Transactions extends Component {
     this.sortSheme(transactions, column, descending);
 
     this.setState({
-      transactions: transactions,
+      transactions,
       sortby: column,
-      descending: descending
+      descending
     });
   }
 
   spellingDay(date, lang) {
     const declOfNum = (number, titles) => {
-      let cases = [2, 0, 1, 1, 1, 2];
-      return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10  :5] ];
+      const cases = [2, 0, 1, 1, 1, 2];
+      return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
     };
 
     if(lang === 'eng') {
       return date === 1 ? 'day' : 'days';
-    } else {
-      return declOfNum(date, ['день', 'дня', 'дней']);
     }
+    return declOfNum(date, ['день', 'дня', 'дней']);
   }
 
   showAddingPanel() {
@@ -121,7 +119,7 @@ class Transactions extends Component {
 
   render() {
     const { descending, sortby, showPanel } = this.state;
-    let {
+    const {
       transactions,
       categories,
       lang,
@@ -158,7 +156,7 @@ class Transactions extends Component {
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
             />
-          </Col> : <h4>{staticContent[lang]["description"]}</h4>
+          </Col> : <h4>{staticContent[lang]['description']}</h4>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
@@ -233,4 +231,10 @@ export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang
-}), { deleteTransaction, changeTransaction, addTransaction, updateCategory, changeAllCategories })(Transactions);
+}), {
+  deleteTransaction,
+  changeTransaction,
+  addTransaction,
+  updateCategory,
+  changeAllCategories
+})(Transactions);
