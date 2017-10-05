@@ -138,7 +138,7 @@ class AddingPanel extends PureComponent {
               getItemValue={item => item.label}
               renderItem={(item, highlighted) =>
                 <div
-                  key={item.id}
+                  key={item.label}
                   style={{ backgroundColor: highlighted ? '#eee' : '#fff'}}
                 >
                   {item.label}
