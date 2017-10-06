@@ -23,7 +23,7 @@ function transactions(state = initialState.transactions, action) {
       ];
     case 'CHANGE_TRANSACTION' :
       store = store.map(transaction => {
-        if(transaction.id === action.id) {
+        if (transaction.id === action.id) {
           transaction.date = action.date;
           transaction.money = action.money;
           transaction.description = action.description;

@@ -79,7 +79,7 @@ class Categories extends Component {
     const { lang } = this.props;
     const id = Date.now();
 
-    if(title.length < 2) {
+    if (title.length < 2) {
       toastr.error(staticContent[lang]['toastr']['smallCategoryName'], { timeOut: 4000 });
     } else {
       addCategory(id, description, title, icon, filter, color);

@@ -47,7 +47,7 @@ class Reports extends Component {
       let amountMonth = 0;
       let monthCourse = { course: 1 };
 
-      if(reMapedTransaction && reMapedTransaction.length > 0) {
+      if (reMapedTransaction && reMapedTransaction.length > 0) {
         amountDay = unicTransactions.reduce((sum, transaction) => {
           return sum + transaction.money;
         }, 0) / unicTransactions.length;
@@ -56,7 +56,7 @@ class Reports extends Component {
         }, 0);
       }
 
-      if(unicTransactions[0]) {
+      if (unicTransactions[0]) {
         monthCourse = course.find(courseItem => {
           return moment(courseItem.date).format('YYYY-MM') === moment(unicTransactions[0].date).format('YYYY-MM');
         }) || { course: 1 };

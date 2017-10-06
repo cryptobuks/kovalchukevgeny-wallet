@@ -24,7 +24,7 @@ function categories(state = initialState.categories, action) {
       ];
     case 'UPDATE_CATEGORY' :
       store = store.map(category => {
-        if(category.id === action.id) {
+        if (category.id === action.id) {
           category.description = action.description;
           category.title = action.title;
           category.icon = action.icon;

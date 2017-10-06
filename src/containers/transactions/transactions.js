@@ -46,7 +46,7 @@ class Transactions extends Component {
       return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
     };
 
-    if(lang === 'eng') {
+    if (lang === 'eng') {
       return date === 1 ? 'day' : 'days';
     }
     return declOfNum(date, ['день', 'дня', 'дней']);
@@ -93,7 +93,7 @@ class Transactions extends Component {
       return monthCategories.find(montCategory => montCategory === category.id);
     });
 
-    if(monthTransactions && monthTransactions.length > 0) {
+    if (monthTransactions && monthTransactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => sum + transaction.money, 0);
     }
 
