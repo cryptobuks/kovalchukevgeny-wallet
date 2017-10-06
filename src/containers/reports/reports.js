@@ -139,15 +139,15 @@ class Reports extends Component {
             />
             {this.renderMonthPanels(reMapedTransactions)}
             {transactions.length > 0 &&
-            <ButtonToolbar>
-              <DownloadData
-                transactions={transactions}
-                categories={categories}
-                fileName="report"
-                fileFormat="csv"
-                btnText={staticContent[lang]['reports']['btnCsv']}
-              />
-            </ButtonToolbar>
+              <ButtonToolbar>
+                <DownloadData
+                  transactions={transactions}
+                  categories={categories}
+                  fileName="report"
+                  fileFormat="csv"
+                  btnText={staticContent[lang]['reports']['btnCsv']}
+                />
+              </ButtonToolbar>
             }
           </Col>
         </Row>

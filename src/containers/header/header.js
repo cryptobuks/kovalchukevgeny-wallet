@@ -37,34 +37,34 @@ const Header = props => {
             </Link>
           </li>
           {transactions.length > 0 &&
-          <li>
-            <Link activeClassName="active" to="statistics">
-              <Icon icon={'timeline'} />
-              <span className="navigation__item">
-                {staticContent[lang]['menu'][2]}
-              </span>
-            </Link>
-          </li>
+            <li>
+              <Link activeClassName="active" to="statistics">
+                <Icon icon={'timeline'} />
+                <span className="navigation__item">
+                  {staticContent[lang]['menu'][2]}
+                </span>
+              </Link>
+            </li>
           }
           {transactions.length > 0 &&
-          <li>
-            <Link activeClassName="active" to="reports">
-              <Icon icon={'work'} />
-              <span className="navigation__item">
-                {staticContent[lang]['menu'][3]}
-              </span>
-            </Link>
-          </li>
+            <li>
+              <Link activeClassName="active" to="reports">
+                <Icon icon={'work'} />
+                <span className="navigation__item">
+                  {staticContent[lang]['menu'][3]}
+                </span>
+              </Link>
+            </li>
           }
           {transactions.length > 0 &&
-          <li>
-            <Link activeClassName="active" to="month-report">
-              <Icon icon={'storage'} />
-              <span className="navigation__item">
-                {staticContent[lang]['menu'][4]}
-              </span>
-            </Link>
-          </li>
+            <li>
+              <Link activeClassName="active" to="month-report">
+                <Icon icon={'storage'} />
+                <span className="navigation__item">
+                  {staticContent[lang]['menu'][4]}
+                </span>
+              </Link>
+            </li>
           }
           <li>
             <Link activeClassName="active" to="backup">
@@ -77,25 +77,25 @@ const Header = props => {
         </ul>
         <ul className="nav navbar-nav navbar-right languages">
           <li>
-            <span
+            <button
               className={lang === 'eng' ? 'active' : ''}
               onClick={() => changeLang('eng')}
             >{'eng'}
-            <span className="flag-icon flag-icon-usa">
-              <img src={usa} alt="english" />
-            </span>
-            </span>
+              <span className="flag-icon flag-icon-usa">
+                <img src={usa} alt="english" />
+              </span>
+            </button>
           </li>
           <li>{'/'}</li>
           <li>
-            <span
+            <button
               className={lang === 'rus' ? 'active' : ''}
               onClick={() => changeLang('rus')}
             >{'rus'}
-            <span className="flag-icon flag-icon-rus">
-              <img src={rus} alt="russian" />
-            </span>
-            </span>
+              <span className="flag-icon flag-icon-rus">
+                <img src={rus} alt="russian" />
+              </span>
+            </button>
           </li>
         </ul>
       </Navbar>

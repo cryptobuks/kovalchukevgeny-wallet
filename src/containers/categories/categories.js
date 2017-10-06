@@ -196,15 +196,15 @@ class Categories extends Component {
         <Row>
           <Col lg={12}>
             {categories.length > 0 &&
-            <Panel
-              specialClass="categories-panel"
-              heading={staticContent[lang]['categories']['head']}
-              headingIcon="work"
-            >
-              <div className="categories-wrapper">
-                {this.renderCategoryCard(categories)}
-              </div>
-            </Panel>
+              <Panel
+                specialClass="categories-panel"
+                heading={staticContent[lang]['categories']['head']}
+                headingIcon="work"
+              >
+                <div className="categories-wrapper">
+                  {this.renderCategoryCard(categories)}
+                </div>
+              </Panel>
             }
           </Col>
         </Row>

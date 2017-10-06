@@ -109,31 +109,31 @@ class Transactions extends Component {
             hideAddingPanel={this.hideAddingPanel}
           />
           {transactions.length > 0 ?
-          <Col lg={3} md={3}>
-            <TransactionsFilter
-              categories={monthActiveCategories}
-              lang={lang}
-              updateCategory={updateCategory}
-              changeAllCategories={changeAllCategories}
-            />
-          </Col> : <h4>{staticContent[lang]['description']}</h4>
+            <Col lg={3} md={3}>
+              <TransactionsFilter
+                categories={monthActiveCategories}
+                lang={lang}
+                updateCategory={updateCategory}
+                changeAllCategories={changeAllCategories}
+              />
+            </Col> : <h4>{staticContent[lang]['description']}</h4>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
-            <Panel
-              specialClass="tr-table"
-              heading={staticContent[lang]['transactions-table']['head']}
-              headingIcon="view_list"
-              footer={this.renderTableFooter(amount, unicTransactions)}
-            >
-              <TransactionsTable
-                transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
-                deleteTransaction={deleteTransaction}
-                changeTransaction={changeTransaction}
-                categories={categories}
-                lang={lang}
-              />
-            </Panel>
+              <Panel
+                specialClass="tr-table"
+                heading={staticContent[lang]['transactions-table']['head']}
+                headingIcon="view_list"
+                footer={this.renderTableFooter(amount, unicTransactions)}
+              >
+                <TransactionsTable
+                  transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
+                  deleteTransaction={deleteTransaction}
+                  changeTransaction={changeTransaction}
+                  categories={categories}
+                  lang={lang}
+                />
+              </Panel>
             }
             <Row>
               <Col lg={12}>
@@ -144,13 +144,13 @@ class Transactions extends Component {
                     icon="add"
                   >{staticContent[lang]['transactions-table']['btnAdd']}</Button>
                   {transactions.length > 0 &&
-                  <DownloadData
-                    transactions={monthTransactions}
-                    categories={categories}
-                    fileName="monthExpenses"
-                    fileFormat="csv"
-                    btnText={staticContent[lang]['transactions-table']['btnCsv']}
-                  />
+                    <DownloadData
+                      transactions={monthTransactions}
+                      categories={categories}
+                      fileName="monthExpenses"
+                      fileFormat="csv"
+                      btnText={staticContent[lang]['transactions-table']['btnCsv']}
+                    />
                   }
                 </ButtonsToolbar>
               </Col>
