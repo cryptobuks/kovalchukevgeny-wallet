@@ -134,7 +134,7 @@ class Transactions extends Component {
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
 
     if(monthTransactions && monthTransactions.length > 0) {
-      amount = unicTransactions.reduce((sum, transaction) => sum += transaction.money, 0);
+      amount = unicTransactions.reduce((sum, transaction) => sum + transaction.money, 0);
     }
 
     return (

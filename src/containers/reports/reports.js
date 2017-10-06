@@ -89,10 +89,10 @@ class Reports extends Component {
 
       if(reMapedTransaction && reMapedTransaction.length > 0) {
         amountDay = unicTransactions.reduce((sum, transaction) => {
-          return sum += transaction.money;
+          return sum + transaction.money;
         }, 0) / unicTransactions.length;
         amountMonth = unicTransactions.reduce((sum, transaction) => {
-          return sum += transaction.money;
+          return sum + transaction.money;
         }, 0);
       }
 
