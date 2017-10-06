@@ -293,18 +293,15 @@ TransactionsTable.defaultProps = {
   categories: [],
   transactions: [],
   lang: 'eng',
-  descending: false,
-
-  deleteTransaction: () => {}
+  deleteTransaction: () => {},
+  changeTransaction: () => {}
 };
 
 TransactionsTable.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,
-  descending: PropTypes.bool,
-  sortby: PropTypes.string,
   deleteTransaction: PropTypes.func,
-
+  changeTransaction: PropTypes.func,
   lang: PropTypes.string
 };
 

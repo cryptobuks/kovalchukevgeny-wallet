@@ -74,7 +74,7 @@ class Transactions extends Component {
   }
 
   render() {
-    const { descending, sortby, showPanel } = this.state;
+    const { showPanel } = this.state;
     const {
       transactions,
       categories,
