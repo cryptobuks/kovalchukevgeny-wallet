@@ -30,11 +30,9 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 app.use(favicon(path.join(__dirname,'assets', 'public', 'favicon.ico')));
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../src/index.html'));
-});
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, '../src/index.html')); });
 
-app.listen(port, function (err) {
+app.listen(port, err => {
   if (err) {
     console.log(err); // eslint-disable-line no-console
   } else {
