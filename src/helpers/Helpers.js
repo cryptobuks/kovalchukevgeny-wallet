@@ -24,7 +24,7 @@ class Helpers {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         transactions.push({
           money: obj[prop],
-          date: new Date(moment(prop).format('YYYY-MM-DD'))
+          date: new Date(moment(prop).format('YYYY-MM-DD')),
         });
       }
     }
@@ -45,7 +45,7 @@ class Helpers {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         categories.push({
           money: obj[prop],
-          category: prop
+          category: prop,
         });
       }
     }
@@ -65,7 +65,7 @@ class Helpers {
     for (const prop in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         categories.push({
-          [prop]: obj[prop]
+          [prop]: obj[prop],
         });
       }
     }
@@ -85,7 +85,7 @@ class Helpers {
     for (const prop in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         descriptions.push({
-          label: obj[prop]
+          label: obj[prop],
         });
       }
     }
@@ -112,7 +112,7 @@ class Helpers {
         'Среда',
         'Четверг',
         'Пятница',
-        'Суббота'
+        'Суббота',
       ],
       eng: [
         'Sunday',
@@ -121,8 +121,8 @@ class Helpers {
         'Wednesday',
         'Thursday',
         'Friday',
-        'Saturday'
-      ]
+        'Saturday',
+      ],
     };
 
     return days[lang][dayNumber];

@@ -6,13 +6,13 @@ export default {
   devtool: 'source-map',
 
   entry: [
-    './src/index'
+    './src/index',
   ],
 
   output: {
     path: path.join(__dirname, 'public'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   plugins: [
@@ -21,14 +21,14 @@ export default {
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
   ],
 
   module: {
@@ -37,7 +37,7 @@ export default {
       { test: /(\.jsx|\.js)$/, loader: 'babel', exclude: /node_modules/ },
       { test: /\.scss?$/, loader: ExtractTextPlugin.extract('style', 'css!sass'), include: path.join(__dirname, 'src') },
       { test: /\.png$/, loader: 'file' },
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file' }
-    ]
-  }
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file' },
+    ],
+  },
 };

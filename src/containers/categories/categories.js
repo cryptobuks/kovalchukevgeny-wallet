@@ -31,7 +31,7 @@ class Categories extends Component {
       title: '',
       filter: true,
       icon: 'fa-car', // default icon
-      color: '#b91919' // default color
+      color: '#b91919', // default color
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
@@ -56,7 +56,7 @@ class Categories extends Component {
     this.setState({
       description: '',
       filter: true,
-      title: ''
+      title: '',
     });
   }
 
@@ -86,7 +86,7 @@ class Categories extends Component {
       this.setState({
         description: '',
         filter: true,
-        title: ''
+        title: '',
       });
       toastr.success(staticContent[lang]['toastr']['categoryAdd'], { timeOut: 4000 });
     }
@@ -218,15 +218,15 @@ Categories.defaultProps = {
   categories: [],
   transactions: [],
   addCategory: () => {},
-  deleteCategory: () => {}
+  deleteCategory: () => {},
 };
 
 Categories.propTypes = {
   categories: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
 };
 
 export default connect(state => ({
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
 }), { addCategory, deleteCategory })(Categories);

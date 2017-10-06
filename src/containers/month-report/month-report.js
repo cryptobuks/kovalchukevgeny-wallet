@@ -71,17 +71,17 @@ class MonthReport extends Component {
 MonthReport.defaultProps = {
   lang: 'eng',
   categories: [],
-  transactions: []
+  transactions: [],
 };
 
 MonthReport.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
 };
 
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
-  transactions: state.transactions
+  transactions: state.transactions,
 }), { changeLang })(MonthReport);

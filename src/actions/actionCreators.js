@@ -5,7 +5,7 @@ export function addTransaction(id, date, money, description, category) {
     date,
     money,
     description,
-    category
+    category,
   };
 }
 
@@ -16,14 +16,14 @@ export function changeTransaction(id, date, money, description, category) {
     date,
     money,
     description,
-    category
+    category,
   };
 }
 
 export function deleteTransaction(transactionId) {
   return {
     type: 'DELETE_TRANSACTION',
-    transactionId
+    transactionId,
   };
 }
 
@@ -35,7 +35,7 @@ export function addCategory(id, description, title, icon, filter, color) {
     title,
     icon,
     filter,
-    color
+    color,
   };
 }
 
@@ -47,28 +47,28 @@ export function updateCategory(id, description, title, icon, filter, color) {
     title,
     icon,
     filter,
-    color
+    color,
   };
 }
 
 export function changeAllCategories(categories) {
   return {
     type: 'CHANGE_ALL_CATEGORIES',
-    categories
+    categories,
   };
 }
 
 export function deleteCategory(id) {
   return {
     type: 'DELETE_CATEGORY',
-    id
+    id,
   };
 }
 
 export function changeLang(lang) {
   return {
     type: 'CHANGE_LANGUAGE',
-    lang
+    lang,
   };
 }
 
@@ -76,6 +76,6 @@ export function addMonthCourse(date, course) {
   return {
     type: 'ADD_MONTH-COURSE',
     date,
-    course
+    course,
   };
 }

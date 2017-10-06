@@ -162,7 +162,7 @@ Reports.defaultProps = {
   transactions: [],
   course: [],
   updateCategory: () => {},
-  changeAllCategories: () => {}
+  changeAllCategories: () => {},
 };
 
 Reports.propTypes = {
@@ -173,17 +173,17 @@ Reports.propTypes = {
   transactions: PropTypes.array,
   updateCategory: PropTypes.func,
   deleteTransaction: PropTypes.func,
-  changeTransaction: PropTypes.func
+  changeTransaction: PropTypes.func,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang,
-  course: state.course
+  course: state.course,
 }), {
   deleteTransaction,
   changeTransaction,
   updateCategory,
-  changeAllCategories
+  changeAllCategories,
 })(LoadingHOC('transactions')(Reports));

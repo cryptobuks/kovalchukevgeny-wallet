@@ -19,13 +19,13 @@ const ErrorPage = props => {
 };
 
 ErrorPage.defaultProps = {
-  lang: 'eng'
+  lang: 'eng',
 };
 
 ErrorPage.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
 };
 
 export default connect(state => ({
-  lang: state.lang
+  lang: state.lang,
 }))(ErrorPage);

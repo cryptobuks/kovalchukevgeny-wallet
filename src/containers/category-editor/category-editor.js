@@ -30,7 +30,7 @@ class CategoryEditor extends PureComponent {
       description: '',
       title: '',
       icon: 'fa-car', // default icon
-      color: '#b91919' // default color
+      color: '#b91919', // default color
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
@@ -50,7 +50,7 @@ class CategoryEditor extends PureComponent {
       title: category.title,
       icon: category.icon,
       filter: category.filter,
-      color: category.color || '#b91919'
+      color: category.color || '#b91919',
     });
   }
 
@@ -143,16 +143,16 @@ class CategoryEditor extends PureComponent {
 
 CategoryEditor.defaultProps = {
   categories: [],
-  lang: 'eng'
+  lang: 'eng',
 };
 
 CategoryEditor.propTypes = {
   lang: PropTypes.string,
   categories: PropTypes.array,
-  routeParams: PropTypes.object
+  routeParams: PropTypes.object,
 };
 
 export default connect(state => ({
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
 }), { updateCategory })(enhanceWithClickOutside(CategoryEditor));

@@ -106,16 +106,16 @@ const Header = props => {
 Header.defaultProps = {
   lang: 'eng',
   transactions: [],
-  changeLang: () => {}
+  changeLang: () => {},
 };
 
 Header.propTypes = {
   changeLang: PropTypes.func,
   lang: PropTypes.string,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
 };
 
 export default connect(state => ({
   lang: state.lang,
-  transactions: state.transactions
+  transactions: state.transactions,
 }), { changeLang }, null, { pure: false })(Header);

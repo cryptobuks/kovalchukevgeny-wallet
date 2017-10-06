@@ -31,7 +31,7 @@ class Transactions extends Component {
     this.Helpers = new Helpers();
 
     this.state = {
-      showPanel: false
+      showPanel: false,
     };
 
     this.spellingDay = this.spellingDay.bind(this);
@@ -170,7 +170,7 @@ Transactions.defaultProps = {
   changeTransaction: () => {},
   addTransaction: () => {},
   updateCategory: () => {},
-  changeAllCategories: () => {}
+  changeAllCategories: () => {},
 };
 
 Transactions.propTypes = {
@@ -181,17 +181,17 @@ Transactions.propTypes = {
   deleteTransaction: PropTypes.func,
   lang: PropTypes.string,
   transactions: PropTypes.array,
-  updateCategory: PropTypes.func
+  updateCategory: PropTypes.func,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
 }), {
   deleteTransaction,
   changeTransaction,
   addTransaction,
   updateCategory,
-  changeAllCategories
+  changeAllCategories,
 })(Transactions);

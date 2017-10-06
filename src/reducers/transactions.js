@@ -4,7 +4,7 @@ let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.transactions || !initialState.transactions.length) {
   initialState = {
-    transactions: []
+    transactions: [],
   };
 }
 
@@ -18,8 +18,8 @@ function transactions(state = initialState.transactions, action) {
           date: action.date,
           money: action.money,
           description: action.description,
-          category: action.category
-        }
+          category: action.category,
+        },
       ];
     case 'CHANGE_TRANSACTION' :
       store = store.map(transaction => {

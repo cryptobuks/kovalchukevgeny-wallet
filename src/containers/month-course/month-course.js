@@ -21,7 +21,7 @@ class MonthCourse extends Component {
 
     this.state = {
       date: moment(),
-      currentCourse: ''
+      currentCourse: '',
     };
 
     this.handleChangeData = this.handleChangeData.bind(this);
@@ -42,7 +42,7 @@ class MonthCourse extends Component {
     addMonthCourse(date, currentCourse);
     this.setState({
       date: moment(),
-      currentCourse: ''
+      currentCourse: '',
     });
   }
 
@@ -96,15 +96,15 @@ class MonthCourse extends Component {
 MonthCourse.defaultProps = {
   lang: 'eng',
   course: [],
-  addMonthCourse: () => {}
+  addMonthCourse: () => {},
 };
 
 MonthCourse.propTypes = {
   addMonthCourse: PropTypes.func,
   course: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
 };
 
 export default connect(state => ({
-  course: state.course
+  course: state.course,
 }), { addMonthCourse })(MonthCourse);

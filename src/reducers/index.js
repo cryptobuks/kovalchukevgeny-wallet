@@ -7,7 +7,7 @@ import lang from './languages';
 import course from './month-course';
 
 const rootReducer = combineReducers({
-  transactions, categories, lang, course, toastr: toastrReducer
+  transactions, categories, lang, course, toastr: toastrReducer,
 });
 
 export default rootReducer;

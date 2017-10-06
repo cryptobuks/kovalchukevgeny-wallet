@@ -5,19 +5,19 @@ export default {
     'categories-stats': {
       head: 'Categories statistic',
       tableHead: ['Category', 'Percentage', 'Amount'],
-      details: 'Detailed data'
+      details: 'Detailed data',
     },
     'currency-rate': {
-      head: 'Currency courses'
+      head: 'Currency courses',
     },
     'transactions-graph': {
-      head: 'Graph'
+      head: 'Graph',
     },
     'custom-tooltip': {
       date: 'Date',
       money: 'Money',
       category: 'Category',
-      course: 'Coures'
+      course: 'Coures',
     },
     'transactions-results': {
       head: 'Month results',
@@ -28,18 +28,18 @@ export default {
       bigTransDescr: 'Description',
       bigTransAmount: 'Amount',
       amountMonth: 'Amount Month',
-      amountDay: 'Amount Day'
+      amountDay: 'Amount Day',
     },
     'transactions-table': {
       head: 'Transactions',
       btnAdd: 'Add transaction',
       btnCsv: 'Export CSV',
       bigDescr: 'Amount rubles spent during',
-      tableHead: ['Date', 'Money', 'Description', 'Category']
+      tableHead: ['Date', 'Money', 'Description', 'Category'],
     },
     'transactions-filter': {
       head: 'Filter',
-      btnSelect: 'Select all'
+      btnSelect: 'Select all',
     },
     'adding-panel': {
       head: 'Add new transaction',
@@ -48,7 +48,7 @@ export default {
       descrLabel: 'Description:',
       categoryLabel: 'Category:',
       btnCancel: 'Cancel',
-      btnSubmit: 'Save'
+      btnSubmit: 'Save',
     },
     'adding-category': {
       head: 'New category',
@@ -57,18 +57,18 @@ export default {
       chooseIcon: 'Choose icon',
       chooseColor: 'Choose color',
       btnCancel: 'Cancel',
-      btnSubmit: 'Save'
+      btnSubmit: 'Save',
     },
     'backup-export': {
       head: 'Export data',
       btnJson: 'Export JSON',
-      description: 'Save all your data in JSON format on your PC'
+      description: 'Save all your data in JSON format on your PC',
     },
     'backup-import': {
       head: 'Import data',
       btnLoad: 'Choose a file',
       btnSync: 'synchronize',
-      description: 'Pick your files from your computer'
+      description: 'Pick your files from your computer',
     },
     reports: {
       amountMonth: 'Amount Month',
@@ -76,7 +76,7 @@ export default {
       monthCourse: 'Month Course',
       btnJson: 'Export JSON',
       btnCsv: 'Export CSV',
-      tableHead: ['Date', 'Money', 'Description', 'Category']
+      tableHead: ['Date', 'Money', 'Description', 'Category'],
     },
     toastr: {
       smallTransValue: 'Please enter transaction value',
@@ -87,29 +87,29 @@ export default {
       categoryUpdated: 'Category updated',
       transactionUpdated: 'Transaction successfully updated',
       transactionRemove: 'Are you sure that you want to delete transaction?',
-      syncMessage: 'Synchronization successfully completed, please update your browser'
+      syncMessage: 'Synchronization successfully completed, please update your browser',
     },
     'month-course': {
       head: 'Mount Course',
-      btnSubmit: 'Submit'
+      btnSubmit: 'Submit',
     },
     categories: {
       head: 'categories',
-      btnEdit: 'edit'
+      btnEdit: 'edit',
     },
     'category-editor': {
       head: 'edit category',
       category: 'Category name',
       descr: 'Small description',
-      btnUpdate: 'Update category'
+      btnUpdate: 'Update category',
     },
     'error-page': {
       h2: 'Page not found',
-      link: 'Back on the main page'
+      link: 'Back on the main page',
     },
     csvTableHead: 'Date, Money, Description, Category\n',
     currency: 'RUB',
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   },
   rus: {
     menu: ['Транзакции', 'Категории', 'Статистика', 'Отчёт', 'Расходы за месяц', 'Резервное копирование'],
@@ -117,19 +117,19 @@ export default {
     'categories-stats': {
       head: 'Статистика по категориям',
       tableHead: ['Категория', 'Процентное соотношение', 'Итог'],
-      details: 'Развёрнутая информация'
+      details: 'Развёрнутая информация',
     },
     'currency-rate': {
-      head: 'Курс доллара'
+      head: 'Курс доллара',
     },
     'transactions-graph': {
-      head: 'График транзакций'
+      head: 'График транзакций',
     },
     'custom-tooltip': {
       date: 'Дата',
       money: 'Сумма',
       category: 'Категория',
-      course: 'Курс'
+      course: 'Курс',
     },
     'transactions-results': {
       head: 'Отчёт за месяц',
@@ -140,18 +140,18 @@ export default {
       bigTransDescr: 'Описание',
       bigTransAmount: 'Сумма',
       amountMonth: 'Потрачено за месяц',
-      amountDay: 'Средняя трата в день'
+      amountDay: 'Средняя трата в день',
     },
     'transactions-table': {
       head: 'Таблица транзакций',
       btnAdd: 'Добавить транзакцию',
       btnCsv: 'Экспортировать CSV',
       bigDescr: 'Сумма потраченная за',
-      tableHead: ['Дата', 'Сумма', 'Описание', 'Категория']
+      tableHead: ['Дата', 'Сумма', 'Описание', 'Категория'],
     },
     'transactions-filter': {
       head: 'Фильтр транзакций',
-      btnSelect: 'Выбрать все'
+      btnSelect: 'Выбрать все',
     },
     'adding-panel': {
       head: 'Добавить новую транзакцию',
@@ -160,7 +160,7 @@ export default {
       descrLabel: 'Добавьте описание:',
       categoryLabel: 'Выберите категорию:',
       btnCancel: 'Отменить',
-      btnSubmit: 'Сохранить'
+      btnSubmit: 'Сохранить',
     },
     'adding-category': {
       head: 'Новая категория',
@@ -169,18 +169,18 @@ export default {
       chooseIcon: 'Выберете иконку',
       chooseColor: 'Выберете цвет',
       btnCancel: 'Отменить',
-      btnSubmit: 'Сохранить'
+      btnSubmit: 'Сохранить',
     },
     'backup-export': {
       head: 'Экспортирование данных',
       btnJson: 'Экспортировать JSON',
-      description: 'Сохраните все ваши данные в JSON формате на вашем компьютере'
+      description: 'Сохраните все ваши данные в JSON формате на вашем компьютере',
     },
     'backup-import': {
       head: 'Импортирование данных',
       btnLoad: 'Выберите файл',
       btnSync: 'Синхронизировать',
-      description: 'Выберите файл с вашего компьютера'
+      description: 'Выберите файл с вашего компьютера',
     },
     reports: {
       amountMonth: 'Потрачено за месяц',
@@ -188,7 +188,7 @@ export default {
       monthCourse: 'Курс на месяц',
       btnJson: 'Экспортировать JSON',
       btnCsv: 'Экспортировать CSV',
-      tableHead: ['Дата', 'Сумма', 'Описание', 'Категория']
+      tableHead: ['Дата', 'Сумма', 'Описание', 'Категория'],
     },
     toastr: {
       smallTransValue: 'Пожалуйста, введите величину транзакции',
@@ -199,28 +199,28 @@ export default {
       categoryUpdated: 'Категория успешно обновлена',
       transactionUpdated: 'Транзакция успешно обновлена',
       transactionRemove: 'Вы уверены, что хотите удалить транзакцию?',
-      syncMessage: 'Синхронизация успешно выполнена, пожалуйста обновите браузер'
+      syncMessage: 'Синхронизация успешно выполнена, пожалуйста обновите браузер',
     },
     'month-course': {
       head: 'Курс на месяц',
-      btnSubmit: 'Установить'
+      btnSubmit: 'Установить',
     },
     categories: {
       head: 'Категории',
-      btnEdit: 'Изменить'
+      btnEdit: 'Изменить',
     },
     'category-editor': {
       head: 'Редактировать категорию',
       category: 'Категория',
       descr: 'Небольшое описание',
-      btnUpdate: 'Обновить'
+      btnUpdate: 'Обновить',
     },
     'error-page': {
       h2: 'Страница не найдена',
-      link: 'Вернуться на главную'
+      link: 'Вернуться на главную',
     },
     csvTableHead: 'Дата, Сумма, Описание, Категория\n',
     currency: 'руб.',
-    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-  }
+    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+  },
 };

@@ -4,7 +4,7 @@ let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.categories || !initialState.categories.length) {
   initialState = {
-    categories: []
+    categories: [],
   };
 }
 
@@ -19,8 +19,8 @@ function categories(state = initialState.categories, action) {
           title: action.title,
           icon: action.icon,
           filter: action.filter,
-          color: action.color
-        }
+          color: action.color,
+        },
       ];
     case 'UPDATE_CATEGORY' :
       store = store.map(category => {

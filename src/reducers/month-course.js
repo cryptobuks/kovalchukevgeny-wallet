@@ -5,7 +5,7 @@ let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.course) {
   initialState = {
-    course: []
+    course: [],
   };
 }
 
@@ -17,8 +17,8 @@ function course(state = initialState.course, action) {
         return [
           ...store, {
             date: action.date,
-            course: action.course
-          }
+            course: action.course,
+          },
         ];
       }
       return store.map(course => {
