@@ -3,7 +3,7 @@ import moment from 'moment';
 class Helpers {
   sumSameDateTransactions(data) {
     const obj = {};
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       // Create key string for transaction data
       const key = moment(data[i].date).format('YYYY-MM-DD');
       /*
@@ -36,7 +36,7 @@ class Helpers {
     const obj = {};
     const categories = [];
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const key = data[i].category;
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
@@ -57,7 +57,7 @@ class Helpers {
     const obj = {};
     const categories = [];
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const key = data[i].category;
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
@@ -77,7 +77,7 @@ class Helpers {
     const obj = {};
     const descriptions = [];
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const key = data[i].description;
       obj[key] = data[i].description;
     }
@@ -130,7 +130,7 @@ class Helpers {
 
   groupTransactionsByMonths(transactions) {
     const arrTrans = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 12; i += 1) {
       const res = transactions.filter(transaction => {
         return moment(transaction.date).month() === i;
       });
@@ -151,7 +151,7 @@ class Helpers {
 
   filteredTransactions(transactions, categories) {
     transactions = transactions.filter(transaction => {
-      for (let i = 0; i < categories.length; i++) {
+      for (let i = 0; i < categories.length; i += 1) {
         if (transaction.category === categories[i].id) {
           if (categories[i].filter === true) {
             return transaction;
