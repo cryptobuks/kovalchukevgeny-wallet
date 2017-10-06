@@ -22,9 +22,13 @@ class TransactionsTable extends Component {
     this.state = {
       activeRow: {},
       isEditRow: {},
+      sortby: null,
+      descending: false,
       date: moment()
     }
 
+    this.sortData = this.sortData.bind(this);
+    this.sortSheme = this.sortSheme.bind(this);
     this.handleChangeData = this.handleChangeData.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeMoney = this.handleChangeMoney.bind(this);
@@ -34,6 +38,16 @@ class TransactionsTable extends Component {
     this.updateTransaction = this.updateTransaction.bind(this);
     this.cancelChanges = this.cancelChanges.bind(this);
     this.deleteTransaction = this.deleteTransaction.bind(this);
+  }
+
+  componentWillMount() {
+    const transactions = this.props.transactions;
+    // Set default sort for data
+    if(transactions.length > 0) {
+      // ignore id key
+      const column = Object.keys(transactions[0])[1];
+      this.sortData(event = null, column);
+    }
   }
 
   cancelChanges(isEditRow) {
@@ -94,6 +108,35 @@ class TransactionsTable extends Component {
     }
   }
 
+  sortSheme(dataArray, column, descending) {
+    dataArray.sort((a, b) => {
+      // Sort numbers
+      if(parseInt(column !== 'date' && a[column]) && parseInt(b[column])) {
+        return descending ?
+        (+a[column] > +b[column] ? 1 : -1) :
+        (+a[column] < +b[column] ? 1 : -1);
+      // Sort strings
+      }
+      return descending ?
+      (a[column] > b[column] ? 1 : -1) :
+      (a[column] < b[column] ? 1 : -1);
+    });
+  }
+
+  sortData(event, col) {
+    const { transactions } = this.props;
+    const column = event ? event.target.dataset.cell : col;
+    const descending = this.state.sortby === column && !this.state.descending;
+
+    this.sortSheme(transactions, column, descending);
+
+    this.setState({
+      transactions,
+      sortby: column,
+      descending
+    });
+  }
+
   editTransaction(isEditRow) {
     const oldEditRow = this.state.isEditRow || {};
     const editableTransaction = this.props.transactions.find(transaction => {
@@ -107,8 +150,8 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, descending, sortby, categories, lang, sortFunction } = this.props;
-    const { activeRow, isEditRow } = this.state;
+    let { transactions, categories, lang } = this.props;
+    const { activeRow, isEditRow, descending, sortby } = this.state;
 
     const selectCategories = categories.map((category, i) => {
       return(
@@ -234,7 +277,7 @@ class TransactionsTable extends Component {
     return (
       <div className="table transactions">
         <div className="table-head clearfix">
-          <div className="table-row clearfix" onClick={this.props.sortFunction}>
+          <div className="table-row clearfix" onClick={this.sortData}>
             {tableHead}
           </div>
         </div>
@@ -251,7 +294,7 @@ TransactionsTable.defaultProps = {
   transactions: [],
   lang: 'eng',
   descending: false,
-  sortFunction: () => {},
+
   deleteTransaction: () => {}
 };
 
@@ -261,7 +304,7 @@ TransactionsTable.propTypes = {
   descending: PropTypes.bool,
   sortby: PropTypes.string,
   deleteTransaction: PropTypes.func,
-  sortFunction: PropTypes.func,
+
   lang: PropTypes.string
 };
 
