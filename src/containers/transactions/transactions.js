@@ -31,57 +31,13 @@ class Transactions extends Component {
     this.Helpers = new Helpers();
 
     this.state = {
-      sortby: null,
-      descending: false,
-      transactions: this.props.transactions,
       showPanel: false
     };
 
-    this.sortData = this.sortData.bind(this);
-    this.sortSheme = this.sortSheme.bind(this);
     this.spellingDay = this.spellingDay.bind(this);
     this.showAddingPanel = this.showAddingPanel.bind(this);
     this.hideAddingPanel = this.hideAddingPanel.bind(this);
     this.renderTableFooter = this.renderTableFooter.bind(this);
-  }
-
-  componentWillMount() {
-    const transactions = this.props.transactions;
-    // Set default sort for data
-    if(transactions.length > 0) {
-      // ignore id key
-      const column = Object.keys(transactions[0])[1];
-      this.sortData(event = null, column);
-    }
-  }
-
-  sortSheme(dataArray, column, descending) {
-    dataArray.sort((a, b) => {
-      // Sort numbers
-      if(parseInt(column !== 'date' && a[column], 10) && parseInt(b[column], 10)) {
-        return descending ?
-        (+a[column] > +b[column] ? 1 : -1) :
-        (+a[column] < +b[column] ? 1 : -1);
-      // Sort strings
-      }
-      return descending ?
-      (a[column] > b[column] ? 1 : -1) :
-      (a[column] < b[column] ? 1 : -1);
-    });
-  }
-
-  sortData(event, col) {
-    const { transactions } = this.props;
-    const column = event ? event.target.dataset.cell : col;
-    const descending = this.state.sortby === column && !this.state.descending;
-
-    this.sortSheme(transactions, column, descending);
-
-    this.setState({
-      transactions,
-      sortby: column,
-      descending
-    });
   }
 
   spellingDay(date, lang) {
@@ -106,7 +62,7 @@ class Transactions extends Component {
 
   renderTableFooter(amount, unicTransactions) {
     const { lang } = this.props;
-    return(
+    return (
       <span className="amount">
         {staticContent[lang]['transactions-table']['bigDescr']}
         <span>{unicTransactions.length} </span>
@@ -118,7 +74,7 @@ class Transactions extends Component {
   }
 
   render() {
-    const { descending, sortby, showPanel } = this.state;
+    const { showPanel } = this.state;
     const {
       transactions,
       categories,
@@ -132,6 +88,10 @@ class Transactions extends Component {
 
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
+    const monthCategories = monthTransactions.map(transaction => transaction.category);
+    const monthActiveCategories = categories.filter(category => {
+      return monthCategories.find(montCategory => montCategory === category.id);
+    });
 
     if(monthTransactions && monthTransactions.length > 0) {
       amount = unicTransactions.reduce((sum, transaction) => sum + transaction.money, 0);
@@ -151,7 +111,7 @@ class Transactions extends Component {
           {transactions.length > 0 ?
           <Col lg={3} md={3}>
             <TransactionsFilter
-              categories={categories}
+              categories={monthActiveCategories}
               lang={lang}
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
@@ -170,9 +130,6 @@ class Transactions extends Component {
                 transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
                 deleteTransaction={deleteTransaction}
                 changeTransaction={changeTransaction}
-                descending={descending}
-                sortby={sortby}
-                sortFunction={this.sortData}
                 categories={categories}
                 lang={lang}
               />

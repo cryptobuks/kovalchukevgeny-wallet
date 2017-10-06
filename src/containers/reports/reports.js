@@ -7,6 +7,7 @@ import Helpers from './../../helpers/Helpers';
 
 import Icon from './../../components/icon/icon.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
+import TransactionsTable from '../../components/transactions-table/transactions-table.jsx';
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
@@ -14,7 +15,11 @@ import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
 import Col from './../../components/col/col.jsx';
 
-import { updateCategory, changeAllCategories } from './../../actions/actionCreators';
+import {
+  deleteTransaction,
+  changeTransaction,
+  updateCategory,
+  changeAllCategories } from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -26,8 +31,6 @@ class Reports extends Component {
 
     this.Helpers = new Helpers();
 
-    this.renderMonthPanels = this.renderMonthPanels.bind(this);
-    this.renderMonthTable = this.renderMonthTable.bind(this);
     this.openMonth = this.openMonth.bind(this);
   }
 
@@ -35,56 +38,13 @@ class Reports extends Component {
     event.currentTarget.parentNode.parentNode.classList.toggle('expanded');
   }
 
-  renderMonthTable(transactions) {
-    const { categories, lang } = this.props;
-
-    return transactions.map((transaction, i) => {
-      const categoryIconObj = this.props.categories.find(category => {
-        if(category.id === transaction.category) {
-          return category.icon;
-        }
-      }) || null;
-
-      let categoryColor = categories.find(category => {
-        if(category.id === transaction.category) {
-          return category.color;
-        }
-      });
-
-      categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
-
-      return (
-        <div className="table-row clearfix" key={i} data-row={transaction.id}>
-          <div className="table-data clearfix">{moment(transaction.date).format('DD/MM/YYYY')}</div>
-          <div className="table-data clearfix">
-            <span>{transaction.money} </span>
-            <span>{staticContent[lang]['currency']}</span>
-          </div>
-          <div
-            className="table-data clearfix"
-            title={transaction.description}
-          >{transaction.description}</div>
-          <div className="table-data clearfix">
-            <span>
-              <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}>
-                <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
-              </span>
-              {this.Helpers.getCategoryById(categories, transaction)}
-            </span>
-          </div>
-        </div>
-      );
-    });
-  }
-
   renderMonthPanels(reMapedTransactions) {
-    const { lang, course } = this.props;
+    const { lang, course, categories, deleteTransaction, changeTransaction } = this.props;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
       let amountDay = 0;
       let amountMonth = 0;
-      let amountMonthCurrency = 0;
       let monthCourse = { course: 1 };
 
       if(reMapedTransaction && reMapedTransaction.length > 0) {
@@ -101,16 +61,6 @@ class Reports extends Component {
           return moment(courseItem.date).format('YYYY-MM') === moment(unicTransactions[0].date).format('YYYY-MM');
         }) || { course: 1 };
       }
-
-      amountMonthCurrency = amountMonth / monthCourse.course;
-
-      const tableHead = staticContent[lang]['reports']['tableHead'].map((headItem, i) => {
-        return (
-          <div key={i} className="table-data">
-            {staticContent[lang]['reports']['tableHead'][i]}
-          </div>
-        );
-      });
 
       return (
         <div key={i} data-month={staticContent[lang]['months'][i + 1]}>
@@ -129,16 +79,13 @@ class Reports extends Component {
                 </h3>
               </div>
               <div className="panel-body">
-                <div className="table transactions">
-                  <div className="table-head clearfix">
-                    <div className="table-row clearfix">
-                      {tableHead}
-                    </div>
-                  </div>
-                  <div className="table-body clearfix">
-                    {this.renderMonthTable(reMapedTransaction)}
-                  </div>
-                </div>
+                <TransactionsTable
+                  transactions={reMapedTransaction}
+                  deleteTransaction={deleteTransaction}
+                  changeTransaction={changeTransaction}
+                  categories={categories}
+                  lang={lang}
+                />
               </div>
               <div className="panel-footer">
                 <h3 className="panel-title">
@@ -147,7 +94,7 @@ class Reports extends Component {
                       {staticContent[lang]['reports']['amountMonth']}
                       <span>{amountMonth.toFixed(2)}</span>
                       {staticContent[lang]['currency']} {'/'}
-                      <span>{amountMonthCurrency.toFixed(2)}</span>{'$'}
+                      <span>{(amountMonth / monthCourse.course).toFixed(2)}</span>{'$'}
                     </h5>
                     <h5 className="amount">
                       {staticContent[lang]['reports']['amountDay']}
@@ -170,14 +117,9 @@ class Reports extends Component {
   }
 
   render() {
-    const {
-      transactions,
-      categories,
-      lang,
-      updateCategory,
-      changeAllCategories } = this.props;
-
+    const { transactions, categories, lang, updateCategory, changeAllCategories } = this.props;
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
+
     return (
       <Container specialClass="reports">
         <Row>
@@ -229,7 +171,9 @@ Reports.propTypes = {
   course: PropTypes.array,
   lang: PropTypes.string,
   transactions: PropTypes.array,
-  updateCategory: PropTypes.func
+  updateCategory: PropTypes.func,
+  deleteTransaction: PropTypes.func,
+  changeTransaction: PropTypes.func
 };
 
 export default connect(state => ({
@@ -237,4 +181,9 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course
-}), { updateCategory, changeAllCategories })(LoadingHOC('transactions')(Reports));
+}), {
+  deleteTransaction,
+  changeTransaction,
+  updateCategory,
+  changeAllCategories
+})(LoadingHOC('transactions')(Reports));
