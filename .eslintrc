@@ -31,8 +31,8 @@
 
     // TODO: turn on as much as possible rules back
     "dot-notation": "off",
-    "linebreak-style": "off",
-    "no-mixed-operators": "off",
+    //done "linebreak-style": "off",
+    //done "no-mixed-operators": "off",
     "class-methods-use-this": "off",
     //done "comma-dangle": "off",
     "react/forbid-prop-types": "off",
