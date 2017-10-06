@@ -105,7 +105,7 @@ class Helpers {
 
   getDayName(dayNumber, lang) {
     const days = {
-      'rus': [
+      rus: [
         'Воскресенье',
         'Понедельник',
         'Вторник',
@@ -114,7 +114,7 @@ class Helpers {
         'Пятница',
         'Суббота'
       ],
-      'eng': [
+      eng: [
         'Sunday',
         'Monday',
         'Tuesday',

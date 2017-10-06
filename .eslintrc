@@ -49,7 +49,7 @@
     "import/no-extraneous-dependencies": "off",
     "comma-spacing": "off",
     "func-names": "off",
-    "quote-props": "off",
+    //done "quote-props": "off",
     "no-param-reassign": "off",
     //done "prefer-arrow-callback": "off",
     // done "space-before-function-paren": "off",
