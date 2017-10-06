@@ -64,6 +64,18 @@
       }
     }
   }
+
+  .recharts-legend-wrapper {
+    width: 220px !important;
+
+    @media screen and (max-width: 1200px) {
+      width: 120px !important;
+    }
+
+    @media screen and (max-width: 992px) {
+      width: 220px !important;
+    }
+  }
 }
 
 .stats {
