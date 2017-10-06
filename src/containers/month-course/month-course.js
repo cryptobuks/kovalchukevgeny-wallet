@@ -51,9 +51,7 @@ class MonthCourse extends Component {
     let { course } = this.props;
     const { currentCourse, date } = this.state;
 
-    course = course.find(courseItem => {
-      return moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM');
-    });
+    course = course.find(courseItem => moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM'));
 
     course = course ? course.course : 1;
 

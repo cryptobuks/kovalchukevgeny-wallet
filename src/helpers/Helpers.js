@@ -3,7 +3,7 @@ import moment from 'moment';
 class Helpers {
   sumSameDateTransactions(data) {
     const obj = {};
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       // Create key string for transaction data
       const key = moment(data[i].date).format('YYYY-MM-DD');
       /*
@@ -21,10 +21,12 @@ class Helpers {
      * [{money: 20, date: Sun Jul 09 2017}, {money: 10, date: Sun Jul 10 2017}]
     **/
     for (const prop in obj) {
-      transactions.push({
-        money: obj[prop],
-        date: new Date(moment(prop).format('YYYY-MM-DD'))
-      });
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        transactions.push({
+          money: obj[prop],
+          date: new Date(moment(prop).format('YYYY-MM-DD'))
+        });
+      }
     }
 
     return transactions;
@@ -34,16 +36,18 @@ class Helpers {
     const obj = {};
     const categories = [];
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const key = data[i].category;
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
     for (const prop in obj) {
-      categories.push({
-        money: obj[prop],
-        category: prop
-      });
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        categories.push({
+          money: obj[prop],
+          category: prop
+        });
+      }
     }
 
     return categories;
@@ -53,15 +57,17 @@ class Helpers {
     const obj = {};
     const categories = [];
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const key = data[i].category;
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
     for (const prop in obj) {
-      categories.push({
-        [prop]: obj[prop]
-      });
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        categories.push({
+          [prop]: obj[prop]
+        });
+      }
     }
 
     return categories;
@@ -71,15 +77,17 @@ class Helpers {
     const obj = {};
     const descriptions = [];
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const key = data[i].description;
       obj[key] = data[i].description;
     }
 
     for (const prop in obj) {
-      descriptions.push({
-        label: obj[prop]
-      });
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        descriptions.push({
+          label: obj[prop]
+        });
+      }
     }
 
     return descriptions;
@@ -122,7 +130,7 @@ class Helpers {
 
   groupTransactionsByMonths(transactions) {
     const arrTrans = [];
-    for(let i = 0; i < 12; i++) {
+    for (let i = 0; i < 12; i++) {
       const res = transactions.filter(transaction => {
         return moment(transaction.date).month() === i;
       });

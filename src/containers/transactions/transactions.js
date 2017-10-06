@@ -58,7 +58,7 @@ class Transactions extends Component {
   sortSheme(dataArray, column, descending) {
     dataArray.sort((a, b) => {
       // Sort numbers
-      if(parseInt(column !== 'date' && a[column]) && parseInt(b[column])) {
+      if(parseInt(column !== 'date' && a[column], 10) && parseInt(b[column], 10)) {
         return descending ?
         (+a[column] > +b[column] ? 1 : -1) :
         (+a[column] < +b[column] ? 1 : -1);

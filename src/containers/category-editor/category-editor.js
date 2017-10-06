@@ -72,7 +72,7 @@ class CategoryEditor extends PureComponent {
 
   updateCategory() {
     const { id, description, title, icon, filter, color } = this.state;
-    const { updateCategory, lang } = this.props;
+    const { lang } = this.props;
 
     updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
@@ -148,7 +148,6 @@ CategoryEditor.defaultProps = {
 
 CategoryEditor.propTypes = {
   lang: PropTypes.string,
-  updateCategory: PropTypes.func,
   categories: PropTypes.array,
   routeParams: PropTypes.object
 };

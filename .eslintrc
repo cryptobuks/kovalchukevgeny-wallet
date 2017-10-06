@@ -56,15 +56,15 @@
     "keyword-spacing": "off",
     "no-plusplus": "off",
     "no-return-assign": "off",
-    "no-shadow": "off",
+    //"no-shadow": "off",
     "arrow-body-style": "off",
     "array-callback-return": "off",
     "no-restricted-syntax": "off",
-    "guard-for-in": "off",
-    "space-infix-ops": "off",
+    //done "guard-for-in": "off",
+    //done "space-infix-ops": "off",
     "max-len": "off",
     "no-global-assign": "off",
-    "radix": "off",
+    //done "radix": "off",
     "no-nested-ternary": "off"
   }
 }
