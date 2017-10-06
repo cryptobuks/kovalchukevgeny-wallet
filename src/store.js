@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './reducers/index';
 import { save } from 'redux-localstorage-simple';
+import rootReducer from './reducers/index';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers =

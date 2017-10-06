@@ -1,11 +1,11 @@
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
-import config from '../webpack.config.dev';
 import open from 'open';
 import favicon from 'serve-favicon';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import config from '../webpack.config.dev';
 import * as db from './../server/utils/DataBaseUtils';
 
 const port = 3000;
