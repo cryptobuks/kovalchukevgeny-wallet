@@ -52,19 +52,19 @@
     //done "quote-props": "off",
     "no-param-reassign": "off",
     //done "prefer-arrow-callback": "off",
-    // done "space-before-function-paren": "off",
+    //done "space-before-function-paren": "off",
     //done "keyword-spacing": "off",
     //done "no-plusplus": "off",
     //done "no-return-assign": "off",
     "no-shadow": "off",
     "arrow-body-style": "off",
     "array-callback-return": "off",
-    "no-restricted-syntax": "off",
+    //done "no-restricted-syntax": "off",
     //done "guard-for-in": "off",
     //done "space-infix-ops": "off",
     "max-len": "off",
-    "no-global-assign": "off",
+    //done "no-global-assign": "off",
     //done "radix": "off",
-    "no-nested-ternary": "off"
+    //done "no-nested-ternary": "off"
   }
 }

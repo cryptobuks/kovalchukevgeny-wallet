@@ -20,14 +20,14 @@ class Helpers {
      * example:
      * [{money: 20, date: Sun Jul 09 2017}, {money: 10, date: Sun Jul 10 2017}]
     **/
-    for (const prop in obj) {
+    Object.keys(obj).forEach(prop => {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         transactions.push({
           money: obj[prop],
           date: new Date(moment(prop).format('YYYY-MM-DD')),
         });
       }
-    }
+    });
 
     return transactions;
   }
@@ -41,14 +41,14 @@ class Helpers {
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
-    for (const prop in obj) {
+    Object.keys(obj).forEach(prop => {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         categories.push({
           money: obj[prop],
           category: prop,
         });
       }
-    }
+    });
 
     return categories;
   }
@@ -62,13 +62,13 @@ class Helpers {
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
-    for (const prop in obj) {
+    Object.keys(obj).forEach(prop => {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         categories.push({
           [prop]: obj[prop],
         });
       }
-    }
+    });
 
     return categories;
   }
@@ -82,13 +82,13 @@ class Helpers {
       obj[key] = data[i].description;
     }
 
-    for (const prop in obj) {
+    Object.keys(obj).forEach(prop => {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
         descriptions.push({
           label: obj[prop],
         });
       }
-    }
+    });
 
     return descriptions;
   }
