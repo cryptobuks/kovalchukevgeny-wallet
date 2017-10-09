@@ -58,7 +58,7 @@
     //done "no-return-assign": "off",
     "no-shadow": "off",
     "arrow-body-style": "off",
-    "array-callback-return": "off",
+    //daone "array-callback-return": "off",
     //done "no-restricted-syntax": "off",
     //done "guard-for-in": "off",
     //done "space-infix-ops": "off",

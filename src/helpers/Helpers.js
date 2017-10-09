@@ -158,6 +158,7 @@ class Helpers {
           }
         }
       }
+      return false;
     });
     return transactions;
   }

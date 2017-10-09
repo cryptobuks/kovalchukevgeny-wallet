@@ -42,7 +42,7 @@ class CategoryEditor extends PureComponent {
 
   componentWillMount() {
     const { categories } = this.props;
-    const category = categories.find(category => category.id === +this.props.routeParams.id);
+    const category = categories.find(categoryItem => categoryItem.id === +this.props.routeParams.id);
 
     this.setState({
       id: category.id,
