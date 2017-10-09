@@ -22,10 +22,11 @@ function course(state = initialState.course, action) {
         ];
       }
       return store.map(course => {
+        const newCourse = course;
         if (moment(course.date).format('YYYY-MM') === moment(action.date).format('YYYY-MM')) {
-          course.course = action.course;
+          newCourse.course = action.course;
         }
-        return course;
+        return newCourse;
       });
     default:
       return state;

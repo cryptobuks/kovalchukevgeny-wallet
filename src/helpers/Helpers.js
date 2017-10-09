@@ -150,7 +150,7 @@ class Helpers {
   }
 
   filteredTransactions(transactions, categories) {
-    transactions = transactions.filter(transaction => {
+    const result = transactions.filter(transaction => {
       for (let i = 0; i < categories.length; i += 1) {
         if (transaction.category === categories[i].id) {
           if (categories[i].filter === true) {
@@ -160,7 +160,7 @@ class Helpers {
       }
       return false;
     });
-    return transactions;
+    return result;
   }
 }
 

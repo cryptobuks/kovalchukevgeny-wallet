@@ -50,7 +50,7 @@
     //done "comma-spacing": "off",
     //done "func-names": "off",
     //done "quote-props": "off",
-    "no-param-reassign": "off",
+    //done "no-param-reassign": "off",
     //done "prefer-arrow-callback": "off",
     //done "space-before-function-paren": "off",
     //done "keyword-spacing": "off",

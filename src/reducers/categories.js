@@ -11,7 +11,7 @@ if (!initialState || !initialState.categories || !initialState.categories.length
 function categories(state = initialState.categories, action) {
   let store = [...state];
   switch (action.type) {
-    case 'ADD_CATEGORY' :
+    case 'ADD_CATEGORY':
       return [
         ...state, {
           id: action.id,
@@ -22,21 +22,22 @@ function categories(state = initialState.categories, action) {
           color: action.color,
         },
       ];
-    case 'UPDATE_CATEGORY' :
+    case 'UPDATE_CATEGORY':
       store = store.map(category => {
+        const updatedCategory = category;
         if (category.id === action.id) {
-          category.description = action.description;
-          category.title = action.title;
-          category.icon = action.icon;
-          category.filter = action.filter;
-          category.color = action.color;
+          updatedCategory.description = action.description;
+          updatedCategory.title = action.title;
+          updatedCategory.icon = action.icon;
+          updatedCategory.filter = action.filter;
+          updatedCategory.color = action.color;
         }
         return category;
       });
       return store;
-    case 'CHANGE_ALL_CATEGORIES' :
+    case 'CHANGE_ALL_CATEGORIES':
       return action.categories;
-    case 'DELETE_CATEGORY' :
+    case 'DELETE_CATEGORY':
       return store.filter(category => category.id !== action.id);
     default:
       return state;

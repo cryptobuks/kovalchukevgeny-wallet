@@ -23,14 +23,15 @@ function transactions(state = initialState.transactions, action) {
       ];
     case 'CHANGE_TRANSACTION' :
       store = store.map(transaction => {
+        const newTransaction = transaction;
         if (transaction.id === action.id) {
-          transaction.date = action.date;
-          transaction.money = action.money;
-          transaction.description = action.description;
-          transaction.category = action.category;
+          newTransaction.date = action.date;
+          newTransaction.money = action.money;
+          newTransaction.description = action.description;
+          newTransaction.category = action.category;
           // TODO: do not add this in store
-          transaction.active = undefined;
-          transaction.isEdit = undefined;
+          newTransaction.active = undefined;
+          newTransaction.isEdit = undefined;
         }
         return transaction;
       });
