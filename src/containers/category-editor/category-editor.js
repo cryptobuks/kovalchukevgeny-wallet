@@ -76,7 +76,7 @@ class CategoryEditor extends PureComponent {
 
     updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
-    toastr.success(staticContent[lang]['toastr']['categoryUpdated'], { timeOut: 3000 });
+    toastr.success(staticContent[lang].toastr.categoryUpdated, { timeOut: 3000 });
   }
 
   render() {
@@ -89,20 +89,20 @@ class CategoryEditor extends PureComponent {
           <Col lg={12}>
             <Panel
               specialClass="category-editor"
-              heading={staticContent[lang]['category-editor']['head']}
+              heading={staticContent[lang]['category-editor'].head}
               headingIcon="settings"
             >
               <Row>
                 <Col lg={3} md={2} sm={6}>
                   <Input
-                    placeholder={staticContent[lang]['category-editor']['category']}
+                    placeholder={staticContent[lang]['category-editor'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
                 </Col>
                 <Col lg={3} md={3} sm={6}>
                   <Input
-                    placeholder={staticContent[lang]['category-editor']['descr']}
+                    placeholder={staticContent[lang]['category-editor'].descr}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
@@ -129,7 +129,7 @@ class CategoryEditor extends PureComponent {
                       specialClass="btn btn-primary"
                       onClickFunction={this.updateCategory}
                       icon="done"
-                    >{staticContent[lang]['category-editor']['btnUpdate']}</Button>
+                    >{staticContent[lang]['category-editor'].btnUpdate}</Button>
                   </ButtonToolbar>
                 </Col>
               </Row>

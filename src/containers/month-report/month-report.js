@@ -33,9 +33,9 @@ class MonthReport extends Component {
         transactionsByDay.push(array.filter(item => {
           if (moment(item.date).date() === currentProcessedDay) {
             const category = this.Helpers.getCategoryItemById(categories, item.category);
-            item['categoryName'] = category.title;
-            item['categoryIcon'] = category.icon;
-            item['categoryColor'] = category.color;
+            item.categoryName = category.title;
+            item.categoryIcon = category.icon;
+            item.categoryColor = category.color;
             return true;
           }
           return false;

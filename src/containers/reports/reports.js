@@ -63,7 +63,7 @@ class Reports extends Component {
       }
 
       return (
-        <div key={i} data-month={staticContent[lang]['months'][i + 1]}>
+        <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
             <div className="panel panel-primary res-table">
               <div
@@ -72,7 +72,7 @@ class Reports extends Component {
               >
                 <h3 className="panel-title left">
                   <Icon icon={'today'} />
-                  {`${staticContent[lang]['months'][i]} ${moment(reMapedTransaction.date).year()}`}
+                  {`${staticContent[lang].months[i]} ${moment(reMapedTransaction.date).year()}`}
                 </h3>
                 <h3 className="panel-title right">
                   <Icon icon="arrow_drop_down_circle" />
@@ -91,20 +91,20 @@ class Reports extends Component {
                 <h3 className="panel-title">
                   <div className="text-right amount-wrapper">
                     <h5 className="amount">
-                      {staticContent[lang]['reports']['amountMonth']}
+                      {staticContent[lang].reports.amountMonth}
                       <span>{amountMonth.toFixed(2)}</span>
-                      {staticContent[lang]['currency']} {'/'}
+                      {staticContent[lang].currency} {'/'}
                       <span>{(amountMonth / monthCourse.course).toFixed(2)}</span>{'$'}
                     </h5>
                     <h5 className="amount">
-                      {staticContent[lang]['reports']['amountDay']}
+                      {staticContent[lang].reports.amountDay}
                       <span>{amountDay.toFixed(2)}</span>
-                      {staticContent[lang]['currency']}
+                      {staticContent[lang].currency}
                     </h5>
                     <h5 className="amount">
-                      {staticContent[lang]['reports']['monthCourse']}
+                      {staticContent[lang].reports.monthCourse}
                       <span>{monthCourse.course.toFixed(2)}</span>
-                      {staticContent[lang]['currency']}
+                      {staticContent[lang].currency}
                     </h5>
                   </div>
                 </h3>
@@ -145,7 +145,7 @@ class Reports extends Component {
                   categories={categories}
                   fileName="report"
                   fileFormat="csv"
-                  btnText={staticContent[lang]['reports']['btnCsv']}
+                  btnText={staticContent[lang].reports.btnCsv}
                 />
               </ButtonToolbar>
             }

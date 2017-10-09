@@ -64,11 +64,11 @@ class Transactions extends Component {
     const { lang } = this.props;
     return (
       <span className="amount">
-        {staticContent[lang]['transactions-table']['bigDescr']}
+        {staticContent[lang]['transactions-table'].bigDescr}
         <span>{unicTransactions.length} </span>
         {this.spellingDay(unicTransactions.length, lang)}{':'}
         <span>{amount.toFixed(2)} </span>
-        {staticContent[lang]['currency']}
+        {staticContent[lang].currency}
       </span>
     );
   }
@@ -116,13 +116,13 @@ class Transactions extends Component {
                 updateCategory={updateCategory}
                 changeAllCategories={changeAllCategories}
               />
-            </Col> : <h4>{staticContent[lang]['description']}</h4>
+            </Col> : <h4>{staticContent[lang].description}</h4>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
               <Panel
                 specialClass="tr-table"
-                heading={staticContent[lang]['transactions-table']['head']}
+                heading={staticContent[lang]['transactions-table'].head}
                 headingIcon="view_list"
                 footer={this.renderTableFooter(amount, unicTransactions)}
               >
@@ -142,14 +142,14 @@ class Transactions extends Component {
                     onClickFunction={this.showAddingPanel}
                     specialClass="btn btn-primary"
                     icon="add"
-                  >{staticContent[lang]['transactions-table']['btnAdd']}</Button>
+                  >{staticContent[lang]['transactions-table'].btnAdd}</Button>
                   {transactions.length > 0 &&
                     <DownloadData
                       transactions={monthTransactions}
                       categories={categories}
                       fileName="monthExpenses"
                       fileFormat="csv"
-                      btnText={staticContent[lang]['transactions-table']['btnCsv']}
+                      btnText={staticContent[lang]['transactions-table'].btnCsv}
                     />
                   }
                 </ButtonsToolbar>

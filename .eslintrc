@@ -30,7 +30,7 @@
     "arrow-parens": ["error", "as-needed"],
 
     // TODO: turn on as much as possible rules back
-    "dot-notation": "off",
+    //done "dot-notation": "off",
     //done "linebreak-style": "off",
     //done "no-mixed-operators": "off",
     "class-methods-use-this": "off",
