@@ -84,7 +84,7 @@ class TransactionsTable extends Component {
   }
 
   updateTransaction(isEditRow) {
-    const { lang } = this.props;
+    const { lang, changeTransaction } = this.props;
     let { id, date, money, description, category } = this.state.isEditRow;
     this.props.changeTransaction(id, date, +money, description, +category);
     this.setState({
@@ -182,11 +182,11 @@ class TransactionsTable extends Component {
         };
       }) || null;
 
-      let categoryColor = categories.find(category => {
-        if(category.id === transaction.category) {
+       let categoryColor = categories.find(category => {
+        if(category.id === +transaction.category) {
           return category.color;
         };
-      });
+       });
 
       categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
 

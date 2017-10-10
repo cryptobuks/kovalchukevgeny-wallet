@@ -47,36 +47,38 @@ class Reports extends Component {
       let amountMonth = 0;
       let monthCourse = { course: 1 };
 
-      if(reMapedTransaction && reMapedTransaction.length > 0) {
+      if (reMapedTransaction && reMapedTransaction.length > 0) {
         amountDay = unicTransactions.reduce((sum, transaction) => {
-          return sum += transaction.money;
+          return sum + transaction.money;
         }, 0) / unicTransactions.length;
         amountMonth = unicTransactions.reduce((sum, transaction) => {
-          return sum += transaction.money;
+          return sum + transaction.money;
         }, 0);
       }
 
-      if(unicTransactions[0]) {
+      if (unicTransactions[0]) {
         monthCourse = course.find(courseItem => {
           return moment(courseItem.date).format('YYYY-MM') === moment(unicTransactions[0].date).format('YYYY-MM');
         }) || { course: 1 };
       }
 
       return (
-        <div key={i} data-month={staticContent[lang]['months'][i+1]}>
+        <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
             <div className="panel panel-primary res-table">
-              <div
-                onClick={e => this.openMonth(e)}
-                className="panel-heading clearfix"
-              >
-                <h3 className="panel-title left">
-                  <Icon icon={'today'} />
-                  {`${staticContent[lang]['months'][i]} ${moment(reMapedTransaction.date).year()}`}
-                </h3>
-                <h3 className="panel-title right">
-                  <Icon icon="arrow_drop_down_circle" />
-                </h3>
+              <div className="panel-heading-container">
+                <button
+                  onClick={e => this.openMonth(e)}
+                  className="panel-heading clearfix"
+                >
+                  <h3 className="panel-title left">
+                    <Icon icon={'today'} />
+                    {`${staticContent[lang].months[i]} ${moment(reMapedTransaction.date).year()}`}
+                  </h3>
+                  <h3 className="panel-title right">
+                    <Icon icon="arrow_drop_down_circle" />
+                  </h3>
+                </button>
               </div>
               <div className="panel-body">
                 <TransactionsTable
@@ -91,20 +93,20 @@ class Reports extends Component {
                 <h3 className="panel-title">
                   <div className="text-right amount-wrapper">
                     <h5 className="amount">
-                      {staticContent[lang]['reports']['amountMonth']}
+                      {staticContent[lang].reports.amountMonth}
                       <span>{amountMonth.toFixed(2)}</span>
-                      {staticContent[lang]['currency']} {'/'}
+                      {staticContent[lang].currency} {'/'}
                       <span>{(amountMonth / monthCourse.course).toFixed(2)}</span>{'$'}
                     </h5>
                     <h5 className="amount">
-                      {staticContent[lang]['reports']['amountDay']}
+                      {staticContent[lang].reports.amountDay}
                       <span>{amountDay.toFixed(2)}</span>
-                      {staticContent[lang]['currency']}
+                      {staticContent[lang].currency}
                     </h5>
                     <h5 className="amount">
-                      {staticContent[lang]['reports']['monthCourse']}
+                      {staticContent[lang].reports.monthCourse}
                       <span>{monthCourse.course.toFixed(2)}</span>
-                      {staticContent[lang]['currency']}
+                      {staticContent[lang].currency}
                     </h5>
                   </div>
                 </h3>
@@ -139,15 +141,15 @@ class Reports extends Component {
             />
             {this.renderMonthPanels(reMapedTransactions)}
             {transactions.length > 0 &&
-            <ButtonToolbar>
-              <DownloadData
-                transactions={transactions}
-                categories={categories}
-                fileName="report"
-                fileFormat="csv"
-                btnText={staticContent[lang]['reports']['btnCsv']}
-              />
-            </ButtonToolbar>
+              <ButtonToolbar>
+                <DownloadData
+                  transactions={transactions}
+                  categories={categories}
+                  fileName="report"
+                  fileFormat="csv"
+                  btnText={staticContent[lang].reports.btnCsv}
+                />
+              </ButtonToolbar>
             }
           </Col>
         </Row>
@@ -162,7 +164,7 @@ Reports.defaultProps = {
   transactions: [],
   course: [],
   updateCategory: () => {},
-  changeAllCategories: () => {}
+  changeAllCategories: () => {},
 };
 
 Reports.propTypes = {
@@ -173,17 +175,17 @@ Reports.propTypes = {
   transactions: PropTypes.array,
   updateCategory: PropTypes.func,
   deleteTransaction: PropTypes.func,
-  changeTransaction: PropTypes.func
+  changeTransaction: PropTypes.func,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang,
-  course: state.course
+  course: state.course,
 }), {
   deleteTransaction,
   changeTransaction,
   updateCategory,
-  changeAllCategories
+  changeAllCategories,
 })(LoadingHOC('transactions')(Reports));

@@ -53,19 +53,19 @@ Statistics.defaultProps = {
   categories: [],
   course: [],
   lang: 'eng',
-  transactions: []
+  transactions: [],
 };
 
 Statistics.propTypes = {
   categories: PropTypes.array,
   course: PropTypes.array,
   lang: PropTypes.string,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang,
-  course: state.course
+  course: state.course,
 }))(Statistics);

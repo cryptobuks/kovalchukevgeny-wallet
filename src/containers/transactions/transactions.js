@@ -31,7 +31,7 @@ class Transactions extends Component {
     this.Helpers = new Helpers();
 
     this.state = {
-      showPanel: false
+      showPanel: false,
     };
 
     this.spellingDay = this.spellingDay.bind(this);
@@ -46,7 +46,7 @@ class Transactions extends Component {
       return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
     };
 
-    if(lang === 'eng') {
+    if (lang === 'eng') {
       return date === 1 ? 'day' : 'days';
     }
     return declOfNum(date, ['день', 'дня', 'дней']);
@@ -64,11 +64,11 @@ class Transactions extends Component {
     const { lang } = this.props;
     return (
       <span className="amount">
-        {staticContent[lang]['transactions-table']['bigDescr']}
+        {staticContent[lang]['transactions-table'].bigDescr}
         <span>{unicTransactions.length} </span>
         {this.spellingDay(unicTransactions.length, lang)}{':'}
         <span>{amount.toFixed(2)} </span>
-        {staticContent[lang]['currency']}
+        {staticContent[lang].currency}
       </span>
     );
   }
@@ -93,8 +93,8 @@ class Transactions extends Component {
       return monthCategories.find(montCategory => montCategory === category.id);
     });
 
-    if(monthTransactions && monthTransactions.length > 0) {
-      amount = unicTransactions.reduce((sum, transaction) => sum += transaction.money, 0);
+    if (monthTransactions && monthTransactions.length > 0) {
+      amount = unicTransactions.reduce((sum, transaction) => sum + transaction.money, 0);
     }
 
     return (
@@ -109,31 +109,31 @@ class Transactions extends Component {
             hideAddingPanel={this.hideAddingPanel}
           />
           {transactions.length > 0 ?
-          <Col lg={3} md={3}>
-            <TransactionsFilter
-              categories={monthActiveCategories}
-              lang={lang}
-              updateCategory={updateCategory}
-              changeAllCategories={changeAllCategories}
-            />
-          </Col> : <h4>{staticContent[lang]['description']}</h4>
+            <Col lg={3} md={3}>
+              <TransactionsFilter
+                categories={monthActiveCategories}
+                lang={lang}
+                updateCategory={updateCategory}
+                changeAllCategories={changeAllCategories}
+              />
+            </Col> : <h4>{staticContent[lang].description}</h4>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
-            <Panel
-              specialClass="tr-table"
-              heading={staticContent[lang]['transactions-table']['head']}
-              headingIcon="view_list"
-              footer={this.renderTableFooter(amount, unicTransactions)}
-            >
-              <TransactionsTable
-                transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
-                deleteTransaction={deleteTransaction}
-                changeTransaction={changeTransaction}
-                categories={categories}
-                lang={lang}
-              />
-            </Panel>
+              <Panel
+                specialClass="tr-table"
+                heading={staticContent[lang]['transactions-table'].head}
+                headingIcon="view_list"
+                footer={this.renderTableFooter(amount, unicTransactions)}
+              >
+                <TransactionsTable
+                  transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
+                  deleteTransaction={deleteTransaction}
+                  changeTransaction={changeTransaction}
+                  categories={categories}
+                  lang={lang}
+                />
+              </Panel>
             }
             <Row>
               <Col lg={12}>
@@ -142,15 +142,15 @@ class Transactions extends Component {
                     onClickFunction={this.showAddingPanel}
                     specialClass="btn btn-primary"
                     icon="add"
-                  >{staticContent[lang]['transactions-table']['btnAdd']}</Button>
+                  >{staticContent[lang]['transactions-table'].btnAdd}</Button>
                   {transactions.length > 0 &&
-                  <DownloadData
-                    transactions={monthTransactions}
-                    categories={categories}
-                    fileName="monthExpenses"
-                    fileFormat="csv"
-                    btnText={staticContent[lang]['transactions-table']['btnCsv']}
-                  />
+                    <DownloadData
+                      transactions={monthTransactions}
+                      categories={categories}
+                      fileName="monthExpenses"
+                      fileFormat="csv"
+                      btnText={staticContent[lang]['transactions-table'].btnCsv}
+                    />
                   }
                 </ButtonsToolbar>
               </Col>
@@ -170,7 +170,7 @@ Transactions.defaultProps = {
   changeTransaction: () => {},
   addTransaction: () => {},
   updateCategory: () => {},
-  changeAllCategories: () => {}
+  changeAllCategories: () => {},
 };
 
 Transactions.propTypes = {
@@ -181,17 +181,17 @@ Transactions.propTypes = {
   deleteTransaction: PropTypes.func,
   lang: PropTypes.string,
   transactions: PropTypes.array,
-  updateCategory: PropTypes.func
+  updateCategory: PropTypes.func,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
 }), {
   deleteTransaction,
   changeTransaction,
   addTransaction,
   updateCategory,
-  changeAllCategories
+  changeAllCategories,
 })(Transactions);

@@ -11,5 +11,5 @@ export default {
 
   deleteTransaction(transactionId) {
     return axios.delete(`http://localhost:3000/transactions/${transactionId}`);
-  }
+  },
 };

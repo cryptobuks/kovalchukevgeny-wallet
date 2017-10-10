@@ -11,21 +11,21 @@ const ErrorPage = props => {
     <div className="not-found">
       <div className="text">
         <h1>{'404'}</h1>
-        <h2>{staticContent[lang]['error-page']['h2']}</h2>
-        <Link to="/" className="link">{staticContent[lang]['error-page']['link']}</Link>
+        <h2>{staticContent[lang]['error-page'].h2}</h2>
+        <Link to="/" className="link">{staticContent[lang]['error-page'].link}</Link>
       </div>
     </div>
   );
 };
 
 ErrorPage.defaultProps = {
-  lang: 'eng'
+  lang: 'eng',
 };
 
 ErrorPage.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
 };
 
 export default connect(state => ({
-  lang: state.lang
+  lang: state.lang,
 }))(ErrorPage);

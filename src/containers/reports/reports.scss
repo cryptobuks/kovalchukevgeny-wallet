@@ -17,6 +17,15 @@
     }
   }
 
+  .panel-heading-container {
+    font-size: 0;
+
+    button.panel-heading {
+      border: 0;
+      width: 100%;
+    }
+  }
+
   .panel-heading {
     cursor: pointer;
 
