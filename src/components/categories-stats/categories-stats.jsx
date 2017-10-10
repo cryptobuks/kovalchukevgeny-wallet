@@ -37,9 +37,16 @@ const CategoriesStats = props => {
   }
   // Remap category object, transform category title from id to title
   categoriesStats = categoriesStats.map(category => {
-    const currentCategory = categories.find(item => +category.category === item.id);
-    let categoryColor = categories.find(item => +category.category === item.id);
-    categoryColor = categoryColor.color ? categoryColor.color : '#b91919';
+    let currentCategory = categories.find(item => +category.category === item.id);
+    let categoryColor = '#b91919';
+
+    if (currentCategory) {
+      categoryColor = currentCategory.color;
+    } else {
+      currentCategory = category;
+      currentCategory.title = staticContent[lang].defaultCategory;
+    }
+
     return {
         money: category.money,
         category: currentCategory.title,
@@ -85,11 +92,14 @@ const CategoriesStats = props => {
   // Remap data for graph
   let categoriesStatsPie = categoriesStats.map((categoryStats, index) => {
     const categoryPercentage = Math.round((categoryStats.money / amountCategoryMoney) * 100);
-
-    let categoryColor = categories.find(category => {
+    let categoryColor = '#33373e';
+    let currentCategory = categories.find(category => {
       return category.title === categoryStats.category
     });
-    categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
+
+    if (currentCategory) {
+      categoryColor = currentCategory.color;
+    }
 
     return {
       id: index,
