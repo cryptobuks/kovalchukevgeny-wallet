@@ -33,9 +33,10 @@ class MonthReport extends Component {
         transactionsByDay.push(array.filter(item => {
           if (moment(item.date).date() === currentProcessedDay) {
             const category = this.Helpers.getCategoryItemById(categories, item.category);
-            item['categoryName'] = category.title;
-            item['categoryIcon'] = category.icon;
-            item['categoryColor'] = category.color;
+            const currentTransaction = item;
+            currentTransaction.categoryName = category.title;
+            currentTransaction.categoryIcon = category.icon;
+            currentTransaction.categoryColor = category.color;
             return true;
           }
           return false;
@@ -71,17 +72,17 @@ class MonthReport extends Component {
 MonthReport.defaultProps = {
   lang: 'eng',
   categories: [],
-  transactions: []
+  transactions: [],
 };
 
 MonthReport.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
 };
 
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
-  transactions: state.transactions
+  transactions: state.transactions,
 }), { changeLang })(MonthReport);

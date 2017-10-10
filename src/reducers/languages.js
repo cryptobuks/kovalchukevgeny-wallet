@@ -4,7 +4,7 @@ let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.lang) {
   initialState = {
-    lang: 'eng'
+    lang: 'eng',
   };
 }
 

@@ -3,7 +3,7 @@ import moment from 'moment';
 class Helpers {
   sumSameDateTransactions(data) {
     const obj = {};
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       // Create key string for transaction data
       const key = moment(data[i].date).format('YYYY-MM-DD');
       /*
@@ -20,12 +20,14 @@ class Helpers {
      * example:
      * [{money: 20, date: Sun Jul 09 2017}, {money: 10, date: Sun Jul 10 2017}]
     **/
-    for (const prop in obj) {
-      transactions.push({
-        money: obj[prop],
-        date: new Date(moment(prop).format('YYYY-MM-DD'))
-      });
-    }
+    Object.keys(obj).forEach(prop => {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        transactions.push({
+          money: obj[prop],
+          date: new Date(moment(prop).format('YYYY-MM-DD')),
+        });
+      }
+    });
 
     return transactions;
   }
@@ -34,17 +36,19 @@ class Helpers {
     const obj = {};
     const categories = [];
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const key = data[i].category;
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
-    for (const prop in obj) {
-      categories.push({
-        money: obj[prop],
-        category: prop
-      });
-    }
+    Object.keys(obj).forEach(prop => {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        categories.push({
+          money: obj[prop],
+          category: prop,
+        });
+      }
+    });
 
     return categories;
   }
@@ -53,16 +57,18 @@ class Helpers {
     const obj = {};
     const categories = [];
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const key = data[i].category;
       obj[key] = !obj[key] ? +data[i].money : +obj[key] + +data[i].money;
     }
 
-    for (const prop in obj) {
-      categories.push({
-        [prop]: obj[prop]
-      });
-    }
+    Object.keys(obj).forEach(prop => {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        categories.push({
+          [prop]: obj[prop],
+        });
+      }
+    });
 
     return categories;
   }
@@ -71,16 +77,18 @@ class Helpers {
     const obj = {};
     const descriptions = [];
 
-    for(let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       const key = data[i].description;
       obj[key] = data[i].description;
     }
 
-    for (const prop in obj) {
-      descriptions.push({
-        label: obj[prop]
-      });
-    }
+    Object.keys(obj).forEach(prop => {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        descriptions.push({
+          label: obj[prop],
+        });
+      }
+    });
 
     return descriptions;
   }
@@ -97,24 +105,24 @@ class Helpers {
 
   getDayName(dayNumber, lang) {
     const days = {
-      'rus': [
+      rus: [
         'Воскресенье',
         'Понедельник',
         'Вторник',
         'Среда',
         'Четверг',
         'Пятница',
-        'Суббота'
+        'Суббота',
       ],
-      'eng': [
+      eng: [
         'Sunday',
         'Monday',
         'Tuesday',
         'Wednesday',
         'Thursday',
         'Friday',
-        'Saturday'
-      ]
+        'Saturday',
+      ],
     };
 
     return days[lang][dayNumber];
@@ -122,7 +130,7 @@ class Helpers {
 
   groupTransactionsByMonths(transactions) {
     const arrTrans = [];
-    for(let i = 0; i < 12; i++) {
+    for (let i = 0; i < 12; i += 1) {
       const res = transactions.filter(transaction => {
         return moment(transaction.date).month() === i;
       });
@@ -142,16 +150,17 @@ class Helpers {
   }
 
   filteredTransactions(transactions, categories) {
-    transactions = transactions.filter(transaction => {
-      for (let i = 0; i < categories.length; i++) {
+    const result = transactions.filter(transaction => {
+      for (let i = 0; i < categories.length; i += 1) {
         if (transaction.category === categories[i].id) {
           if (categories[i].filter === true) {
             return transaction;
           }
         }
       }
+      return false;
     });
-    return transactions;
+    return result;
   }
 }
 

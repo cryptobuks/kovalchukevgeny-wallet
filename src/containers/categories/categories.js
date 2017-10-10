@@ -31,7 +31,7 @@ class Categories extends Component {
       title: '',
       filter: true,
       icon: 'fa-car', // default icon
-      color: '#b91919' // default color
+      color: '#b91919', // default color
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
@@ -56,14 +56,14 @@ class Categories extends Component {
     this.setState({
       description: '',
       filter: true,
-      title: ''
+      title: '',
     });
   }
 
   deleteCategory(event) {
-    const { deleteCategory, lang } = this.props;
-    const id = +event.target.parentNode.getAttribute('data-id');
-    toastr.confirm(staticContent[lang]['toastr']['categoryRemove'], { onOk: () => deleteCategory(id) });
+    const { lang, deleteCategory } = this.props;
+    const id = +event.target.parentNode.parentNode.getAttribute('data-id');
+    toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
   }
 
   handleChangeDescription(event) {
@@ -76,19 +76,19 @@ class Categories extends Component {
 
   saveCategory() {
     const { description, title, icon, filter, color } = this.state;
-    const { addCategory, lang } = this.props;
+    const { lang, addCategory } = this.props;
     const id = Date.now();
 
-    if(title.length < 2) {
-      toastr.error(staticContent[lang]['toastr']['smallCategoryName'], { timeOut: 4000 });
+    if (title.length < 2) {
+      toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
     } else {
       addCategory(id, description, title, icon, filter, color);
       this.setState({
         description: '',
         filter: true,
-        title: ''
+        title: '',
       });
-      toastr.success(staticContent[lang]['toastr']['categoryAdd'], { timeOut: 4000 });
+      toastr.success(staticContent[lang].toastr.categoryAdd, { timeOut: 4000 });
     }
   }
 
@@ -122,7 +122,7 @@ class Categories extends Component {
                   to={`/categories/${category.id}`}
                 >
                   <Icon icon={'create'} />
-                  {staticContent[lang]['categories']['btnEdit']}
+                  {staticContent[lang].categories.btnEdit}
                 </Link>
               </ButtonToolbar>
             </div>
@@ -143,18 +143,18 @@ class Categories extends Component {
             <Panel specialClass="categories">
               <Row>
                 <Col lg={12}>
-                  <legend>{staticContent[lang]['adding-category']['head']}</legend>
+                  <legend>{staticContent[lang]['adding-category'].head}</legend>
                 </Col>
                 <Col lg={2} md={2} sm={6}>
                   <Input
-                    placeholder={staticContent[lang]['adding-category']['category']}
+                    placeholder={staticContent[lang]['adding-category'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
                 </Col>
                 <Col lg={3} md={3} sm={6}>
                   <Input
-                    placeholder={staticContent[lang]['adding-category']['descr']}
+                    placeholder={staticContent[lang]['adding-category'].descr}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
@@ -181,12 +181,12 @@ class Categories extends Component {
                       specialClass="btn btn-primary"
                       onClickFunction={this.saveCategory}
                       icon="save"
-                    >{staticContent[lang]['adding-category']['btnSubmit']}</Button>
+                    >{staticContent[lang]['adding-category'].btnSubmit}</Button>
                     <Button
                       specialClass="btn btn-default"
                       onClickFunction={this.clearCategory}
                       icon="undo"
-                    >{staticContent[lang]['adding-category']['btnCancel']}</Button>
+                    >{staticContent[lang]['adding-category'].btnCancel}</Button>
                   </ButtonToolbar>
                 </Col>
               </Row>
@@ -196,15 +196,15 @@ class Categories extends Component {
         <Row>
           <Col lg={12}>
             {categories.length > 0 &&
-            <Panel
-              specialClass="categories-panel"
-              heading={staticContent[lang]['categories']['head']}
-              headingIcon="work"
-            >
-              <div className="categories-wrapper">
-                {this.renderCategoryCard(categories)}
-              </div>
-            </Panel>
+              <Panel
+                specialClass="categories-panel"
+                heading={staticContent[lang].categories.head}
+                headingIcon="work"
+              >
+                <div className="categories-wrapper">
+                  {this.renderCategoryCard(categories)}
+                </div>
+              </Panel>
             }
           </Col>
         </Row>
@@ -218,17 +218,17 @@ Categories.defaultProps = {
   categories: [],
   transactions: [],
   addCategory: () => {},
-  deleteCategory: () => {}
+  deleteCategory: () => {},
 };
 
 Categories.propTypes = {
   addCategory: PropTypes.func,
-  categories: PropTypes.array,
   deleteCategory: PropTypes.func,
-  lang: PropTypes.string
+  categories: PropTypes.array,
+  lang: PropTypes.string,
 };
 
 export default connect(state => ({
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
 }), { addCategory, deleteCategory })(Categories);

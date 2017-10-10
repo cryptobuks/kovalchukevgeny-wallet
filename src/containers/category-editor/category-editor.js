@@ -30,7 +30,7 @@ class CategoryEditor extends PureComponent {
       description: '',
       title: '',
       icon: 'fa-car', // default icon
-      color: '#b91919' // default color
+      color: '#b91919', // default color
     };
 
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
@@ -42,7 +42,7 @@ class CategoryEditor extends PureComponent {
 
   componentWillMount() {
     const { categories } = this.props;
-    const category = categories.find(category => category.id === +this.props.routeParams.id);
+    const category = categories.find(categoryItem => categoryItem.id === +this.props.routeParams.id);
 
     this.setState({
       id: category.id,
@@ -50,7 +50,7 @@ class CategoryEditor extends PureComponent {
       title: category.title,
       icon: category.icon,
       filter: category.filter,
-      color: category.color || '#b91919'
+      color: category.color || '#b91919',
     });
   }
 
@@ -72,11 +72,10 @@ class CategoryEditor extends PureComponent {
 
   updateCategory() {
     const { id, description, title, icon, filter, color } = this.state;
-    const { updateCategory, lang } = this.props;
-
+    const { lang, updateCategory } = this.props;
     updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
-    toastr.success(staticContent[lang]['toastr']['categoryUpdated'], { timeOut: 3000 });
+    toastr.success(staticContent[lang].toastr.categoryUpdated, { timeOut: 3000 });
   }
 
   render() {
@@ -89,20 +88,20 @@ class CategoryEditor extends PureComponent {
           <Col lg={12}>
             <Panel
               specialClass="category-editor"
-              heading={staticContent[lang]['category-editor']['head']}
+              heading={staticContent[lang]['category-editor'].head}
               headingIcon="settings"
             >
               <Row>
                 <Col lg={3} md={2} sm={6}>
                   <Input
-                    placeholder={staticContent[lang]['category-editor']['category']}
+                    placeholder={staticContent[lang]['category-editor'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
                   />
                 </Col>
                 <Col lg={3} md={3} sm={6}>
                   <Input
-                    placeholder={staticContent[lang]['category-editor']['descr']}
+                    placeholder={staticContent[lang]['category-editor'].descr}
                     value={description}
                     handleChange={this.handleChangeDescription}
                   />
@@ -129,7 +128,7 @@ class CategoryEditor extends PureComponent {
                       specialClass="btn btn-primary"
                       onClickFunction={this.updateCategory}
                       icon="done"
-                    >{staticContent[lang]['category-editor']['btnUpdate']}</Button>
+                    >{staticContent[lang]['category-editor'].btnUpdate}</Button>
                   </ButtonToolbar>
                 </Col>
               </Row>
@@ -143,17 +142,17 @@ class CategoryEditor extends PureComponent {
 
 CategoryEditor.defaultProps = {
   categories: [],
-  lang: 'eng'
+  lang: 'eng',
 };
 
 CategoryEditor.propTypes = {
-  lang: PropTypes.string,
-  updateCategory: PropTypes.func,
   categories: PropTypes.array,
-  routeParams: PropTypes.object
+  lang: PropTypes.string,
+  routeParams: PropTypes.object,
+  updateCategory: PropTypes.func,
 };
 
 export default connect(state => ({
   categories: state.categories,
-  lang: state.lang
+  lang: state.lang,
 }), { updateCategory })(enhanceWithClickOutside(CategoryEditor));

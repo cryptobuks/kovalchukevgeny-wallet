@@ -52,7 +52,7 @@ const icons = [
   'fa-tree',
   'fa-camera',
   'fa-bed',
-  'fa-beer'
+  'fa-beer',
 ];
 
 export default icons;

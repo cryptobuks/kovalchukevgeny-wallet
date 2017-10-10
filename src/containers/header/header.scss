@@ -23,6 +23,18 @@
           }
         }
       }
+
+      button {
+        background-color: transparent;
+        border: 0;
+        line-height: 23px;
+        text-transform: uppercase;
+        padding: 0;
+
+        &.active {
+          color: $accentColor;
+        }
+      }
     }
   }
 

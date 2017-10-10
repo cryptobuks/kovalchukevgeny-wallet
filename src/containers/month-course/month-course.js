@@ -21,7 +21,7 @@ class MonthCourse extends Component {
 
     this.state = {
       date: moment(),
-      currentCourse: ''
+      currentCourse: '',
     };
 
     this.handleChangeData = this.handleChangeData.bind(this);
@@ -42,7 +42,7 @@ class MonthCourse extends Component {
     addMonthCourse(date, currentCourse);
     this.setState({
       date: moment(),
-      currentCourse: ''
+      currentCourse: '',
     });
   }
 
@@ -51,16 +51,14 @@ class MonthCourse extends Component {
     let { course } = this.props;
     const { currentCourse, date } = this.state;
 
-    course = course.find(courseItem => {
-      return moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM');
-    });
+    course = course.find(courseItem => moment(courseItem.date).format('YYYY-MM') === moment().format('YYYY-MM'));
 
     course = course ? course.course : 1;
 
     return (
       <Panel
         specialClass="month-course"
-        heading={staticContent[lang]['month-course']['head']}
+        heading={staticContent[lang]['month-course'].head}
         headingIcon="attach_money"
       >
         <Row>
@@ -86,7 +84,7 @@ class MonthCourse extends Component {
                 specialClass="btn btn-primary"
                 onClickFunction={() => this.saveCourse(date, currentCourse)}
                 icon="attach_money"
-              >{staticContent[lang]['month-course']['btnSubmit']}</Button>
+              >{staticContent[lang]['month-course'].btnSubmit}</Button>
             </ButtonToolbar>
           </Col>
         </Row>
@@ -98,15 +96,15 @@ class MonthCourse extends Component {
 MonthCourse.defaultProps = {
   lang: 'eng',
   course: [],
-  addMonthCourse: () => {}
+  addMonthCourse: () => {},
 };
 
 MonthCourse.propTypes = {
   addMonthCourse: PropTypes.func,
   course: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
 };
 
 export default connect(state => ({
-  course: state.course
+  course: state.course,
 }), { addMonthCourse })(MonthCourse);
