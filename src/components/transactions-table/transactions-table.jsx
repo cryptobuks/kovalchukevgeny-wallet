@@ -43,7 +43,7 @@ class TransactionsTable extends Component {
   componentWillMount() {
     const transactions = this.props.transactions;
     // Set default sort for data
-    if(transactions.length > 0) {
+    if (transactions.length > 0) {
       // ignore id key
       const column = Object.keys(transactions[0])[1];
       this.sortData(event = null, column);
@@ -91,14 +91,14 @@ class TransactionsTable extends Component {
       isEditRow: {},
       activeRow: {}
     });
-    toastr.success(staticContent[lang]['toastr']['transactionUpdated'], {timeOut: 4000});
+    toastr.success(staticContent[lang]['toastr']['transactionUpdated'], { timeOut: 4000 });
   }
 
   openEditMenu(activeRow) {
-    if(activeRow.id !== this.state.isEditRow.id) {
+    if (activeRow.id !== this.state.isEditRow.id) {
       const oldActiveRow = this.state.activeRow || {};
       const activeTransaction = this.props.transactions.find(transaction => {
-        if(transaction.id === activeRow.id && activeRow.id !== oldActiveRow.id) {
+        if (transaction.id === activeRow.id && activeRow.id !== oldActiveRow.id) {
           transaction.active = true;
           return transaction;
         }
@@ -111,15 +111,15 @@ class TransactionsTable extends Component {
   sortSheme(dataArray, column, descending) {
     dataArray.sort((a, b) => {
       // Sort numbers
-      if(parseInt(column !== 'date' && a[column]) && parseInt(b[column])) {
+      if (parseInt(column !== 'date' && a[column]) && parseInt(b[column])) {
         return descending ?
-        (+a[column] > +b[column] ? 1 : -1) :
-        (+a[column] < +b[column] ? 1 : -1);
-      // Sort strings
+          (+a[column] > +b[column] ? 1 : -1) :
+          (+a[column] < +b[column] ? 1 : -1);
+        // Sort strings
       }
       return descending ?
-      (a[column] > b[column] ? 1 : -1) :
-      (a[column] < b[column] ? 1 : -1);
+        (a[column] > b[column] ? 1 : -1) :
+        (a[column] < b[column] ? 1 : -1);
     });
   }
 
@@ -140,7 +140,7 @@ class TransactionsTable extends Component {
   editTransaction(isEditRow) {
     const oldEditRow = this.state.isEditRow || {};
     const editableTransaction = this.props.transactions.find(transaction => {
-      if(transaction.id === isEditRow.id && isEditRow.id !== oldEditRow.id) {
+      if (transaction.id === isEditRow.id && isEditRow.id !== oldEditRow.id) {
         transaction.isEdit = true;
         return transaction;
       }
@@ -154,7 +154,7 @@ class TransactionsTable extends Component {
     const { activeRow, isEditRow, descending, sortby } = this.state;
 
     const selectCategories = categories.map((category, i) => {
-      return(
+      return (
         <option key={i} value={category.id}>{category.title}</option>
       );
     });
@@ -166,9 +166,9 @@ class TransactionsTable extends Component {
         <div className={`table-data ${sortby === headItem ? 'active' : ''}`} key={i} data-cell={headItem}>
           <span data-cell={headItem}>{staticContent[lang]['transactions-table']['tableHead'][i]}</span>
           {sortby === headItem &&
-          <span className="filter-arrow">
-            {descending ? <Icon data-cell={headItem} icon={'arrow_downward'} /> : <Icon data-cell={headItem} icon={'arrow_upward'} />}
-          </span>
+            <span className="filter-arrow">
+              {descending ? <Icon data-cell={headItem} icon={'arrow_downward'} /> : <Icon data-cell={headItem} icon={'arrow_upward'} />}
+            </span>
           }
         </div>
       );
@@ -177,20 +177,25 @@ class TransactionsTable extends Component {
     const tableData = transactions.map((transaction, i) => {
 
       const categoryIconObj = categories.find(category => {
-        if(category.id === transaction.category) {
+        if (category.id === transaction.category) {
           return category.icon;
         };
       }) || null;
-
-       let categoryColor = categories.find(category => {
-        if(category.id === +transaction.category) {
+      
+      let categoryColor = '#33373e';
+      let category = categories.find(category => {
+        if (category.id === +transaction.category) {
           return category.color;
         };
-       });
+      });
 
-      categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
+       if (category) {
+        categoryColor = category.color;
+      } 
 
-      return(
+      //categoryColor = categoryColor ? categoryColor : '#33373e';
+
+      return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}
           onClick={() => this.openEditMenu(transaction)}
         >
@@ -237,9 +242,11 @@ class TransactionsTable extends Component {
           <div className="table-data clearfix">
             {!transaction.isEdit ?
               <span>
-                <span className="icon-wrapper" style={{backgroundColor: categoryColor}}>
-                  <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
-                </span>
+                {category 
+                  ? <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}> 
+                      <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
+                    </span>
+                  : ''}
                 {this.Helpers.getCategoryById(categories, transaction)}
               </span> :
               <select
@@ -253,7 +260,7 @@ class TransactionsTable extends Component {
           </div>
           {/* Edit menu */}
           {!transaction.isEdit ?
-            <div className={classNames('edit-menu', {active: transaction.active})}>
+            <div className={classNames('edit-menu', { active: transaction.active })}>
               <Button specialClass="button-icon" onClickFunction={() => this.editTransaction(transaction)}>
                 <Icon icon={'fa-pencil'} type="fa" />
               </Button>
@@ -261,7 +268,7 @@ class TransactionsTable extends Component {
                 <Icon icon={'fa-close'} type="fa" />
               </Button>
             </div> :
-            <div className={classNames('change-menu', {active: transaction.isEdit})}>
+            <div className={classNames('change-menu', { active: transaction.isEdit })}>
               <Button specialClass="button-icon" onClickFunction={() => this.updateTransaction(transaction)}>
                 <Icon icon={'fa-check'} type="fa" />
               </Button>
@@ -293,8 +300,8 @@ TransactionsTable.defaultProps = {
   categories: [],
   transactions: [],
   lang: 'eng',
-  deleteTransaction: () => {},
-  changeTransaction: () => {}
+  deleteTransaction: () => { },
+  changeTransaction: () => { }
 };
 
 TransactionsTable.propTypes = {

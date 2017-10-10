@@ -127,7 +127,7 @@ class Transactions extends Component {
                 footer={this.renderTableFooter(amount, unicTransactions)}
               >
                 <TransactionsTable
-                  transactions={this.Helpers.filteredTransactions(monthTransactions, categories)}
+                  transactions={monthTransactions}
                   deleteTransaction={deleteTransaction}
                   changeTransaction={changeTransaction}
                   categories={categories}
