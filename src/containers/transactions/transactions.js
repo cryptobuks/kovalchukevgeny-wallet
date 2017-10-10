@@ -9,6 +9,7 @@ import Button from './../../components/button/button.jsx';
 import TransactionsFilter from './../../components/transactions-filter/transactions-filter.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonsToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import LastUpdates from './../../components/last-updates/last-updates.jsx';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
 import Col from './../../components/col/col.jsx';
@@ -100,6 +101,13 @@ class Transactions extends Component {
     return (
       <Container specialClass="transactions">
         <Row>
+          <Col lg={12}>
+            <LastUpdates
+              lang={lang}
+              amount={amount}
+              transactions={transactions}
+            />
+          </Col>
           <AddingPanel
             categories={categories}
             lang={lang}

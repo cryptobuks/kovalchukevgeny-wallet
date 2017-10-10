@@ -89,6 +89,10 @@ export default {
       'transactionRemove': 'Are you sure that you want to delete transaction?',
       'syncMessage': 'Synchronization successfully completed, please update your browser'
     },
+    'last-updates': {
+      'lastUpdate': 'Last updates',
+      'amount': 'Amount'
+    },
     'month-course': {
       'head': 'Mount Course',
       'btnSubmit': 'Submit'
@@ -200,6 +204,10 @@ export default {
       'transactionUpdated': 'Транзакция успешно обновлена',
       'transactionRemove': 'Вы уверены, что хотите удалить транзакцию?',
       'syncMessage': 'Синхронизация успешно выполнена, пожалуйста обновите браузер'
+    },
+    'last-updates': {
+      'lastUpdate': 'Последние обновления',
+      'amount': 'Среднее значение'
     },
     'month-course': {
       'head': 'Курс на месяц',
