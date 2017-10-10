@@ -66,17 +66,19 @@ class Reports extends Component {
         <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
             <div className="panel panel-primary res-table">
-              <div
-                onClick={e => this.openMonth(e)}
-                className="panel-heading clearfix"
-              >
-                <h3 className="panel-title left">
-                  <Icon icon={'today'} />
-                  {`${staticContent[lang].months[i]} ${moment(reMapedTransaction.date).year()}`}
-                </h3>
-                <h3 className="panel-title right">
-                  <Icon icon="arrow_drop_down_circle" />
-                </h3>
+              <div className="panel-heading-container">
+                <button
+                  onClick={e => this.openMonth(e)}
+                  className="panel-heading clearfix"
+                >
+                  <h3 className="panel-title left">
+                    <Icon icon={'today'} />
+                    {`${staticContent[lang].months[i]} ${moment(reMapedTransaction.date).year()}`}
+                  </h3>
+                  <h3 className="panel-title right">
+                    <Icon icon="arrow_drop_down_circle" />
+                  </h3>
+                </button>
               </div>
               <div className="panel-body">
                 <TransactionsTable

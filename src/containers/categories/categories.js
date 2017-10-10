@@ -61,8 +61,8 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
-    const { lang } = this.props;
-    const id = +event.target.parentNode.getAttribute('data-id');
+    const { lang, deleteCategory } = this.props;
+    const id = +event.target.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
   }
 
@@ -76,7 +76,7 @@ class Categories extends Component {
 
   saveCategory() {
     const { description, title, icon, filter, color } = this.state;
-    const { lang } = this.props;
+    const { lang, addCategory } = this.props;
     const id = Date.now();
 
     if (title.length < 2) {
@@ -222,6 +222,8 @@ Categories.defaultProps = {
 };
 
 Categories.propTypes = {
+  addCategory: PropTypes.func,
+  deleteCategory: PropTypes.func,
   categories: PropTypes.array,
   lang: PropTypes.string,
 };

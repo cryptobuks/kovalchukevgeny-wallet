@@ -72,8 +72,7 @@ class CategoryEditor extends PureComponent {
 
   updateCategory() {
     const { id, description, title, icon, filter, color } = this.state;
-    const { lang } = this.props;
-
+    const { lang, updateCategory } = this.props;
     updateCategory(id, description, title, icon, filter, color);
     browserHistory.goBack();
     toastr.success(staticContent[lang].toastr.categoryUpdated, { timeOut: 3000 });
@@ -147,9 +146,10 @@ CategoryEditor.defaultProps = {
 };
 
 CategoryEditor.propTypes = {
-  lang: PropTypes.string,
   categories: PropTypes.array,
+  lang: PropTypes.string,
   routeParams: PropTypes.object,
+  updateCategory: PropTypes.func,
 };
 
 export default connect(state => ({
