@@ -181,7 +181,7 @@ class TransactionsTable extends Component {
           return category.icon;
         };
       }) || null;
-      
+
       let categoryColor = '#33373e';
       let category = categories.find(category => {
         if (category.id === +transaction.category) {
@@ -189,9 +189,9 @@ class TransactionsTable extends Component {
         };
       });
 
-       if (category) {
+      if (category) {
         categoryColor = category.color;
-      } 
+      }
 
       //categoryColor = categoryColor ? categoryColor : '#33373e';
 
@@ -242,11 +242,12 @@ class TransactionsTable extends Component {
           <div className="table-data clearfix">
             {!transaction.isEdit ?
               <span>
-                {category 
-                  ? <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}> 
+                {category
+                  ? <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}>
                       <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
                     </span>
-                  : ''}
+                  : ''
+                }
                 {this.Helpers.getCategoryById(categories, transaction)}
               </span> :
               <select
