@@ -61,9 +61,15 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
-    const { lang, deleteCategory } = this.props;
+    const { lang, deleteCategory, transactions } = this.props;
     const id = +event.target.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
+    transactions.forEach(transaction => {
+      const currentTransaction = transaction;
+      if (currentTransaction.category === id) {
+        currentTransaction.category = 0;
+      }
+    });
   }
 
   handleChangeDescription(event) {
@@ -226,9 +232,11 @@ Categories.propTypes = {
   deleteCategory: PropTypes.func,
   categories: PropTypes.array,
   lang: PropTypes.string,
+  transactions: PropTypes.array,
 };
 
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
+  transactions: state.transactions,
 }), { addCategory, deleteCategory })(Categories);
