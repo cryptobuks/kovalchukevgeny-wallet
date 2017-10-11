@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
@@ -30,10 +31,13 @@ class Categories extends Component {
       description: '',
       title: '',
       filter: true,
+      categoriesView: 'grid',
       icon: 'fa-car', // default icon
       color: '#b91919', // default color
     };
 
+    this.setViewGrid = this.setViewGrid.bind(this);
+    this.setViewList = this.setViewList.bind(this);
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
@@ -62,7 +66,7 @@ class Categories extends Component {
 
   deleteCategory(event) {
     const { lang, deleteCategory } = this.props;
-    const id = +event.target.parentNode.parentNode.getAttribute('data-id');
+    const id = +event.target.parentNode.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
   }
 
@@ -92,6 +96,14 @@ class Categories extends Component {
     }
   }
 
+  setViewGrid() {
+    this.setState({ categoriesView: 'grid' });
+  }
+
+  setViewList() {
+    this.setState({ categoriesView: 'list' });
+  }
+
   renderCategoryCard(categories) {
     const { lang } = this.props;
 
@@ -111,19 +123,18 @@ class Categories extends Component {
                   <small><cite>{category.description}</cite></small>
                 </blockquote>
               }
-              <Button
-                specialClass="close"
-                onClickFunction={this.deleteCategory}
-                icon="clear"
-              />
               <ButtonToolbar>
                 <Link
                   className="edit btn-primary btn"
                   to={`/categories/${category.id}`}
                 >
                   <Icon icon={'create'} />
-                  {staticContent[lang].categories.btnEdit}
                 </Link>
+                <Button
+                  specialClass="btn-primary btn delete"
+                  onClickFunction={this.deleteCategory}
+                  icon="clear"
+                />
               </ButtonToolbar>
             </div>
           </Panel>
@@ -133,7 +144,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { description, title, icon, color } = this.state;
+    const { description, title, icon, color, categoriesView } = this.state;
     const { categories, lang } = this.props;
 
     return (
@@ -201,7 +212,21 @@ class Categories extends Component {
                 heading={staticContent[lang].categories.head}
                 headingIcon="work"
               >
-                <div className="categories-wrapper">
+                <div className="categoriesView">
+                  <ButtonToolbar>
+                    <Button
+                      specialClass={this.state.categoriesView === 'list' ? 'btn active' : 'btn'}
+                      onClickFunction={this.setViewList}
+                      icon="view_list"
+                    />
+                    <Button
+                      specialClass={this.state.categoriesView === 'grid' ? 'btn active' : 'btn'}
+                      onClickFunction={this.setViewGrid}
+                      icon="view_module"
+                    />
+                  </ButtonToolbar>
+                </div>
+                <div className={classNames('categories-wrapper', categoriesView)}>
                   {this.renderCategoryCard(categories)}
                 </div>
               </Panel>
