@@ -21,6 +21,7 @@ class Import extends PureComponent {
     this.readFile = this.readFile.bind(this);
     this.renderInfoAboutFile = this.renderInfoAboutFile.bind(this);
     this.updateLoading = this.updateLoading.bind(this);
+    this.reloadPage = this.reloadPage.bind(this);
   }
 
   readFile() {
@@ -35,8 +36,13 @@ class Import extends PureComponent {
       };
       const blob = file.slice(0, file.size);
       reader.readAsText(blob);
-      toastr.success(staticContent[lang]['toastr']['syncMessage'], { timeOut: 3000 });
+      toastr.success(staticContent[lang]['toastr']['syncMessage'], { timeOut: 2000 });
+      window.setTimeout(this.reloadPage, 2000);
     }
+  }
+
+  reloadPage() {
+    window.location.reload(false);
   }
 
   renderInfoAboutFile(file) {

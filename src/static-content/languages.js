@@ -88,7 +88,7 @@ export default {
       categoryUpdated: 'Category updated',
       transactionUpdated: 'Transaction successfully updated',
       transactionRemove: 'Are you sure that you want to delete transaction?',
-      syncMessage: 'Synchronization successfully completed, please update your browser',
+      syncMessage: 'Synchronization successfully completed',
     },
     'last-updates': {
       lastUpdate: 'Last updates',
@@ -206,7 +206,7 @@ export default {
       categoryUpdated: 'Категория успешно обновлена',
       transactionUpdated: 'Транзакция успешно обновлена',
       transactionRemove: 'Вы уверены, что хотите удалить транзакцию?',
-      syncMessage: 'Синхронизация успешно выполнена, пожалуйста обновите браузер',
+      syncMessage: 'Синхронизация успешно выполнена',
     },
     'last-updates': {
       lastUpdate: 'Последние обновления',
