@@ -38,5 +38,6 @@
     "no-shadow": "off",
     "arrow-body-style": "off",
     "max-len": "off",
+    "linebreak-style": "off",
   }
 }

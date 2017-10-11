@@ -90,8 +90,8 @@ export default {
       syncMessage: 'Synchronization successfully completed, please update your browser',
     },
     'last-updates': {
-      'lastUpdate': 'Last updates',
-      'amount': 'Amount'
+      lastUpdate: 'Last updates',
+      amount: 'Amount',
     },
     'month-course': {
       head: 'Mount Course',
@@ -114,6 +114,7 @@ export default {
     csvTableHead: 'Date, Money, Description, Category\n',
     currency: 'RUB',
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    rusMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   },
   rus: {
     menu: ['Транзакции', 'Категории', 'Статистика', 'Отчёт', 'Расходы за месяц', 'Резервное копирование'],
@@ -206,8 +207,8 @@ export default {
       syncMessage: 'Синхронизация успешно выполнена, пожалуйста обновите браузер',
     },
     'last-updates': {
-      'lastUpdate': 'Последние обновления',
-      'amount': 'Среднее значение'
+      lastUpdate: 'Последние обновления',
+      amount: 'Среднее значение',
     },
     'month-course': {
       head: 'Курс на месяц',
@@ -230,5 +231,6 @@ export default {
     csvTableHead: 'Дата, Сумма, Описание, Категория\n',
     currency: 'руб.',
     months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+    rusMonths: ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
   },
 };
