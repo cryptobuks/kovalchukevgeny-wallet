@@ -10,17 +10,19 @@
       color: $accentTextColor;
       padding: 0 2px;
 
-      span {
+      .flag-icon {
         cursor: pointer;
+        border-radius: 50%;
+        display: inline-block;
         line-height: 23px;
+        margin-left: 5px;
+        overflow: hidden;
         text-transform: uppercase;
+        vertical-align: bottom;
 
-        &.active {
-          color: $accentColor;
-
-          img {
-            opacity: 1;
-          }
+        img {
+          width: 26px;
+          opacity: .3;
         }
       }
 
@@ -33,21 +35,12 @@
 
         &.active {
           color: $accentColor;
+
+          img {
+            opacity: 1;
+          }
         }
       }
-    }
-  }
-
-  .flag-icon {
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 5px;
-    overflow: hidden;
-    vertical-align: bottom;
-
-    img {
-      width: 26px;
-      opacity: .5;
     }
   }
 }

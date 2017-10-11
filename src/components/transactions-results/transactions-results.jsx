@@ -25,25 +25,16 @@ const TransactionsResults = props => {
     return(
       biggestTransaction.map((transaction, i) => {
         return (
-          <div className="biggest-transaction" key={i}>
-            <div className="result-wrapper">
-              <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTransDay']}</h6>
-              <div className="dots"></div>
-              <h6 className="result">{moment(transaction.date).format('DD/MM')}</h6>
-            </div>
-            <div className="result-wrapper">
-              <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTransDescr']}</h6>
-              <div className="dots"></div>
-              <h6 className="result">{transaction.description}</h6>
-            </div>
-            <div className="result-wrapper">
-              <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTransAmount']}</h6>
-              <div className="dots"></div>
-              <h6 className="result">
-                <span>{transaction.money.toFixed(2)} {staticContent[lang]['currency']}</span>
-              </h6>
-            </div>
-          </div>
+          <ul className="list-group" key={i}>
+            <li className="list-group-item">
+              {`${moment(transaction.date).format('DD')}
+              ${staticContent[lang]['rusMonths'][moment().month()]} -
+              ${transaction.description}`}
+              <span className="badge">
+                {transaction.money.toFixed(2)} {staticContent[lang]['currency']}
+              </span>
+            </li>
+          </ul>
         );
       })
     );
@@ -84,62 +75,36 @@ const TransactionsResults = props => {
       heading={staticContent[lang]['transactions-results']['head']}
       headingIcon="insert_invitation"
     >
-      <div className="table">
-        <div className="table-body">
-          <div className="table-row">
-            <div className="table-data">
-              <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results']['month']}</h6>
-                <div className="dots"></div>
-                <h6 className="result">{staticContent[lang]['months'][moment().month()]}</h6>
-              </div>
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-data">
-              <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results']['transactions']}</h6>
-                <div className="dots"></div>
-                <h6 className="result">{monthTransactions.length}</h6>
-              </div>
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-data">
-              <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results']['amountMonth']}</h6>
-                <div className="dots"></div>
-                <h6 className="result">
-                  <span>{amountMonth.toFixed(2)} {staticContent[lang]['currency']}</span>
-                  <span className="divider">/</span>
-                  <span>{amountMonthCurrency.toFixed(2)} $</span>
-                </h6>
-              </div>
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-data">
-              <div className="result-wrapper">
-                <h6 className="result-item">{staticContent[lang]['transactions-results']['amountDay']}</h6>
-                <div className="dots"></div>
-                <h6 className="result">
-                  <span>{amountDay.toFixed(2)} {staticContent[lang]['currency']}</span>
-                  <span className="divider">/</span>
-                  <span>{amountDayCurrency.toFixed(2)} $</span>
-                </h6>
-              </div>
-            </div>
-          </div>
-          <div className="table-row">
-            <div className="table-data">
-              <div className="second-level">
-                <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTrans']}:</h6>
-              </div>
-              <h6 className="result">{renderBiggestTransaction(monthTransactions)}</h6>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ul className="list-group">
+        <li className="list-group-item">
+          {staticContent[lang]['transactions-results']['month']}
+          <span className="badge">
+            {staticContent[lang]['months'][moment().month()]}
+          </span>
+        </li>
+        <li className="list-group-item">
+          {staticContent[lang]['transactions-results']['transactions']}
+          <span className="badge">
+            {monthTransactions.length}
+          </span>
+        </li>
+        <li className="list-group-item">
+          {staticContent[lang]['transactions-results']['amountMonth']}
+          <span className="badge">
+            {`${amountMonth.toFixed(2)} ${staticContent[lang]['currency']} /
+            ${amountMonthCurrency.toFixed(2)}$`}
+          </span>
+        </li>
+        <li className="list-group-item">
+          {staticContent[lang]['transactions-results']['amountDay']}
+          <span className="badge">
+            {`${amountDay.toFixed(2)} ${staticContent[lang]['currency']} /
+            ${amountDayCurrency.toFixed(2)}$`}
+          </span>
+        </li>
+      </ul>
+      <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTrans']}:</h6>
+      {renderBiggestTransaction(monthTransactions)}
     </Panel>
   );
 }

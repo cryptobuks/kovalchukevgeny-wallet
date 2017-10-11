@@ -1,50 +1,20 @@
 .results {
 
-  .result-wrapper {
-    display: flex;
-    justify-content: space-between;
+  .badge {
+    background-color: #7F7B82;
+  }
 
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
-
-    .dots {
-      border-bottom: 1px dotted #000;
-      flex: 1 0 0;
-      margin: 0 5px
-    }
-
-    .result {
-      color: $accentColor;
-
-      .divider {
-        margin: 0 5px;
-      }
-    }
+  .list-group {
+    margin-bottom: 0;
   }
 
   h6 {
+    font-weight: 900;
     margin: 0;
-  }
+    text-transform: uppercase;
 
-  .table {
-    padding-top: 0;
-
-    .table-data {
-      width: 100%;
-    }
-  }
-
-  .second-level {
-    margin-bottom: 10px;
-  }
-
-  .biggest-transaction {
-    border: 1px solid #7F7B82;
-    padding: 10px;
-
-    &:not(:last-child) {
-      margin-bottom: 10px;
+    &.result-item {
+      margin: 10px 0;
     }
   }
 }
