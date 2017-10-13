@@ -48,12 +48,38 @@ class Categories extends Component {
     this.renderCategoryCard = this.renderCategoryCard.bind(this);
   }
 
-  changeCategoryIcon(icon) {
-    this.setState({ icon });
+  setViewGrid() {
+    this.setState({ categoriesView: 'grid' });
+  }
+
+  setViewList() {
+    this.setState({ categoriesView: 'list' });
+  }
+
+  saveCategory() {
+    const { description, title, icon, filter, color } = this.state;
+    const { lang, addCategory } = this.props;
+    const id = Date.now();
+
+    if (title.length < 2) {
+      toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
+    } else {
+      addCategory(id, description, title, icon, filter, color);
+      this.setState({
+        description: '',
+        filter: true,
+        title: '',
+      });
+      toastr.success(staticContent[lang].toastr.categoryAdd, { timeOut: 4000 });
+    }
   }
 
   changeCategoryColor(color) {
     this.setState({ color });
+  }
+
+  changeCategoryIcon(icon) {
+    this.setState({ icon });
   }
 
   clearCategory() {
@@ -78,35 +104,7 @@ class Categories extends Component {
     this.setState({ title: event.target.value });
   }
 
-  saveCategory() {
-    const { description, title, icon, filter, color } = this.state;
-    const { lang, addCategory } = this.props;
-    const id = Date.now();
-
-    if (title.length < 2) {
-      toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
-    } else {
-      addCategory(id, description, title, icon, filter, color);
-      this.setState({
-        description: '',
-        filter: true,
-        title: '',
-      });
-      toastr.success(staticContent[lang].toastr.categoryAdd, { timeOut: 4000 });
-    }
-  }
-
-  setViewGrid() {
-    this.setState({ categoriesView: 'grid' });
-  }
-
-  setViewList() {
-    this.setState({ categoriesView: 'list' });
-  }
-
   renderCategoryCard(categories) {
-    const { lang } = this.props;
-
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
 
