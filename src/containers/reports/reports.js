@@ -120,7 +120,7 @@ class Reports extends Component {
 
   render() {
     const { transactions, categories, lang, updateCategory, changeAllCategories } = this.props;
-    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(transactions);
+    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));    
 
     return (
       <Container specialClass="reports">

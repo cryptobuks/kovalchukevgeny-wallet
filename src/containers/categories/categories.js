@@ -34,6 +34,7 @@ class Categories extends Component {
       color: '#b91919', // default color
     };
 
+    this.createDefaultCategory = this.createDefaultCategory.bind(this);
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
@@ -52,6 +53,16 @@ class Categories extends Component {
     this.setState({ color });
   }
 
+  createDefaultCategory() {
+    const { addCategory, lang } = this.props;
+    const defaultCategory = {
+      id: 0,
+      description: '',
+      title: staticContent[lang].defaultCategory,
+    }
+    addCategory(defaultCategory.id, defaultCategory.description, defaultCategory.title);
+  }
+
   clearCategory() {
     this.setState({
       description: '',
@@ -61,15 +72,20 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
-    const { lang, deleteCategory, transactions } = this.props;
+    const { categories, lang, deleteCategory, transactions } = this.props;
     const id = +event.target.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
     transactions.forEach(transaction => {
       const currentTransaction = transaction;
+
       if (currentTransaction.category === id) {
         currentTransaction.category = 0;
-      }
+      };
     });
+
+    if (!categories.find(category => category.id === 0)) {
+      this.createDefaultCategory();
+    }
   }
 
   handleChangeDescription(event) {
@@ -223,8 +239,8 @@ Categories.defaultProps = {
   lang: 'eng',
   categories: [],
   transactions: [],
-  addCategory: () => {},
-  deleteCategory: () => {},
+  addCategory: () => { },
+  deleteCategory: () => { },
 };
 
 Categories.propTypes = {
