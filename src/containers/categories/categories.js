@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toastr } from 'react-redux-toastr';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 
 import Button from './../../components/button/button.jsx';
 import Input from './../../components/input/input.jsx';
@@ -30,11 +31,17 @@ class Categories extends Component {
       description: '',
       title: '',
       filter: true,
+      categoriesView: 'grid',
       icon: 'fa-car', // default icon
       color: '#b91919', // default color
     };
 
+<<<<<<< HEAD
     this.createDefaultCategory = this.createDefaultCategory.bind(this);
+=======
+    this.setViewGrid = this.setViewGrid.bind(this);
+    this.setViewList = this.setViewList.bind(this);
+>>>>>>> 7a0c0e6959aefa94f094b4e8087600a89e20db63
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
@@ -45,14 +52,37 @@ class Categories extends Component {
     this.renderCategoryCard = this.renderCategoryCard.bind(this);
   }
 
-  changeCategoryIcon(icon) {
-    this.setState({ icon });
+  setViewGrid() {
+    this.setState({ categoriesView: 'grid' });
+  }
+
+  setViewList() {
+    this.setState({ categoriesView: 'list' });
+  }
+
+  saveCategory() {
+    const { description, title, icon, filter, color } = this.state;
+    const { lang, addCategory } = this.props;
+    const id = Date.now();
+
+    if (title.length < 2) {
+      toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
+    } else {
+      addCategory(id, description, title, icon, filter, color);
+      this.setState({
+        description: '',
+        filter: true,
+        title: '',
+      });
+      toastr.success(staticContent[lang].toastr.categoryAdd, { timeOut: 4000 });
+    }
   }
 
   changeCategoryColor(color) {
     this.setState({ color });
   }
 
+<<<<<<< HEAD
   createDefaultCategory() {
     const { addCategory, lang } = this.props;
     const defaultCategory = {
@@ -61,6 +91,10 @@ class Categories extends Component {
       title: staticContent[lang].defaultCategory,
     }
     addCategory(defaultCategory.id, defaultCategory.description, defaultCategory.title);
+=======
+  changeCategoryIcon(icon) {
+    this.setState({ icon });
+>>>>>>> 7a0c0e6959aefa94f094b4e8087600a89e20db63
   }
 
   clearCategory() {
@@ -72,8 +106,13 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
+<<<<<<< HEAD
     const { categories, lang, deleteCategory, transactions } = this.props;
     const id = +event.target.parentNode.parentNode.getAttribute('data-id');
+=======
+    const { lang, deleteCategory } = this.props;
+    const id = +event.target.parentNode.parentNode.parentNode.getAttribute('data-id');
+>>>>>>> 7a0c0e6959aefa94f094b4e8087600a89e20db63
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
     transactions.forEach(transaction => {
       const currentTransaction = transaction;
@@ -96,27 +135,7 @@ class Categories extends Component {
     this.setState({ title: event.target.value });
   }
 
-  saveCategory() {
-    const { description, title, icon, filter, color } = this.state;
-    const { lang, addCategory } = this.props;
-    const id = Date.now();
-
-    if (title.length < 2) {
-      toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
-    } else {
-      addCategory(id, description, title, icon, filter, color);
-      this.setState({
-        description: '',
-        filter: true,
-        title: '',
-      });
-      toastr.success(staticContent[lang].toastr.categoryAdd, { timeOut: 4000 });
-    }
-  }
-
   renderCategoryCard(categories) {
-    const { lang } = this.props;
-
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
 
@@ -133,19 +152,18 @@ class Categories extends Component {
                   <small><cite>{category.description}</cite></small>
                 </blockquote>
               }
-              <Button
-                specialClass="close"
-                onClickFunction={this.deleteCategory}
-                icon="clear"
-              />
               <ButtonToolbar>
                 <Link
                   className="edit btn-primary btn"
                   to={`/categories/${category.id}`}
                 >
                   <Icon icon={'create'} />
-                  {staticContent[lang].categories.btnEdit}
                 </Link>
+                <Button
+                  specialClass="btn-primary btn delete"
+                  onClickFunction={this.deleteCategory}
+                  icon="clear"
+                />
               </ButtonToolbar>
             </div>
           </Panel>
@@ -155,7 +173,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { description, title, icon, color } = this.state;
+    const { description, title, icon, color, categoriesView } = this.state;
     const { categories, lang } = this.props;
 
     return (
@@ -223,7 +241,21 @@ class Categories extends Component {
                 heading={staticContent[lang].categories.head}
                 headingIcon="work"
               >
-                <div className="categories-wrapper">
+                <div className="categoriesView">
+                  <ButtonToolbar>
+                    <Button
+                      specialClass={this.state.categoriesView === 'list' ? 'btn active' : 'btn'}
+                      onClickFunction={this.setViewList}
+                      icon="view_list"
+                    />
+                    <Button
+                      specialClass={this.state.categoriesView === 'grid' ? 'btn active' : 'btn'}
+                      onClickFunction={this.setViewGrid}
+                      icon="view_module"
+                    />
+                  </ButtonToolbar>
+                </div>
+                <div className={classNames('categories-wrapper', categoriesView)}>
                   {this.renderCategoryCard(categories)}
                 </div>
               </Panel>
