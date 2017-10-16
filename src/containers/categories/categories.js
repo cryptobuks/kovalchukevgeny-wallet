@@ -36,12 +36,8 @@ class Categories extends Component {
       color: '#b91919', // default color
     };
 
-<<<<<<< HEAD
-    this.createDefaultCategory = this.createDefaultCategory.bind(this);
-=======
     this.setViewGrid = this.setViewGrid.bind(this);
     this.setViewList = this.setViewList.bind(this);
->>>>>>> 7a0c0e6959aefa94f094b4e8087600a89e20db63
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
@@ -82,19 +78,8 @@ class Categories extends Component {
     this.setState({ color });
   }
 
-<<<<<<< HEAD
-  createDefaultCategory() {
-    const { addCategory, lang } = this.props;
-    const defaultCategory = {
-      id: 0,
-      description: '',
-      title: staticContent[lang].defaultCategory,
-    }
-    addCategory(defaultCategory.id, defaultCategory.description, defaultCategory.title);
-=======
   changeCategoryIcon(icon) {
     this.setState({ icon });
->>>>>>> 7a0c0e6959aefa94f094b4e8087600a89e20db63
   }
 
   clearCategory() {
@@ -106,13 +91,8 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
-<<<<<<< HEAD
-    const { categories, lang, deleteCategory, transactions } = this.props;
-    const id = +event.target.parentNode.parentNode.getAttribute('data-id');
-=======
     const { lang, deleteCategory } = this.props;
     const id = +event.target.parentNode.parentNode.parentNode.getAttribute('data-id');
->>>>>>> 7a0c0e6959aefa94f094b4e8087600a89e20db63
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
     transactions.forEach(transaction => {
       const currentTransaction = transaction;
