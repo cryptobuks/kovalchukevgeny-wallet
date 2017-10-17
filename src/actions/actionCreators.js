@@ -1,5 +1,7 @@
+import Constants from './../helpers/constants.js';
+
 export const addTransaction = (id, date, money, description, category) => ({
-  type: 'ADD_TRANSACTION',
+  type: Constants.ACTIONS.Constants.ACTIONS.ADD_TRANSACTION,
   id,
   date,
   money,
@@ -8,7 +10,7 @@ export const addTransaction = (id, date, money, description, category) => ({
 });
 
 export const changeTransaction = (id, date, money, description, category) => ({
-  type: 'CHANGE_TRANSACTION',
+  type: Constants.ACTIONS.CHANGE_TRANSACTION,
   id,
   date,
   money,
@@ -17,12 +19,12 @@ export const changeTransaction = (id, date, money, description, category) => ({
 });
 
 export const deleteTransaction = id => ({
-  type: 'DELETE_TRANSACTION',
+  type: Constants.ACTIONS.DELETE_TRANSACTION,
   id,
 });
 
 export const addCategory = (id, description, title, icon, filter, color) => ({
-  type: 'ADD_CATEGORY',
+  type: Constants.ACTIONS.ADD_CATEGORY,
   id,
   description,
   title,
@@ -32,7 +34,7 @@ export const addCategory = (id, description, title, icon, filter, color) => ({
 });
 
 export const updateCategory = (id, description, title, icon, filter, color) => ({
-  type: 'UPDATE_CATEGORY',
+  type: Constants.ACTIONS.UPDATE_CATEGORY,
   id,
   description,
   title,
@@ -42,22 +44,22 @@ export const updateCategory = (id, description, title, icon, filter, color) => (
 });
 
 export const changeAllCategories = categories => ({
-  type: 'CHANGE_ALL_CATEGORIES',
+  type: Constants.ACTIONS.CHANGE_ALL_CATEGORIES,
   categories,
 });
 
 export const deleteCategory = id => ({
-  type: 'DELETE_CATEGORY',
+  type: Constants.ACTIONS.DELETE_CATEGORY,
   id,
 });
 
 export const changeLang = lang => ({
-  type: 'CHANGE_LANGUAGE',
+  type: Constants.ACTIONS.CHANGE_LANGUAGE,
   lang,
 });
 
 export const addMonthCourse = (date, course) => ({
-  type: 'ADD_MONTH-COURSE',
+  type: Constants.ACTIONS.ADD_MONTH_COURSE,
   date,
   course,
 });

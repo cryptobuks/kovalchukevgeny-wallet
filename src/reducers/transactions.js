@@ -1,5 +1,7 @@
 import { load } from 'redux-localstorage-simple';
 
+import Constants from './../helpers/constants.js';
+
 let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.transactions || !initialState.transactions.length) {
@@ -11,7 +13,7 @@ if (!initialState || !initialState.transactions || !initialState.transactions.le
 function transactions(state = initialState.transactions, action) {
   let store = [...state];
   switch (action.type) {
-    case 'ADD_TRANSACTION' :
+    case Constants.ACTIONS.ADD_TRANSACTION :
       return [
         ...state, {
           id: action.id,
@@ -21,7 +23,7 @@ function transactions(state = initialState.transactions, action) {
           category: action.category,
         },
       ];
-    case 'CHANGE_TRANSACTION' :
+    case Constants.ACTIONS.CHANGE_TRANSACTION :
       store = store.map(transaction => {
         const newTransaction = transaction;
         if (transaction.id === action.id) {
@@ -36,7 +38,7 @@ function transactions(state = initialState.transactions, action) {
         return transaction;
       });
       return store;
-    case 'DELETE_TRANSACTION' :
+    case Constants.ACTIONS.DELETE_TRANSACTION :
       return store.filter(transaction => transaction.id !== action.id);
     default:
       return state;

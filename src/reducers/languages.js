@@ -1,5 +1,7 @@
 import { load } from 'redux-localstorage-simple';
 
+import Constants from './../helpers/constants.js';
+
 let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.lang) {
@@ -10,7 +12,7 @@ if (!initialState || !initialState.lang) {
 
 function transactions(state = initialState.lang, action) {
   switch (action.type) {
-    case 'CHANGE_LANGUAGE' : {
+    case Constants.ACTIONS.CHANGE_LANGUAGE : {
       return action.lang;
     }
     default:

@@ -1,6 +1,8 @@
 import { load } from 'redux-localstorage-simple';
 import moment from 'moment';
 
+import Constants from './../helpers/constants.js';
+
 let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.course) {
@@ -12,7 +14,7 @@ if (!initialState || !initialState.course) {
 function course(state = initialState.course, action) {
   const store = [...state];
   switch (action.type) {
-    case 'ADD_MONTH-COURSE' :
+    case Constants.ACTIONS.ADD_MONTH_COURSE :
       if (!store.find(course => moment(course.date).format('YYYY-MM') === moment(action.date).format('YYYY-MM'))) {
         return [
           ...store, {
