@@ -37,7 +37,7 @@ function transactions(state = initialState.transactions, action) {
       });
       return store;
     case 'DELETE_TRANSACTION' :
-      return store.filter(transaction => transaction.id !== action.transactionId);
+      return store.filter(transaction => transaction.id !== action.id);
     default:
       return state;
   }

@@ -16,9 +16,9 @@ export const changeTransaction = (id, date, money, description, category) => ({
   category,
 });
 
-export const deleteTransaction = transactionId => ({
+export const deleteTransaction = id => ({
   type: 'DELETE_TRANSACTION',
-  transactionId,
+  id,
 });
 
 export const addCategory = (id, description, title, icon, filter, color) => ({
