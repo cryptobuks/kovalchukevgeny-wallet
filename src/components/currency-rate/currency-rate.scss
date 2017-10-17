@@ -3,31 +3,4 @@
   .graph-wrapper {
     height: 300px;
   }
-
-  .table {
-    margin-bottom: 0;
-  }
-
-  .curr {
-    font-weight: bold;
-
-    span {
-      margin-right: 10px;
-    }
-  }
-
-  .today {
-
-    .fa {
-      margin-left: 10px;
-
-      &.fa-long-arrow-up {
-        color: green;
-      }
-
-      &.fa-long-arrow-down {
-        color: $accentColor;
-      }
-    }
-  }
 }

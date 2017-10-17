@@ -1,8 +1,8 @@
 .navbar {
   background-color: $mainTheme;
   border-radius: 0;
-  margin-bottom: 10px;
-  min-height: 40px;
+  margin-bottom: $rhythm;
+  min-height: $rhythm*4;
 
   .icon-bar {
     background-color: $accentTextColor;
@@ -16,7 +16,7 @@
         color: $accentTextColor;
         text-transform: uppercase;
         padding-bottom: 5px;
-        padding-top: 10px;
+        padding-top: $rhythm;
 
         &:hover,
         &:focus {

@@ -2,7 +2,7 @@
 
   .toolbar {
     border: 1px solid $borderColor;
-    padding: 10px;
+    padding: $rhythm 10px;
     text-align: center;
   }
 
@@ -11,8 +11,8 @@
   }
 
   .inputfile {
-  	width: 0.1px;
-  	height: 0.1px;
+  	width: .1px;
+  	height: .1px;
   	opacity: 0;
   	overflow: hidden;
   	position: absolute;
@@ -29,8 +29,8 @@
     border-bottom: 1px solid $accentColor;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 10px 0;
+    margin-bottom: $rhythm*2;
+    padding: $rhythm 0;
 
     i {
       color: $successColor;
