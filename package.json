@@ -18,7 +18,7 @@
     "postbuild": "babel-node tools/publicServer.js"
   },
   "jest": {
-    "setupFiles": ["./test/jestsetup.js"],
+    "setupFiles": ["./tests/jestsetup.js"],
     "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "repository": {
