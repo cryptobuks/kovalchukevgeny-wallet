@@ -91,7 +91,7 @@ class Categories extends Component {
   }
 
   createDefaultCategory() {
-    const { addCategory, lang } = this.props;
+    const { addCategory } = this.props;
     const defaultCategory = {
       id: 1,
       description: '',
@@ -131,36 +131,39 @@ class Categories extends Component {
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
 
-      return (
-        <div key={i} className="category-card">
-          <Panel specialClass="category">
-            <div data-id={category.id}>
-              <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
-                <Icon type="fa" icon={category.icon} />
+      if (category.id !== 1) {
+        return (
+          <div key={i} className="category-card">
+            <Panel specialClass="category">
+              <div data-id={category.id}>
+                <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
+                  <Icon type="fa" icon={category.icon} />
+                </div>
+                <h5>{category.title}</h5>
+                {category.description &&
+                  <blockquote>
+                    <small><cite>{category.description}</cite></small>
+                  </blockquote>
+                }
+                <ButtonToolbar>
+                  <Link
+                    className="edit btn-primary btn"
+                    to={`/categories/${category.id}`}
+                  >
+                    <Icon icon={'create'} />
+                  </Link>
+                  <Button
+                    specialClass="btn-primary btn delete"
+                    onClickFunction={this.deleteCategory}
+                    icon="clear"
+                  />
+                </ButtonToolbar>
               </div>
-              <h5>{category.title}</h5>
-              {category.description &&
-                <blockquote>
-                  <small><cite>{category.description}</cite></small>
-                </blockquote>
-              }
-              <ButtonToolbar>
-                <Link
-                  className="edit btn-primary btn"
-                  to={`/categories/${category.id}`}
-                >
-                  <Icon icon={'create'} />
-                </Link>
-                <Button
-                  specialClass="btn-primary btn delete"
-                  onClickFunction={this.deleteCategory}
-                  icon="clear"
-                />
-              </ButtonToolbar>
-            </div>
-          </Panel>
-        </div>
-      );
+            </Panel>
+          </div>
+        );
+      }
+      return '';
     });
   }
 
