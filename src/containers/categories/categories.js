@@ -90,19 +90,31 @@ class Categories extends Component {
     });
   }
 
+  createDefaultCategory() {
+    const { addCategory, lang } = this.props;
+    const defaultCategory = {
+      id: 1,
+      description: '',
+      title: '',
+      icon: '',
+      filter: true,
+    };
+    addCategory(defaultCategory.id, defaultCategory.description, defaultCategory.title, defaultCategory.icon, defaultCategory.filter);
+  }
+
   deleteCategory(event) {
-    const { lang, deleteCategory } = this.props;
+    const { categories, lang, deleteCategory, transactions } = this.props;
     const id = +event.target.parentNode.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
     transactions.forEach(transaction => {
       const currentTransaction = transaction;
 
       if (currentTransaction.category === id) {
-        currentTransaction.category = 0;
-      };
+        currentTransaction.category = 1;
+      }
     });
 
-    if (!categories.find(category => category.id === 0)) {
+    if (!categories.find(category => category.id === 1)) {
       this.createDefaultCategory();
     }
   }
