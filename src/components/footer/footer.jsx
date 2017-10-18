@@ -6,13 +6,25 @@ import Container from './../container/container.jsx';
 import Row from './../row/row.jsx';
 import Col from './../col/col.jsx';
 
+const addWordAnimation = string => {
+  // functionality goes here
+  if(typeof string !== 'string') { return };
+  return string.split('').map((letter, i) => {
+    if(letter !== '-') {
+      return (
+        <span key={i} className="anim-letter">{letter}</span>
+      );
+    } return letter;
+  });
+}
+
 const Footer = () => {
   return (
     <footer className="footer">
       <Container fluid>
         <Row>
           <Col lg={2} md={3}>
-            <div className="logo">e-wallet</div>
+            <div className="logo">{addWordAnimation('e-wallet')}</div>
           </Col>
           <Col lg={7} md={3}>
             <ul>

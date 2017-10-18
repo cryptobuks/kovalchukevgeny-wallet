@@ -48,19 +48,6 @@
   padding-top: 56px;
 }
 
-// ---Logo---
-.logo {
-  color: $accentTextColor;
-  font-size: 26px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  &:first-letter {
-    color: $accentColor;
-  }
-}
-
 // ---Float---
 .left { float: left; }
 .right { float: right; }
