@@ -5,47 +5,25 @@ import classNames from 'classnames';
 
 import Icon from './../icon/icon.jsx';
 import Button from './../button/button.jsx';
-import Container from './../container/container.jsx';
 
 class Navbar extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isShow: false
-    };
-
-    this.showNav = this.showNav.bind(this);
-  }
-
-  showNav() {
-    this.setState({ isShow: !this.state.isShow });
   }
 
   render() {
-    const { isShow } = this.state;
     let { children, withLogo, specialClass } = this.props;
 
     return (
       <nav className={classNames('navbar', `${specialClass}`)}>
-        <Container fluid>
-          <div className="navbar-header">
-            <Button
-              specialClass="navbar-toggle"
-              onClickFunction={this.showNav}
-            ><span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </Button>
-            {withLogo && <span className="navbar-brand">Logo</span>}
-          </div>
-          <div className={classNames('navbar-collapse', {collapse: !isShow})}>
-            {React.Children.map(children, (child) => {
-              return child;
-            })}
-          </div>
-        </Container>
+        <div className="navbar-header">
+          {withLogo && <span className="navbar-brand">Logo</span>}
+        </div>
+        <div className="navbar-menu">
+          {React.Children.map(children, (child) => {
+            return child;
+          })}
+        </div>
       </nav>
     );
   }
@@ -64,7 +42,7 @@ Navbar.propTypes = {
     PropTypes.string
   ]).isRequired,
   withLogo: PropTypes.bool,
-  specialClass: PropTypes.string
+  specialClass: PropTypes.string,
 };
 
 export default Navbar;

@@ -1,16 +1,23 @@
 .navbar {
   background-color: $mainTheme;
   border-radius: 0;
+  height: 100vh;
+  left: -300px;
   margin-bottom: $rhythm;
   min-height: $rhythm*4;
+  transition: ease all .2s;
+  width: 0;
 
   .icon-bar {
     background-color: $accentTextColor;
   }
 
-  &-nav {
+  .navigation {
+    float: none;
 
     li {
+      display: block;
+      float: none;
 
       a {
         color: $accentTextColor;
@@ -39,4 +46,37 @@
       }
     }
   }
+}
+
+// ---Navigation---
+.App {
+  &.visible-menu {
+    .navbar {
+      width: 300px;
+      left: 0;
+    }
+    .main {
+      margin-left: 300px;
+    }
+    .overflow {
+      display: block;
+    }
+  }
+}
+.showMenu {
+  line-height: 1;
+  right: 10px;
+  position: fixed;
+  top: $rhythm;
+  z-index: 99999;
+}
+.overflow {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 2;
 }
