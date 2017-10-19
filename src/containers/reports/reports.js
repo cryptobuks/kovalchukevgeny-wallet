@@ -19,7 +19,8 @@ import {
   deleteTransaction,
   changeTransaction,
   updateCategory,
-  changeAllCategories } from './../../actions/actionCreators';
+  changeAllCategories,
+} from './../../actions/actionCreators';
 
 import staticContent from './../../static-content/languages';
 
@@ -120,7 +121,17 @@ class Reports extends Component {
 
   render() {
     const { transactions, categories, lang, updateCategory, changeAllCategories } = this.props;
-    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));    
+    const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
+    const activeCategories = [];
+    categories.forEach(category => {
+      reMapedTransactions.forEach(monthTransactions => {
+        const activeCategory = monthTransactions.find(monthTransaction => monthTransaction.category === category.id);
+        const alreadyTakenCategory = activeCategories.find(currentCategory => currentCategory.id === category.id);
+        if (activeCategory && !alreadyTakenCategory) {
+          activeCategories.push(category);
+        }
+      });
+    });
 
     return (
       <Container specialClass="reports">
@@ -130,7 +141,7 @@ class Reports extends Component {
               updateCategory={updateCategory}
               changeAllCategories={changeAllCategories}
               lang={lang}
-              categories={categories}
+              categories={activeCategories}
             />
           </Col>
           <Col lg={9} md={9}>
@@ -163,8 +174,8 @@ Reports.defaultProps = {
   categories: [],
   transactions: [],
   course: [],
-  updateCategory: () => {},
-  changeAllCategories: () => {},
+  updateCategory: () => { },
+  changeAllCategories: () => { },
 };
 
 Reports.propTypes = {

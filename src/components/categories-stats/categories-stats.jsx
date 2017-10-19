@@ -67,7 +67,7 @@ const CategoriesStats = props => {
     return(
       <div className="table-row" key={i}>
         <div className="table-data">
-          <span>{categoryStats.category}</span>
+          <span>{categoryStats.category ? categoryStats.category : staticContent[lang].defaultCategory}</span>
         </div>
         <div className="table-data clearfix">
           <span className="percentages left">{categoryPercentage.toFixed(0)}%</span>
@@ -103,7 +103,7 @@ const CategoriesStats = props => {
 
     return {
       id: index,
-      name: categoryStats.category,
+      name: categoryStats.category ? categoryStats.category : staticContent[lang].defaultCategory,
       value: categoryStats.money,
       fill: categoryColor
     }
