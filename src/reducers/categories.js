@@ -1,5 +1,7 @@
 import { load } from 'redux-localstorage-simple';
 
+import Constants from './../helpers/constants.js';
+
 let initialState = load({ namespace: 'e-wallet' });
 
 if (!initialState || !initialState.categories || !initialState.categories.length) {
@@ -11,7 +13,7 @@ if (!initialState || !initialState.categories || !initialState.categories.length
 function categories(state = initialState.categories, action) {
   let store = [...state];
   switch (action.type) {
-    case 'ADD_CATEGORY':
+    case Constants.ACTIONS.ADD_CATEGORY:
       return [
         ...state, {
           id: action.id,
@@ -22,7 +24,7 @@ function categories(state = initialState.categories, action) {
           color: action.color,
         },
       ];
-    case 'UPDATE_CATEGORY':
+    case Constants.ACTIONS.UPDATE_CATEGORY:
       store = store.map(category => {
         const updatedCategory = category;
         if (category.id === action.id) {
@@ -35,9 +37,9 @@ function categories(state = initialState.categories, action) {
         return category;
       });
       return store;
-    case 'CHANGE_ALL_CATEGORIES':
+    case Constants.ACTIONS.CHANGE_ALL_CATEGORIES:
       return action.categories;
-    case 'DELETE_CATEGORY':
+    case Constants.ACTIONS.DELETE_CATEGORY:
       return store.filter(category => category.id !== action.id);
     default:
       return state;

@@ -1,81 +1,65 @@
-export function addTransaction(id, date, money, description, category) {
-  return {
-    type: 'ADD_TRANSACTION',
-    id,
-    date,
-    money,
-    description,
-    category,
-  };
-}
+import Constants from './../helpers/constants.js';
 
-export function changeTransaction(id, date, money, description, category) {
-  return {
-    type: 'CHANGE_TRANSACTION',
-    id,
-    date,
-    money,
-    description,
-    category,
-  };
-}
+export const addTransaction = (id, date, money, description, category) => ({
+  type: Constants.ACTIONS.Constants.ACTIONS.ADD_TRANSACTION,
+  id,
+  date,
+  money,
+  description,
+  category,
+});
 
-export function deleteTransaction(transactionId) {
-  return {
-    type: 'DELETE_TRANSACTION',
-    transactionId,
-  };
-}
+export const changeTransaction = (id, date, money, description, category) => ({
+  type: Constants.ACTIONS.CHANGE_TRANSACTION,
+  id,
+  date,
+  money,
+  description,
+  category,
+});
 
-export function addCategory(id, description, title, icon, filter, color) {
-  return {
-    type: 'ADD_CATEGORY',
-    id,
-    description,
-    title,
-    icon,
-    filter,
-    color,
-  };
-}
+export const deleteTransaction = id => ({
+  type: Constants.ACTIONS.DELETE_TRANSACTION,
+  id,
+});
 
-export function updateCategory(id, description, title, icon, filter, color) {
-  return {
-    type: 'UPDATE_CATEGORY',
-    id,
-    description,
-    title,
-    icon,
-    filter,
-    color,
-  };
-}
+export const addCategory = (id, description, title, icon, filter, color) => ({
+  type: Constants.ACTIONS.ADD_CATEGORY,
+  id,
+  description,
+  title,
+  icon,
+  filter,
+  color,
+});
 
-export function changeAllCategories(categories) {
-  return {
-    type: 'CHANGE_ALL_CATEGORIES',
-    categories,
-  };
-}
+export const updateCategory = (id, description, title, icon, filter, color) => ({
+  type: Constants.ACTIONS.UPDATE_CATEGORY,
+  id,
+  description,
+  title,
+  icon,
+  filter,
+  color,
+});
 
-export function deleteCategory(id) {
-  return {
-    type: 'DELETE_CATEGORY',
-    id,
-  };
-}
+export const changeAllCategories = categories => ({
+  type: Constants.ACTIONS.CHANGE_ALL_CATEGORIES,
+  categories,
+});
 
-export function changeLang(lang) {
-  return {
-    type: 'CHANGE_LANGUAGE',
-    lang,
-  };
-}
+export const deleteCategory = id => ({
+  type: Constants.ACTIONS.DELETE_CATEGORY,
+  id,
+});
 
-export function addMonthCourse(date, course) {
-  return {
-    type: 'ADD_MONTH-COURSE',
-    date,
-    course,
-  };
-}
+export const changeLang = lang => ({
+  type: Constants.ACTIONS.CHANGE_LANGUAGE,
+  lang,
+});
+
+export const addMonthCourse = (date, course) => ({
+  type: Constants.ACTIONS.ADD_MONTH_COURSE,
+  date,
+  course,
+});

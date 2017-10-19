@@ -21,7 +21,7 @@
 
     .panel-body .row {
         border-bottom: 1px solid $borderColor;
-        padding: 10px 0;
+        padding: $rhythm 0;
     }
 
     .panel-body .row:first-child {

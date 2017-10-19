@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import renderer from 'react-test-renderer';
 
 import Navbar from './../../src/components/navbar/navbar.jsx';

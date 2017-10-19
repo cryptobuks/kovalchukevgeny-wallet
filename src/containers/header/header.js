@@ -15,11 +15,11 @@ import staticContent from './../../static-content/languages';
 
 const Header = props => {
   const { lang, changeLang, transactions } = props;
-
-  return (
-    <div className="header">
+  return [
+    <div key={'overflow'} className="overflow" />,
+    <div key={'header'} className="header">
       <Navbar>
-        <ul className="nav navbar-nav navbar-left">
+        <ul className="nav navigation">
           <li>
             <Link activeClassName="active" to="transactions">
               <Icon icon={'account_balance_wallet'} />
@@ -74,33 +74,35 @@ const Header = props => {
               </span>
             </Link>
           </li>
-        </ul>
-        <ul className="nav navbar-nav navbar-right languages">
           <li>
-            <button
-              className={lang === 'eng' ? 'active' : ''}
-              onClick={() => changeLang('eng')}
-            >{'eng'}
-              <span className="flag-icon flag-icon-usa">
-                <img src={usa} alt="english" />
-              </span>
-            </button>
-          </li>
-          <li>{'/'}</li>
-          <li>
-            <button
-              className={lang === 'rus' ? 'active' : ''}
-              onClick={() => changeLang('rus')}
-            >{'rus'}
-              <span className="flag-icon flag-icon-rus">
-                <img src={rus} alt="russian" />
-              </span>
-            </button>
+            <ul className="languages">
+              <li>
+                <button
+                  className={lang === 'eng' ? 'active' : ''}
+                  onClick={() => changeLang('eng')}
+                >{'eng'}
+                  <span className="flag-icon flag-icon-usa">
+                    <img src={usa} alt="english" />
+                  </span>
+                </button>
+              </li>
+              <li>{'/'}</li>
+              <li>
+                <button
+                  className={lang === 'rus' ? 'active' : ''}
+                  onClick={() => changeLang('rus')}
+                >{'rus'}
+                  <span className="flag-icon flag-icon-rus">
+                    <img src={rus} alt="russian" />
+                  </span>
+                </button>
+              </li>
+            </ul>
           </li>
         </ul>
       </Navbar>
-    </div>
-  );
+    </div>,
+  ];
 };
 
 Header.defaultProps = {

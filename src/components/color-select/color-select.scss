@@ -49,7 +49,7 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     content: '';
     display: block;
-    height: 20px;
+    height: $rhythm*2;
     position: absolute;
     transform: rotate(45deg);
     width: 20px;
@@ -59,24 +59,24 @@
   &.bottom {
     left: 50%;
     margin-left: -135px;
-    top: 60px;
+    top: $rhythm*6;
 
     &:after {
       left: 50%;
       margin-left: -10px;
-      top: -10px;
+      top: -$rhythm;
     }
   }
 
   &.top {
     left: 50%;
     margin-left: -135px;
-    bottom: 60px;
+    bottom: $rhythm*6;
 
     &:after {
       left: 50%;
       margin-left: -10px;
-      bottom: -10px;
+      bottom: -$rhythm;
     }
   }
 
@@ -88,7 +88,7 @@
     &:after {
       right: -10px;
       top: 50%;
-      margin-top: -10px;
+      margin-top: -$rhythm;
     }
   }
 
@@ -100,7 +100,7 @@
     &:after {
       left: -10px;
       top: 50%;
-      margin-top: -10px;
+      margin-top: -$rhythm;
     }
   }
 
