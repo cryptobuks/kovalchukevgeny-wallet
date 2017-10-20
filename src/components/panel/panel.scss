@@ -1,6 +1,6 @@
 .panel {
   color: $accentTextColor;
-  margin-bottom: 1rem;
+  margin-bottom: $rhythm;
 
   &.dark {
     background: rgba(0,0,0,0.25);
@@ -32,6 +32,6 @@
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-color: rgba(0,0,0,0.125);
-    padding: 1rem;
+    padding: 16px;
   }
 }
