@@ -1,11 +1,18 @@
+.btn {
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  color: $accentTextColor;
+}
+
 .btn-primary {
-  background-color: $accentColor;
+  background-image: linear-gradient(to bottom, rgba(255,65,54,0.8), rgba(255,65,54,0.4));
 
   &.disabled:hover,
   &:active,
   &:focus,
   &:hover {
-    background-color: darken($accentColor, 10%);
+    background-color: rgba(255,65,54,0.5);
   }
 
   &:focus,
@@ -13,7 +20,27 @@
 
     &:focus,
     &:hover {
-      background-color: darken($accentColor, 15%);
+      background-color: rgba(255,65,54,0.5);
+    }
+  }
+}
+
+.btn-default {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.5));
+
+  &.disabled:hover,
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: rgba(255,255,255,0.5);
+  }
+
+  &:focus,
+  &:active {
+
+    &:focus,
+    &:hover {
+      background-color: rgba(255,255,255,0.5);
     }
   }
 }
