@@ -37,9 +37,16 @@ const CategoriesStats = props => {
   }
   // Remap category object, transform category title from id to title
   categoriesStats = categoriesStats.map(category => {
-    const currentCategory = categories.find(item => +category.category === item.id);
-    let categoryColor = categories.find(item => +category.category === item.id);
-    categoryColor = categoryColor.color ? categoryColor.color : '#b91919';
+    let currentCategory = categories.find(item => +category.category === item.id);
+    let categoryColor = '#b91919';
+
+    if (currentCategory) {
+      categoryColor = currentCategory.color;
+    } else {
+      currentCategory = category;
+      currentCategory.title = staticContent[lang].defaultCategory;
+    }
+
     return {
         money: category.money,
         category: currentCategory.title,
@@ -60,7 +67,7 @@ const CategoriesStats = props => {
     return(
       <div className="table-row" key={i}>
         <div className="table-data">
-          <span>{categoryStats.category}</span>
+          <span>{categoryStats.category ? categoryStats.category : staticContent[lang].defaultCategory}</span>
         </div>
         <div className="table-data clearfix">
           <span className="percentages left">{categoryPercentage.toFixed(0)}%</span>
@@ -85,15 +92,16 @@ const CategoriesStats = props => {
   // Remap data for graph
   let categoriesStatsPie = categoriesStats.map((categoryStats, index) => {
     const categoryPercentage = Math.round((categoryStats.money / amountCategoryMoney) * 100);
+    let categoryColor = '#33373e';
+    let currentCategory = categories.find(category => category.title === categoryStats.category);
 
-    let categoryColor = categories.find(category => {
-      return category.title === categoryStats.category
-    });
-    categoryColor = categoryColor.color ? categoryColor.color : '#33373e';
+    if (currentCategory) {
+      categoryColor = currentCategory.color;
+    }
 
     return {
       id: index,
-      name: categoryStats.category,
+      name: categoryStats.category ? categoryStats.category : staticContent[lang].defaultCategory,
       value: categoryStats.money,
       fill: categoryColor
     }

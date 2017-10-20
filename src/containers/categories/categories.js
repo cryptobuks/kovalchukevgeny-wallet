@@ -90,10 +90,33 @@ class Categories extends Component {
     });
   }
 
+  createDefaultCategory() {
+    const { addCategory } = this.props;
+    const defaultCategory = {
+      id: 1,
+      description: '',
+      title: '',
+      icon: '',
+      filter: true,
+    };
+    addCategory(defaultCategory.id, defaultCategory.description, defaultCategory.title, defaultCategory.icon, defaultCategory.filter);
+  }
+
   deleteCategory(event) {
-    const { lang, deleteCategory } = this.props;
+    const { categories, lang, deleteCategory, transactions } = this.props;
     const id = +event.target.parentNode.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
+    transactions.forEach(transaction => {
+      const currentTransaction = transaction;
+
+      if (currentTransaction.category === id) {
+        currentTransaction.category = 1;
+      }
+    });
+
+    if (!categories.find(category => category.id === 1)) {
+      this.createDefaultCategory();
+    }
   }
 
   handleChangeDescription(event) {
@@ -108,36 +131,39 @@ class Categories extends Component {
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
 
-      return (
-        <div key={i} className="category-card">
-          <Panel specialClass="category">
-            <div data-id={category.id}>
-              <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
-                <Icon type="fa" icon={category.icon} />
+      if (category.id !== 1) {
+        return (
+          <div key={i} className="category-card">
+            <Panel specialClass="category">
+              <div data-id={category.id}>
+                <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
+                  <Icon type="fa" icon={category.icon} />
+                </div>
+                <h5>{category.title}</h5>
+                {category.description &&
+                  <blockquote>
+                    <small><cite>{category.description}</cite></small>
+                  </blockquote>
+                }
+                <ButtonToolbar>
+                  <Link
+                    className="edit btn-primary btn"
+                    to={`/categories/${category.id}`}
+                  >
+                    <Icon icon={'create'} />
+                  </Link>
+                  <Button
+                    specialClass="btn-primary btn delete"
+                    onClickFunction={this.deleteCategory}
+                    icon="clear"
+                  />
+                </ButtonToolbar>
               </div>
-              <h5>{category.title}</h5>
-              {category.description &&
-                <blockquote>
-                  <small><cite>{category.description}</cite></small>
-                </blockquote>
-              }
-              <ButtonToolbar>
-                <Link
-                  className="edit btn-primary btn"
-                  to={`/categories/${category.id}`}
-                >
-                  <Icon icon={'create'} />
-                </Link>
-                <Button
-                  specialClass="btn-primary btn delete"
-                  onClickFunction={this.deleteCategory}
-                  icon="clear"
-                />
-              </ButtonToolbar>
-            </div>
-          </Panel>
-        </div>
-      );
+            </Panel>
+          </div>
+        );
+      }
+      return '';
     });
   }
 
@@ -240,8 +266,8 @@ Categories.defaultProps = {
   lang: 'eng',
   categories: [],
   transactions: [],
-  addCategory: () => {},
-  deleteCategory: () => {},
+  addCategory: () => { },
+  deleteCategory: () => { },
 };
 
 Categories.propTypes = {
@@ -249,9 +275,11 @@ Categories.propTypes = {
   deleteCategory: PropTypes.func,
   categories: PropTypes.array,
   lang: PropTypes.string,
+  transactions: PropTypes.array,
 };
 
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
+  transactions: state.transactions,
 }), { addCategory, deleteCategory })(Categories);

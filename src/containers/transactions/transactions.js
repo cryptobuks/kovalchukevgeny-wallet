@@ -91,7 +91,7 @@ class Transactions extends Component {
     const unicTransactions = this.Helpers.sumSameDateTransactions(monthTransactions);
     const monthCategories = monthTransactions.map(transaction => transaction.category);
     const monthActiveCategories = categories.filter(category => {
-      return monthCategories.find(montCategory => montCategory === category.id);
+      return monthCategories.find(monthCategory => monthCategory === category.id);
     });
 
     if (monthTransactions && monthTransactions.length > 0) {

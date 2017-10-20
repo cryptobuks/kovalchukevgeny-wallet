@@ -2,6 +2,7 @@ export default {
   eng: {
     menu: ['Transactions', 'Categories', 'Statistics', 'Report', 'Month Report', 'Backup'],
     description: 'Please, firstly create new category and then add new transaction...',
+    defaultCategory: 'No category',
     'categories-stats': {
       head: 'Categories statistic',
       tableHead: ['Category', 'Percentage', 'Amount'],
@@ -119,6 +120,7 @@ export default {
   rus: {
     menu: ['Транзакции', 'Категории', 'Статистика', 'Отчёт', 'Расходы за месяц', 'Резервное копирование'],
     description: 'Пожалуйста, сначала создайте новую категорию, а затем добавьте новую транзакцию...',
+    defaultCategory: 'Без категории',
     'categories-stats': {
       head: 'Статистика по категориям',
       tableHead: ['Категория', 'Процентное соотношение', 'Итог'],

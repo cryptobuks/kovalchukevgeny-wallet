@@ -51,7 +51,7 @@ class TransactionsFilter extends PureComponent {
           onClick={() => this.isCategoryActive(category)}
         >
           <Icon icon={category.filter ? 'check_box' : 'check_box_outline_blank'} />
-          <span className="category-title">{category.title}</span>
+          <span className="category-title">{category.id !== 1 ? category.title : staticContent[lang].defaultCategory}</span>
         </div>
       );
     });
