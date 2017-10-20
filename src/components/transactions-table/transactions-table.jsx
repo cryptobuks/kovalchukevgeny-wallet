@@ -193,8 +193,6 @@ class TransactionsTable extends Component {
         categoryColor = category.color;
       }
 
-      //categoryColor = categoryColor ? categoryColor : '#33373e';
-
       return (
         <div className="table-row clearfix" key={i} data-row={transaction.id}
           onClick={() => this.openEditMenu(transaction)}

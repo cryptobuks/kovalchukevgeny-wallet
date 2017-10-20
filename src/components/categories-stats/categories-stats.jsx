@@ -93,9 +93,7 @@ const CategoriesStats = props => {
   let categoriesStatsPie = categoriesStats.map((categoryStats, index) => {
     const categoryPercentage = Math.round((categoryStats.money / amountCategoryMoney) * 100);
     let categoryColor = '#33373e';
-    let currentCategory = categories.find(category => {
-      return category.title === categoryStats.category
-    });
+    let currentCategory = categories.find(category => category.title === categoryStats.category);
 
     if (currentCategory) {
       categoryColor = currentCategory.color;
