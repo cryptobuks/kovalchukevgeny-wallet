@@ -71,7 +71,7 @@ class Import extends PureComponent {
 
     return (
       <Panel
-        specialClass="import"
+        specialClass="import dark"
         heading={staticContent[lang]['backup-import']['head']}
         headingIcon="open_in_browser"
       >

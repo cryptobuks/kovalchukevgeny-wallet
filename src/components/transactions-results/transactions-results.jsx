@@ -71,7 +71,7 @@ const TransactionsResults = props => {
 
   return (
     <Panel
-      specialClass="results"
+      specialClass="results dark"
       heading={staticContent[lang]['transactions-results']['head']}
       headingIcon="insert_invitation"
     >

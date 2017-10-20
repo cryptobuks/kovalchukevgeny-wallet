@@ -129,7 +129,7 @@ class Transactions extends Component {
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
               <Panel
-                specialClass="tr-table"
+                specialClass="tr-table dark"
                 heading={staticContent[lang]['transactions-table'].head}
                 headingIcon="view_list"
                 footer={this.renderTableFooter(amount, unicTransactions)}

@@ -15,6 +15,7 @@ const DayExpenses = props => {
 
   return (
     <Panel
+      specialClass="dark"
       heading={`${moment(props.transaction[0].date).format('DD/MM/YYYY')} ${props.day}`}
       footer={`- ${String(totalExpenses)}`}>
       <Container>

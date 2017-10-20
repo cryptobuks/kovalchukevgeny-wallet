@@ -37,7 +37,7 @@ const CurrencyRate = props => {
     <div>
       {course.length > 0 &&
       <Panel
-        specialClass="currency"
+        specialClass="currency dark"
         heading={staticContent[lang]['currency-rate']['head']}
         headingIcon="monetization_on"
       >

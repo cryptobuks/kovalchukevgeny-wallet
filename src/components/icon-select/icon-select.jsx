@@ -57,7 +57,7 @@ class IconSelect extends PureComponent {
         <strong>{staticContent[lang]['adding-category']['chooseIcon']}</strong>
         <Icon type="fa" icon={defaultIcon}/>
         <div className={classNames('icon-select', position, {hide: !isSelectVisible})}>
-          <Panel>
+          <Panel specialClass="dark">
             <ul className="clearfix">
               {this.renderDropdown(iconsArray)}
             </ul>

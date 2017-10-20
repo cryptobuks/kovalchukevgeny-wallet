@@ -14,7 +14,7 @@ const Export = props => {
 
   return (
     <Panel
-      specialClass="export"
+      specialClass="export dark"
       heading={staticContent[lang]['backup-export']['head']}
       headingIcon="backup"
     >
