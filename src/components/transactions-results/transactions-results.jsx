@@ -4,6 +4,9 @@ import moment from 'moment';
 
 import Helpers from './../../helpers/Helpers';
 import Panel from './../panel/panel.jsx';
+import ListGroup from '../list-group/list-group.jsx';
+import ListGroupItem from '../list-group-item/list-group-item.jsx';
+import Badge from '../badge/badge.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -11,8 +14,8 @@ const TransactionsResults = props => {
   const Helper = new Helpers();
 
   const getMaxValue = array => {
-    if(array && array.length > 0) {
-      return Math.max.apply(Math,array.map(transaction => transaction.money));
+    if (array && array.length > 0) {
+      return Math.max.apply(Math, array.map(transaction => transaction.money));
     }
     return 0;
   }
@@ -22,19 +25,19 @@ const TransactionsResults = props => {
 
     let biggestTransaction = transactions.filter(transaction => transaction.money === getMaxValue(transactions));
 
-    return(
+    return (
       biggestTransaction.map((transaction, i) => {
         return (
-          <ul className="list-group" key={i}>
-            <li className="list-group-item">
+          <ListGroup key={i}>
+            <ListGroupItem>
               {`${moment(transaction.date).format('DD')}
               ${staticContent[lang]['rusMonths'][moment().month()]} -
               ${transaction.description}`}
-              <span className="badge">
+              <Badge>
                 {transaction.money.toFixed(2)} {staticContent[lang]['currency']}
-              </span>
-            </li>
-          </ul>
+              </Badge>
+            </ListGroupItem>
+          </ListGroup>
         );
       })
     );
@@ -49,7 +52,7 @@ const TransactionsResults = props => {
 
   let monthCourse = { course: 1 }
 
-  if(monthTransactions[0]) {
+  if (monthTransactions[0]) {
     monthCourse = course.find(currentCourse => {
       return moment(currentCourse.date).format('YYYY-MM') === moment(monthTransactions[0].date).format('YYYY-MM');
     }) || { course: 1 };
@@ -57,7 +60,7 @@ const TransactionsResults = props => {
 
   const unicTransactions = Helper.sumSameDateTransactions(monthTransactions);
 
-  if(unicTransactions && unicTransactions.length > 0) {
+  if (unicTransactions && unicTransactions.length > 0) {
     amountDay = unicTransactions.reduce((sum, transaction) => {
       return sum += transaction.money;
     }, 0) / unicTransactions.length;
@@ -75,34 +78,34 @@ const TransactionsResults = props => {
       heading={staticContent[lang]['transactions-results']['head']}
       headingIcon="insert_invitation"
     >
-      <ul className="list-group">
-        <li className="list-group-item">
+      <ListGroup>
+        <ListGroupItem>
           {staticContent[lang]['transactions-results']['month']}
-          <span className="badge">
+          <Badge>
             {staticContent[lang]['months'][moment().month()]}
-          </span>
-        </li>
-        <li className="list-group-item">
+          </Badge>
+        </ListGroupItem>
+        <ListGroupItem>
           {staticContent[lang]['transactions-results']['transactions']}
-          <span className="badge">
+          <Badge>
             {monthTransactions.length}
-          </span>
-        </li>
-        <li className="list-group-item">
+          </Badge>
+        </ListGroupItem>
+        <ListGroupItem>
           {staticContent[lang]['transactions-results']['amountMonth']}
-          <span className="badge">
+          <Badge>
             {`${amountMonth.toFixed(2)} ${staticContent[lang]['currency']} /
             ${amountMonthCurrency.toFixed(2)}$`}
-          </span>
-        </li>
-        <li className="list-group-item">
+          </Badge>
+        </ListGroupItem>
+        <ListGroupItem>
           {staticContent[lang]['transactions-results']['amountDay']}
-          <span className="badge">
+          <Badge>
             {`${amountDay.toFixed(2)} ${staticContent[lang]['currency']} /
             ${amountDayCurrency.toFixed(2)}$`}
-          </span>
-        </li>
-      </ul>
+          </Badge>
+        </ListGroupItem>
+      </ListGroup>
       <h6 className="result-item">{staticContent[lang]['transactions-results']['bigTrans']}:</h6>
       {renderBiggestTransaction(monthTransactions)}
     </Panel>
