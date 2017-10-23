@@ -15,7 +15,7 @@ class Navbar extends PureComponent {
     let { children, withLogo, specialClass } = this.props;
 
     return (
-      <nav className={classNames('navbar', `${specialClass}`)}>
+      <nav className={classNames('navbar dark', `${specialClass}`)}>
         <div className="navbar-header">
           {withLogo && <span className="navbar-brand">Logo</span>}
         </div>

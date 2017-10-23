@@ -57,7 +57,7 @@ class MonthCourse extends Component {
 
     return (
       <Panel
-        specialClass="month-course"
+        specialClass="month-course dark"
         heading={staticContent[lang]['month-course'].head}
         headingIcon="attach_money"
       >

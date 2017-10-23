@@ -111,7 +111,7 @@ const CategoriesStats = props => {
     <div>
       {categories.length > 0 &&
         <Panel
-          specialClass="categories-stats"
+          specialClass="categories-stats dark"
           heading={staticContent[lang]['categories-stats']['head']}
           headingIcon="pie_chart"
         >
@@ -143,7 +143,7 @@ const CategoriesStats = props => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="panel stats">
+          <div className="panel stats dark">
             <div
               onClick={(e) => openStats(e)}
               className="panel-heading clearfix">

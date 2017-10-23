@@ -134,7 +134,7 @@ class Categories extends Component {
       if (category.id !== 1) {
         return (
           <div key={i} className="category-card">
-            <Panel specialClass="category">
+            <Panel specialClass="category dark">
               <div data-id={category.id}>
                 <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
                   <Icon type="fa" icon={category.icon} />
@@ -175,7 +175,7 @@ class Categories extends Component {
       <Container>
         <Row>
           <Col lg={12}>
-            <Panel specialClass="categories">
+            <Panel specialClass="categories dark">
               <Row>
                 <Col lg={12}>
                   <legend>{staticContent[lang]['adding-category'].head}</legend>
@@ -232,7 +232,7 @@ class Categories extends Component {
           <Col lg={12}>
             {categories.length > 0 &&
               <Panel
-                specialClass="categories-panel"
+                specialClass="categories-panel dark"
                 heading={staticContent[lang].categories.head}
                 headingIcon="work"
               >

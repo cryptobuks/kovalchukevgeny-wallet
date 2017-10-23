@@ -66,7 +66,7 @@ class Reports extends Component {
       return (
         <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
-            <div className="panel panel-primary res-table">
+            <div className="panel dark res-table">
               <div className="panel-heading-container">
                 <button
                   onClick={e => this.openMonth(e)}

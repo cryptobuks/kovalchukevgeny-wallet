@@ -27,7 +27,7 @@ const TransactionsGraph = props => {
     <div>
       {monthTransactions.length > 0 &&
       <Panel
-        specialClass="transactions-graph"
+        specialClass="transactions-graph dark"
         heading={staticContent[lang]['transactions-graph']['head']}
         headingIcon="multiline_chart"
         >

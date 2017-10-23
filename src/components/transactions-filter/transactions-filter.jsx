@@ -58,7 +58,7 @@ class TransactionsFilter extends PureComponent {
 
     return (
       <Panel
-        specialClass="filter"
+        specialClass="filter dark"
         heading={staticContent[lang]['transactions-filter']['head']}
         headingIcon="filter_list"
       >
