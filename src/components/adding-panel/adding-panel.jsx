@@ -115,7 +115,7 @@ class AddingPanel extends PureComponent {
             <label className="label">{staticContent[lang]['adding-panel']['dateLabel']}</label>
             <DatePicker
               locale="en-gb"
-              className="form-control"
+              className="form-control dark"
               maxDate={moment()}
               selected={date}
               onChange={this.handleChangeData}
@@ -125,6 +125,7 @@ class AddingPanel extends PureComponent {
             <label className="label">{staticContent[lang]['adding-panel']['moneyLabel']}</label>
             <Input
               type="number"
+              specialClass="dark"
               placeholder="0.00"
               value={money}
               handleChange={this.handleChangeMoney}
@@ -153,7 +154,7 @@ class AddingPanel extends PureComponent {
           <div className="form-item">
             <label className="label">{staticContent[lang]['adding-panel'].categoryLabel}</label>
             <select
-              className="form-control"
+              className="form-control dark"
               value={this.state.category}
               onChange={this.handleChangeCategory}
             >

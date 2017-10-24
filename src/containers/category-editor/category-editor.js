@@ -94,6 +94,7 @@ class CategoryEditor extends PureComponent {
               <Row>
                 <Col lg={3} md={2} sm={6}>
                   <Input
+                    specialClass="dark"
                     placeholder={staticContent[lang]['category-editor'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
@@ -101,6 +102,7 @@ class CategoryEditor extends PureComponent {
                 </Col>
                 <Col lg={3} md={3} sm={6}>
                   <Input
+                    specialClass="dark"
                     placeholder={staticContent[lang]['category-editor'].descr}
                     value={description}
                     handleChange={this.handleChangeDescription}

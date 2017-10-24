@@ -182,6 +182,7 @@ class Categories extends Component {
                 </Col>
                 <Col lg={2} md={2} sm={6}>
                   <Input
+                    specialClass="dark"
                     placeholder={staticContent[lang]['adding-category'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
@@ -189,6 +190,7 @@ class Categories extends Component {
                 </Col>
                 <Col lg={3} md={3} sm={6}>
                   <Input
+                    specialClass="dark"
                     placeholder={staticContent[lang]['adding-category'].descr}
                     value={description}
                     handleChange={this.handleChangeDescription}

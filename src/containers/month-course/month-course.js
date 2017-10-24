@@ -68,13 +68,14 @@ class MonthCourse extends Component {
           <Col lg={6}>
             <DatePicker
               locale="en-gb"
-              className="form-control"
+              className="form-control dark"
               maxDate={moment()}
               selected={date}
               onChange={this.handleChangeData}
             />
             <Input
               type="number"
+              specialClass="dark"
               placeholder="0.00"
               value={currentCourse}
               handleChange={this.handleChangeCourse}
