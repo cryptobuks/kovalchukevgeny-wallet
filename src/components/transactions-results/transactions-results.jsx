@@ -29,7 +29,7 @@ const TransactionsResults = props => {
       biggestTransaction.map((transaction, i) => {
         return (
           <ListGroup key={i}>
-            <ListGroupItem>
+            <ListGroupItem specialClass="dark">
               {`${moment(transaction.date).format('DD')}
               ${staticContent[lang]['rusMonths'][moment().month()]} -
               ${transaction.description}`}
@@ -79,26 +79,26 @@ const TransactionsResults = props => {
       headingIcon="insert_invitation"
     >
       <ListGroup>
-        <ListGroupItem>
+        <ListGroupItem specialClass="dark">
           {staticContent[lang]['transactions-results']['month']}
           <Badge>
             {staticContent[lang]['months'][moment().month()]}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem>
+        <ListGroupItem specialClass="dark">
           {staticContent[lang]['transactions-results']['transactions']}
           <Badge>
             {monthTransactions.length}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem>
+        <ListGroupItem specialClass="dark">
           {staticContent[lang]['transactions-results']['amountMonth']}
           <Badge>
             {`${amountMonth.toFixed(2)} ${staticContent[lang]['currency']} /
             ${amountMonthCurrency.toFixed(2)}$`}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem>
+        <ListGroupItem specialClass="dark">
           {staticContent[lang]['transactions-results']['amountDay']}
           <Badge>
             {`${amountDay.toFixed(2)} ${staticContent[lang]['currency']} /

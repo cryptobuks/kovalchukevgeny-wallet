@@ -156,7 +156,7 @@ const CategoriesStats = props => {
               </h3>
             </div>
             <div className="panel-body expanded">
-              <div className="table">
+              <div className="table dark">
                 <div className="table-head clearfix">
                   <div className="table-row clearfix">
                     {tableHead}

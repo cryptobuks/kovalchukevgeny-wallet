@@ -58,6 +58,10 @@
 
 .transactions {
 
+  .list-group {
+    margin-bottom: 20px;
+  }
+
   .table-data {
 
     &:nth-child(1) { width: 15%; }

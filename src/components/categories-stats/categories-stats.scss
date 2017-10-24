@@ -58,10 +58,6 @@
 
     .progress-bar {
       background-color: $accentColor;
-
-      &:last-child:before {
-        background-color: lighten($accentColor, 50);
-      }
     }
   }
 
@@ -97,5 +93,25 @@
     height: 0;
     overflow: hidden;
     padding: 0;
+  }
+}
+
+.dark {
+  .progress {
+    .progress-bar {
+      &:last-child:before {
+        background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.125));
+      }
+    }
+  }
+}
+
+.light {
+  .progress {
+    .progress-bar {
+      &:last-child:before {
+        background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15));
+      }
+    }
   }
 }
