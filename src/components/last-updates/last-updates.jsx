@@ -15,13 +15,13 @@ const LastUpdates = props => {
 
   return (
       <ListGroup>
-        <ListGroupItem>
+        <ListGroupItem specialClass="dark">
           {staticContent[lang]['last-updates']['lastUpdate']}
           <Badge>
             {moment(LatestTransaction).format('DD MMM, YYYY')}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem>
+        <ListGroupItem specialClass="dark">
         {staticContent[lang]['last-updates']['amount']}
           <Badge>
             {amount} {staticContent[lang]['currency']}
