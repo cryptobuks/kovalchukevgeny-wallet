@@ -25,6 +25,9 @@
 @import "../components/color-select/color-select";
 @import "../components/button-toolbar/button-toolbar";
 @import "../components/last-updates/last-updates";
+@import "../components/list-group/list-group";
+@import "../components/list-group-item/list-group-item";
+@import "../components/badge/badge";
 // Containers
 @import "../containers/header/header";
 @import "../containers/categories/categories";
@@ -38,7 +41,9 @@
 
 // ---Sticky Footer---
 .App {
-  background-color: #f5f5f5;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #204363;
+  background-image: linear-gradient(to bottom right, #360033, #0b8793);
   display: flex;
   flex-direction: column;
   min-height: 100vh;

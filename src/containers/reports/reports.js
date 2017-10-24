@@ -66,7 +66,7 @@ class Reports extends Component {
       return (
         <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
-            <div className="panel panel-primary res-table">
+            <div className="panel dark res-table">
               <div className="panel-heading-container">
                 <button
                   onClick={e => this.openMonth(e)}
@@ -123,14 +123,13 @@ class Reports extends Component {
     const { transactions, categories, lang, updateCategory, changeAllCategories } = this.props;
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     const activeCategories = [];
+
     categories.forEach(category => {
-      reMapedTransactions.forEach(monthTransactions => {
-        const activeCategory = monthTransactions.find(monthTransaction => monthTransaction.category === category.id);
-        const alreadyTakenCategory = activeCategories.find(currentCategory => currentCategory.id === category.id);
-        if (activeCategory && !alreadyTakenCategory) {
-          activeCategories.push(category);
-        }
-      });
+      const activeCategory = transactions.find(transaction => transaction.category === category.id);
+      const alreadyTakenCategory = activeCategories.find(currentCategory => currentCategory.id === category.id);
+      if (activeCategory && !alreadyTakenCategory) {
+        activeCategories.push(category);
+      }
     });
 
     return (

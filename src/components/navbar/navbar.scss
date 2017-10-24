@@ -1,5 +1,5 @@
 .navbar {
-  background-color: $mainTheme;
+  border-color: rgba(0,0,0,0.25);
   border-radius: 0;
   height: 100vh;
   left: -300px;
@@ -7,6 +7,33 @@
   min-height: $rhythm*4;
   transition: ease all .2s;
   width: 0;
+
+  &.dark {
+    background: rgba(0,0,0,0.125);
+    background: linear-gradient(to bottom right, rgba(0,0,0,0.25), rgba(0,0,0,0));
+
+    a {
+      background-image: linear-gradient(to right, rgba(0,0,0,0.25), rgba(0,0,0,0));
+
+      &.active {
+        background-image: linear-gradient(to left, rgba(0,0,0,0.125), rgba(0,0,0,0.25));
+      }
+    }
+  }
+
+  &.light {
+    background: rgba(255,255,255,0.05);
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.15), rgba(255,255,255,0));
+
+    a {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0));
+      color: rgba(0,0,0,0.75);
+
+      &.active {
+        background-image: linear-gradient(to left, rgba(0,0,0,0.125), rgba(0,0,0,0.25));
+      }
+    }
+  }
 
   .icon-bar {
     background-color: $accentTextColor;
@@ -22,17 +49,16 @@
       a {
         color: $accentTextColor;
         text-transform: uppercase;
-        padding-bottom: 5px;
-        padding-top: $rhythm;
+        height: 60px;
+        line-height: $rhythm*6;
+        transition: all .3s ease;
 
         &:hover,
         &:focus {
-          background-color: rgba(255,255,255,.2);
-          color: $accentTextColor;
+          background-position: -280px;
         }
 
         &.active {
-          background-color: rgba(185,25,25,.6);
 
           &:hover {
             cursor: default;
@@ -77,6 +103,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.2);
+  //background-color: rgba(0,0,0,0.2);
   z-index: 2;
 }

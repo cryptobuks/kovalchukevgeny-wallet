@@ -60,7 +60,7 @@ class ColorSelect extends PureComponent {
         <strong>{staticContent[lang]['adding-category']['chooseColor']}</strong>
           <span className="colorRound" style={{'backgroundColor': defaultColor}}></span>
         <div className={classNames('color-select', position, {hide: !isSelectVisible})}>
-          <Panel>
+          <Panel specialClass="dark">
             <ul className="clearfix">
               {this.renderDropdown(colorsArray)}
             </ul>

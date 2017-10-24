@@ -87,7 +87,7 @@ class CategoryEditor extends PureComponent {
         <Row>
           <Col lg={12}>
             <Panel
-              specialClass="category-editor"
+              specialClass="category-editor dark"
               heading={staticContent[lang]['category-editor'].head}
               headingIcon="settings"
             >

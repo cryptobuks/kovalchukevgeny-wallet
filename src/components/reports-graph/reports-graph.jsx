@@ -37,7 +37,7 @@ const ReportsGraph = props => {
     <div>
       {transactions.length > 0 &&
         <Panel
-          specialClass="reports-graph"
+          specialClass="reports-graph dark"
           heading={staticContent[lang]['transactions-graph']['head']}
         >
           <div className="graph-wrapper">
