@@ -63,3 +63,8 @@ export const addMonthCourse = (date, course) => ({
   date,
   course,
 });
+
+export const changeTheme = theme => ({
+  type: Constants.ACTIONS.CHANGE_THEME,
+  theme,
+});
