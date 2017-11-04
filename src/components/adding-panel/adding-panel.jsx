@@ -110,7 +110,7 @@ class AddingPanel extends PureComponent {
     return (
       <div className={classNames('adding-panel-wrapper', {'hidden' : !showPanel})}>
         <Panel
-          specialClass={`adding-panel ${user.settings.theme}`}
+          specialClass={`adding-panel ${theme}`}
           heading={staticContent[lang]['adding-panel']['head']}
         >
           <div className="form-item">

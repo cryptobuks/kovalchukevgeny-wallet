@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import ReduxToastr from 'react-redux-toastr';
 
 import Header from './../header/header';
@@ -25,6 +24,8 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {  
     if (nextProps.location.pathname === this.props.location.pathname || nextProps.location.pathname !== this.props.location.pathname) {
       this.setState({ showMenu: false });
+    }  
+  }
 
   changeTheme(theme) {
     const { changeTheme, user } = this.props;

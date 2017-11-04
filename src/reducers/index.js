@@ -7,8 +7,6 @@ import lang from './languages';
 import course from './month-course';
 import user from './user';
 
-import user from './user';
-
 const rootReducer = combineReducers({
   transactions, categories, lang, course, user, toastr: toastrReducer,
 });

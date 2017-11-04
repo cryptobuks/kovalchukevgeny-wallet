@@ -4,7 +4,7 @@ import Constants from './../helpers/constants.js';
 
 let initialState = load({ namespace: 'e-wallet' });
 
-if (!initialState || !initialState.user || !initialState.user.settings || !initialState.user.settings) {
+if (!initialState || !initialState.user || !initialState.user.settings) {
   initialState = {
     user: {
       settings: {
@@ -23,11 +23,8 @@ function user(state = initialState.user, action = {}) {
       return user;
     }
     case Constants.ACTIONS.CHANGE_THEME: {
-      return {
-        settings: {
-          theme: action.theme,
-        },
-      };
+      user.settings.theme = action.theme;
+      return user;
     }
     default:
       return state;
