@@ -150,7 +150,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, categories, lang } = this.props;
+    let { transactions, categories, lang, user } = this.props;
     const { activeRow, isEditRow, descending, sortby } = this.state;
 
     const selectCategories = categories.map((category, i) => {
@@ -281,7 +281,7 @@ class TransactionsTable extends Component {
     });
 
     return (
-      <div className="table dark transactions">
+      <div className={`table ${user.settings.theme} transactions`}>
         <div className="table-head clearfix">
           <div className="table-row clearfix" onClick={this.sortData}>
             {tableHead}
