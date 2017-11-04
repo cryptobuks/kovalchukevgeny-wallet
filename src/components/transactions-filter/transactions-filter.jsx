@@ -40,7 +40,7 @@ class TransactionsFilter extends PureComponent {
   }
 
   render() {
-    let { categories, lang } = this.props;
+    let { categories, lang, user } = this.props;
 
     categories = categories.map((category, i) => {
       return(
@@ -58,7 +58,7 @@ class TransactionsFilter extends PureComponent {
 
     return (
       <Panel
-        specialClass="filter dark"
+        specialClass={`filter ${user.settings.theme}`}
         heading={staticContent[lang]['transactions-filter']['head']}
         headingIcon="filter_list"
       >

@@ -67,4 +67,9 @@ export const addMonthCourse = (date, course) => ({
 export const changePallet = pallet => ({
   type: Constants.ACTIONS.CHANGE_PALLET,
   pallet,
+});  
+
+export const changeTheme = theme => ({
+  type: Constants.ACTIONS.CHANGE_THEME,
+  theme,
 });
