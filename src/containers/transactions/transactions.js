@@ -84,7 +84,8 @@ class Transactions extends Component {
       changeTransaction,
       addTransaction,
       updateCategory,
-      changeAllCategories } = this.props;
+      changeAllCategories,
+      user } = this.props;
     let amount = 0;
 
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
@@ -115,6 +116,7 @@ class Transactions extends Component {
             transactions={transactions}
             showPanel={showPanel}
             hideAddingPanel={this.hideAddingPanel}
+            user={user}
           />
           {transactions.length > 0 ?
             <Col lg={3} md={3}>
@@ -123,13 +125,14 @@ class Transactions extends Component {
                 lang={lang}
                 updateCategory={updateCategory}
                 changeAllCategories={changeAllCategories}
+                user={user}
               />
             </Col> : <h4>{staticContent[lang].description}</h4>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
               <Panel
-                specialClass="tr-table dark"
+                specialClass={`tr-table ${user.settings.theme}`}
                 heading={staticContent[lang]['transactions-table'].head}
                 headingIcon="view_list"
                 footer={this.renderTableFooter(amount, unicTransactions)}
@@ -140,6 +143,7 @@ class Transactions extends Component {
                   changeTransaction={changeTransaction}
                   categories={categories}
                   lang={lang}
+                  user={user}
                 />
               </Panel>
             }
@@ -190,12 +194,14 @@ Transactions.propTypes = {
   lang: PropTypes.string,
   transactions: PropTypes.array,
   updateCategory: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
   lang: state.lang,
+  user: state.user,
 }), {
   deleteTransaction,
   changeTransaction,

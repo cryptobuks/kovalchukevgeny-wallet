@@ -97,8 +97,10 @@ class AddingPanel extends PureComponent {
 
   render() {
     const { category, money, date, description } = this.state;
-    let { categories, lang, transactions, showPanel } = this.props;
+    let { categories, lang, transactions, showPanel, user } = this.props;
 
+    const theme = user.settings.theme;
+    
     categories = categories.map((category, i) => {
       return (
         <option key={i} value={category.id}>{category.title}</option>
@@ -108,7 +110,7 @@ class AddingPanel extends PureComponent {
     return (
       <div className={classNames('adding-panel-wrapper', {'hidden' : !showPanel})}>
         <Panel
-          specialClass="adding-panel dark"
+          specialClass={`adding-panel ${user.settings.theme}`}
           heading={staticContent[lang]['adding-panel']['head']}
         >
           <div className="form-item">
