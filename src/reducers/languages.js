@@ -10,7 +10,7 @@ if (!initialState || !initialState.lang) {
   };
 }
 
-function transactions(state = initialState.lang, action) {
+function languages(state = initialState.lang, action) {
   switch (action.type) {
     case Constants.ACTIONS.CHANGE_LANGUAGE : {
       return action.lang;
@@ -20,4 +20,4 @@ function transactions(state = initialState.lang, action) {
   }
 }
 
-export default transactions;
+export default languages;

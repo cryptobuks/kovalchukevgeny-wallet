@@ -8,10 +8,12 @@ import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
 import Col from './../../components/col/col.jsx';
 
+import { changePallet } from './../../actions/actionCreators';
+
 import staticContent from './../../static-content/languages';
 
 const UserSettings = props => {
-  const { lang } = props;
+  const { lang, changePallet } = props;
 
   return (
     <Container>
@@ -24,6 +26,7 @@ const UserSettings = props => {
           >
             <UserPallet
               lang={lang}
+              onChange={changePallet}
             />
           </Panel>
         </Col>
@@ -34,12 +37,14 @@ const UserSettings = props => {
 
 UserSettings.defaultProps = {
   lang: 'eng',
+  changePallet: () => { },
 };
 
 UserSettings.propTypes = {
   lang: PropTypes.string,
+  changePallet: PropTypes.func,
 };
 
 export default connect(state => ({
   lang: state.lang,
-}))(UserSettings);
+}), { changePallet })(UserSettings);

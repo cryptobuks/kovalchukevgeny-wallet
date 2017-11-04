@@ -16,10 +16,12 @@ class UserPallet extends Component {
   }
 
   renderColorPallet(palletArray) {
+    const { onChange } = this.props;
 
     return palletArray.map((palleteColor, i) => {
       return (
         <li
+          onClick={() => onChange(palleteColor)}
           key={i}
           className="pallet-item"
           style={{
@@ -50,11 +52,13 @@ class UserPallet extends Component {
 }
 
 UserPallet.defaultProps = {
-  lang: 'eng'
+  lang: 'eng',
+  onChange: () => {  },
 };
 
 UserPallet.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default UserPallet; 
