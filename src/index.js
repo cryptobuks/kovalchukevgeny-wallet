@@ -12,6 +12,7 @@ import MonthReport from './containers/month-report/month-report';
 import ErrorPage from './components/error-page/error-page';
 import Backup from './containers/backup/backup';
 import CategoryEditor from './containers/category-editor/category-editor';
+import UserSettings from './containers/user-settings/user-settings';
 
 import './styles/main.scss';
 
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Route path="/reports" component={Reports} />
         <Route path="/month-report" component={MonthReport} />
         <Route path="/backup" component={Backup} />
+        <Route path="/settings" component={UserSettings} />
         <Route path="*" component={ErrorPage} />
       </Route>
     </Router>

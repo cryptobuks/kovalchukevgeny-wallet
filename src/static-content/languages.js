@@ -1,6 +1,6 @@
 export default {
   eng: {
-    menu: ['Transactions', 'Categories', 'Statistics', 'Report', 'Month Report', 'Backup'],
+    menu: ['Transactions', 'Categories', 'Statistics', 'Report', 'Month Report', 'Backup', 'Settings'],
     description: 'Please, firstly create new category and then add new transaction...',
     defaultCategory: 'No category',
     'categories-stats': {
@@ -112,13 +112,17 @@ export default {
       h2: 'Page not found',
       link: 'Back on the main page',
     },
+    'user-setting': {
+      head: 'User settings',
+      pallet: 'Pallet',
+    },
     csvTableHead: 'Date, Money, Description, Category\n',
     currency: 'RUB',
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     rusMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   },
   rus: {
-    menu: ['Транзакции', 'Категории', 'Статистика', 'Отчёт', 'Расходы за месяц', 'Резервное копирование'],
+    menu: ['Транзакции', 'Категории', 'Статистика', 'Отчёт', 'Расходы за месяц', 'Резервное копирование', 'Настройки'],
     description: 'Пожалуйста, сначала создайте новую категорию, а затем добавьте новую транзакцию...',
     defaultCategory: 'Без категории',
     'categories-stats': {
@@ -229,6 +233,10 @@ export default {
     'error-page': {
       h2: 'Страница не найдена',
       link: 'Вернуться на главную',
+    },
+    'user-setting': {
+      head: 'Пользовательские настройки',
+      pallet: 'Палитра',
     },
     csvTableHead: 'Дата, Сумма, Описание, Категория\n',
     currency: 'руб.',

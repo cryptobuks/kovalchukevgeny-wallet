@@ -75,6 +75,14 @@ const Header = props => {
             </Link>
           </li>
           <li>
+            <Link activeClassName="active" to="settings">
+              <Icon icon={'settings'} />
+              <span className="navigation__item">
+                {staticContent[lang].menu[6]}
+              </span>
+            </Link>
+          </li>
+          <li>
             <ul className="languages">
               <li>
                 <button
