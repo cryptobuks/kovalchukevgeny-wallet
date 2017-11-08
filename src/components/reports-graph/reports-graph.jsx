@@ -12,7 +12,7 @@ import staticContent from './../../static-content/languages';
 
 const ReportsGraph = props => {
   const Helper = new Helpers();
-  const { transactions, categories, lang } = props;
+  const { transactions, categories, lang, theme } = props;
   let categoriesData = Helper.groupTransactionsByMonths(transactions);
 
   categoriesData = categoriesData.map(item => {
@@ -37,7 +37,7 @@ const ReportsGraph = props => {
     <div>
       {transactions.length > 0 &&
         <Panel
-          specialClass="reports-graph dark"
+          specialClass={`reports-graph ${theme}`}
           heading={staticContent[lang]['transactions-graph']['head']}
         >
           <div className="graph-wrapper">
@@ -61,13 +61,15 @@ const ReportsGraph = props => {
 ReportsGraph.defaultProps = {
   transactions: [],
   categories: [],
-  lang: 'eng'
+  lang: 'eng',
+  theme: 'dark',
 };
 
 ReportsGraph.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  theme: PropTypes.string
 };
 
 export default ReportsGraph;

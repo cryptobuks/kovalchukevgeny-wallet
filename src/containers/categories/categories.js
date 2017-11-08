@@ -128,13 +128,15 @@ class Categories extends Component {
   }
 
   renderCategoryCard(categories) {
+    const { user } = this.props;
+
     return categories.map((category, i) => {
       const categoryColor = category.color ? category.color : '#33373e';
 
       if (category.id !== 1) {
         return (
           <div key={i} className="category-card">
-            <Panel specialClass="category dark">
+            <Panel specialClass={`category ${user.settings.theme}`}>
               <div data-id={category.id}>
                 <div className="categ-icon" style={{ backgroundColor: categoryColor }}>
                   <Icon type="fa" icon={category.icon} />
@@ -169,20 +171,21 @@ class Categories extends Component {
 
   render() {
     const { description, title, icon, color, categoriesView } = this.state;
-    const { categories, lang } = this.props;
+    const { categories, lang, user } = this.props;
+    const theme = user.settings.theme;
 
     return (
       <Container>
         <Row>
           <Col lg={12}>
-            <Panel specialClass="categories dark">
+            <Panel specialClass={`categories ${theme}`}>
               <Row>
                 <Col lg={12}>
                   <legend>{staticContent[lang]['adding-category'].head}</legend>
                 </Col>
                 <Col lg={2} md={2} sm={6}>
                   <Input
-                    specialClass="dark"
+                    specialClass={theme}
                     placeholder={staticContent[lang]['adding-category'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
@@ -190,7 +193,7 @@ class Categories extends Component {
                 </Col>
                 <Col lg={3} md={3} sm={6}>
                   <Input
-                    specialClass="dark"
+                    specialClass={theme}
                     placeholder={staticContent[lang]['adding-category'].descr}
                     value={description}
                     handleChange={this.handleChangeDescription}
@@ -234,7 +237,7 @@ class Categories extends Component {
           <Col lg={12}>
             {categories.length > 0 &&
               <Panel
-                specialClass="categories-panel dark"
+                specialClass={`categories-panel ${theme}`}
                 heading={staticContent[lang].categories.head}
                 headingIcon="work"
               >
@@ -278,10 +281,12 @@ Categories.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,
   transactions: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   transactions: state.transactions,
+  user: state.user,
 }), { addCategory, deleteCategory })(Categories);

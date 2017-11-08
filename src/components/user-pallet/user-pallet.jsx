@@ -36,11 +36,11 @@ class UserPallet extends Component {
   }
 
   render() {
-    const { lang } = this.props;
+    const { lang, theme } = this.props;
 
     return (
       <Panel 
-        specialClass="dark pallet"
+        specialClass={`pallet ${theme}`}
         heading={staticContent[lang]['user-setting']['pallet']}
       >
         <ul className="clearfix pallet-list">
@@ -54,10 +54,12 @@ class UserPallet extends Component {
 UserPallet.defaultProps = {
   lang: 'eng',
   onChange: () => {  },
+  theme: 'dark',
 };
 
 UserPallet.propTypes = {
   lang: PropTypes.string,
+  theme: PropTypes.string,
   onChange: PropTypes.func,
 };
 

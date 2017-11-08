@@ -15,18 +15,22 @@ import Helpers from './../../helpers/Helpers';
 
 const Statistics = props => {
   const Helper = new Helpers();
-  const { transactions, lang, course, categories } = props;
+  const { transactions, lang, course, categories, user } = props;
 
   return (
     <Container>
       <Row>
         <Col lg={6} md={6}>
-          <CurrencyRate lang={lang} course={course} />
+          <CurrencyRate 
+            lang={lang} course={course}
+            theme={user.settings.theme}
+          />
         </Col>
         <Col lg={6} md={6}>
           <TransactionsGraph
             monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
             lang={lang}
+            theme={user.settings.theme}
           />
         </Col>
         <Col lg={6} md={6}>
@@ -34,6 +38,7 @@ const Statistics = props => {
             transactions={transactions}
             categories={categories}
             lang={lang}
+            theme={user.settings.theme}
           />
         </Col>
         <Col lg={6} md={6}>
@@ -41,8 +46,12 @@ const Statistics = props => {
             monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
             lang={lang}
             course={course}
+            theme={user.settings.theme}
           />
-          <MonthCourse lang={lang} />
+          <MonthCourse 
+            lang={lang}
+            theme={user.settings.theme}
+          />
         </Col>
       </Row>
     </Container>
@@ -61,6 +70,7 @@ Statistics.propTypes = {
   course: PropTypes.array,
   lang: PropTypes.string,
   transactions: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
@@ -68,4 +78,5 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course,
+  user: state.user,
 }))(Statistics);

@@ -40,7 +40,7 @@ class Reports extends Component {
   }
 
   renderMonthPanels(reMapedTransactions) {
-    const { lang, course, categories, deleteTransaction, changeTransaction } = this.props;
+    const { lang, course, categories, deleteTransaction, changeTransaction, user } = this.props;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
@@ -66,7 +66,7 @@ class Reports extends Component {
       return (
         <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
-            <div className="panel dark res-table">
+            <div className={`panel res-table ${user.settings.theme}`}>
               <div className="panel-heading-container">
                 <button
                   onClick={e => this.openMonth(e)}
@@ -120,7 +120,7 @@ class Reports extends Component {
   }
 
   render() {
-    const { transactions, categories, lang, updateCategory, changeAllCategories } = this.props;
+    const { transactions, categories, lang, updateCategory, changeAllCategories, user } = this.props;
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     const activeCategories = [];
 
@@ -141,6 +141,7 @@ class Reports extends Component {
               changeAllCategories={changeAllCategories}
               lang={lang}
               categories={activeCategories}
+              theme={user.settings.theme}
             />
           </Col>
           <Col lg={9} md={9}>
@@ -148,6 +149,7 @@ class Reports extends Component {
               transactions={this.Helpers.filteredTransactions(transactions, categories)}
               categories={categories}
               lang={lang}
+              theme={user.settings.theme}
             />
             {this.renderMonthPanels(reMapedTransactions)}
             {transactions.length > 0 &&
@@ -186,6 +188,7 @@ Reports.propTypes = {
   updateCategory: PropTypes.func,
   deleteTransaction: PropTypes.func,
   changeTransaction: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
@@ -193,6 +196,7 @@ export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   course: state.course,
+  user: state.user,
 }), {
   deleteTransaction,
   changeTransaction,

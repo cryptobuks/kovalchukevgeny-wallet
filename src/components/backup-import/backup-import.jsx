@@ -66,12 +66,12 @@ class Import extends PureComponent {
   }
 
   render() {
-    const { lang } = this.props;
+    const { lang, theme } = this.props;
     const { file } = this.state;
 
     return (
       <Panel
-        specialClass="import dark"
+        specialClass={`import ${theme}`}
         heading={staticContent[lang]['backup-import']['head']}
         headingIcon="open_in_browser"
       >
@@ -102,11 +102,13 @@ class Import extends PureComponent {
 }
 
 Import.defaultProps = {
-  lang: 'eng'
+  lang: 'eng',
+  theme: 'dark',
 };
 
 Import.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 export default Import;

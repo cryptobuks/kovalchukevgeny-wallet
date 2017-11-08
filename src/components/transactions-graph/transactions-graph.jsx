@@ -11,7 +11,7 @@ import staticContent from './../../static-content/languages';
 
 const TransactionsGraph = props => {
   const Helper = new Helpers();
-  const { monthTransactions, lang } = props;
+  const { monthTransactions, lang, theme } = props;
 
   // Remaped data for graph
   let transactionsData = Helper.sumSameDateTransactions(monthTransactions).sort((a, b) => a['date'] - b['date']);
@@ -27,7 +27,7 @@ const TransactionsGraph = props => {
     <div>
       {monthTransactions.length > 0 &&
       <Panel
-        specialClass="transactions-graph dark"
+        specialClass={`transactions-graph ${theme}`}
         heading={staticContent[lang]['transactions-graph']['head']}
         headingIcon="multiline_chart"
         >
@@ -51,12 +51,14 @@ const TransactionsGraph = props => {
 
 TransactionsGraph.defaultProps = {
   monthTransactions: [],
-  lang: 'eng'
+  lang: 'eng',
+  theme: 'dark',
 };
 
 TransactionsGraph.propTypes = {
   monthTransactions: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 export default TransactionsGraph;

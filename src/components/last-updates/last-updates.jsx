@@ -9,19 +9,19 @@ import Badge from '../badge/badge.jsx';
 import staticContent from './../../static-content/languages';
 
 const LastUpdates = props => {
-  const { lang, amount, transactions } = props;
+  const { lang, amount, transactions, theme } = props;
 
   const LatestTransaction = Math.max.apply(Math, transactions.map(transaction => transaction.id));
 
   return (
       <ListGroup>
-        <ListGroupItem specialClass="dark">
+        <ListGroupItem specialClass={theme}>
           {staticContent[lang]['last-updates']['lastUpdate']}
           <Badge>
             {moment(LatestTransaction).format('DD MMM, YYYY')}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem specialClass="dark">
+        <ListGroupItem specialClass={theme}>
         {staticContent[lang]['last-updates']['amount']}
           <Badge>
             {amount} {staticContent[lang]['currency']}
@@ -34,13 +34,15 @@ const LastUpdates = props => {
 LastUpdates.defaultProps = {
   lang: 'eng',
   amount: 0,
-  transactions: []
+  transactions: [],
+  theme: 'dark',
 };
 
 LastUpdates.propTypes = {
   lang: PropTypes.string,
   amount: PropTypes.number,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  theme: PropTypes.string,
 };
 
 export default LastUpdates;

@@ -15,7 +15,7 @@ const CategoriesStats = props => {
 
   const Helper = new Helpers();
 
-  let { lang, categories, transactions } = props;
+  let { lang, categories, transactions, theme } = props;
   // Get month transactions
   transactions = transactions.filter(transaction => {
     return moment(transaction.date).format('YYYY-MM') === moment().format('YYYY-MM');
@@ -111,7 +111,7 @@ const CategoriesStats = props => {
     <div>
       {categories.length > 0 &&
         <Panel
-          specialClass="categories-stats dark"
+          specialClass={`categories-stats ${theme}`}
           heading={staticContent[lang]['categories-stats']['head']}
           headingIcon="pie_chart"
         >
@@ -143,7 +143,7 @@ const CategoriesStats = props => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="panel stats dark">
+          <div className={`panel stats ${theme}`}>
             <div
               onClick={(e) => openStats(e)}
               className="panel-heading clearfix">
@@ -156,7 +156,7 @@ const CategoriesStats = props => {
               </h3>
             </div>
             <div className="panel-body expanded">
-              <div className="table dark">
+              <div className={`table ${theme}`}>
                 <div className="table-head clearfix">
                   <div className="table-row clearfix">
                     {tableHead}
@@ -177,13 +177,15 @@ const CategoriesStats = props => {
 CategoriesStats.defaultProps = {
   lang: 'eng',
   categories: [],
-  transactions: []
+  transactions: [],
+  theme: 'dark',
 };
 
 CategoriesStats.propTypes = {
   lang: PropTypes.string,
   categories: PropTypes.array,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  theme: PropTypes.string,
 };
 
 export default CategoriesStats;

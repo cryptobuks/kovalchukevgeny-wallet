@@ -20,7 +20,7 @@ class MonthReport extends Component {
   }
 
   render() {
-    const { lang, transactions, categories } = this.props;
+    const { lang, transactions, categories, user } = this.props;
     const currentMonthTransactions = [];
     const transactionsByDay = [];
     let currentProcessedDay = null;
@@ -57,6 +57,7 @@ class MonthReport extends Component {
                     lang={lang}
                     transaction={dayTransaction}
                     day={this.Helpers.getDayName(moment(dayTransaction[0].date).day(), lang)}
+                    theme={user.settings.theme}
                   />
                 </Col>
               </Row>
@@ -79,10 +80,12 @@ MonthReport.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,
   transactions: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
   categories: state.categories,
   lang: state.lang,
   transactions: state.transactions,
+  user: state.user,
 }), { changeLang })(MonthReport);

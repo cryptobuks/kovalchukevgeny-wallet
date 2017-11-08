@@ -21,10 +21,10 @@ class App extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {  
+  componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname === this.props.location.pathname || nextProps.location.pathname !== this.props.location.pathname) {
       this.setState({ showMenu: false });
-    }  
+    }
   }
 
   changeTheme(theme) {
@@ -102,7 +102,7 @@ App.defaultProps = {
   user: {
     settings: {
       theme: 'dark',
-    }
+    },
   },
   changeTheme: () => { },
 };

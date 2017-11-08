@@ -9,12 +9,12 @@ import staticContent from './../../static-content/languages';
 
 const Export = props => {
 
-  const { transactions, categories, course, lang } = props;
+  const { transactions, categories, course, lang, theme } = props;
   const data = { transactions, categories, course };
 
   return (
     <Panel
-      specialClass="export dark"
+      specialClass={`export ${theme}`}
       heading={staticContent[lang]['backup-export']['head']}
       headingIcon="backup"
     >
@@ -35,6 +35,7 @@ const Export = props => {
 
 Export.defaultProps = {
   transactions: [],
+  theme: 'dark',
   categories: [],
   course: [],
   lang: 'eng'
@@ -44,7 +45,8 @@ Export.propTypes = {
   transactions: PropTypes.array,
   categories: PropTypes.array,
   course: PropTypes.array,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 export default Export;

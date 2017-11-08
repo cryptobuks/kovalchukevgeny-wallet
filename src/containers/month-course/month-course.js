@@ -47,7 +47,7 @@ class MonthCourse extends Component {
   }
 
   render() {
-    const { lang } = this.props;
+    const { lang, theme } = this.props;
     let { course } = this.props;
     const { currentCourse, date } = this.state;
 
@@ -57,7 +57,7 @@ class MonthCourse extends Component {
 
     return (
       <Panel
-        specialClass="month-course dark"
+        specialClass={`month-course ${theme}`}
         heading={staticContent[lang]['month-course'].head}
         headingIcon="attach_money"
       >
@@ -68,14 +68,14 @@ class MonthCourse extends Component {
           <Col lg={6}>
             <DatePicker
               locale="en-gb"
-              className="form-control dark"
+              className={`form-control ${theme}`}
               maxDate={moment()}
               selected={date}
               onChange={this.handleChangeData}
             />
             <Input
               type="number"
-              specialClass="dark"
+              specialClass={theme}
               placeholder="0.00"
               value={currentCourse}
               handleChange={this.handleChangeCourse}
@@ -98,12 +98,14 @@ MonthCourse.defaultProps = {
   lang: 'eng',
   course: [],
   addMonthCourse: () => {},
+  theme: 'dark',
 };
 
 MonthCourse.propTypes = {
   addMonthCourse: PropTypes.func,
   course: PropTypes.array,
   lang: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 export default connect(state => ({

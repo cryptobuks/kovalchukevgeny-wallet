@@ -10,7 +10,7 @@ import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 import staticContent from './../../static-content/languages';
 
 const CurrencyRate = props => {
-  let { lang, course } = props;
+  let { lang, course, theme } = props;
 
   let getMaxValue = array => {
     if(array && array.length > 0) {
@@ -37,7 +37,7 @@ const CurrencyRate = props => {
     <div>
       {course.length > 0 &&
       <Panel
-        specialClass="currency dark"
+        specialClass={`currency ${theme}`}
         heading={staticContent[lang]['currency-rate']['head']}
         headingIcon="monetization_on"
       >
@@ -62,10 +62,12 @@ const CurrencyRate = props => {
 CurrencyRate.defaultProps = {
   lang: 'eng',
   course: [],
+  theme: 'dark',
 };
 
 CurrencyRate.propTypes = {
   lang: PropTypes.string,
+  theme: PropTypes.string,
   course: PropTypes.array
 };
 

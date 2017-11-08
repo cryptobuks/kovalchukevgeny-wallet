@@ -107,6 +107,7 @@ class Transactions extends Component {
               lang={lang}
               amount={amount}
               transactions={transactions}
+              theme={user.settings.theme}
             />
           </Col>
           <AddingPanel
@@ -116,7 +117,7 @@ class Transactions extends Component {
             transactions={transactions}
             showPanel={showPanel}
             hideAddingPanel={this.hideAddingPanel}
-            user={user}
+            theme={user.settings.theme}
           />
           {transactions.length > 0 ?
             <Col lg={3} md={3}>
@@ -125,7 +126,7 @@ class Transactions extends Component {
                 lang={lang}
                 updateCategory={updateCategory}
                 changeAllCategories={changeAllCategories}
-                user={user}
+                theme={user.settings.theme}
               />
             </Col> : <h4>{staticContent[lang].description}</h4>
           }
@@ -143,7 +144,7 @@ class Transactions extends Component {
                   changeTransaction={changeTransaction}
                   categories={categories}
                   lang={lang}
-                  user={user}
+                  theme={user.settings.theme}
                 />
               </Panel>
             }

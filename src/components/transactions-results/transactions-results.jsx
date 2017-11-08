@@ -21,7 +21,7 @@ const TransactionsResults = props => {
   }
 
   const renderBiggestTransaction = transactions => {
-    const { lang } = props;
+    const { lang, theme } = props;
 
     let biggestTransaction = transactions.filter(transaction => transaction.money === getMaxValue(transactions));
 
@@ -29,7 +29,7 @@ const TransactionsResults = props => {
       biggestTransaction.map((transaction, i) => {
         return (
           <ListGroup key={i}>
-            <ListGroupItem specialClass="dark">
+            <ListGroupItem specialClass={theme}>
               {`${moment(transaction.date).format('DD')}
               ${staticContent[lang]['rusMonths'][moment().month()]} -
               ${transaction.description}`}
@@ -43,7 +43,7 @@ const TransactionsResults = props => {
     );
   }
 
-  const { monthTransactions, lang, course } = props;
+  const { monthTransactions, lang, course, theme } = props;
   const today = new Date();
   let amountDay = 0;
   let amountMonth = 0;
@@ -74,31 +74,31 @@ const TransactionsResults = props => {
 
   return (
     <Panel
-      specialClass="results dark"
+      specialClass={`results ${theme}`}
       heading={staticContent[lang]['transactions-results']['head']}
       headingIcon="insert_invitation"
     >
       <ListGroup>
-        <ListGroupItem specialClass="dark">
+        <ListGroupItem specialClass={theme}>
           {staticContent[lang]['transactions-results']['month']}
           <Badge>
             {staticContent[lang]['months'][moment().month()]}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem specialClass="dark">
+        <ListGroupItem specialClass={theme}>
           {staticContent[lang]['transactions-results']['transactions']}
           <Badge>
             {monthTransactions.length}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem specialClass="dark">
+        <ListGroupItem specialClass={theme}>
           {staticContent[lang]['transactions-results']['amountMonth']}
           <Badge>
             {`${amountMonth.toFixed(2)} ${staticContent[lang]['currency']} /
             ${amountMonthCurrency.toFixed(2)}$`}
           </Badge>
         </ListGroupItem>
-        <ListGroupItem specialClass="dark">
+        <ListGroupItem specialClass={theme}>
           {staticContent[lang]['transactions-results']['amountDay']}
           <Badge>
             {`${amountDay.toFixed(2)} ${staticContent[lang]['currency']} /
@@ -115,13 +115,15 @@ const TransactionsResults = props => {
 TransactionsResults.defaultProps = {
   transactions: [],
   lang: 'eng',
-  course: []
+  course: [],
+  theme: 'dark',
 };
 
 TransactionsResults.propTypes = {
   transactions: PropTypes.array,
   lang: PropTypes.string,
-  course: PropTypes.array
+  course: PropTypes.array,
+  theme: PropTypes.string,
 };
 
 export default TransactionsResults;

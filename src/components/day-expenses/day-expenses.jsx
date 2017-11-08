@@ -10,12 +10,11 @@ import Container from './../../components/container/container.jsx';
 
 const DayExpenses = props => {
   const dayExpenses = props.transaction.map(item => item.money);
-
   let totalExpenses = dayExpenses.reduce((total, current) => total + current);
 
   return (
     <Panel
-      specialClass="dark"
+      specialClass={props.theme}
       heading={`${moment(props.transaction[0].date).format('DD/MM/YYYY')} ${props.day}`}
       footer={`- ${String(totalExpenses)}`}>
       <Container>
@@ -44,12 +43,13 @@ const DayExpenses = props => {
 }
 
 DayExpenses.defaultProps = {
-    lang: 'eng'
+  lang: 'eng'
 }
 
 DayExpenses.propTypes = {
-    type: PropTypes.string,
-    lang: PropTypes.string
+  type: PropTypes.string,
+  lang: PropTypes.string,
+  theme: PropTypes.string,
 }
 
 export default DayExpenses;

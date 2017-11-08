@@ -281,7 +281,7 @@ class TransactionsTable extends Component {
     });
 
     return (
-      <div className={`table ${user.settings.theme} transactions`}>
+      <div className={`table dark transactions`}>
         <div className="table-head clearfix">
           <div className="table-row clearfix" onClick={this.sortData}>
             {tableHead}

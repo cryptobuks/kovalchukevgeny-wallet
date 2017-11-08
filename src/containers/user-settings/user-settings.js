@@ -13,19 +13,20 @@ import { changePallet } from './../../actions/actionCreators';
 import staticContent from './../../static-content/languages';
 
 const UserSettings = props => {
-  const { lang, changePallet } = props;
+  const { lang, changePallet, user } = props;
 
   return (
     <Container>
       <Row>
         <Col>
           <Panel
-            specialClass="export dark"
+            specialClass={`export ${user.settings.theme}`}
             heading={staticContent[lang]['user-setting'].head}
             headingIcon="settings"
           >
             <UserPallet
               lang={lang}
+              theme={user.settings.theme}
               onChange={changePallet}
             />
           </Panel>
@@ -47,4 +48,5 @@ UserSettings.propTypes = {
 
 export default connect(state => ({
   lang: state.lang,
+  user: state.user,
 }), { changePallet })(UserSettings);

@@ -97,9 +97,7 @@ class AddingPanel extends PureComponent {
 
   render() {
     const { category, money, date, description } = this.state;
-    let { categories, lang, transactions, showPanel, user } = this.props;
-
-    const theme = user.settings.theme;
+    let { categories, lang, transactions, showPanel, theme } = this.props;
     
     categories = categories.map((category, i) => {
       return (
@@ -186,14 +184,16 @@ AddingPanel.defaultProps = {
   categories: [],
   lang: 'eng',
   hideAddingPanel: () => {},
-  showPanel: () => {}
+  showPanel: () => {},
+  theme: 'dark',
 };
 
 AddingPanel.propTypes = {
   categories: PropTypes.array,
   lang: PropTypes.string,
   hideAddingPanel: PropTypes.func,
-  showPanel: PropTypes.bool
+  showPanel: PropTypes.bool,
+  theme: PropTypes.string,
 };
 
 export default AddingPanel;
