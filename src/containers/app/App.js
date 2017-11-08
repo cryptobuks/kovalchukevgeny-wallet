@@ -7,8 +7,6 @@ import Header from './../header/header';
 import Footer from './../../components/footer/footer.jsx';
 import Button from './../../components/button/button.jsx';
 
-import { changeTheme } from './../../actions/actionCreators';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,20 +15,12 @@ class App extends Component {
       showMenu: false,
     };
 
-    this.changeTheme = this.changeTheme.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname === this.props.location.pathname || nextProps.location.pathname !== this.props.location.pathname) {
       this.setState({ showMenu: false });
-    }
-  }
-
-  changeTheme(theme) {
-    const { changeTheme, user } = this.props;
-    if (theme !== user) {
-      changeTheme(theme);
     }
   }
 
@@ -57,21 +47,6 @@ class App extends Component {
           onClickFunction={this.toggleMenu}
           icon={showMenu ? 'clear' : 'menu'}
         />
-        <div className="change-theme-buttons-container">
-          <div>
-            <Button
-              icon={'brightness_2'}
-              onClickFunction={() => this.changeTheme('dark')}
-            />
-          </div>
-          <div>
-            <Button
-              icon={'wb_sunny'}
-              onClickFunction={() => this.changeTheme('light')}
-            />
-          </div>
-        </div>
-
         <ReduxToastr
           newestOnTop={false}
           preventDuplicates
@@ -88,12 +63,7 @@ class App extends Component {
   }
 }
 
-App.defaultProps = {
-  changeTheme: () => { },
-};
-
 App.propTypes = {
-  changeTheme: PropTypes.func,
   children: PropTypes.element.isRequired,
   location: PropTypes.object,
   user: PropTypes.object,
@@ -101,4 +71,4 @@ App.propTypes = {
 
 export default connect(state => ({
   user: state.user,
-}), { changeTheme })(App);
+}))(App);

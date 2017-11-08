@@ -115,6 +115,7 @@ export default {
     'user-setting': {
       head: 'User settings',
       pallet: 'Pallet',
+      theme: 'Theme',
     },
     csvTableHead: 'Date, Money, Description, Category\n',
     currency: 'RUB',
@@ -237,6 +238,7 @@ export default {
     'user-setting': {
       head: 'Пользовательские настройки',
       pallet: 'Палитра',
+      theme: 'Тема',
     },
     csvTableHead: 'Дата, Сумма, Описание, Категория\n',
     currency: 'руб.',

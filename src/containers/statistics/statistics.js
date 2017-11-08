@@ -21,7 +21,7 @@ const Statistics = props => {
     <Container>
       <Row>
         <Col lg={6} md={6}>
-          <CurrencyRate 
+          <CurrencyRate
             lang={lang} course={course}
             theme={user.settings.theme}
           />
@@ -48,7 +48,7 @@ const Statistics = props => {
             course={course}
             theme={user.settings.theme}
           />
-          <MonthCourse 
+          <MonthCourse
             lang={lang}
             theme={user.settings.theme}
           />
