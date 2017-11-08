@@ -8,7 +8,13 @@ if (!initialState || !initialState.user || !initialState.user.settings) {
   initialState = {
     user: {
       settings: {
-        pallet: {},
+        pallet: {
+          name: 'volta',
+          alias: 'volta',
+          background: '#842448',
+          startColor: '#c04848',
+          endColor: '#480048',
+        },
         theme: 'dark',
       },
     },

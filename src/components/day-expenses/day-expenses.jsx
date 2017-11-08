@@ -43,7 +43,8 @@ const DayExpenses = props => {
 }
 
 DayExpenses.defaultProps = {
-  lang: 'eng'
+  lang: 'eng',
+  theme: 'dark',
 }
 
 DayExpenses.propTypes = {

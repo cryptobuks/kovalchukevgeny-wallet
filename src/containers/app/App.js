@@ -41,17 +41,7 @@ class App extends Component {
   render() {
     const { showMenu } = this.state;
     const { user } = this.props;
-    let pallet = user.settings.pallet;
-
-    if (!pallet || !pallet.startColor || !pallet.endColor) {
-      pallet = {
-        name: 'volta',
-        alias: 'volta',
-        background: '#842448',
-        startColor: '#c04848',
-        endColor: '#480048',
-      };
-    }
+    const pallet = user.settings.pallet;
 
     return (
       <div
@@ -99,11 +89,6 @@ class App extends Component {
 }
 
 App.defaultProps = {
-  user: {
-    settings: {
-      theme: 'dark',
-    },
-  },
   changeTheme: () => { },
 };
 
