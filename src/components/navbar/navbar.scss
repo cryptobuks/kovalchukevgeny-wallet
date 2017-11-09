@@ -47,15 +47,16 @@
       float: none;
 
       a {
+        align-items: center;
         color: $accentTextColor;
+        display: flex;
         text-transform: uppercase;
-        height: 60px;
-        line-height: $rhythm*6;
+        height: $rhythm*6;
         transition: all .3s ease;
 
         &:hover,
         &:focus {
-          background-position: -280px;
+          background-position: -252px;
         }
 
         &.active {
@@ -66,8 +67,7 @@
         }
 
         .navigation__item {
-          margin-left: 10px;
-          vertical-align: super;
+          margin-left: 20px;
         }
       }
     }
