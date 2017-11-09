@@ -14,15 +14,15 @@ class UserTheme extends Component {
   }
 
   changeTheme(theme) {
-    const { changeTheme } = this.props;
+    const { onChange, user } = this.props;
 
     if (theme !== user.settings.theme) {
-      changeTheme(theme);
+      onChange(theme);
     }
   };
    
   render() {
-    const { lang, theme, onChange } = this.props;
+    const { lang, theme } = this.props;
 
     return (
       <Panel
@@ -31,11 +31,11 @@ class UserTheme extends Component {
       >
         <Button
           icon={'brightness_2'}
-          onClickFunction={() => onChange('dark')}
+          onClickFunction={() => this.changeTheme('dark')}
         />
         <Button
           icon={'wb_sunny'}
-          onClickFunction={() => onChange('light')}
+          onClickFunction={() => this.changeTheme('light')}
         />
       </Panel>
     );

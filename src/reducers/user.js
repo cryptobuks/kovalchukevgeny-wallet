@@ -16,6 +16,7 @@ if (!initialState || !initialState.user || !initialState.user.settings) {
           endColor: '#480048',
         },
         theme: 'dark',
+        lang: 'eng',
       },
     },
   };
@@ -30,6 +31,10 @@ function user(state = initialState.user, action = {}) {
     }
     case Constants.ACTIONS.CHANGE_THEME: {
       user.settings.theme = action.theme;
+      return user;
+    }
+    case Constants.ACTIONS.CHANGE_LANGUAGE: {
+      user.settings.lang = action.lang;
       return user;
     }
     default:
