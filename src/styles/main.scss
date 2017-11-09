@@ -57,6 +57,14 @@
   transition: ease all .2s;
 }
 
+// ---Scrollbar---
+div {
+  &::-webkit-scrollbar-track { background-color: #ecedee; }
+  &::-webkit-scrollbar-thumb { background-color: $accentColor; border-radius: 2px;}
+  &::-webkit-scrollbar-thumb:hover { background-color: darken($accentColor, 10%); }
+  &::-webkit-scrollbar { width: 2px; }
+}
+
 // ---Float---
 .left { float: left; }
 .right { float: right; }

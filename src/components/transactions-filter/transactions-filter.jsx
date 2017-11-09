@@ -7,6 +7,8 @@ import Input from './../../components/input/input.jsx';
 import Icon from './../../components/icon/icon.jsx';
 import Panel from './../../components/panel/panel.jsx';
 import ButtonToolbar from './../button-toolbar/button-toolbar.jsx';
+import ListGroup from './../list-group/list-group.jsx';
+import ListGroupItem from './../list-group-item/list-group-item.jsx';
 
 import staticContent from './../../static-content/languages';
 
@@ -44,15 +46,15 @@ class TransactionsFilter extends PureComponent {
 
     categories = categories.map((category, i) => {
       return(
-        <div
+        <ListGroupItem
           key={i}
           data-filter={category.title}
-          className={classNames('category', {active: category.filter})}
+          className={classNames(`list-group-item category ${theme}`, {active: category.filter})}
           onClick={() => this.isCategoryActive(category)}
         >
           <Icon icon={category.filter ? 'check_box' : 'check_box_outline_blank'} />
           <span className="category-title">{category.id !== 1 ? category.title : staticContent[lang].defaultCategory}</span>
-        </div>
+        </ListGroupItem>
       );
     });
 
@@ -69,9 +71,9 @@ class TransactionsFilter extends PureComponent {
             icon="done_all"
           >{staticContent[lang]['transactions-filter']['btnSelect']}</Button>
         </ButtonToolbar>
-        <div className="categories">
+        <ListGroup specialClass="categories">
           {categories}
-        </div>
+        </ListGroup>
       </Panel>
     );
   }
