@@ -28,7 +28,7 @@ const Footer = props => {
       <Container fluid>
         <Row>
           <Col lg={2} md={3}>
-            <div className="logo">{addWordAnimation('e-wallet')}</div>
+            <div className="logo">{addWordAnimation('e-Wallet')}</div>
           </Col>
           <Col lg={7} md={3}>
             <ul>

@@ -19,6 +19,7 @@
       border-right-color: rgba(0,0,0,0.125);
       color: #fff;
 
+      &.active,
       &:hover {
         background-color: rgba(0,0,0,0.125);
       }
@@ -37,6 +38,7 @@
       border-right-color: rgba(255,255,255,0.05);
       color: #000;
 
+      &.active,
       &:hover {
         background-color: rgba(255,255,255,0.05);
       }

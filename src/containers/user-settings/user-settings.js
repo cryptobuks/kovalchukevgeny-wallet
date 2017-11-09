@@ -26,7 +26,7 @@ const UserSettings = props => {
       <Row>
         <Col>
           <Panel
-            specialClass={`export ${theme}`}
+            specialClass={`settings ${theme}`}
             heading={staticContent[lang]['user-setting'].head}
             headingIcon="settings"
           >
