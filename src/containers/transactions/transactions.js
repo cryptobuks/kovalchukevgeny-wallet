@@ -62,7 +62,9 @@ class Transactions extends Component {
   }
 
   renderTableFooter(amount, unicTransactions) {
-    const { lang } = this.props;
+    const { user } = this.props;
+    const lang = user.settings.lang;
+
     return (
       <span className="amount">
         {staticContent[lang]['transactions-table'].bigDescr}
@@ -79,13 +81,13 @@ class Transactions extends Component {
     const {
       transactions,
       categories,
-      lang,
       deleteTransaction,
       changeTransaction,
       addTransaction,
       updateCategory,
       changeAllCategories,
       user } = this.props;
+    const lang = user.settings.lang;  
     let amount = 0;
 
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
@@ -178,7 +180,6 @@ class Transactions extends Component {
 Transactions.defaultProps = {
   categories: [],
   transactions: [],
-  lang: 'eng',
   deleteTransaction: () => {},
   changeTransaction: () => {},
   addTransaction: () => {},
@@ -192,7 +193,6 @@ Transactions.propTypes = {
   changeAllCategories: PropTypes.func,
   changeTransaction: PropTypes.func,
   deleteTransaction: PropTypes.func,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
   updateCategory: PropTypes.func,
   user: PropTypes.object,
@@ -201,7 +201,6 @@ Transactions.propTypes = {
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang,
   user: state.user,
 }), {
   deleteTransaction,

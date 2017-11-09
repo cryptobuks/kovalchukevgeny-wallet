@@ -58,8 +58,9 @@ class Categories extends Component {
 
   saveCategory() {
     const { description, title, icon, filter, color } = this.state;
-    const { lang, addCategory } = this.props;
+    const { user, addCategory } = this.props;
     const id = Date.now();
+    const lang = user.settings.lang;
 
     if (title.length < 2) {
       toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
@@ -103,7 +104,8 @@ class Categories extends Component {
   }
 
   deleteCategory(event) {
-    const { categories, lang, deleteCategory, transactions } = this.props;
+    const { categories, user, deleteCategory, transactions } = this.props;
+    const lang = user.settings.lang;
     const id = +event.target.parentNode.parentNode.parentNode.getAttribute('data-id');
     toastr.confirm(staticContent[lang].toastr.categoryRemove, { onOk: () => deleteCategory(id) });
     transactions.forEach(transaction => {
@@ -171,8 +173,8 @@ class Categories extends Component {
 
   render() {
     const { description, title, icon, color, categoriesView } = this.state;
-    const { categories, lang, user } = this.props;
-    const theme = user.settings.theme;
+    const { categories, user } = this.props;
+    const { theme, lang } = user.settings;
 
     return (
       <Container>
@@ -268,7 +270,6 @@ class Categories extends Component {
 }
 
 Categories.defaultProps = {
-  lang: 'eng',
   categories: [],
   transactions: [],
   addCategory: () => { },
@@ -279,14 +280,12 @@ Categories.propTypes = {
   addCategory: PropTypes.func,
   deleteCategory: PropTypes.func,
   categories: PropTypes.array,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
   user: PropTypes.object,
 };
 
 export default connect(state => ({
   categories: state.categories,
-  lang: state.lang,
   transactions: state.transactions,
   user: state.user,
 }), { addCategory, deleteCategory })(Categories);

@@ -9,13 +9,15 @@ import Row from './../../components/row/row.jsx';
 import Col from './../../components/col/col.jsx';
 
 const Backup = props => {
-  const { transactions, lang, course, categories, user } = props;
+  const { transactions, course, categories, user } = props;
+  const { theme, lang } = user.settings;
+
   return (
     <Container>
       <Row>
         <Col lg={6} md={6} sm={6}>
           <Export
-            theme={user.settings.theme}
+            theme={theme}
             lang={lang}
             course={course}
             transactions={transactions}
@@ -24,7 +26,7 @@ const Backup = props => {
         </Col>
         <Col lg={6} md={6} sm={6}>
           <Import
-            theme={user.settings.theme}
+            theme={theme}
             lang={lang}
           />
         </Col>
@@ -34,7 +36,6 @@ const Backup = props => {
 };
 
 Backup.defaultProps = {
-  lang: 'eng',
   categories: [],
   transactions: [],
   course: [],
@@ -43,15 +44,13 @@ Backup.defaultProps = {
 Backup.propTypes = {
   categories: PropTypes.array,
   course: PropTypes.array,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
-  user: PropTypes.user,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang,
   course: state.course,
   user: state.user,
 }))(Backup);

@@ -15,22 +15,24 @@ import Helpers from './../../helpers/Helpers';
 
 const Statistics = props => {
   const Helper = new Helpers();
-  const { transactions, lang, course, categories, user } = props;
+  const { transactions, course, categories, user } = props;
+  const { theme, lang } = user.settings;
 
   return (
     <Container>
       <Row>
         <Col lg={6} md={6}>
           <CurrencyRate
-            lang={lang} course={course}
-            theme={user.settings.theme}
+            lang={lang}
+            course={course}
+            theme={theme}
           />
         </Col>
         <Col lg={6} md={6}>
           <TransactionsGraph
             monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
             lang={lang}
-            theme={user.settings.theme}
+            theme={theme}
           />
         </Col>
         <Col lg={6} md={6}>
@@ -38,7 +40,7 @@ const Statistics = props => {
             transactions={transactions}
             categories={categories}
             lang={lang}
-            theme={user.settings.theme}
+            theme={theme}
           />
         </Col>
         <Col lg={6} md={6}>
@@ -46,11 +48,11 @@ const Statistics = props => {
             monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
             lang={lang}
             course={course}
-            theme={user.settings.theme}
+            theme={theme}
           />
           <MonthCourse
             lang={lang}
-            theme={user.settings.theme}
+            theme={theme}
           />
         </Col>
       </Row>
@@ -61,14 +63,12 @@ const Statistics = props => {
 Statistics.defaultProps = {
   categories: [],
   course: [],
-  lang: 'eng',
   transactions: [],
 };
 
 Statistics.propTypes = {
   categories: PropTypes.array,
   course: PropTypes.array,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
   user: PropTypes.object,
 };
@@ -76,7 +76,6 @@ Statistics.propTypes = {
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang,
   course: state.course,
   user: state.user,
 }))(Statistics);

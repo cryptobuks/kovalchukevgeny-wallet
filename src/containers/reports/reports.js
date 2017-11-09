@@ -40,7 +40,8 @@ class Reports extends Component {
   }
 
   renderMonthPanels(reMapedTransactions) {
-    const { lang, course, categories, deleteTransaction, changeTransaction, user } = this.props;
+    const { course, categories, deleteTransaction, changeTransaction, user } = this.props;
+    const lang = user.settings.lang;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
@@ -120,7 +121,8 @@ class Reports extends Component {
   }
 
   render() {
-    const { transactions, categories, lang, updateCategory, changeAllCategories, user } = this.props;
+    const { transactions, categories, updateCategory, changeAllCategories, user } = this.props;
+    const lang = user.settings.lang;
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     const activeCategories = [];
 
@@ -171,7 +173,6 @@ class Reports extends Component {
 }
 
 Reports.defaultProps = {
-  lang: 'eng',
   categories: [],
   transactions: [],
   course: [],
@@ -183,7 +184,6 @@ Reports.propTypes = {
   categories: PropTypes.array,
   changeAllCategories: PropTypes.func,
   course: PropTypes.array,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
   updateCategory: PropTypes.func,
   deleteTransaction: PropTypes.func,
@@ -194,7 +194,6 @@ Reports.propTypes = {
 export default connect(state => ({
   transactions: state.transactions,
   categories: state.categories,
-  lang: state.lang,
   course: state.course,
   user: state.user,
 }), {

@@ -20,7 +20,8 @@ class MonthReport extends Component {
   }
 
   render() {
-    const { lang, transactions, categories, user } = this.props;
+    const { transactions, categories, user } = this.props;
+    const lang = user.settings.lang;
     const currentMonthTransactions = [];
     const transactionsByDay = [];
     let currentProcessedDay = null;
@@ -71,21 +72,18 @@ class MonthReport extends Component {
 }
 
 MonthReport.defaultProps = {
-  lang: 'eng',
   categories: [],
   transactions: [],
 };
 
 MonthReport.propTypes = {
   categories: PropTypes.array,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
   user: PropTypes.object,
 };
 
 export default connect(state => ({
   categories: state.categories,
-  lang: state.lang,
   transactions: state.transactions,
   user: state.user,
 }), { changeLang })(MonthReport);

@@ -6,15 +6,12 @@ import { Link } from 'react-router';
 import Icon from './../../components/icon/icon.jsx';
 import Navbar from './../../components/navbar/navbar.jsx';
 
-import { changeLang } from './../../actions/actionCreators';
-
-import usa from './../../images/usa.svg'; // eslint-disable-line
-import rus from './../../images/rus.svg'; // eslint-disable-line
-
 import staticContent from './../../static-content/languages';
 
 const Header = props => {
-  const { lang, changeLang, transactions } = props;
+  const { user, transactions } = props;
+  const lang = user.settings.lang;
+
   return [
     <div key={'overflow'} className="overflow" />,
     <div key={'header'} className="header">
@@ -82,31 +79,6 @@ const Header = props => {
               </span>
             </Link>
           </li>
-          <li>
-            <ul className="languages">
-              <li>
-                <button
-                  className={lang === 'eng' ? 'active' : ''}
-                  onClick={() => changeLang('eng')}
-                >{'eng'}
-                  <span className="flag-icon flag-icon-usa">
-                    <img src={usa} alt="english" />
-                  </span>
-                </button>
-              </li>
-              <li>{'/'}</li>
-              <li>
-                <button
-                  className={lang === 'rus' ? 'active' : ''}
-                  onClick={() => changeLang('rus')}
-                >{'rus'}
-                  <span className="flag-icon flag-icon-rus">
-                    <img src={rus} alt="russian" />
-                  </span>
-                </button>
-              </li>
-            </ul>
-          </li>
         </ul>
       </Navbar>
     </div>,
@@ -114,18 +86,14 @@ const Header = props => {
 };
 
 Header.defaultProps = {
-  lang: 'eng',
   transactions: [],
-  changeLang: () => {},
 };
 
 Header.propTypes = {
-  changeLang: PropTypes.func,
-  lang: PropTypes.string,
   transactions: PropTypes.array,
 };
 
 export default connect(state => ({
-  lang: state.lang,
   transactions: state.transactions,
-}), { changeLang }, null, { pure: false })(Header);
+  user: state.user,
+}), {  }, null, { pure: false })(Header);

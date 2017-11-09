@@ -1,0 +1,35 @@
+.languages {
+  padding: $rhythm 10px;
+
+  .flag-icon {
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 23px;
+    margin-left: 5px;
+    overflow: hidden;
+    text-transform: uppercase;
+    vertical-align: bottom;
+
+    img {
+      width: 26px;
+      opacity: .3;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    border: 0;
+    line-height: 23px;
+    text-transform: uppercase;
+    padding: 0;
+
+    &.active {
+      color: $accentColor;
+
+      img {
+        opacity: 1;
+      }
+    }
+  }
+}

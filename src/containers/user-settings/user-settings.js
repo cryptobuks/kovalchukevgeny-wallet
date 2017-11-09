@@ -18,32 +18,33 @@ import usa from './../../images/usa.svg'; // eslint-disable-line
 import rus from './../../images/rus.svg'; // eslint-disable-line
 
 const UserSettings = props => {
-  const { lang, changePallet, changeTheme, changeLang, user } = props;
+  const { changePallet, changeTheme, changeLang, user } = props;
+  const { theme, lang } = user.settings;
 
   return (
     <Container>
       <Row>
         <Col>
           <Panel
-            specialClass={`export ${user.settings.theme}`}
+            specialClass={`export ${theme}`}
             heading={staticContent[lang]['user-setting'].head}
             headingIcon="settings"
           >
             <UserPallet
               lang={lang}
-              theme={user.settings.theme}
+              theme={theme}
               onChange={changePallet}
             />
             <UserTheme
               lang={lang}
               user={user}
-              theme={user.settings.theme}
+              theme={theme}
               onChange={changeTheme}
             />
             <UserLanguages
               lang={lang}
               user={user}
-              theme={user.settings.theme}
+              theme={theme}
               onChange={changeLang}
             />
           </Panel>
@@ -54,14 +55,12 @@ const UserSettings = props => {
 };
 
 UserSettings.defaultProps = {
-  lang: 'eng',
   changePallet: () => { },
   changeTheme: () => { },
   changeLang: () => { },
 };
 
 UserSettings.propTypes = {
-  lang: PropTypes.string,
   changePallet: PropTypes.func,
   changeTheme: PropTypes.func,
   changeLang: PropTypes.func,
@@ -69,6 +68,5 @@ UserSettings.propTypes = {
 };
 
 export default connect(state => ({
-  lang: state.lang,
   user: state.user,
 }), { changePallet, changeTheme, changeLang })(UserSettings);
