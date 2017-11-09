@@ -33,7 +33,7 @@ class App extends Component {
         <div className="main">
           {this.props.children}
         </div>
-        <Footer />
+        <Footer user={user} />
       </div>
     );
   }

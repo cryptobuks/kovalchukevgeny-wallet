@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from './../button/button.jsx';
 import Icon from './../icon/icon.jsx';
@@ -18,9 +19,12 @@ const addWordAnimation = string => {
   });
 }
 
-const Footer = () => {
+const Footer = props => {
+  const { user } = props;
+  const { theme } = user.settings;
+
   return (
-    <footer className="footer">
+    <footer className={`footer ${theme}`}>
       <Container fluid>
         <Row>
           <Col lg={2} md={3}>
@@ -47,5 +51,13 @@ const Footer = () => {
     </footer>
   );
 }
+
+Footer.defaultProps = {
+
+};
+
+Footer.propTypes = {
+  user: PropTypes.object,
+};
 
 export default Footer;
