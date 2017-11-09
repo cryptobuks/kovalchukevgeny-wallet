@@ -26,7 +26,7 @@ class UserTheme extends Component {
 
     return (
       <Panel
-        specialClass={`export ${theme}`}
+        specialClass={`theme ${theme}`}
         heading={staticContent[lang]['user-setting'].theme}
       >
         <Button

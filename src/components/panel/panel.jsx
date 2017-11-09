@@ -25,7 +25,7 @@ const Panel = props => {
         })}
       </div>
       {footer && <div className="panel-footer">
-        <h3 className="panel-title panel-footer">{footer}</h3>
+        <h3 className="panel-title">{footer}</h3>
       </div>
       }
     </div>
