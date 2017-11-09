@@ -1,4 +1,71 @@
 .header {
+  display: flex;
+  justify-content: flex-end;
+  height: 70px;
+  left: 0;
   position: fixed;
-  z-index: 3;
+  top: 0;
+  width: 100%;
+
+  &.dark {
+    background-color: rgba(0,0,0,0.125);
+    background-image: linear-gradient(to left, rgba(0,0,0,0.125), rgba(0,0,0,0.25));
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    color: #fff;
+
+    a {
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.125), rgba(0,0,0,0));
+      border-left-color: rgba(0,0,0,0.125);
+      border-right-color: rgba(0,0,0,0.125);
+      color: #fff;
+
+      &:hover {
+        background-color: rgba(0,0,0,0.125);
+      }
+    }
+  }
+
+  &.light {
+    background-color: rgba(255,255,255,0.05);
+    background-image: linear-gradient(to left, rgba(255,255,255,0.05), rgba(255,255,255,0.15));
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #000;
+
+    a {
+      background-image: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0));
+      border-left-color: rgba(255,255,255,0.05);
+      border-right-color: rgba(255,255,255,0.05);
+      color: #000;
+
+      &:hover {
+        background-color: rgba(255,255,255,0.05);
+      }
+    }
+  }
+
+  &-nav {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: block;
+      text-align: center;
+
+      a {
+        line-height: 80px;
+        height: 70px;
+        width: 70px;
+        display: block;
+        position: relative;
+        transition: background 0.5s ease, color 0.5s ease;
+        border-left-width: 1px;
+        border-left-style: solid;
+
+        &:last-child {
+          border-right-width: 1px;
+          border-right-style: solid;
+        }
+      }
+    }
+  }
 }

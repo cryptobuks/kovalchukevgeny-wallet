@@ -87,7 +87,7 @@ class Transactions extends Component {
       updateCategory,
       changeAllCategories,
       user } = this.props;
-    const lang = user.settings.lang;  
+    const lang = user.settings.lang;
     let amount = 0;
 
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);

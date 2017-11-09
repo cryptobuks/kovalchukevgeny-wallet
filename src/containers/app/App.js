@@ -4,32 +4,12 @@ import PropTypes from 'prop-types';
 import ReduxToastr from 'react-redux-toastr';
 
 import Header from './../header/header';
+import Navigation from './../navigation/navigation';
 import Footer from './../../components/footer/footer.jsx';
 import Button from './../../components/button/button.jsx';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showMenu: false,
-    };
-
-    this.toggleMenu = this.toggleMenu.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.location.pathname === this.props.location.pathname || nextProps.location.pathname !== this.props.location.pathname) {
-      this.setState({ showMenu: false });
-    }
-  }
-
-  toggleMenu() {
-    this.setState({ showMenu: !this.state.showMenu });
-  }
-
   render() {
-    const { showMenu } = this.state;
     const { user } = this.props;
     const pallet = user.settings.pallet;
 
@@ -38,15 +18,11 @@ class App extends Component {
         style={{
           backgroundColor: pallet.background,
           backgroundImage: `linear-gradient(to bottom right, ${pallet.startColor}, ${pallet.endColor})`,
-        }}
-        className={showMenu ? 'App visible-menu' : 'App'}
+        }}       
+        className="App visible-menu"
       >
-        <Header />
-        <Button
-          specialClass="btn-primary btn showMenu"
-          onClickFunction={this.toggleMenu}
-          icon={showMenu ? 'clear' : 'menu'}
-        />
+        <Header user={user} />
+        <Navigation user={user} />
         <ReduxToastr
           newestOnTop={false}
           preventDuplicates

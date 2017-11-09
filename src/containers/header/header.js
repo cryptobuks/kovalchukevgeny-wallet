@@ -10,90 +10,29 @@ import staticContent from './../../static-content/languages';
 
 const Header = props => {
   const { user, transactions } = props;
-  const lang = user.settings.lang;
+  const { theme, lang } = user.settings;
 
-  return [
-    <div key={'overflow'} className="overflow" />,
-    <div key={'header'} className="header">
-      <Navbar>
-        <ul className="nav navigation">
-          <li>
-            <Link activeClassName="active" to="transactions">
-              <Icon icon={'account_balance_wallet'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[0]}
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="active" to="categories">
-              <Icon icon={'assignment_turned_in'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[1]}
-              </span>
-            </Link>
-          </li>
-          {transactions.length > 0 &&
-            <li>
-              <Link activeClassName="active" to="statistics">
-                <Icon icon={'timeline'} />
-                <span className="navigation__item">
-                  {staticContent[lang].menu[2]}
-                </span>
-              </Link>
-            </li>
-          }
-          {transactions.length > 0 &&
-            <li>
-              <Link activeClassName="active" to="reports">
-                <Icon icon={'work'} />
-                <span className="navigation__item">
-                  {staticContent[lang].menu[3]}
-                </span>
-              </Link>
-            </li>
-          }
-          {transactions.length > 0 &&
-            <li>
-              <Link activeClassName="active" to="month-report">
-                <Icon icon={'storage'} />
-                <span className="navigation__item">
-                  {staticContent[lang].menu[4]}
-                </span>
-              </Link>
-            </li>
-          }
-          <li>
-            <Link activeClassName="active" to="backup">
-              <Icon icon={'backup'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[5]}
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="active" to="settings">
-              <Icon icon={'settings'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[6]}
-              </span>
-            </Link>
-          </li>
-        </ul>
-      </Navbar>
-    </div>,
-  ];
+  return (
+    <div className={`header ${theme}`}>     
+      <ul className="header-nav">
+        <li>
+          <Link activeClassName="active" to="settings">
+            <Icon icon={'settings'} />
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 Header.defaultProps = {
-  transactions: [],
+
 };
 
 Header.propTypes = {
-  transactions: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({
-  transactions: state.transactions,
   user: state.user,
-}), {  }, null, { pure: false })(Header);
+}), { }, null, { pure: false })(Header);

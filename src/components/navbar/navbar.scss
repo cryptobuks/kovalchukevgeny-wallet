@@ -1,22 +1,36 @@
 .navbar {
-  border-color: rgba(0,0,0,0.25);
-  border-radius: 0;
   height: 100vh;
-  left: -300px;
+  left: 0;
   margin-bottom: $rhythm;
-  min-height: $rhythm*4;
+  position: fixed;
   transition: ease all .2s;
-  width: 0;
+  width: 300px;
 
   &.dark {
     background: rgba(0,0,0,0.125);
     background: linear-gradient(to bottom right, rgba(0,0,0,0.25), rgba(0,0,0,0));
+
+    .navbar-brand {
+      color: #fff;
+    }
 
     a {
       background-image: linear-gradient(to right, rgba(0,0,0,0.25), rgba(0,0,0,0));
 
       &.active {
         background-image: linear-gradient(to left, rgba(0,0,0,0.125), rgba(0,0,0,0.25));
+      }
+
+      &.active,
+      &:hover {
+        i {
+          background-color: rgba(0,0,0,0.125);
+          background-image: linear-gradient(to right, rgba(0,0,0,0.125), rgba(0,0,0,0));
+        }
+      }
+
+      &:after {
+        background-image: linear-gradient(to right, rgba(0,0,0,0.25), rgba(0,0,0,0));
       }
     }
   }
@@ -25,6 +39,10 @@
     background: rgba(255,255,255,0.05);
     background: linear-gradient(to bottom right, rgba(255,255,255,0.15), rgba(255,255,255,0));
 
+    .navbar-brand {
+      color: #000;
+    }
+
     a {
       background-image: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0));
       color: rgba(0,0,0,0.75);
@@ -32,31 +50,62 @@
       &.active {
         background-image: linear-gradient(to left, rgba(0,0,0,0.125), rgba(0,0,0,0.25));
       }
+
+      &.active,
+      &:hover {
+        i {
+          background-color: rgba(255,255,255,0.05);
+          background-image: linear-gradient(to right, rgba(255,255,255,0.05), rgba(255,255,255,0));
+        }
+      }
+
+      &:after {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0));
+      }
     }
   }
 
-  .icon-bar {
-    background-color: $accentTextColor;
+  &-brand {
+    display: block;
+    font-size: 30px;
+    height: 70px;
+    line-height: 70px;
+    padding: 0;
+    text-align: center;
+    width: 300px;
+  }
+
+  &-menu {
+    margin-top: 70px;
   }
 
   .navigation {
-    float: none;
 
     li {
       display: block;
-      float: none;
 
       a {
         align-items: center;
         color: $accentTextColor;
         display: flex;
+        padding: 0 1rem 0 75px;
         text-transform: uppercase;
         height: $rhythm*6;
         transition: all .3s ease;
 
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+        }
+
         &:hover,
         &:focus {
-          background-position: -252px;
+          background-position: -300px;
         }
 
         &.active {
@@ -66,43 +115,21 @@
           }
         }
 
-        .navigation__item {
+        i {
+          transition: all 0.5s ease;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 59px;
+          line-height: 60px;
+          width: 60px;
+          text-align: center;
+        }
+
+        span {
           margin-left: 20px;
         }
       }
     }
   }
-}
-
-// ---Navigation---
-.App {
-  &.visible-menu {
-    .navbar {
-      width: 300px;
-      left: 0;
-    }
-    .main {
-      margin-left: 300px;
-    }
-    .overflow {
-      display: block;
-    }
-  }
-}
-.showMenu {
-  line-height: 1;
-  right: 10px;
-  position: fixed;
-  top: $rhythm;
-  z-index: 99999;
-}
-.overflow {
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  //background-color: rgba(0,0,0,0.2);
-  z-index: 2;
 }

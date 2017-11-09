@@ -39,6 +39,7 @@
 @import "../containers/month-report/month-report";
 @import "../containers/month-course/month-course";
 @import "../containers/category-editor/category-editor";
+@import "../containers/navigation/navigation";
 // HOC
 @import "../HOC/loadingHOC";
 
@@ -52,7 +53,7 @@
 }
 .main {
   flex: 1;
-  margin: 0;
+  margin: 70px 0 0 300px;
   padding-top: 10px;
   transition: ease all .2s;
 }

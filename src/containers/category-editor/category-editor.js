@@ -152,6 +152,7 @@ CategoryEditor.propTypes = {
   categories: PropTypes.array,
   routeParams: PropTypes.object,
   updateCategory: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({

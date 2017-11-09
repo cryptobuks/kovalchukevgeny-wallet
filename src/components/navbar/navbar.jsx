@@ -15,9 +15,9 @@ class Navbar extends PureComponent {
     let { children, withLogo, specialClass } = this.props;
 
     return (
-      <nav className={classNames('navbar dark', `${specialClass}`)}>
+      <nav className={classNames('navbar', `${specialClass}`)}>
         <div className="navbar-header">
-          {withLogo && <span className="navbar-brand">Logo</span>}
+          {withLogo && <span className="navbar-brand">e-Wallet</span>}
         </div>
         <div className="navbar-menu">
           {React.Children.map(children, (child) => {
