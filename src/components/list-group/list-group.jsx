@@ -16,6 +16,10 @@ const ListGroup = props => {
   )
 }
 
+ListGroup.defaultProps = {
+  specialClass: '',
+};
+
 ListGroup.propTypes = {
   specialClass: PropTypes.string,
 };

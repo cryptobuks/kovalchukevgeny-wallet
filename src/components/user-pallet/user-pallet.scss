@@ -6,19 +6,26 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    transition: all 0.3s ease;
-    
     
   }
 
   &-item {
     border-radius: 2px;
+    color: rgba(255,255,255,0.85);
     cursor: pointer;
+    background-position: 0 0;
+    background-size: 100% 100%;
     flex: 1 0 15%;
     font-size: 16px;
     margin: 3px;
     padding: 1.5rem 0;
     text-align: center;
     text-transform: capitalize;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background-size: 150% 150%;
+      background-position: -200% 0;
+    }
   }
 }

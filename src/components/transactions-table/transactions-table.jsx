@@ -150,7 +150,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, categories, lang, user } = this.props;
+    let { transactions, categories, lang, theme } = this.props;
     const { activeRow, isEditRow, descending, sortby } = this.state;
 
     const selectCategories = categories.map((category, i) => {
@@ -199,63 +199,63 @@ class TransactionsTable extends Component {
         >
           {/* Data column */}
           <div className="table-data clearfix">
-            {!transaction.isEdit ?
-              <span>{moment(transaction.date).format('DD/MM/YYYY')}</span> :
-              <DatePicker
-                locale="en-gb"
-                className="form-control"
-                maxDate={moment()}
-                selected={moment(transaction.date)}
-                onChange={this.handleChangeData}
-              />
-            }
+          {!transaction.isEdit ?
+            <span>{moment(transaction.date).format('DD/MM/YYYY')}</span> :
+            <DatePicker
+              locale="en-gb"
+              className="form-control"
+              maxDate={moment()}
+              selected={moment(transaction.date)}
+              onChange={this.handleChangeData}
+            />
+          }
           </div>
           {/* Money column */}
           <div className="table-data clearfix">
-            {!transaction.isEdit ?
-              <span>
-                <span>{transaction.money} </span>
-                <span>{staticContent[lang]['currency']}</span>
-              </span> :
-              <Input
-                type="number"
-                placeholder="0.00"
-                value={this.state.isEditRow.money}
-                handleChange={this.handleChangeMoney}
-              />
-            }
+          {!transaction.isEdit ?
+            <span>
+              <span>{transaction.money} </span>
+              <span>{staticContent[lang]['currency']}</span>
+            </span> :
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={this.state.isEditRow.money}
+              handleChange={this.handleChangeMoney}
+            />
+          }
           </div>
           {/* Description column */}
           <div className="table-data clearfix">
-            {!transaction.isEdit ?
-              <span title={transaction.description}>{transaction.description}</span> :
-              <Input
-                placeholder={staticContent[lang]['adding-panel']['descr']}
-                value={this.state.isEditRow.description}
-                handleChange={this.handleChangeDescription}
-              />
-            }
+          {!transaction.isEdit ?
+            <span title={transaction.description}>{transaction.description}</span> :
+            <Input
+              placeholder={staticContent[lang]['adding-panel']['descr']}
+              value={this.state.isEditRow.description}
+              handleChange={this.handleChangeDescription}
+            />
+          }
           </div>
           {/* Category column */}
           <div className="table-data clearfix">
-            {!transaction.isEdit ?
-              <span>
-                {category
-                  ? <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}>
-                      <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
-                    </span>
-                  : ''
-                }
-                {this.Helpers.getCategoryById(categories, transaction)}
-              </span> :
-              <select
-                className="form-control"
-                value={this.state.isEditRow.category}
-                onChange={this.handleChangeCategory}
-              >
-                {selectCategories}
-              </select>
-            }
+          {!transaction.isEdit ?
+            <span>
+              {category
+                ? <span className="icon-wrapper" style={{ backgroundColor: categoryColor }}>
+                    <Icon icon={categoryIconObj ? categoryIconObj.icon : ''} type="fa" />
+                  </span>
+                : ''
+              }
+              {this.Helpers.getCategoryById(categories, transaction)}
+            </span> :
+            <select
+              className="form-control"
+              value={this.state.isEditRow.category}
+              onChange={this.handleChangeCategory}
+            >
+              {selectCategories}
+            </select>
+          }
           </div>
           {/* Edit menu */}
           {!transaction.isEdit ?
@@ -281,7 +281,7 @@ class TransactionsTable extends Component {
     });
 
     return (
-      <div className={`table dark transactions`}>
+      <div className={`table transactions ${theme}`}>
         <div className="table-head clearfix">
           <div className="table-row clearfix" onClick={this.sortData}>
             {tableHead}
@@ -299,6 +299,7 @@ TransactionsTable.defaultProps = {
   categories: [],
   transactions: [],
   lang: 'eng',
+  theme: 'dark',
   deleteTransaction: () => { },
   changeTransaction: () => { }
 };
@@ -308,7 +309,8 @@ TransactionsTable.propTypes = {
   categories: PropTypes.array,
   deleteTransaction: PropTypes.func,
   changeTransaction: PropTypes.func,
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 export default TransactionsTable;
