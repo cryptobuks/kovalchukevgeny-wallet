@@ -11,6 +11,8 @@ import TransactionsTable from '../../components/transactions-table/transactions-
 import ReportsGraph from './../../components/reports-graph/reports-graph.jsx';
 import DownloadData from './../../components/download-data/download-data.jsx';
 import ButtonToolbar from './../../components/button-toolbar/button-toolbar.jsx';
+import ListGroup from './../../components/list-group/list-group.jsx';
+import ListGroupItem from './../../components/list-group-item/list-group-item.jsx';
 import Container from './../../components/container/container.jsx';
 import Row from './../../components/row/row.jsx';
 import Col from './../../components/col/col.jsx';
@@ -41,7 +43,7 @@ class Reports extends Component {
 
   renderMonthPanels(reMapedTransactions) {
     const { course, categories, deleteTransaction, changeTransaction, user } = this.props;
-    const lang = user.settings.lang;
+    const { lang, theme } = user.settings;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
@@ -67,7 +69,7 @@ class Reports extends Component {
       return (
         <div key={i} data-month={staticContent[lang].months[i + 1]}>
           {reMapedTransaction.length > 0 &&
-            <div className={`panel res-table ${user.settings.theme}`}>
+            <div className={`panel res-table ${theme}`}>
               <div className="panel-heading-container">
                 <button
                   onClick={e => this.openMonth(e)}
@@ -89,28 +91,29 @@ class Reports extends Component {
                   changeTransaction={changeTransaction}
                   categories={categories}
                   lang={lang}
+                  theme={theme}
                 />
               </div>
               <div className="panel-footer">
                 <h3 className="panel-title">
-                  <div className="text-right amount-wrapper">
-                    <h5 className="amount">
+                  <ListGroup specialClass="amount-wrapper">
+                    <ListGroupItem className={`list-group-item ${theme}`}>
                       {staticContent[lang].reports.amountMonth}
                       <span>{amountMonth.toFixed(2)}</span>
-                      {staticContent[lang].currency} {'/'}
+                      {staticContent[lang].currency} {' / '}
                       <span>{(amountMonth / monthCourse.course).toFixed(2)}</span>{'$'}
-                    </h5>
-                    <h5 className="amount">
+                    </ListGroupItem>
+                    <ListGroupItem className={`list-group-item ${theme}`}>
                       {staticContent[lang].reports.amountDay}
                       <span>{amountDay.toFixed(2)}</span>
                       {staticContent[lang].currency}
-                    </h5>
-                    <h5 className="amount">
+                    </ListGroupItem>
+                    <ListGroupItem className={`list-group-item ${theme}`}>
                       {staticContent[lang].reports.monthCourse}
                       <span>{monthCourse.course.toFixed(2)}</span>
                       {staticContent[lang].currency}
-                    </h5>
-                  </div>
+                    </ListGroupItem>
+                  </ListGroup>
                 </h3>
               </div>
             </div>
@@ -122,7 +125,7 @@ class Reports extends Component {
 
   render() {
     const { transactions, categories, updateCategory, changeAllCategories, user } = this.props;
-    const lang = user.settings.lang;
+    const { lang, theme } = user.settings;
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     const activeCategories = [];
 
@@ -143,7 +146,7 @@ class Reports extends Component {
               changeAllCategories={changeAllCategories}
               lang={lang}
               categories={activeCategories}
-              theme={user.settings.theme}
+              theme={theme}
             />
           </Col>
           <Col lg={9} md={9}>
@@ -151,20 +154,18 @@ class Reports extends Component {
               transactions={this.Helpers.filteredTransactions(transactions, categories)}
               categories={categories}
               lang={lang}
-              theme={user.settings.theme}
+              theme={theme}
             />
             {this.renderMonthPanels(reMapedTransactions)}
-            {transactions.length > 0 &&
-              <ButtonToolbar>
-                <DownloadData
-                  transactions={transactions}
-                  categories={categories}
-                  fileName="report"
-                  fileFormat="csv"
-                  btnText={staticContent[lang].reports.btnCsv}
-                />
-              </ButtonToolbar>
-            }
+            <ButtonToolbar>
+              <DownloadData
+                transactions={transactions}
+                categories={categories}
+                fileName="report"
+                fileFormat="csv"
+                btnText={staticContent[lang].reports.btnCsv}
+              />
+            </ButtonToolbar>
           </Col>
         </Row>
       </Container>

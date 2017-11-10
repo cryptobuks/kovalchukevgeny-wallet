@@ -17,13 +17,9 @@
     }
   }
 
-  .panel-heading-container {
-    font-size: 0;
-
-    button.panel-heading {
-      background-color: transparent;
-      width: 100%;
-    }
+  button.panel-heading {
+    background-color: transparent;
+    width: 100%;
   }
 
   .panel-heading {
@@ -39,13 +35,6 @@
     overflow: hidden;
   }
 
-  .table-head {
-
-    .table-data {
-      cursor: default;
-    }
-  }
-
   .res-table {
 
     .panel-body {
@@ -53,25 +42,14 @@
     }
   }
 
-  .table-row {
-    cursor: default;
-  }
-
   .amount-wrapper {
     display: flex;
+    font-size: 14px;
+    justify-content: space-between;
 
-    .amount {
-      font-size: 14px;
-
-      span {
-        margin-right: 5px;
-      }
-    }
-
-    h5:not(:last-child) {
-      border-right: 1px solid $borderColor;
-      margin-right: 10px;
-      padding-right: 10px;
+    span {
+      font-weight: 900;
+      margin: 0 5px;
     }
   }
 }
