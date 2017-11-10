@@ -43,6 +43,8 @@
 @import "../containers/user-settings/user-settings";
 // HOC
 @import "../HOC/loadingHOC";
+// Theme
+@import "theme";
 
 // ---Sticky Footer---
 .App {
@@ -91,6 +93,7 @@ div {
   .form-control {
     border-radius: 2px;
     color: $accentTextColor;
+    font-size: 14px;
     transition: all 0.5s ease;
     padding: 0.75rem 1rem;
 

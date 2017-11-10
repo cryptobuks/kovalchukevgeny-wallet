@@ -157,7 +157,7 @@ class Categories extends Component {
                     <Icon icon={'create'} />
                   </Link>
                   <Button
-                    specialClass="btn-primary btn delete"
+                    specialClass="btn-primary btn dark"
                     onClickFunction={this.deleteCategory}
                     icon="clear"
                   />
@@ -225,7 +225,7 @@ class Categories extends Component {
                       icon="save"
                     >{staticContent[lang]['adding-category'].btnSubmit}</Button>
                     <Button
-                      specialClass="btn btn-default"
+                      specialClass="btn btn-primary dark"
                       onClickFunction={this.clearCategory}
                       icon="undo"
                     >{staticContent[lang]['adding-category'].btnCancel}</Button>
@@ -246,12 +246,12 @@ class Categories extends Component {
                 <div className="categoriesView">
                   <ButtonToolbar>
                     <Button
-                      specialClass={this.state.categoriesView === 'list' ? 'btn active' : 'btn'}
+                      specialClass={this.state.categoriesView === 'list' ? 'btn btn-primary active' : 'btn btn-primary'}
                       onClickFunction={this.setViewList}
                       icon="view_list"
                     />
                     <Button
-                      specialClass={this.state.categoriesView === 'grid' ? 'btn active' : 'btn'}
+                      specialClass={this.state.categoriesView === 'grid' ? 'btn btn-primary active' : 'btn btn-primary'}
                       onClickFunction={this.setViewGrid}
                       icon="view_module"
                     />

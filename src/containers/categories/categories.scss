@@ -1,16 +1,8 @@
 .categories {
 
-  .btn-primary {
-    margin-left: 10px;
-  }
-
-  .form-control {
-    font-size: 14px;
-  }
-
   &-panel {
 
-    &>.panel-body {
+    & > .panel-body {
       padding-bottom: 0;
     }
 
@@ -27,7 +19,7 @@
   }
 
   &-wrapper {
-    margin-right: -10px;
+    margin-right: -5px;
     max-height: calc(100vh - 285px);
     overflow-y: auto;
     padding-right: 5px;

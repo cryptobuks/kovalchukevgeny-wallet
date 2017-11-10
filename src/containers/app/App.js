@@ -19,7 +19,7 @@ class App extends Component {
           backgroundColor: pallet.background,
           backgroundImage: `linear-gradient(to bottom right, ${pallet.startColor}, ${pallet.endColor})`,
         }}       
-        className="App visible-menu"
+        className={`App ${pallet.alias}`}
       >
         <Header user={user} />
         <Navigation user={user} />

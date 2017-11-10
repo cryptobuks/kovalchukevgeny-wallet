@@ -30,10 +30,12 @@ class UserTheme extends Component {
         heading={staticContent[lang]['user-setting'].theme}
       >
         <Button
+          specialClass="btn btn-primary"
           icon={'brightness_2'}
           onClickFunction={() => this.changeTheme('dark')}
         />
         <Button
+          specialClass="btn btn-primary"
           icon={'wb_sunny'}
           onClickFunction={() => this.changeTheme('light')}
         />
