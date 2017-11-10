@@ -1,7 +1,7 @@
 import Constants from './../helpers/constants.js';
 
 export const addTransaction = (id, date, money, description, category) => ({
-  type: Constants.ACTIONS.Constants.ACTIONS.ADD_TRANSACTION,
+  type: Constants.ACTIONS.ADD_TRANSACTION,
   id,
   date,
   money,

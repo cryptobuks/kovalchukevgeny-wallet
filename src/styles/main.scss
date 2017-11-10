@@ -92,7 +92,6 @@ div {
 .App {
   .form-control {
     border-radius: 2px;
-    color: $accentTextColor;
     font-size: 14px;
     transition: all 0.5s ease;
     padding: 0.75rem 1rem;
@@ -101,12 +100,22 @@ div {
       border-color: rgba(0,0,0,0.125);
       background-color: rgba(0,0,0,0);
       background-image: linear-gradient(to bottom right, rgba(0,0,0,0.25), rgba(0,0,0,0.125));
+
+      &::-webkit-input-placeholder { color: $accentTextColor; }
+      &::-moz-placeholder { color: $accentTextColor; }
+      &:-moz-placeholder { color: $accentTextColor; }
+      &:-ms-input-placeholder { color: $accentTextColor; }
     }
 
     &.light {
       border-color: rgba(255,255,255,0.05);
       background-color: rgba(255,255,255,0);
       background-image: linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0.15));
+
+      &::-webkit-input-placeholder { color: #000; }
+      &::-moz-placeholder { color: #000; }
+      &:-moz-placeholder { color: #000; }
+      &:-ms-input-placeholder { color: #000; }
     }
   }
 }

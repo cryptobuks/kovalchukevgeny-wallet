@@ -1,5 +1,7 @@
 .adding-panel-wrapper {
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0,0,0,0.25);
+  //background-image: linear-gradient(to top left, rgba(0,0,0,0.125), rgba(0,0,0,0.25));
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
   height: 100%;
   left: 0;
   position: fixed;
@@ -8,22 +10,66 @@
   z-index: 101;
 
   .adding-panel {
-    background-color: $accentTextColor;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     left: 50%;
     margin-bottom: 0;
     min-width: 320px;
+    padding: 50px 80px;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     width: 40%;
+
+    &.dark {
+      background: rgba(0,0,0,0.8);
+      background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+      color: #fff;
+
+      .autocomplete input,
+      .form-control {
+        background: rgba(255,255,255,0.95);
+        background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+        color: #000;
+
+        &::-webkit-input-placeholder { color: #000; }
+        &::-moz-placeholder { color: #000; }
+        &:-moz-placeholder { color: #000; }
+        &:-ms-input-placeholder { color: #000; }
+      }
+    }
+  
+    &.light {
+      background: rgba(255,255,255,0.95);
+      background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+      color: #000;
+
+      .autocomplete input,
+      .form-control {
+        background: transparent;
+        background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.125));
+        color: #fff;
+
+        &::-webkit-input-placeholder { color: $accentTextColor; }
+        &::-moz-placeholder { color: $accentTextColor; }
+        &:-moz-placeholder { color: $accentTextColor; }
+        &:-ms-input-placeholder { color: $accentTextColor; }
+      }
+    }
+  }
+
+  .panel-heading {
+    text-align: center;
   }
 
   .form-item {
     margin-bottom: $rhythm*2;
 
-    input, select {
-      font-size: 14px;
-      padding: 5px;
+    .label {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 100;
+      padding: 0;
+      margin-bottom: $rhythm*1.5;
     }
 
     select {
@@ -31,62 +77,45 @@
       overflow-y: auto;
 
       option {
+        color: #000;
         font-size: 90%;
-        padding: 0;
       }
     }
   }
 
-  .label {
-    color: $accentColor;
-    font-size: 12px;
-    padding: 0;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-  }
-
-  .btn-primary {
-    margin-right: 10px;
+  .toolbar {
+    margin-top: $rhythm*4;
   }
 
   .autocomplete {
 
     & > div {
+      display: block !important;
 
       & > div {
         left: auto !important;
         top: auto !important;
+        z-index: 9999;
 
         & > div {
           cursor: pointer !important;
+          padding: 0 10px !important;
         }
       }
     }
-  }
-}
 
-.autocomplete {
-  
-    & > div {
-      display: block !important;
-  
-      & > div {
-        z-index: 9999;
-      }
-    }
-  
     input {
       width: 100%;
       height: 35px;
-      color: #666666;
-      border: 1px solid transparent;
-      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-      -webkit-appearance: none;
-      box-shadow: inset 0 -1px 0 $borderColor;
+      border-radius: 2px;
+      border: none;
+      font-size: 14px;
+      transition: all 0.5s ease;
+      padding: 0.75rem 1rem;
   
       &:focus {
-        box-shadow: inset 0 -2px 0 #b91919;
         outline: none;
       }
     }
   }
+}

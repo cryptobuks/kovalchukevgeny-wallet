@@ -115,7 +115,7 @@ class AddingPanel extends PureComponent {
             <label className="label">{staticContent[lang]['adding-panel']['dateLabel']}</label>
             <DatePicker
               locale="en-gb"
-              className="form-control dark"
+              className={`form-control ${theme}`}
               maxDate={moment()}
               selected={date}
               onChange={this.handleChangeData}
@@ -125,13 +125,13 @@ class AddingPanel extends PureComponent {
             <label className="label">{staticContent[lang]['adding-panel']['moneyLabel']}</label>
             <Input
               type="number"
-              specialClass="dark"
+              specialClass={theme}
               placeholder="0.00"
               value={money}
               handleChange={this.handleChangeMoney}
             />
           </div>
-          <div className="autocomplete form-item">
+          <div className={`autocomplete form-item ${theme}`}>
             <label className="label">{staticContent[lang]['adding-panel']['descrLabel']}</label>
             <ReactAutocomplete
               items={this.Helpers.getUnicDescription(transactions)}
@@ -140,7 +140,7 @@ class AddingPanel extends PureComponent {
               renderItem={(item, highlighted) =>
                 <div
                   key={item.label}
-                  style={{ backgroundColor: highlighted ? '#eee' : '#fff'}}
+                  style={{ backgroundColor: highlighted ? '#eee' : '#fff', color: '#000'}}
                 >
                   {item.label}
                 </div>
@@ -154,7 +154,7 @@ class AddingPanel extends PureComponent {
           <div className="form-item">
             <label className="label">{staticContent[lang]['adding-panel'].categoryLabel}</label>
             <select
-              className="form-control dark"
+              className={`form-control ${theme}`}
               value={this.state.category}
               onChange={this.handleChangeCategory}
             >
@@ -169,7 +169,7 @@ class AddingPanel extends PureComponent {
               icon="save"
             >{staticContent[lang]['adding-panel']['btnSubmit']}</Button>
             <Button
-              specialClass="btn btn-default"
+              specialClass="btn btn-primary dark"
               onClickFunction={this.clearTransactionData}
               icon="undo"
             >{staticContent[lang]['adding-panel']['btnCancel']}</Button>
