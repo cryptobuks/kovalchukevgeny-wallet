@@ -98,8 +98,8 @@ div {
 
     &.dark {
       border-color: rgba(0,0,0,0.125);
-      background-color: rgba(0,0,0,0);
-      background-image: linear-gradient(to bottom right, rgba(0,0,0,0.25), rgba(0,0,0,0.125));
+      background: rgba(0,0,0,0);
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.25), rgba(0,0,0,0.125));
 
       &::-webkit-input-placeholder { color: $accentTextColor; }
       &::-moz-placeholder { color: $accentTextColor; }
@@ -109,8 +109,8 @@ div {
 
     &.light {
       border-color: rgba(255,255,255,0.05);
-      background-color: rgba(255,255,255,0);
-      background-image: linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0.15));
+      background: rgba(255,255,255,0);
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0.15));
 
       &::-webkit-input-placeholder { color: #000; }
       &::-moz-placeholder { color: #000; }
