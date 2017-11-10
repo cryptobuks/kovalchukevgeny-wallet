@@ -5,24 +5,31 @@
   top: 50%;
   transform: translate(-50%, -50%);
 
+  &.dark {
+    color: rgba(255,255,255,0.85);
+  }
+
+  &.light {
+    color: rgba(0,0,0,0.75);
+  }
+
   .text {
-    color: $accentColor;
-    margin: auto;
     text-align: center;
 
     h1 {
-      font-size: 100px;
+      font-size: 150px;
       font-weight: 900;
     }
 
     h2 {
-      font-size: 40px;
+      font-size: 60px;
       margin-bottom: 50px;
       margin-top: 0;
     }
 
-    .link {
+    .btn {
       font-size: 18px;
+      padding: 12px 36px;
     }
   }
 }
