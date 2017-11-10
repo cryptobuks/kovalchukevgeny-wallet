@@ -1,16 +1,18 @@
 .filter.panel {
 
   .panel-body {
-    height: auto;
-    max-height: calc(100vh - 115px);
-    overflow-y: auto;
+    height: auto;  
+    padding: 10px 0 0 0;
 
     .toolbar {
       margin-bottom: $rhythm;
+      padding: 0 10px;
     }
 
     .categories {
       margin-bottom: 0;
+      max-height: calc(100vh - 115px);
+      overflow-y: auto;
 
       .category {
         cursor: pointer;

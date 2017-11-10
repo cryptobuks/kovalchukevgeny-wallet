@@ -22,6 +22,7 @@
     }
 
     .table-row {
+      border-color: rgba(0,0,0,0.125);
 
       &:nth-of-type(odd) {
         background-color: rgba(0,0,0,0.125);
@@ -40,6 +41,7 @@
     }
 
     .table-row {
+      border-color: rgba(255,255,255,0.05);
 
       &:nth-of-type(odd) {
         background-color: rgba(255,255,255,0.05);
@@ -54,15 +56,20 @@
     width: 100%;
     top: 0;
 
+    .table-row {
+      border-left-style: solid;
+      border-left-width: 1px;
+    }
+
     .table-data {
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-right-style: solid;
+      border-right-width: 1px;
       cursor: pointer;
       font-weight: 600;
       position: relative;
       text-transform: uppercase;
-
-      &.active {
-        color: $accentColor;
-      }
 
       .filter-arrow {
         position: absolute;
@@ -77,14 +84,25 @@
   &-body {
     position: relative;
 
+    .table-row {
+      border-bottom: 1px solid transparent;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
     .table-data {
-      border-top-width: 1px;
-      border-top-style: solid;
+      border-right-width: 1px;
+      border-right-style: solid;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
 
       &:nth-last-child(2) {
+        border-right: none;
         padding-right: 75px;
       }
     }
