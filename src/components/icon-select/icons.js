@@ -15,7 +15,6 @@ const icons = [
   'fa-child',
   'fa-graduation-cap',
   'fa-gift',
-  'fa-glass',
   'fa-university',
   'fa-heartbeat',
   'fa-globe',

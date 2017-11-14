@@ -27,7 +27,6 @@ class CategoryEditor extends PureComponent {
     super(props);
 
     this.state = {
-      description: '',
       title: '',
       icon: 'fa-car', // default icon
       color: '#b91919', // default color
@@ -36,7 +35,6 @@ class CategoryEditor extends PureComponent {
     this.changeCategoryIcon = this.changeCategoryIcon.bind(this);
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
-    this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
   }
 
@@ -46,7 +44,6 @@ class CategoryEditor extends PureComponent {
 
     this.setState({
       id: category.id,
-      description: category.description,
       title: category.title,
       icon: category.icon,
       filter: category.filter,
@@ -62,25 +59,21 @@ class CategoryEditor extends PureComponent {
     this.setState({ color });
   }
 
-  handleChangeDescription(event) {
-    this.setState({ description: event.target.value });
-  }
-
   handleChangeTitle(event) {
     this.setState({ title: event.target.value });
   }
 
   updateCategory() {
-    const { id, description, title, icon, filter, color } = this.state;
+    const { id, title, icon, filter, color } = this.state;
     const { user, updateCategory } = this.props;
     const lang = user.settings.lang;
-    updateCategory(id, description, title, icon, filter, color);
+    updateCategory(id, title, icon, filter, color);
     browserHistory.goBack();
     toastr.success(staticContent[lang].toastr.categoryUpdated, { timeOut: 3000 });
   }
 
   render() {
-    const { description, title, icon, color } = this.state;
+    const { title, icon, color } = this.state;
     const { user } = this.props;
     const lang = user.settings.lang;
 
@@ -100,14 +93,6 @@ class CategoryEditor extends PureComponent {
                     placeholder={staticContent[lang]['category-editor'].category}
                     value={title}
                     handleChange={this.handleChangeTitle}
-                  />
-                </Col>
-                <Col lg={3} md={3} sm={6}>
-                  <Input
-                    specialClass="dark"
-                    placeholder={staticContent[lang]['category-editor'].descr}
-                    value={description}
-                    handleChange={this.handleChangeDescription}
                   />
                 </Col>
                 <Col lg={2} md={4} sm={6} specialClass="text-right">

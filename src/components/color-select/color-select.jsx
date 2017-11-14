@@ -49,17 +49,17 @@ class ColorSelect extends PureComponent {
   }
 
   render() {
-    const { defaultColor, position, colorsArray, lang } = this.props;
+    const { defaultColor, position, colorsArray, lang, theme } = this.props;
     const { isSelectVisible } = this.state;
 
     return (
       <div
-        className={classNames('category-color', {active: isSelectVisible})}
+        className={classNames(`category-color ${theme}`, {active: isSelectVisible})}
         onClick={this.toggleSelect}
       >
         <strong>{staticContent[lang]['adding-category']['chooseColor']}</strong>
           <span className="colorRound" style={{'backgroundColor': defaultColor}}></span>
-        <div className={classNames('color-select', position, {hide: !isSelectVisible})}>
+        <div className={classNames(`color-select ${theme}`, position, {hide: !isSelectVisible})}>
           <Panel specialClass="dark">
             <ul className="clearfix">
               {this.renderDropdown(colorsArray)}

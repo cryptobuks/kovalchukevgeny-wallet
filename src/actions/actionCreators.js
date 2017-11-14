@@ -23,20 +23,18 @@ export const deleteTransaction = id => ({
   id,
 });
 
-export const addCategory = (id, description, title, icon, filter, color) => ({
+export const addCategory = (id, title, icon, filter, color) => ({
   type: Constants.ACTIONS.ADD_CATEGORY,
   id,
-  description,
   title,
   icon,
   filter,
   color,
 });
 
-export const updateCategory = (id, description, title, icon, filter, color) => ({
+export const updateCategory = (id, title, icon, filter, color) => ({
   type: Constants.ACTIONS.UPDATE_CATEGORY,
   id,
-  description,
   title,
   icon,
   filter,

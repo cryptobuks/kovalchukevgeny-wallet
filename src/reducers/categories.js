@@ -17,7 +17,6 @@ function categories(state = initialState.categories, action) {
       return [
         ...state, {
           id: action.id,
-          description: action.description,
           title: action.title,
           icon: action.icon,
           filter: action.filter,
@@ -28,7 +27,6 @@ function categories(state = initialState.categories, action) {
       store = store.map(category => {
         const updatedCategory = category;
         if (category.id === action.id) {
-          updatedCategory.description = action.description;
           updatedCategory.title = action.title;
           updatedCategory.icon = action.icon;
           updatedCategory.filter = action.filter;

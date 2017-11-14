@@ -46,17 +46,17 @@ class IconSelect extends PureComponent {
   }
 
   render() {
-    const { defaultIcon, position, iconsArray, lang } = this.props;
+    const { defaultIcon, position, iconsArray, lang, theme } = this.props;
     const { isSelectVisible } = this.state;
 
     return (
       <div
-        className={classNames('category-icon', {active: isSelectVisible})}
+        className={classNames(`category-icon ${theme}`, {active: isSelectVisible})}
         onClick={this.toggleSelect}
       >
         <strong>{staticContent[lang]['adding-category']['chooseIcon']}</strong>
         <Icon type="fa" icon={defaultIcon}/>
-        <div className={classNames('icon-select', position, {hide: !isSelectVisible})}>
+        <div className={classNames(`icon-select ${theme}`, position, {hide: !isSelectVisible})}>
           <Panel specialClass="dark">
             <ul className="clearfix">
               {this.renderDropdown(iconsArray)}

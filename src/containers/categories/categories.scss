@@ -30,6 +30,7 @@
     flex-wrap: wrap;
 
     .category-card {
+      border-radius: 2px;
       width: calc(20% - 8px);
 
       &:not(:nth-child(5n+5)) {
@@ -55,18 +56,6 @@
 
         h5 {
           margin-top: 0;
-        }
-
-        blockquote {
-          margin-bottom: $rhythm;
-          padding: $rhythm 15px;
-
-          small {
-
-            &:before {
-              display: none;
-            }
-          }
         }
       }
 
@@ -105,10 +94,6 @@
       margin: 0;
     }
 
-    blockquote {
-      margin-bottom: 0;
-    }
-
     .categ-icon {
       height: 100%;
       left: 0;
@@ -130,7 +115,8 @@
 
   legend {
     border-bottom: 0;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 38px;
     margin-bottom: 0;
     text-transform: uppercase;
   }

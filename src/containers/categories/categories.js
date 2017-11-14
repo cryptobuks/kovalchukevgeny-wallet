@@ -28,7 +28,6 @@ class Categories extends Component {
     super(props);
 
     this.state = {
-      description: '',
       title: '',
       filter: true,
       categoriesView: 'grid',
@@ -42,7 +41,6 @@ class Categories extends Component {
     this.changeCategoryColor = this.changeCategoryColor.bind(this);
     this.clearCategory = this.clearCategory.bind(this);
     this.deleteCategory = this.deleteCategory.bind(this);
-    this.handleChangeDescription = this.handleChangeDescription.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.saveCategory = this.saveCategory.bind(this);
     this.renderCategoryCard = this.renderCategoryCard.bind(this);
@@ -57,7 +55,7 @@ class Categories extends Component {
   }
 
   saveCategory() {
-    const { description, title, icon, filter, color } = this.state;
+    const { title, icon, filter, color } = this.state;
     const { user, addCategory } = this.props;
     const id = Date.now();
     const lang = user.settings.lang;
@@ -65,9 +63,8 @@ class Categories extends Component {
     if (title.length < 2) {
       toastr.error(staticContent[lang].toastr.smallCategoryName, { timeOut: 4000 });
     } else {
-      addCategory(id, description, title, icon, filter, color);
+      addCategory(id, title, icon, filter, color);
       this.setState({
-        description: '',
         filter: true,
         title: '',
       });
@@ -85,7 +82,6 @@ class Categories extends Component {
 
   clearCategory() {
     this.setState({
-      description: '',
       filter: true,
       title: '',
     });
@@ -95,12 +91,11 @@ class Categories extends Component {
     const { addCategory } = this.props;
     const defaultCategory = {
       id: 1,
-      description: '',
       title: '',
       icon: '',
       filter: true,
     };
-    addCategory(defaultCategory.id, defaultCategory.description, defaultCategory.title, defaultCategory.icon, defaultCategory.filter);
+    addCategory(defaultCategory.id, defaultCategory.title, defaultCategory.icon, defaultCategory.filter);
   }
 
   deleteCategory(event) {
@@ -119,10 +114,6 @@ class Categories extends Component {
     if (!categories.find(category => category.id === 1)) {
       this.createDefaultCategory();
     }
-  }
-
-  handleChangeDescription(event) {
-    this.setState({ description: event.target.value });
   }
 
   handleChangeTitle(event) {
@@ -144,11 +135,6 @@ class Categories extends Component {
                   <Icon type="fa" icon={category.icon} />
                 </div>
                 <h5>{category.title}</h5>
-                {category.description &&
-                  <blockquote>
-                    <small><cite>{category.description}</cite></small>
-                  </blockquote>
-                }
                 <ButtonToolbar>
                   <Link
                     className="edit btn-primary btn"
@@ -172,7 +158,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { description, title, icon, color, categoriesView } = this.state;
+    const { title, icon, color, categoriesView } = this.state;
     const { categories, user } = this.props;
     const { theme, lang } = user.settings;
 
@@ -182,7 +168,7 @@ class Categories extends Component {
           <Col lg={12}>
             <Panel specialClass={`categories ${theme}`}>
               <Row>
-                <Col lg={12}>
+                <Col lg={2} md={2} sm={6}>
                   <legend>{staticContent[lang]['adding-category'].head}</legend>
                 </Col>
                 <Col lg={2} md={2} sm={6}>
@@ -193,20 +179,13 @@ class Categories extends Component {
                     handleChange={this.handleChangeTitle}
                   />
                 </Col>
-                <Col lg={3} md={3} sm={6}>
-                  <Input
-                    specialClass={theme}
-                    placeholder={staticContent[lang]['adding-category'].descr}
-                    value={description}
-                    handleChange={this.handleChangeDescription}
-                  />
-                </Col>
                 <Col lg={2} md={2} sm={6} specialClass="text-right">
                   <IconSelect
                     onClickFunction={this.changeCategoryIcon}
                     defaultIcon={icon}
                     iconsArray={iconsArray}
                     lang={lang}
+                    theme={theme}
                   />
                 </Col>
                 <Col lg={2} md={2} sm={6} specialClass="text-right">
@@ -215,9 +194,10 @@ class Categories extends Component {
                     defaultColor={color}
                     colorsArray={colorsArray}
                     lang={lang}
+                    theme={theme}
                   />
                 </Col>
-                <Col lg={3} md={3} sm={6} specialClass="text-right">
+                <Col lg={4} md={4} sm={6} specialClass="text-right">
                   <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
