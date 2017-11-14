@@ -1,12 +1,24 @@
 .export {
 
   .toolbar {
-    border: 1px solid rgba(0,0,0,0.125);
+    border: 1px solid transparent;
     padding: $rhythm 10px;
     text-align: center;
   }
 
   p {
     text-transform: uppercase;
+  }
+}
+
+.dark {
+  .toolbar {
+    border-color: rgba(0, 0, 0, 0.125);;
+  }
+}
+
+.light {
+  .toolbar {
+    border-color: rgba(255, 255, 255, 0.05);;
   }
 }
