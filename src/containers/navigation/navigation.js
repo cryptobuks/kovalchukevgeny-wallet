@@ -10,8 +10,7 @@ import staticContent from './../../static-content/languages';
 
 const Navigation = props => {
   const { user, transactions } = props;
-  const { lang, theme } = user.settings;
-
+  const { lang, theme, pallet } = user.settings;
   return (
     <Navbar specialClass={theme} withLogo>
       <ul className="nav navigation">
