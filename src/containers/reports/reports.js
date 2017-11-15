@@ -125,7 +125,7 @@ class Reports extends Component {
 
   render() {
     const { transactions, categories, updateCategory, changeAllCategories, user } = this.props;
-    const { lang, theme } = user.settings;
+    const { lang, theme, pallet } = user.settings;
     const reMapedTransactions = this.Helpers.groupTransactionsByMonths(this.Helpers.filteredTransactions(transactions, categories));
     const activeCategories = [];
 
@@ -155,6 +155,7 @@ class Reports extends Component {
               categories={categories}
               lang={lang}
               theme={theme}
+              pallet={pallet}
             />
             {this.renderMonthPanels(reMapedTransactions)}
             <ButtonToolbar>

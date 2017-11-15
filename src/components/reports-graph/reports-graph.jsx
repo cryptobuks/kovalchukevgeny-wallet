@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'Recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, linearGradient } from 'Recharts';
 
 import Helpers from './../../helpers/Helpers';
 
@@ -12,7 +12,7 @@ import staticContent from './../../static-content/languages';
 
 const ReportsGraph = props => {
   const Helper = new Helpers();
-  const { transactions, categories, lang, theme } = props;
+  const { transactions, categories, lang, theme, pallet } = props;
   let categoriesData = Helper.groupTransactionsByMonths(transactions);
 
   categoriesData = categoriesData.map(item => {
@@ -42,13 +42,45 @@ const ReportsGraph = props => {
         >
           <div className="graph-wrapper">
             <ResponsiveContainer>
-              <BarChart width={600} height={300} data={resArr}
-                margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-               <XAxis dataKey="name"/>
-               <YAxis/>
-               <CartesianGrid strokeDasharray="3 3"/>
-               <Tooltip content={<CustomTooltip lang={lang}/>}/>
-               <Bar type="monotone" dataKey="money" fill="rgba(185, 25, 25, 0.6)" stroke="#b91919" />
+              <BarChart 
+                width={600} 
+                height={300} 
+                data={resArr}
+                margin={{top: 5, right: 30, left: 20, bottom: 5}}
+              >
+                <XAxis 
+                  dataKey="name"
+                  tick={{stroke: `${theme === 'dark' ? '#fff' : '#000'}`, strokeWidth: 1}}
+                />
+                <YAxis
+                  tick={{stroke: `${theme === 'dark' ? '#fff' : '#000'}`, strokeWidth: 1}}
+                />
+                <CartesianGrid 
+                  fill={theme === 'dark' ? 'rgba(0, 0, 0, 0.125)' : 'rgba(255, 255, 255, 0.05)'}
+                />
+                <Tooltip 
+                  content={<CustomTooltip lang={lang}/>}
+                />
+                <defs>
+                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                    <stop 
+                      offset="5%" 
+                      stopColor={`${pallet.endColor}`} 
+                      stopOpacity={0.8}
+                    />
+                    <stop 
+                      offset="95%" 
+                      stopColor={`${pallet.startColor}`} 
+                      stopOpacity={0.2}
+                    />
+                  </linearGradient>
+                </defs>
+                <Bar               
+                  dataKey="money" 
+                  stroke={`${pallet.startColor}`} 
+                  fillOpacity={1} 
+                  fill='url(#colorUv)'
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>

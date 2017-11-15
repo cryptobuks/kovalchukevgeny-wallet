@@ -45,7 +45,6 @@ const TransactionsGraph = props => {
               />
               <YAxis
                 tick={{stroke: `${theme === 'dark' ? '#fff' : '#000'}`, strokeWidth: 1}}
-                unit={staticContent[lang]['currency']}
               />
               <CartesianGrid               
                 fill={theme === 'dark' ? 'rgba(0, 0, 0, 0.125)' : 'rgba(255, 255, 255, 0.05)'}

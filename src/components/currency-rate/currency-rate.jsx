@@ -55,7 +55,6 @@ const CurrencyRate = props => {
               />
               <YAxis
                 tick={{stroke: `${theme === 'dark' ? '#fff' : '#000'}`, strokeWidth: 1}}
-                unit={staticContent[lang]['currency']} 
                 domain={[getMinValue(course), getMaxValue(course)]}
               />
               <CartesianGrid 
