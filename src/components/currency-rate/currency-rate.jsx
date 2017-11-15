@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'Recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, linearGradient } from 'Recharts';
 
 import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
@@ -10,7 +10,7 @@ import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 import staticContent from './../../static-content/languages';
 
 const CurrencyRate = props => {
-  let { lang, course, theme } = props;
+  let { lang, course, theme, pallet } = props;
 
   let getMaxValue = array => {
     if(array && array.length > 0) {
@@ -43,13 +43,48 @@ const CurrencyRate = props => {
       >
         <div className="graph-wrapper">
           <ResponsiveContainer>
-            <AreaChart width={550} height={250} data={course}
-              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-              <XAxis dataKey="name"/>
-              <YAxis unit={staticContent[lang]['currency']} domain={[getMinValue(course), getMaxValue(course)]}/>
-              <CartesianGrid strokeDasharray="6 6"/>
-              <Tooltip content={<CustomTooltip lang={lang} type={'currency'}/>}/>
-              <Area type='monotone' dataKey='value' stroke='#b91919' fill='#b91919' />
+            <AreaChart 
+              width={550} 
+              height={250} 
+              data={course}
+              margin={{top: 10, right: 30, left: 0, bottom: 0}}
+            >
+              <XAxis
+                tick={{stroke: `${theme === 'dark' ? '#fff' : '#000'}`, strokeWidth: 1}}
+                dataKey="name"
+              />
+              <YAxis
+                tick={{stroke: `${theme === 'dark' ? '#fff' : '#000'}`, strokeWidth: 1}}
+                unit={staticContent[lang]['currency']} 
+                domain={[getMinValue(course), getMaxValue(course)]}
+              />
+              <CartesianGrid 
+                fill={theme === 'dark' ? 'rgba(0, 0, 0, 0.125)' : 'rgba(255, 255, 255, 0.05)'}
+              />
+              <Tooltip 
+                content={<CustomTooltip lang={lang} type={'currency'}/>}
+              />
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop 
+                    offset="5%" 
+                    stopColor={`${pallet.endColor}`} 
+                    stopOpacity={0.8}
+                  />
+                  <stop 
+                    offset="95%" 
+                    stopColor={`${pallet.startColor}`} 
+                    stopOpacity={0.2}
+                  />
+                </linearGradient>
+              </defs>
+              <Area 
+                type='linear' 
+                dataKey='value' 
+                stroke={`${pallet.startColor}`} 
+                fillOpacity={1} 
+                fill='url(#colorUv)'
+              />
             </AreaChart>
           </ResponsiveContainer>
         </div>

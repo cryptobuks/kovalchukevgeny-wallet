@@ -125,8 +125,7 @@ const CategoriesStats = props => {
                   cy={150}
                   innerRadius={50}
                   outerRadius={100}
-                  fill="#8884d8"
-                  label
+                  stroke="transparent"
                 >
                 </Pie>
                 <Legend

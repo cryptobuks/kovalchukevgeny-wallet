@@ -16,7 +16,7 @@ import Helpers from './../../helpers/Helpers';
 const Statistics = props => {
   const Helper = new Helpers();
   const { transactions, course, categories, user } = props;
-  const { theme, lang } = user.settings;
+  const { theme, lang, pallet } = user.settings;
 
   return (
     <Container>
@@ -26,6 +26,7 @@ const Statistics = props => {
             lang={lang}
             course={course}
             theme={theme}
+            pallet={pallet}
           />
         </Col>
         <Col lg={6} md={6}>
@@ -33,6 +34,7 @@ const Statistics = props => {
             monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
             lang={lang}
             theme={theme}
+            pallet={pallet}
           />
         </Col>
         <Col lg={6} md={6}>

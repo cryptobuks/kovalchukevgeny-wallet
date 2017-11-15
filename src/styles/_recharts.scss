@@ -1,0 +1,9 @@
+.recharts-layer {
+
+  &.recharts-pie {
+
+    .recharts-pie-sector {
+      stroke: transparent !important;
+    }
+  }
+}
