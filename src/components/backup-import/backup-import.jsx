@@ -6,6 +6,8 @@ import { toastr } from 'react-redux-toastr';
 import Panel from './../panel/panel.jsx';
 import Button from './../button/button.jsx';
 import Icon from './../icon/icon.jsx';
+import ListGroup from '../list-group/list-group.jsx';
+import ListGroupItem from '../list-group-item/list-group-item.jsx';
 import ButtonToolbar from './../button-toolbar/button-toolbar.jsx';
 
 import staticContent from './../../static-content/languages';
@@ -45,24 +47,26 @@ class Import extends PureComponent {
     window.location.reload(false);
   }
 
-  renderInfoAboutFile(file) {
+  renderInfoAboutFile(file, theme) {
     if(file.name && file.size) {
       return(
-        <div className="file">
-          <div className="file-name">
-            {file.name}
-          </div>
-          <div className="file-size">
-            {file.size/1000 } bytes
-          </div>
-          <Icon icon="done" />
-        </div>
+        <ListGroup>
+          <ListGroupItem className={`list-group-item file ${theme}`}>
+            <div className="file-name">
+              {file.name}
+            </div>
+            <div className="file-size">
+              {file.size/1000 } bytes
+            </div>
+            <Icon icon="done" />
+          </ListGroupItem>
+        </ListGroup>
       );
     }
   }
 
   updateLoading(event) {
-    this.setState({file: event.target.files[0]});
+    this.setState({ file: event.target.files[0] });
   }
 
   render() {
@@ -79,7 +83,7 @@ class Import extends PureComponent {
           <p>
             {staticContent[lang]['backup-import']['description']}
           </p>
-          {this.renderInfoAboutFile(file)}
+          {this.renderInfoAboutFile(file, theme)}
           <label className="label-load btn btn-primary">
             <input
               type="file"

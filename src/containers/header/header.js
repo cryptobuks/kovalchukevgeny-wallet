@@ -4,16 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import Icon from './../../components/icon/icon.jsx';
-import Navbar from './../../components/navbar/navbar.jsx';
-
-import staticContent from './../../static-content/languages';
 
 const Header = props => {
-  const { user, transactions } = props;
-  const { theme, lang } = user.settings;
+  const { user } = props;
+  const { theme } = user.settings;
 
   return (
-    <div className={`header ${theme}`}>     
+    <div className={`header ${theme}`}>
       <ul className="header-nav">
         <li>
           <Link activeClassName="active" to="settings">

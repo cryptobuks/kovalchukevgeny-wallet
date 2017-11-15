@@ -32,34 +32,34 @@ const Navigation = props => {
           </Link>
         </li>
         {transactions.length > 0 &&
-          <li>
-            <Link activeClassName="active" to="statistics">
-              <Icon icon={'timeline'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[2]}
-              </span>
-            </Link>
-          </li>
+        <li>
+          <Link activeClassName="active" to="statistics">
+            <Icon icon={'timeline'} />
+            <span className="navigation__item">
+              {staticContent[lang].menu[2]}
+            </span>
+          </Link>
+        </li>
         }
         {transactions.length > 0 &&
-          <li>
-            <Link activeClassName="active" to="reports">
-              <Icon icon={'work'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[3]}
-              </span>
-            </Link>
-          </li>
+        <li>
+          <Link activeClassName="active" to="reports">
+            <Icon icon={'work'} />
+            <span className="navigation__item">
+              {staticContent[lang].menu[3]}
+            </span>
+          </Link>
+        </li>
         }
         {transactions.length > 0 &&
-          <li>
-            <Link activeClassName="active" to="month-report">
-              <Icon icon={'storage'} />
-              <span className="navigation__item">
-                {staticContent[lang].menu[4]}
-              </span>
-            </Link>
-          </li>
+        <li>
+          <Link activeClassName="active" to="month-report">
+            <Icon icon={'storage'} />
+            <span className="navigation__item">
+              {staticContent[lang].menu[4]}
+            </span>
+          </Link>
+        </li>
         }
         <li>
           <Link activeClassName="active" to="backup">
@@ -80,6 +80,7 @@ Navigation.defaultProps = {
 
 Navigation.propTypes = {
   transactions: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default connect(state => ({

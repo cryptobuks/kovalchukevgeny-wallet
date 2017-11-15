@@ -20,32 +20,32 @@
   }
 
   .label-load {
-    cursor: pointer;
     margin-right: 10px;
   }
 
   .file {
-    border-top: 1px solid $accentColor;
-    border-bottom: 1px solid $accentColor;
     display: flex;
     justify-content: space-between;
     margin-bottom: $rhythm*2;
-    padding: $rhythm 0;
-
-    i {
-      color: $successColor;
-    }
   }
 }
 
 .dark {
   .toolbar {
-    border-color: rgba(0, 0, 0, 0.125);;
+    border-color: rgba(0, 0, 0, 0.125);
+  }  
+
+  i {
+    color: rgba(255, 255, 255, 0.85);
   }
 }
 
 .light {
   .toolbar {
-    border-color: rgba(255, 255, 255, 0.05);;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  i {
+    color: rgba(0, 0, 0, 0.75);
   }
 }
