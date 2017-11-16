@@ -44,10 +44,12 @@
     }
 
     &:nth-child(2) {
+      border-right: 1px solid rgba(0, 0, 0, 0.125);
       width: 50%;
     }
 
     &:last-child {
+      border-right: none;
       text-align: right;
       width: 20%;
     }

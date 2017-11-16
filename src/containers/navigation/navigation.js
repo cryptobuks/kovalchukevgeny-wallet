@@ -50,7 +50,8 @@ const Navigation = props => {
           </Link>
         </li>
         }
-        {transactions.length > 0 &&
+        {/* Commented until functionality updating */}
+        {/* {transactions.length > 0 &&
         <li>
           <Link activeClassName="active" to="month-report">
             <Icon icon={'storage'} />
@@ -59,7 +60,7 @@ const Navigation = props => {
             </span>
           </Link>
         </li>
-        }
+        } */}
         <li>
           <Link activeClassName="active" to="backup">
             <Icon icon={'backup'} />
