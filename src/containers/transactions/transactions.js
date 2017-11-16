@@ -87,7 +87,7 @@ class Transactions extends Component {
       updateCategory,
       changeAllCategories,
       user } = this.props;
-    const lang = user.settings.lang;
+    const { lang, theme, pallet } = user.settings;
     let amount = 0;
 
     const monthTransactions = this.Helpers.getCurrentMonthTransactions(transactions);
@@ -109,7 +109,7 @@ class Transactions extends Component {
               lang={lang}
               amount={amount}
               transactions={transactions}
-              theme={user.settings.theme}
+              theme={theme}
             />
           </Col>
           <AddingPanel
@@ -119,7 +119,8 @@ class Transactions extends Component {
             transactions={transactions}
             showPanel={showPanel}
             hideAddingPanel={this.hideAddingPanel}
-            theme={user.settings.theme}
+            theme={theme}
+            pallet={pallet}
           />
           {transactions.length > 0 ?
             <Col lg={3} md={3}>
@@ -128,14 +129,14 @@ class Transactions extends Component {
                 lang={lang}
                 updateCategory={updateCategory}
                 changeAllCategories={changeAllCategories}
-                theme={user.settings.theme}
+                theme={theme}
               />
             </Col> : <h4>{staticContent[lang].description}</h4>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&
               <Panel
-                specialClass={`tr-table ${user.settings.theme}`}
+                specialClass={`tr-table ${theme}`}
                 heading={staticContent[lang]['transactions-table'].head}
                 headingIcon="view_list"
                 footer={this.renderTableFooter(amount, unicTransactions)}
@@ -146,7 +147,7 @@ class Transactions extends Component {
                   changeTransaction={changeTransaction}
                   categories={categories}
                   lang={lang}
-                  theme={user.settings.theme}
+                  theme={theme}
                 />
               </Panel>
             }

@@ -97,7 +97,7 @@ class AddingPanel extends PureComponent {
 
   render() {
     const { category, money, date, description } = this.state;
-    let { categories, lang, transactions, showPanel, theme } = this.props;
+    let { categories, lang, transactions, showPanel, theme, pallet } = this.props;
     
     categories = categories.map((category, i) => {
       return (
@@ -119,6 +119,7 @@ class AddingPanel extends PureComponent {
               maxDate={moment()}
               selected={date}
               onChange={this.handleChangeData}
+              calendarClassName={`${theme} ${pallet.alias}`}
             />
           </div>
           <div className="form-item">

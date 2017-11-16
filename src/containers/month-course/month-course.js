@@ -47,7 +47,7 @@ class MonthCourse extends Component {
   }
 
   render() {
-    const { lang, theme } = this.props;
+    const { lang, theme, pallet } = this.props;
     let { course } = this.props;
     const { currentCourse, date } = this.state;
 
@@ -72,6 +72,7 @@ class MonthCourse extends Component {
               maxDate={moment()}
               selected={date}
               onChange={this.handleChangeData}
+              calendarClassName={`${theme} ${pallet.alias}`}
             />
             <Input
               type="number"

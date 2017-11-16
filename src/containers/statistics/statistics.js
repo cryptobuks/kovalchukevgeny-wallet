@@ -38,21 +38,22 @@ const Statistics = props => {
           />
         </Col>
         <Col lg={6} md={6}>
-          <CategoriesStats
-            transactions={transactions}
-            categories={categories}
+          <MonthCourse
             lang={lang}
             theme={theme}
+            pallet={pallet}
           />
-        </Col>
-        <Col lg={6} md={6}>
           <TransactionsResults
             monthTransactions={Helper.getCurrentMonthTransactions(transactions)}
             lang={lang}
             course={course}
             theme={theme}
-          />
-          <MonthCourse
+          />         
+        </Col>
+        <Col lg={6} md={6}>
+          <CategoriesStats
+            transactions={transactions}
+            categories={categories}
             lang={lang}
             theme={theme}
           />

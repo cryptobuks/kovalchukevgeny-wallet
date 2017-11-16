@@ -87,7 +87,7 @@ class CategoryEditor extends PureComponent {
               headingIcon="settings"
             >
               <Row>
-                <Col lg={3} md={2} sm={6}>
+                <Col lg={3} md={3} sm={6}>
                   <Input
                     specialClass="dark"
                     placeholder={staticContent[lang]['category-editor'].category}
@@ -95,7 +95,7 @@ class CategoryEditor extends PureComponent {
                     handleChange={this.handleChangeTitle}
                   />
                 </Col>
-                <Col lg={2} md={4} sm={6} specialClass="text-right">
+                <Col lg={3} md={3} sm={6} specialClass="text-right">
                   <IconSelect
                     onClickFunction={this.changeCategoryIcon}
                     defaultIcon={icon}
@@ -103,7 +103,7 @@ class CategoryEditor extends PureComponent {
                     lang={lang}
                   />
                 </Col>
-                <Col lg={2} md={4} sm={6} specialClass="text-right">
+                <Col lg={3} md={3} sm={6} specialClass="text-right">
                   <ColorSelect
                     onClickFunction={this.changeCategoryColor}
                     defaultColor={color}
@@ -111,7 +111,7 @@ class CategoryEditor extends PureComponent {
                     lang={lang}
                   />
                 </Col>
-                <Col lg={2} md={2} sm={6} specialClass="text-right">
+                <Col lg={3} md={3} sm={6} specialClass="text-right">
                   <ButtonToolbar>
                     <Button
                       specialClass="btn btn-primary"
