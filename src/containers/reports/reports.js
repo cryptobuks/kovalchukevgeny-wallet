@@ -43,7 +43,7 @@ class Reports extends Component {
 
   renderMonthPanels(reMapedTransactions) {
     const { course, categories, deleteTransaction, changeTransaction, user } = this.props;
-    const { lang, theme } = user.settings;
+    const { lang, theme, pallet } = user.settings;
 
     return reMapedTransactions.map((reMapedTransaction, i) => {
       const unicTransactions = this.Helpers.sumSameDateTransactions(reMapedTransaction);
@@ -92,6 +92,7 @@ class Reports extends Component {
                   categories={categories}
                   lang={lang}
                   theme={theme}
+                  pallet={pallet}
                 />
               </div>
               <div className="panel-footer">

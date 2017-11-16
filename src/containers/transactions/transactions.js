@@ -148,6 +148,7 @@ class Transactions extends Component {
                   categories={categories}
                   lang={lang}
                   theme={theme}
+                  pallet={pallet}
                 />
               </Panel>
             }

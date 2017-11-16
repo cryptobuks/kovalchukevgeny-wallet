@@ -150,7 +150,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    let { transactions, categories, lang, theme } = this.props;
+    let { transactions, categories, lang, theme, pallet } = this.props;
     const { activeRow, isEditRow, descending, sortby } = this.state;
 
     const selectCategories = categories.map((category, i) => {
@@ -203,10 +203,11 @@ class TransactionsTable extends Component {
             <span>{moment(transaction.date).format('DD/MM/YYYY')}</span> :
             <DatePicker
               locale="en-gb"
-              className="form-control"
+              className={`form-control ${theme}`}
               maxDate={moment()}
               selected={moment(transaction.date)}
               onChange={this.handleChangeData}
+              calendarClassName={`${theme} ${pallet.alias}`}
             />
           }
           </div>
@@ -222,6 +223,7 @@ class TransactionsTable extends Component {
               placeholder="0.00"
               value={this.state.isEditRow.money}
               handleChange={this.handleChangeMoney}
+              specialClass={theme}
             />
           }
           </div>
@@ -233,6 +235,7 @@ class TransactionsTable extends Component {
               placeholder={staticContent[lang]['adding-panel']['descr']}
               value={this.state.isEditRow.description}
               handleChange={this.handleChangeDescription}
+              specialClass={theme}
             />
           }
           </div>
@@ -249,7 +252,7 @@ class TransactionsTable extends Component {
               {this.Helpers.getCategoryById(categories, transaction)}
             </span> :
             <select
-              className="form-control"
+              className={`form-control ${theme}`}
               value={this.state.isEditRow.category}
               onChange={this.handleChangeCategory}
             >

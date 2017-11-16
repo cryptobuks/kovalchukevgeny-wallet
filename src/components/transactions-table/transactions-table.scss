@@ -28,6 +28,23 @@
         background-color: rgba(0,0,0,0.125);
       }
     }
+
+    .change-menu,
+    .edit-menu {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.125));
+      border-color: rgba(0,0,0,0.125);
+    }
+
+    .button-icon {
+
+      &:hover {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.125));
+      }
+      
+      &:first-child {
+        border-color: rgba(0,0,0,0.125);
+      }
+    }
   }
 
   &.light {
@@ -47,10 +64,27 @@
         background-color: rgba(255,255,255,0.05);
       }
     }
+
+    .change-menu,
+    .edit-menu {
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+      border-color: rgba(255,255,255,0.05);
+    }
+
+    .button-icon {
+
+      &:hover {
+        background: linear-gradient(to bottom right, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+      }
+      
+      &:first-child {
+        border-color: rgba(255,255,255,0.05);
+      }
+    }
   }
 
   &-head {
-    height: 46px;
+    height: 45px;
     overflow-y: hidden;
     position: absolute;
     width: 100%;
@@ -70,6 +104,10 @@
       font-weight: 600;
       position: relative;
       text-transform: uppercase;
+
+      &.active {
+        color: #fff;
+      }
 
       .filter-arrow {
         position: absolute;
@@ -103,15 +141,14 @@
 
       &:nth-last-child(2) {
         border-right: none;
-        padding-right: 75px;
+        padding-right: 85px;
       }
-    }
 
-    .form-control {
-      color: $accentColor;
-      font-size: 13px;
-      height: 23px;
-      padding: 0;
+      .form-control {
+        font-size: 13px;
+        height: 26px;
+        padding: 5px 10px;
+      }
     }
   }
 
@@ -150,15 +187,16 @@
 
   .change-menu,
   .edit-menu {
-    background-color: #7F7B82 !important;
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
     opacity: 0;
-    padding: 8px 10px;
     position: absolute;
     right: -62px;
     text-align: center;
     top: 0;
     transition: all .3s ease;
-    width: 70px;
+    width: 82px;
 
     &.active {
       opacity: 1;
@@ -166,29 +204,14 @@
     }
 
     .button-icon {
-      color: $accentTextColor;
       font-size: 16px;
       margin-right: 0;
-
-      &:hover {
-        color: $accentColor;
-      }
+      line-height: 44px;
+      width: 40px;
 
       &:first-child {
-        border-right: 1px solid $borderLight;
-        margin-right: 10px;
-        padding-right: 10px;
-      }
-    }
-  }
-
-  .change-menu {
-    background-color: $accentColor !important;
-
-    .button-icon {
-
-      &:hover {
-        color: #7F7B82;
+        border-right-style: solid;
+        border-right-width: 1px;
       }
     }
   }
