@@ -11,18 +11,17 @@
   .shadow {
     width: 100%;
     height: 100%;
-    background-color: rgba(50,58,68, .8);
+    background: rgba(0, 0, 0, 0.25) !important;
+    background: linear-gradient(to top left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
   }
 
   .rrt-confirm {
-    width: 320px;
-    background-color: white;
+    min-width: 320px;
     position: absolute;
     z-index: 9;
     top: 20%;
     left: 50%;
     margin-left: -160px;
-    box-shadow: 3px 3px 20px #333;
     border-radius: 4px;
     overflow: hidden;
 
@@ -30,15 +29,16 @@
       width: 100%;
       padding: 5%;
       min-height: 50px;
-      font-size: 1em;
-      background-color: white;
+      font-size: 1.4rem;
       text-align: center;
-      font-family: 'open-sanscondensed-light', sans-serif;
       clear: both;
+      text-transform: none !important;
     }
 
     .rrt-buttons-holder {
       display: flex;
+      border-top-width: 1px;
+      border-top-style: solid;
 
       .rrt-button {
         flex-grow: 1;
@@ -48,34 +48,59 @@
         background-color: transparent;
         padding: 0;
         margin: 0;
-        float: left;
-        border-top: 1px solid #f0f0f0;
+        float: left;     
         font-size: 14px;
         overflow: hidden;
         cursor: pointer;
 
-        &:hover {
-          background-color: #f5f5f5;
-        }
-
-        &.rrt-ok-btn {
-          &:active {
-            background-color: $successBgColor;
-            color: white;
-          }
-        }
-
-        &.rrt-cancel-btn {
-          &:active {
-            background-color: $errorBgColor;
-            color: white;
-          }
-        }
-
+        &:active,
         &:focus {
+          background-color: transparent !important;
           outline: none;
         }
       }
+    }
+  }
+}
+
+// Theme
+
+.dark {
+
+  .rrt-confirm {
+    background: rgba(0,0,0,0.8);
+    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+    color: #fff;
+  }
+
+  .rrt-buttons-holder {
+    border-top-color: rgba(0, 0, 0, 0.125);
+  }
+
+  .rrt-button {
+    &:hover {
+      background: rgba(255,255,255,0.95);
+      background: linear-gradient(to right, rgba(255,255,255,0.75), rgba(255,255,255,0.65));
+    }
+  }
+}
+
+.light {
+  
+  .rrt-confirm {
+    background: rgba(255,255,255,0.95);
+    background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+    color: #000;
+  }
+
+  .rrt-buttons-holder {
+    border-top-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .rrt-button {
+    &:hover {
+      background: transparent;
+      background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.125));
     }
   }
 }

@@ -73,19 +73,19 @@ body.toastr-confirm-active {
       height: 5px;
 
       &.success {
-        background-color: $successBgColor;
+        background-color: linear-gradient(to bottom right, #2c7744, rgba(44,119,68,0.75)) !important;
       }
 
       &.warning {
-        background-color: $warningBgColor;
+        background-color: linear-gradient(to bottom right, #ff851b, rgba(255,133,27,0.75)) !important;
       }
 
       &.info {
-        background-color: $infoBgColor;
+        background-color: linear-gradient(to bottom right, #0074d9, rgba(0,116,217,0.75)) !important;
       }
 
       &.error {
-        background-color: $errorBgColor;
+        background-color: linear-gradient(to bottom right, #ff4136, rgba(255,65,54,0.75)) !important;
       }
     }
 
@@ -168,34 +168,34 @@ body.toastr-confirm-active {
     }
 
     &.rrt-info {
-      background-color: $infoBgColor;
+      background-color: linear-gradient(to bottom right, #0074d9, rgba(0,116,217,0.75)) !important;
 
       .rrt-progressbar {
-        background-color: darken($infoBgColor, 15%);
+        //background-color: darken($infoBgColor, 15%);
       }
     }
 
     &.rrt-success {
-      background-color: $successBgColor;
+      background-color: linear-gradient(to bottom right, #2c7744, rgba(44,119,68,0.75)) !important;
 
       .rrt-progressbar {
-        background-color: darken($successBgColor, 15%);
+        //background-color: darken($successBgColor, 15%);
       }
     }
 
     &.rrt-warning {
-      background-color: $warningBgColor;
+      background-color: linear-gradient(to bottom right, #ff851b, rgba(255,133,27,0.75)) !important;
 
       .rrt-progressbar {
-        background-color: darken($warningBgColor, 15%);
+        //background-color: darken($warningBgColor, 15%);
       }
     }
 
     &.rrt-error {
-      background-color: $errorBgColor;
+      background-color: linear-gradient(to bottom right, #ff4136, rgba(255,65,54,0.75)) !important;
 
       .rrt-progressbar {
-        background-color: darken($errorBgColor, 15%);
+        //background-color: darken($errorBgColor, 15%);
       }
     }
 

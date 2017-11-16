@@ -9,7 +9,7 @@ import Footer from './../../components/footer/footer.jsx';
 
 const App = props => {
   const { user } = props;
-  const pallet = user.settings.pallet;
+  const { pallet, theme } = user.settings;
 
   return (
     <div
@@ -27,6 +27,7 @@ const App = props => {
         position="top-center"
         transitionIn="fadeIn"
         transitionOut="fadeOut"
+        className={theme}
       />
       <div className="main">
         {props.children}
