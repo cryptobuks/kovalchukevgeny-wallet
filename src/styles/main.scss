@@ -106,6 +106,10 @@ div {
       &::-moz-placeholder { color: $accentTextColor; }
       &:-moz-placeholder { color: $accentTextColor; }
       &:-ms-input-placeholder { color: $accentTextColor; }
+
+      option {
+        color: #000;
+      }
     }
 
     &.light {
@@ -117,6 +121,10 @@ div {
       &::-moz-placeholder { color: #000; }
       &:-moz-placeholder { color: #000; }
       &:-ms-input-placeholder { color: #000; }
+
+      option {
+        color: #000;
+      }
     }
   }
 }
@@ -126,4 +134,9 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+// ---Input number---
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }

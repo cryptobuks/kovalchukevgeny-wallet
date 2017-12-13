@@ -109,7 +109,7 @@ const CategoriesStats = props => {
 
   return (
     <div>
-      {categories.length > 0 &&
+      {categories.length > 0 && transactions.length > 0 &&
         <Panel
           specialClass={`categories-stats ${theme}`}
           heading={staticContent[lang]['categories-stats']['head']}

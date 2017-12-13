@@ -162,6 +162,12 @@ class Helpers {
     });
     return result;
   }
+
+  sortByDate(array) {
+    return array.sort((a, b) => {
+      return moment(a.date).format('YYYYMMDD') - moment(b.date).format('YYYYMMDD');
+    });
+  }
 }
 
 export default Helpers;

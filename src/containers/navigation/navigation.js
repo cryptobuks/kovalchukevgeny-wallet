@@ -10,7 +10,7 @@ import staticContent from './../../static-content/languages';
 
 const Navigation = props => {
   const { user, transactions } = props;
-  const { lang, theme, pallet } = user.settings;
+  const { lang, theme } = user.settings;
   return (
     <Navbar specialClass={theme} withLogo>
       <ul className="nav navigation">
@@ -31,24 +31,24 @@ const Navigation = props => {
           </Link>
         </li>
         {transactions.length > 0 &&
-        <li>
-          <Link activeClassName="active" to="statistics">
-            <Icon icon={'timeline'} />
-            <span className="navigation__item">
-              {staticContent[lang].menu[2]}
-            </span>
-          </Link>
-        </li>
+          <li>
+            <Link activeClassName="active" to="statistics">
+              <Icon icon={'timeline'} />
+              <span className="navigation__item">
+                {staticContent[lang].menu[2]}
+              </span>
+            </Link>
+          </li>
         }
         {transactions.length > 0 &&
-        <li>
-          <Link activeClassName="active" to="reports">
-            <Icon icon={'work'} />
-            <span className="navigation__item">
-              {staticContent[lang].menu[3]}
-            </span>
-          </Link>
-        </li>
+          <li>
+            <Link activeClassName="active" to="reports">
+              <Icon icon={'work'} />
+              <span className="navigation__item">
+                {staticContent[lang].menu[3]}
+              </span>
+            </Link>
+          </li>
         }
         {/* Commented until functionality updating */}
         {/* {transactions.length > 0 &&

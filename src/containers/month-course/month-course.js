@@ -107,6 +107,7 @@ MonthCourse.propTypes = {
   course: PropTypes.array,
   lang: PropTypes.string,
   theme: PropTypes.string,
+  pallet: PropTypes.object
 };
 
 export default connect(state => ({

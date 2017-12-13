@@ -154,9 +154,11 @@ class TransactionsTable extends Component {
     const { activeRow, isEditRow, descending, sortby } = this.state;
 
     const selectCategories = categories.map((category, i) => {
-      return (
-        <option key={i} value={category.id}>{category.title}</option>
-      );
+      if (category.title.length > 0) {
+        return (
+          <option key={i} value={category.id}>{category.title}</option>
+        );
+      }
     });
 
     const tableHead = staticContent[lang]['transactions-table']['tableHead'].map((headItem, i) => {

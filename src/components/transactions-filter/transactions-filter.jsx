@@ -36,9 +36,9 @@ class TransactionsFilter extends PureComponent {
 
   isCategoryActive(category) {
     let { updateCategory } = this.props;
-    let { id, description, title, icon, filter, color } = category;
+    let { id, title, icon, filter, color } = category;
     filter = !filter;
-    updateCategory(id, description, title, icon, filter, color);
+    updateCategory(id, title, icon, filter, color);
   }
 
   render() {

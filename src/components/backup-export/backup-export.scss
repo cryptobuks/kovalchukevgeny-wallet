@@ -1,7 +1,7 @@
 .export {
 
   .toolbar {
-    border: 1px solid transparent;
+    border: 2px dashed transparent;
     padding: $rhythm 10px;
     text-align: center;
   }
@@ -13,12 +13,12 @@
 
 .dark {
   .toolbar {
-    border-color: rgba(0, 0, 0, 0.125);;
+    border-color: rgba(0, 0, 0, 0.2);
   }
 }
 
 .light {
   .toolbar {
-    border-color: rgba(255, 255, 255, 0.05);;
+    border-color: rgba(255, 255, 255, 0.05);
   }
 }

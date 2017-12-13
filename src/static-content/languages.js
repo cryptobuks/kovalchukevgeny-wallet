@@ -18,7 +18,7 @@ export default {
       date: 'Date',
       money: 'Money',
       category: 'Category',
-      course: 'Coures',
+      course: 'Course',
     },
     'transactions-results': {
       head: 'Month results',

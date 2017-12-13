@@ -7,10 +7,12 @@ import Icon from './../icon/icon.jsx';
 import Panel from './../panel/panel.jsx';
 import CustomTooltip from './../custom-tooltip/custom-tooltip.jsx';
 
+import Helpers from './../../helpers/Helpers';
 import staticContent from './../../static-content/languages';
 
 const CurrencyRate = props => {
   let { lang, course, theme, pallet } = props;
+  const Helper = new Helpers();
 
   let getMaxValue = array => {
     if(array && array.length > 0) {
@@ -26,7 +28,7 @@ const CurrencyRate = props => {
     return 0;
   }
 
-  course = course.map(item => {
+  course = Helper.sortByDate(course).map(item => {
     return {
       name: moment(item.date).format('MMM YYYY'),
       value: item.course
