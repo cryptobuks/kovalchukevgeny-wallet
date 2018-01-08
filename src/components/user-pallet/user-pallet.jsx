@@ -16,14 +16,13 @@ class UserPallet extends Component {
   }
 
   renderColorPallet(palletArray) {
-    const { onChange } = this.props;
-
+    const { onChange, user } = this.props;
     return palletArray.map((palleteColor, i) => {
       return (
         <li
           onClick={() => onChange(palleteColor)}
           key={i}
-          className="pallet-item"
+          className={classNames('pallet-item', {'active': user.settings.pallet.alias === palleteColor.alias})}
           style={{
             'backgroundColor': palleteColor.background,
             'backgroundImage': `linear-gradient(to bottom right, ${palleteColor.startColor}, ${palleteColor.endColor})`
@@ -61,6 +60,7 @@ UserPallet.propTypes = {
   lang: PropTypes.string,
   theme: PropTypes.string,
   onChange: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default UserPallet; 

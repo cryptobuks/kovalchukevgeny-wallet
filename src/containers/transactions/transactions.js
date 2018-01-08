@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import AddingPanel from './../../components/adding-panel/adding-panel.jsx';
 import TransactionsTable from './../../components/transactions-table/transactions-table.jsx';
@@ -105,12 +106,14 @@ class Transactions extends Component {
       <Container specialClass="transactions">
         <Row>
           <Col lg={12}>
-            <LastUpdates
-              lang={lang}
-              amount={amount}
-              transactions={transactions}
-              theme={theme}
-            />
+            {transactions.length > 0 &&
+              <LastUpdates
+                lang={lang}
+                amount={amount}
+                transactions={transactions}
+                theme={theme}
+              />
+            }
           </Col>
           <AddingPanel
             categories={categories}
@@ -131,7 +134,10 @@ class Transactions extends Component {
                 changeAllCategories={changeAllCategories}
                 theme={theme}
               />
-            </Col> : <h4>{staticContent[lang].description}</h4>
+            </Col> :
+            <Col lg={12}>
+              <h4 className={classNames('description-text', theme)}>{staticContent[lang].description}</h4>
+            </Col>
           }
           <Col lg={9} md={9}>
             {transactions.length > 0 &&

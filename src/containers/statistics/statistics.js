@@ -48,7 +48,7 @@ const Statistics = props => {
             lang={lang}
             course={course}
             theme={theme}
-          />         
+          />
         </Col>
         <Col lg={6} md={6}>
           <CategoriesStats

@@ -33,6 +33,7 @@ const UserSettings = props => {
             <UserPallet
               lang={lang}
               theme={theme}
+              user={user}
               onChange={changePallet}
             />
             <UserTheme

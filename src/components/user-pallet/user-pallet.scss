@@ -28,4 +28,24 @@
       background-position: -200% 0;
     }
   }
+
+  &.dark {
+
+    .pallet-item {
+
+      &.active {
+        box-shadow: inset 0px 0px 15px #000;
+      }
+    }
+  }
+
+  &.light {
+
+    .pallet-item {
+
+      &.active {
+        box-shadow: inset 0px 0px 15px #fff;
+      }
+    }
+  }
 }

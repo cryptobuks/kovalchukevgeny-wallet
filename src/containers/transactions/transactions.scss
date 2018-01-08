@@ -27,3 +27,14 @@
     &:nth-child(4) { width: 35%; }
   }
 }
+
+.description-text {
+
+  &.dark {
+    color: rgba(255,255,255,0.85);
+  }
+
+  &.light {
+    color: rgba(0,0,0,0.75);
+  }
+}
